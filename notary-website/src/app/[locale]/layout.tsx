@@ -19,34 +19,31 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const rtl = isRtl(locale as Locale);
 
-  const fontClass =
+  const fontClass = [
+    dmSans.variable,
+    locale === "he" ? notoHebrew.variable : "",
+    locale === "ar" ? notoArabic.variable : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const fontFamily =
     locale === "he"
-      ? notoHebrew.variable
+      ? "var(--font-noto-hebrew), var(--font-dm-sans), sans-serif"
       : locale === "ar"
-        ? notoArabic.variable
-        : "";
+        ? "var(--font-noto-arabic), var(--font-dm-sans), sans-serif"
+        : "var(--font-dm-sans), 'Helvetica Neue', sans-serif";
 
   return (
-    <html
+    <div
       lang={locale}
       dir={rtl ? "rtl" : "ltr"}
-      className={`${dmSans.variable} ${fontClass} antialiased`}
+      className={`${fontClass} antialiased min-h-screen bg-white`}
+      style={{ fontFamily }}
     >
-      <body
-        className="min-h-screen bg-white"
-        style={{
-          fontFamily:
-            locale === "he"
-              ? "var(--font-noto-hebrew), var(--font-dm-sans), sans-serif"
-              : locale === "ar"
-                ? "var(--font-noto-arabic), var(--font-dm-sans), sans-serif"
-                : "var(--font-dm-sans), 'Helvetica Neue', sans-serif",
-        }}
-      >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+      <NextIntlClientProvider messages={messages}>
+        {children}
+      </NextIntlClientProvider>
+    </div>
   );
 }
