@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', 'Helvetica Neue', sans-serif; color: #1a1a1a; background: #fff; }
+
+.page { max-width: 800px; margin: 0 auto; padding: 60px 48px; }
+.page + .page { border-top: 1px solid #e8e6e1; }
+
+h1 { font-size: 36px; font-weight: 500; letter-spacing: 4px; margin-bottom: 8px; }
+h2 { font-size: 22px; font-weight: 500; margin-bottom: 24px; color: #1a1a1a; letter-spacing: 1px; }
+h3 { font-size: 15px; font-weight: 500; margin-bottom: 12px; color: #444; text-transform: uppercase; letter-spacing: 2px; }
+
+.subtitle { font-size: 10px; letter-spacing: 6px; color: #999; margin-bottom: 48px; }
+
+.section { margin-bottom: 48px; }
+
+/* Color swatches */
+.swatch-row { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.swatch { width: 120px; }
+.swatch-color { height: 60px; border-radius: 8px; margin-bottom: 6px; border: 1px solid #eee; }
+.swatch-label { font-size: 11px; color: #666; }
+.swatch-hex { font-size: 11px; color: #999; font-family: 'DM Sans', monospace; }
+
+/* Font specimens */
+.specimen { margin-bottom: 24px; padding: 20px 24px; border: 1px solid #e8e6e1; border-radius: 10px; }
+.specimen-label { font-size: 10px; letter-spacing: 3px; color: #999; text-transform: uppercase; margin-bottom: 8px; }
+.specimen-text { font-size: 28px; line-height: 1.4; }
+.specimen-meta { font-size: 11px; color: #999; margin-top: 8px; font-family: 'DM Sans', sans-serif; }
+
+/* Logo display */
+.logo-box { padding: 32px; border-radius: 10px; text-align: center; margin-bottom: 12px; }
+.logo-light { background: #fafaf8; border: 1px solid #e8e6e1; }
+.logo-dark { background: #1a1a1a; }
+.logo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+
+/* Table */
+.info-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+.info-table td { padding: 10px 14px; border-bottom: 1px solid #f0eeea; font-size: 14px; vertical-align: top; }
+.info-table td:first-child { font-weight: 500; width: 180px; color: #444; }
+.info-table td:last-child { color: #666; }
+
+/* Spacing rules */
+.rule { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.rule-do { color: #1d9e75; font-size: 13px; }
+.rule-dont { color: #e24b4a; font-size: 13px; }
+.rule-icon { font-size: 16px; flex-shrink: 0; }
+.rule-text { font-size: 13px; color: #555; }
+
+.divider { height: 1px; background: #e8e6e1; margin: 40px 0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page" style="min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <h1>BEITON <span style="font-weight: 300; font-size: 18px; color: #6b6b6b; letter-spacing: 3px; position: relative; top: -2px;">&amp; Co</span></h1>
+  <div class="subtitle">BEYOND LAW</div>
+  <div style="font-size: 13px; color: #999; letter-spacing: 2px; text-transform: uppercase;">Brand Guidelines</div>
+  <div style="font-size: 12px; color: #bbb; margin-top: 8px;">2026</div>
+</div>
+
+<!-- PAGE 2: LOGO -->
+<div class="page">
+  <h2>Logo</h2>
+
+  <div class="logo-row">
+    <div>
+      <div class="logo-box logo-light">
+        <svg width="280" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(175, 50)">
+            <text text-anchor="start" dominant-baseline="central" y="-10" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#1a1a1a">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#6b6b6b" dy="8"> &amp; Co</tspan></text>
+            <line x1="4" y1="24" x2="190" y2="24" stroke="#aaaaaa" stroke-width="0.5"/>
+            <text text-anchor="start" x="4" y="42" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="6" fill="#999999">BEYOND LAW</text>
+          </g>
+        </svg>
+      </div>
+      <div style="font-size: 11px; color: #999; text-align: center;">Light background</div>
+    </div>
+    <div>
+      <div class="logo-box logo-dark">
+        <svg width="280" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(175, 50)">
+            <text text-anchor="start" dominant-baseline="central" y="-10" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#ffffff">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#a0a0a0" dy="8"> &amp; Co</tspan></text>
+            <line x1="4" y1="24" x2="190" y2="24" stroke="#555555" stroke-width="0.5"/>
+            <text text-anchor="start" x="4" y="42" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="6" fill="#777777">BEYOND LAW</text>
+          </g>
+        </svg>
+      </div>
+      <div style="font-size: 11px; color: #999; text-align: center;">Dark background</div>
+    </div>
+  </div>
+
+  <h3>Logo with centered slogan — with line</h3>
+  <div class="logo-row">
+    <div>
+      <div class="logo-box logo-light">
+        <svg width="280" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(300, 50)">
+            <text text-anchor="middle" dominant-baseline="central" y="-10" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#1a1a1a">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#6b6b6b" dy="3"> &amp; Co</tspan></text>
+            <line x1="-130" y1="20" x2="125" y2="20" stroke="#aaaaaa" stroke-width="0.5"/>
+            <text text-anchor="middle" x="0" y="40" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="6" fill="#999999">BEYOND LAW</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div>
+      <div class="logo-box logo-dark">
+        <svg width="280" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(300, 50)">
+            <text text-anchor="middle" dominant-baseline="central" y="-10" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#ffffff">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#a0a0a0" dy="3"> &amp; Co</tspan></text>
+            <line x1="-130" y1="20" x2="125" y2="20" stroke="#555555" stroke-width="0.5"/>
+            <text text-anchor="middle" x="0" y="40" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="6" fill="#777777">BEYOND LAW</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <h3>Logo with centered slogan — without line</h3>
+  <div class="logo-row">
+    <div>
+      <div class="logo-box logo-light">
+        <svg width="280" viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(300, 42)">
+            <text text-anchor="middle" dominant-baseline="central" y="-10" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#1a1a1a">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#6b6b6b" dy="3"> &amp; Co</tspan></text>
+            <text text-anchor="middle" x="0" y="30" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="6" fill="#999999">BEYOND LAW</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div>
+      <div class="logo-box logo-dark">
+        <svg width="280" viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(300, 42)">
+            <text text-anchor="middle" dominant-baseline="central" y="-10" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#ffffff">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#a0a0a0" dy="3"> &amp; Co</tspan></text>
+            <text text-anchor="middle" x="0" y="30" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="6" fill="#777777">BEYOND LAW</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <h3>Logo without slogan</h3>
+  <div class="logo-row">
+    <div>
+      <div class="logo-box logo-light">
+        <svg width="280" viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(175, 40)">
+            <text text-anchor="start" dominant-baseline="central" y="0" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#1a1a1a">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#6b6b6b" dy="8"> &amp; Co</tspan></text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div>
+      <div class="logo-box logo-dark">
+        <svg width="280" viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(175, 40)">
+            <text text-anchor="start" dominant-baseline="central" y="0" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#ffffff">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#a0a0a0" dy="8"> &amp; Co</tspan></text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Logo rules</h3>
+  <div class="rule"><span class="rule-icon">✓</span><span class="rule-do">Minimum clear space around logo: height of "&amp; Co" text on all sides</span></div>
+  <div class="rule"><span class="rule-icon">✓</span><span class="rule-do">Minimum logo width: 120px for digital, 30mm for print</span></div>
+  <div class="rule"><span class="rule-icon">✗</span><span class="rule-dont">Do not rotate, stretch, or distort the logo</span></div>
+  <div class="rule"><span class="rule-icon">✗</span><span class="rule-dont">Do not change font weights or letter spacing</span></div>
+  <div class="rule"><span class="rule-icon">✗</span><span class="rule-dont">Do not place on busy backgrounds without sufficient contrast</span></div>
+</div>
+
+<!-- PAGE 2B: ICON + EMAIL SIGNATURE -->
+<div class="page">
+  <h2>Circular icon</h2>
+  <p style="font-size: 13px; color: #888; margin-bottom: 24px;">Use for profile pictures (Gmail, Instagram, LinkedIn, WhatsApp Business), favicons, and app icons.</p>
+
+  <div class="logo-row">
+    <div>
+      <div class="logo-box logo-light" style="padding: 24px;">
+        <svg width="120" height="120" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="200" fill="#1a1a1a"/>
+          <text x="200" y="190" text-anchor="middle" dominant-baseline="central" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="56" letter-spacing="6" fill="#ffffff">BEITON</text>
+          <text x="200" y="235" text-anchor="middle" dominant-baseline="central" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="28" letter-spacing="2" fill="#a0a0a0">&amp; Co</text>
+        </svg>
+      </div>
+      <div style="font-size: 11px; color: #999; text-align: center;">Dark (default)</div>
+    </div>
+    <div>
+      <div class="logo-box" style="background: #333; padding: 24px; border-radius: 10px;">
+        <svg width="120" height="120" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="200" fill="#ffffff"/>
+          <text x="200" y="190" text-anchor="middle" dominant-baseline="central" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="56" letter-spacing="6" fill="#1a1a1a">BEITON</text>
+          <text x="200" y="235" text-anchor="middle" dominant-baseline="central" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="28" letter-spacing="2" fill="#6b6b6b">&amp; Co</text>
+        </svg>
+      </div>
+      <div style="font-size: 11px; color: #999; text-align: center;">Light</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 16px;">
+    <h3>Icon sizes</h3>
+    <table class="info-table">
+      <tr><td>Gmail / Email</td><td>80×80 px</td></tr>
+      <tr><td>Instagram / Facebook</td><td>320×320 px</td></tr>
+      <tr><td>LinkedIn</td><td>400×400 px</td></tr>
+      <tr><td>WhatsApp Business</td><td>640×640 px</td></tr>
+      <tr><td>Favicon</td><td>32×32 px / 16×16 px</td></tr>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Email signature</h2>
+  <p style="font-size: 13px; color: #888; margin-bottom: 24px;">Standard HTML signature for Gmail / Google Workspace. Copy the HTML file and paste into Gmail Settings → Signature.</p>
+
+  <div style="background: #fafaf8; border: 1px solid #e8e6e1; border-radius: 10px; padding: 24px;">
+    <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; font-size: 13px;">
+      <tr>
+        <td style="padding-bottom: 12px; border-bottom: 1px solid #e8e6e1;">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="vertical-align: middle; padding-right: 14px;">
+                <div style="width: 44px; height: 44px; background: #1a1a1a; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <span style="color: white; font-size: 8px; font-weight: 500; letter-spacing: 2px;">BEITON</span>
+                </div>
+              </td>
+              <td style="vertical-align: middle;">
+                <div style="font-weight: 500; font-size: 17px; letter-spacing: 3px; color: #1a1a1a;">BEITON <span style="font-weight: 400; font-size: 10px; letter-spacing: 1px; color: #6b6b6b;">&amp; Co</span></div>
+                <div style="font-size: 8px; letter-spacing: 4px; color: #999; margin-top: 2px;">BEYOND LAW</div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-top: 10px; font-size: 12px; color: #6b6b6b;">
+          <span style="color: #999;">E</span>&nbsp;&nbsp;<span style="color: #1a1a1a;">office@beiton.co</span><br>
+          <span style="color: #999;">W</span>&nbsp;&nbsp;<span style="color: #1a1a1a;">notary.beiton.co</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-top: 10px; font-size: 9px; color: #ccc;">
+          This email and any attachments are confidential and intended solely for the addressee.
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 16px;">
+    <h3>Signature elements</h3>
+    <table class="info-table">
+      <tr><td>Icon</td><td>Circular dark icon, 44×44 px in signature</td></tr>
+      <tr><td>Firm name</td><td>BEITON & Co, 17px medium, letter-spacing 3px</td></tr>
+      <tr><td>Slogan</td><td>BEYOND LAW, 8px, letter-spacing 4px, #999</td></tr>
+      <tr><td>Contact labels</td><td>E / W / T — single letter, #999</td></tr>
+      <tr><td>Contact values</td><td>12px, #1a1a1a, no underlines on links</td></tr>
+      <tr><td>Disclaimer</td><td>9px, #ccc, single line</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 3: COLORS -->
+<div class="page">
+  <h2>Color palette</h2>
+
+  <h3>Primary</h3>
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1a1a;"></div>
+      <div class="swatch-label">Black — primary text</div>
+      <div class="swatch-hex">#1A1A1A</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ffffff; border: 1px solid #ddd;"></div>
+      <div class="swatch-label">White — backgrounds</div>
+      <div class="swatch-hex">#FFFFFF</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #fafaf8;"></div>
+      <div class="swatch-label">Warm white — surfaces</div>
+      <div class="swatch-hex">#FAFAF8</div>
+    </div>
+  </div>
+
+  <h3>Secondary</h3>
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #6b6b6b;"></div>
+      <div class="swatch-label">Gray — secondary text</div>
+      <div class="swatch-hex">#6B6B6B</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #999999;"></div>
+      <div class="swatch-label">Light gray — tertiary</div>
+      <div class="swatch-hex">#999999</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e8e6e1;"></div>
+      <div class="swatch-label">Warm border</div>
+      <div class="swatch-hex">#E8E6E1</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f5f4f1;"></div>
+      <div class="swatch-label">Accent background</div>
+      <div class="swatch-hex">#F5F4F1</div>
+    </div>
+  </div>
+
+  <h3>Accent (optional)</h3>
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2c2c2a;"></div>
+      <div class="swatch-label">Dark — buttons, CTA</div>
+      <div class="swatch-hex">#2C2C2A</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0F6E56;"></div>
+      <div class="swatch-label">Teal — success, active</div>
+      <div class="swatch-hex">#0F6E56</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e24b4a;"></div>
+      <div class="swatch-label">Red — error, alert</div>
+      <div class="swatch-hex">#E24B4A</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; font-size: 13px; color: #888; line-height: 1.6;">
+    The brand is intentionally monochromatic — black, white, and warm grays. Color is used sparingly and only for functional UI elements (success states, errors, links). The restraint communicates professionalism and trust.
+  </div>
+</div>
+
+<!-- PAGE 4: TYPOGRAPHY -->
+<div class="page">
+  <h2>Typography — by language</h2>
+
+  <div class="specimen">
+    <div class="specimen-label">English — primary brand language</div>
+    <div class="specimen-text" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 500; letter-spacing: 2px;">BEITON & Co</div>
+    <div class="specimen-text" style="font-family: 'DM Sans', 'Helvetica Neue', sans-serif; font-weight: 400; font-size: 16px; margin-top: 8px; color: #555;">Professional notary services — translations, authentications & certifications.</div>
+    <div class="specimen-meta">Logo: Helvetica Neue Medium · Body: DM Sans Regular · Weights: 300, 400, 500</div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen-label">עברית — Hebrew</div>
+    <div class="specimen-text" style="font-family: 'Noto Sans Hebrew', 'Arial Hebrew', sans-serif; font-weight: 500; direction: rtl;" dir="rtl">שירותי נוטריון מקצועיים</div>
+    <div class="specimen-text" style="font-family: 'Noto Sans Hebrew', 'Arial Hebrew', sans-serif; font-weight: 400; font-size: 16px; margin-top: 8px; color: #555; direction: rtl;" dir="rtl">תרגומים, אימותים ואישורים — במהירות, בדיוק, ובמחיר שקוף.</div>
+    <div class="specimen-meta">Font: Noto Sans Hebrew · Weights: 300, 400, 500 · Direction: RTL</div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen-label">Русский — Russian</div>
+    <div class="specimen-text" style="font-family: 'DM Sans', 'Helvetica Neue', sans-serif; font-weight: 500;">Профессиональные нотариальные услуги</div>
+    <div class="specimen-text" style="font-family: 'DM Sans', 'Helvetica Neue', sans-serif; font-weight: 400; font-size: 16px; margin-top: 8px; color: #555;">Переводы, заверения и апостили — быстро, точно, прозрачные цены.</div>
+    <div class="specimen-meta">Font: DM Sans (supports Cyrillic) · Weights: 300, 400, 500 · Direction: LTR</div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen-label">العربية — Arabic</div>
+    <div class="specimen-text" style="font-family: 'Noto Sans Arabic', 'Arial', sans-serif; font-weight: 500; direction: rtl;" dir="rtl">خدمات كاتب عدل مهنية</div>
+    <div class="specimen-text" style="font-family: 'Noto Sans Arabic', 'Arial', sans-serif; font-weight: 400; font-size: 16px; margin-top: 8px; color: #555; direction: rtl;" dir="rtl">ترجمات، توثيقات وتصديقات — بسرعة ودقة وأسعار شفافة.</div>
+    <div class="specimen-meta">Font: Noto Sans Arabic · Weights: 300, 400, 500 · Direction: RTL</div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen-label">Français — French</div>
+    <div class="specimen-text" style="font-family: 'DM Sans', 'Helvetica Neue', sans-serif; font-weight: 500;">Services notariaux professionnels</div>
+    <div class="specimen-text" style="font-family: 'DM Sans', 'Helvetica Neue', sans-serif; font-weight: 400; font-size: 16px; margin-top: 8px; color: #555;">Traductions, authentifications et certifications — rapidement et à prix transparent.</div>
+    <div class="specimen-meta">Font: DM Sans · Weights: 300, 400, 500 · Direction: LTR</div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen-label">Español — Spanish</div>
+    <div class="specimen-text" style="font-family: 'DM Sans', 'Helvetica Neue', sans-serif; font-weight: 500;">Servicios notariales profesionales</div>
+    <div class="specimen-text" style="font-family: 'DM Sans', 'Helvetica Neue', sans-serif; font-weight: 400; font-size: 16px; margin-top: 8px; color: #555;">Traducciones, autenticaciones y certificaciones — con rapidez, precisión y precios transparentes.</div>
+    <div class="specimen-meta">Font: DM Sans · Weights: 300, 400, 500 · Direction: LTR</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Font summary</h3>
+  <table class="info-table">
+    <tr><td>Logo wordmark</td><td>Helvetica Neue Medium (500), letter-spacing: 5px</td></tr>
+    <tr><td>Logo "& Co"</td><td>Helvetica Neue Regular (400), 18px, color: #6B6B6B</td></tr>
+    <tr><td>Slogan</td><td>Helvetica Neue Regular (400), 10px, letter-spacing: 6px, color: #999</td></tr>
+    <tr><td>English / French / Spanish</td><td>DM Sans — 300 light, 400 regular, 500 medium</td></tr>
+    <tr><td>Russian (Cyrillic)</td><td>DM Sans — supports Cyrillic natively</td></tr>
+    <tr><td>Hebrew</td><td>Noto Sans Hebrew — 300, 400, 500</td></tr>
+    <tr><td>Arabic</td><td>Noto Sans Arabic — 300, 400, 500</td></tr>
+    <tr><td>Headings (all languages)</td><td>Weight 500, size 22–36px</td></tr>
+    <tr><td>Body text</td><td>Weight 400, size 15–16px, line-height 1.6</td></tr>
+    <tr><td>Captions / labels</td><td>Weight 300–400, size 11–13px</td></tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>Google Fonts import</h3>
+  <div style="background: #f5f4f1; padding: 16px 20px; border-radius: 8px; font-family: monospace; font-size: 12px; color: #444; line-height: 1.8; word-break: break-all;">
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Noto+Sans+Hebrew:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;500&display=swap');
+  </div>
+</div>
+
+<!-- PAGE 5: DESIGN PRINCIPLES -->
+<div class="page">
+  <h2>Design principles</h2>
+
+  <div class="section">
+    <h3>1. Restraint over decoration</h3>
+    <div style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 24px;">
+      Every element must earn its place. No decorative gradients, no unnecessary icons, no visual noise. The brand communicates trust through white space, precise typography, and a monochromatic palette.
+    </div>
+
+    <h3>2. Content-first hierarchy</h3>
+    <div style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 24px;">
+      The most important information appears first and largest. Prices, services, and actions are never buried. The chat interface is the hero — the first thing a visitor sees and interacts with.
+    </div>
+
+    <h3>3. Transparent pricing</h3>
+    <div style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 24px;">
+      All prices come from official legal sources (Notaries Regulations). The price calculator is prominent and honest. No hidden fees, no "call for pricing" — prices are displayed clearly.
+    </div>
+
+    <h3>4. Multilingual by default</h3>
+    <div style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 24px;">
+      Every page exists in 6 languages. Language detection is automatic. The experience is equally polished in Hebrew, English, Russian, Arabic, French, and Spanish. RTL and LTR layouts are first-class citizens.
+    </div>
+
+    <h3>5. Technology as trust</h3>
+    <div style="font-size: 14px; color: #555; line-height: 1.7;">
+      The AI chat, instant pricing, and real-time order tracking signal modernity and efficiency. Technology is visible but not flashy — it simply works.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Domain & URLs</h3>
+  <table class="info-table">
+    <tr><td>Primary domain</td><td>beiton.co</td></tr>
+    <tr><td>Notary site</td><td>notary.beiton.co</td></tr>
+    <tr><td>Protection</td><td>beiton.co.il (redirect to beiton.co)</td></tr>
+    <tr><td>Email</td><td>@beiton.co</td></tr>
+  </table>
+
+  <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid #e8e6e1;">
+    <div style="font-size: 36px; font-weight: 500; letter-spacing: 4px;">BEITON <span style="font-weight: 300; font-size: 18px; color: #6b6b6b; letter-spacing: 3px; position: relative; top: -2px;">&amp; Co</span></div>
+    <div style="font-size: 9px; letter-spacing: 6px; color: #999; margin-top: 12px;">BEYOND LAW</div>
+    <div style="font-size: 11px; color: #bbb; margin-top: 20px;">© 2026</div>
+  </div>
+</div>
+
+</body>
+</html>

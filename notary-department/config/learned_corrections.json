@@ -1,0 +1,510 @@
+{
+  "_meta": {
+    "description": "תיקונים נלמדים — Agent 2 קורא מכאן לפני כל תרגום",
+    "schema_version": 2,
+    "created": "2026-03-28T12:38:44.460159Z",
+    "last_updated": "2026-03-28T14:36:46.860014Z",
+    "total_rules": 14,
+    "total_reports": 2
+  },
+  "rules": [
+    {
+      "id": "9be64b31a58d",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "Regional Rabbinical Court of Tel-Aviv-Jaffa",
+      "correct_text": "Regional Rabbinical Court of Tel Aviv-Yafo",
+      "word_corrections": [
+        {
+          "wrong": "Tel-Aviv-Jaffa",
+          "correct": "Tel Aviv-Yafo"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'Regional Rabbinical Court of Tel-Aviv-Jaffa' במקום 'Regional Rabbinical Court of Tel Aviv-Yafo'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460170Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859973Z"
+    },
+    {
+      "id": "f38fb9761438",
+      "category": "name_translit",
+      "category_he": "שם / תעתיק",
+      "severity": "moderate",
+      "severity_he": "בינוני",
+      "wrong_text": "The Husband: Israel Ben David Kohen, Identity Card No. 012345678",
+      "correct_text": "The Husband: Israel Ben David Cohen, Identity Card No. 012345678",
+      "word_corrections": [
+        {
+          "wrong": "Kohen,",
+          "correct": "Cohen,"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI השתמש בתעתיק לא תקני לשם עברי. 'Kohen,' במקום 'Cohen,'.",
+        "lesson": "שמות עבריים צריכים תעתיק לפי הנוהג המקובל בישראל, לא לפי כללי transliteration גנריים.",
+        "prevention": "הוסף ל-patterns: \"Kohen,\"→\"Cohen,\""
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460173Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859976Z"
+    },
+    {
+      "id": "7dfcffdcfa9c",
+      "category": "name_translit",
+      "category_he": "שם / תעתיק",
+      "severity": "critical",
+      "severity_he": "קריטי",
+      "wrong_text": "15 Hertzel Street, Tel Aviv-Jaffa",
+      "correct_text": "15 Herzl Street, Tel Aviv-Yafo",
+      "word_corrections": [
+        {
+          "wrong": "Hertzel",
+          "correct": "Herzl"
+        },
+        {
+          "wrong": "Aviv-Jaffa",
+          "correct": "Aviv-Yafo"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI השתמש בתעתיק לא תקני לשם עברי. 'Hertzel Aviv-Jaffa' במקום 'Herzl Aviv-Yafo'.",
+        "lesson": "שמות עבריים צריכים תעתיק לפי הנוהג המקובל בישראל, לא לפי כללי transliteration גנריים.",
+        "prevention": "הוסף ל-patterns: \"Hertzel\"→\"Herzl\", \"Aviv-Jaffa\"→\"Aviv-Yafo\""
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460175Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859977Z"
+    },
+    {
+      "id": "95a1747087b7",
+      "category": "name_translit",
+      "category_he": "שם / תעתיק",
+      "severity": "moderate",
+      "severity_he": "בינוני",
+      "wrong_text": "The Wife: Sarah Bat Moshe Levy (nee Kohen), Identity Card No. 987654321",
+      "correct_text": "The Wife: Sarah Bat Moshe Levy (née Cohen), Identity Card No. 987654321",
+      "word_corrections": [
+        {
+          "wrong": "(nee Kohen),",
+          "correct": "(née Cohen),"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI השתמש בתעתיק לא תקני לשם עברי. '(nee Kohen),' במקום '(née Cohen),'.",
+        "lesson": "שמות עבריים צריכים תעתיק לפי הנוהג המקובל בישראל, לא לפי כללי transliteration גנריים.",
+        "prevention": "הוסף ל-patterns: \"(nee Kohen),\"→\"(née Cohen),\""
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460177Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859979Z"
+    },
+    {
+      "id": "30c06e0ecaa0",
+      "category": "name_translit",
+      "category_he": "שם / תעתיק",
+      "severity": "critical",
+      "severity_he": "קריטי",
+      "wrong_text": "42 Dizengof Street, Tel Aviv-Jaffa",
+      "correct_text": "42 Dizengoff Street, Tel Aviv-Yafo",
+      "word_corrections": [
+        {
+          "wrong": "Dizengof",
+          "correct": "Dizengoff"
+        },
+        {
+          "wrong": "Aviv-Jaffa",
+          "correct": "Aviv-Yafo"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI השתמש בתעתיק לא תקני לשם עברי. 'Dizengof Aviv-Jaffa' במקום 'Dizengoff Aviv-Yafo'.",
+        "lesson": "שמות עבריים צריכים תעתיק לפי הנוהג המקובל בישראל, לא לפי כללי transliteration גנריים.",
+        "prevention": "הוסף ל-patterns: \"Dizengof\"→\"Dizengoff\", \"Aviv-Jaffa\"→\"Aviv-Yafo\""
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460179Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859980Z"
+    },
+    {
+      "id": "b3cd6565c190",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "Were divorced according to Jewish Law on the 25th of Tevet 5786,",
+      "correct_text": "Were divorced in accordance with the Law of Moses and Israel on the 25th of Tevet 5786,",
+      "word_corrections": [
+        {
+          "wrong": "according to Jewish",
+          "correct": "in accordance with the"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'Were divorced according to Jewish Law on the 25th of Tevet 5' במקום 'Were divorced in accordance with the Law of Moses and Israel'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460181Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859981Z"
+    },
+    {
+      "id": "a0a91226fb76",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "corresponding to January 15, 2026, at the Regional Rabbinical Court of Tel-Aviv-Jaffa.",
+      "correct_text": "corresponding to January 15, 2026, at the Regional Rabbinical Court of Tel Aviv-Yafo.",
+      "word_corrections": [
+        {
+          "wrong": "Tel-Aviv-Jaffa.",
+          "correct": "Tel Aviv-Yafo."
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'corresponding to January 15, 2026, at the Regional Rabbinica' במקום 'corresponding to January 15, 2026, at the Regional Rabbinica'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460183Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859983Z"
+    },
+    {
+      "id": "1036574ea0f1",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "The Get was delivered by the Husband to the Wife in the presence of the Court.",
+      "correct_text": "The Get (bill of divorce) was delivered by the Husband to the Wife in the presence of the Court.",
+      "word_corrections": [],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'The Get was delivered by the Husband to the Wife in the pres' במקום 'The Get (bill of divorce) was delivered by the Husband to th'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460184Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859984Z"
+    },
+    {
+      "id": "abd7fddf9467",
+      "category": "legal_term",
+      "category_he": "טרמינולוגיה משפטית",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "From this date, both parties are free to marry any person, subject to the provisions of any law.",
+      "correct_text": "From this date, both parties are free to marry any person, subject to the provisions of any applicable law.",
+      "word_corrections": [],
+      "analysis": {
+        "root_cause": "מונח משפטי תורגם בנוסח לא מקצועי או לא מקובל.",
+        "lesson": "השתמש תמיד בנוסח הפורמלי המקובל במסמכים נוטריוניים.",
+        "prevention": "הוסף ל-patterns ולמילון מונחים."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460186Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859985Z"
+    },
+    {
+      "id": "524881863864",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "Rabbi Abraham Yitzhaki — Head of Court",
+      "correct_text": "Rabbi Avraham Yitzhaki — Head of the Court (Av Beit Din)",
+      "word_corrections": [
+        {
+          "wrong": "Abraham",
+          "correct": "Avraham"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'Rabbi Abraham Yitzhaki — Head of Court' במקום 'Rabbi Avraham Yitzhaki — Head of the Court (Av Beit Din)'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460188Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859987Z"
+    },
+    {
+      "id": "03e02c2062cf",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "Rabbi Moshe Davidov — Judge",
+      "correct_text": "Rabbi Moshe Davidov — Judge (Dayan)",
+      "word_corrections": [],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'Rabbi Moshe Davidov — Judge' במקום 'Rabbi Moshe Davidov — Judge (Dayan)'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460189Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859989Z"
+    },
+    {
+      "id": "982712beca5c",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "Rabbi Yaakov Friedman — Judge",
+      "correct_text": "Rabbi Yaakov Friedman — Judge (Dayan)",
+      "word_corrections": [],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'Rabbi Yaakov Friedman — Judge' במקום 'Rabbi Yaakov Friedman — Judge (Dayan)'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460191Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859990Z"
+    },
+    {
+      "id": "41099880cc2f",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "[Official Seal of the Regional Rabbinical Court of Tel-Aviv-Jaffa]",
+      "correct_text": "[Official Seal of the Regional Rabbinical Court of Tel Aviv-Yafo]",
+      "word_corrections": [
+        {
+          "wrong": "Tel-Aviv-Jaffa]",
+          "correct": "Tel Aviv-Yafo]"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'[Official Seal of the Regional Rabbinical Court of Tel-Aviv-' במקום '[Official Seal of the Regional Rabbinical Court of Tel Aviv-'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460193Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859992Z"
+    },
+    {
+      "id": "31262f37b2dd",
+      "category": "halachic",
+      "category_he": "מונח הלכתי / דתי",
+      "severity": "major",
+      "severity_he": "מהותי",
+      "wrong_text": "Certificate No: GET/2026/4567",
+      "correct_text": "Certificate Number: GET/2026/4567",
+      "word_corrections": [
+        {
+          "wrong": "No:",
+          "correct": "Number:"
+        }
+      ],
+      "analysis": {
+        "root_cause": "ה-AI לא הכיר את הנוסח המשפטי-הלכתי המקובל. תרגם ל-'Certificate No: GET/2026/4567' במקום 'Certificate Number: GET/2026/4567'.",
+        "lesson": "מונחים הלכתיים ומבית דין רבני דורשים תרגום ספציפי מקובל. למשל: 'כדת משה וישראל' = 'in accordance with the Law of Moses and Israel', לא 'according to Jewish Law'.",
+        "prevention": "הוסף מונח למילון המונחים ול-patterns."
+      },
+      "source": "demo",
+      "learned_at": "2026-03-28T12:38:44.460194Z",
+      "occurrences": 2,
+      "last_seen": "2026-03-28T14:36:46.859993Z"
+    }
+  ],
+  "patterns": {
+    "tel-aviv-jaffa": [
+      {
+        "correct": "Tel Aviv-Yafo",
+        "category": "halachic",
+        "severity": "major",
+        "rule_id": "9be64b31a58d"
+      }
+    ],
+    "kohen,": [
+      {
+        "correct": "Cohen,",
+        "category": "name_translit",
+        "severity": "moderate",
+        "rule_id": "f38fb9761438"
+      }
+    ],
+    "hertzel": [
+      {
+        "correct": "Herzl",
+        "category": "name_translit",
+        "severity": "critical",
+        "rule_id": "7dfcffdcfa9c"
+      }
+    ],
+    "aviv-jaffa": [
+      {
+        "correct": "Aviv-Yafo",
+        "category": "name_translit",
+        "severity": "critical",
+        "rule_id": "7dfcffdcfa9c"
+      }
+    ],
+    "(nee kohen),": [
+      {
+        "correct": "(née Cohen),",
+        "category": "name_translit",
+        "severity": "moderate",
+        "rule_id": "95a1747087b7"
+      }
+    ],
+    "dizengof": [
+      {
+        "correct": "Dizengoff",
+        "category": "name_translit",
+        "severity": "critical",
+        "rule_id": "30c06e0ecaa0"
+      }
+    ],
+    "according to jewish": [
+      {
+        "correct": "in accordance with the",
+        "category": "halachic",
+        "severity": "major",
+        "rule_id": "b3cd6565c190"
+      }
+    ],
+    "tel-aviv-jaffa.": [
+      {
+        "correct": "Tel Aviv-Yafo.",
+        "category": "halachic",
+        "severity": "major",
+        "rule_id": "a0a91226fb76"
+      }
+    ],
+    "abraham": [
+      {
+        "correct": "Avraham",
+        "category": "halachic",
+        "severity": "major",
+        "rule_id": "524881863864"
+      }
+    ],
+    "tel-aviv-jaffa]": [
+      {
+        "correct": "Tel Aviv-Yafo]",
+        "category": "halachic",
+        "severity": "major",
+        "rule_id": "41099880cc2f"
+      }
+    ],
+    "no:": [
+      {
+        "correct": "Number:",
+        "category": "halachic",
+        "severity": "major",
+        "rule_id": "31262f37b2dd"
+      }
+    ]
+  },
+  "statistics": {
+    "by_category": {
+      "halachic": 18,
+      "name_translit": 8,
+      "legal_term": 2
+    },
+    "by_severity": {
+      "major": 20,
+      "moderate": 4,
+      "critical": 4
+    },
+    "top_mistakes": [
+      {
+        "id": "9be64b31a58d",
+        "description": "מונח הלכתי / דתי: \"Tel-Aviv-Jaffa\" → \"Tel Aviv-Yafo\"",
+        "occurrences": 2
+      },
+      {
+        "id": "f38fb9761438",
+        "description": "שם / תעתיק: \"Kohen,\" → \"Cohen,\"",
+        "occurrences": 2
+      },
+      {
+        "id": "7dfcffdcfa9c",
+        "description": "שם / תעתיק: \"Hertzel\" → \"Herzl\"",
+        "occurrences": 2
+      },
+      {
+        "id": "95a1747087b7",
+        "description": "שם / תעתיק: \"(nee Kohen),\" → \"(née Cohen),\"",
+        "occurrences": 2
+      },
+      {
+        "id": "30c06e0ecaa0",
+        "description": "שם / תעתיק: \"Dizengof\" → \"Dizengoff\"",
+        "occurrences": 2
+      },
+      {
+        "id": "b3cd6565c190",
+        "description": "מונח הלכתי / דתי: \"according to Jewish\" → \"in accordance with the\"",
+        "occurrences": 2
+      },
+      {
+        "id": "a0a91226fb76",
+        "description": "מונח הלכתי / דתי: \"Tel-Aviv-Jaffa.\" → \"Tel Aviv-Yafo.\"",
+        "occurrences": 2
+      },
+      {
+        "id": "1036574ea0f1",
+        "description": "מונח הלכתי / דתי: תיקון",
+        "occurrences": 2
+      },
+      {
+        "id": "abd7fddf9467",
+        "description": "טרמינולוגיה משפטית: תיקון",
+        "occurrences": 2
+      },
+      {
+        "id": "524881863864",
+        "description": "מונח הלכתי / דתי: \"Abraham\" → \"Avraham\"",
+        "occurrences": 2
+      },
+      {
+        "id": "03e02c2062cf",
+        "description": "מונח הלכתי / דתי: תיקון",
+        "occurrences": 2
+      },
+      {
+        "id": "982712beca5c",
+        "description": "מונח הלכתי / דתי: תיקון",
+        "occurrences": 2
+      },
+      {
+        "id": "41099880cc2f",
+        "description": "מונח הלכתי / דתי: \"Tel-Aviv-Jaffa]\" → \"Tel Aviv-Yafo]\"",
+        "occurrences": 2
+      },
+      {
+        "id": "31262f37b2dd",
+        "description": "מונח הלכתי / דתי: \"No:\" → \"Number:\"",
+        "occurrences": 2
+      }
+    ]
+  }
+}

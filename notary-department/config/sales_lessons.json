@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "description": "לקחים מממכירות — Agent 1 קורא לפני כל שיחה חדשה כדי לא לחזור על טעויות",
+    "schema_version": 1,
+    "created": "2026-03-28",
+    "last_updated": "2026-03-28T14:36:46.927871Z",
+    "total_lessons": 4,
+    "total_conversations_analyzed": 4,
+    "funnel_board_id": "18406004253"
+  },
+  "lessons": [
+    {
+      "id": 1,
+      "reason": "price",
+      "reason_he": "מחיר",
+      "analysis": "הלקוחה קיבלה הצעת מחיר ואמרה 'дорого'. לא הסברתי שהתעריף קבוע בחוק.",
+      "lesson": "ללקוחות רוסים — להקדים ולהסביר שהתעריף קבוע בתקנות לפני שליחת המחיר. להדגיש שזה אותו מחיר בכל מקום.",
+      "learned_at": "2026-03-28T14:35:36.180051Z",
+      "applied_count": 0
+    },
+    {
+      "id": 2,
+      "reason": "no_response",
+      "reason_he": "אין תגובה",
+      "analysis": "הלקוחה הפסיקה להגיב אחרי שהצעת המחיר נשלחה. לא שלחתי פולואפ.",
+      "lesson": "תמיד לשלוח פולואפ תוך 4 שעות אם אין תגובה אחרי הצעת מחיר.",
+      "learned_at": "2026-03-28T14:35:36.180763Z",
+      "applied_count": 0
+    },
+    {
+      "id": 3,
+      "reason": "price",
+      "reason_he": "מחיר",
+      "analysis": "הלקוחה קיבלה הצעת מחיר ואמרה 'дорого'. לא הסברתי שהתעריף קבוע בחוק.",
+      "lesson": "ללקוחות רוסים — להקדים ולהסביר שהתעריף קבוע בתקנות לפני שליחת המחיר. להדגיש שזה אותו מחיר בכל מקום.",
+      "learned_at": "2026-03-28T14:36:46.927011Z",
+      "applied_count": 0
+    },
+    {
+      "id": 4,
+      "reason": "no_response",
+      "reason_he": "אין תגובה",
+      "analysis": "הלקוחה הפסיקה להגיב אחרי שהצעת המחיר נשלחה. לא שלחתי פולואפ.",
+      "lesson": "תמיד לשלוח פולואפ תוך 4 שעות אם אין תגובה אחרי הצעת מחיר.",
+      "learned_at": "2026-03-28T14:36:46.927867Z",
+      "applied_count": 0
+    }
+  ],
+  "patterns": {
+    "objection_handlers": {},
+    "successful_phrases": [],
+    "phrases_to_avoid": []
+  },
+  "statistics": {
+    "by_rejection_reason": {
+      "price": 2,
+      "no_response": 2
+    },
+    "by_language": {},
+    "by_service": {},
+    "conversion_rate": null,
+    "avg_messages_to_close": null
+  }
+}

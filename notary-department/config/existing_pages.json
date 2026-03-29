@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "description": "עמודים קיימים באתר — Agent 1 בודק מולם כדי לא לייצר כפילויות",
+    "last_updated": "2026-03-29",
+    "use_case_board_id": "18406189747"
+  },
+  "pages": [
+    { "slug": "translation-notarial", "keyword": "תרגום נוטריוני", "service": "תרגום נוטריוני" },
+    { "slug": "signature-authentication", "keyword": "אימות חתימה", "service": "אימות חתימה" },
+    { "slug": "power-of-attorney", "keyword": "ייפוי כוח נוטריוני", "service": "ייפוי כוח" },
+    { "slug": "notarial-will", "keyword": "צוואה נוטריונית", "service": "צוואה" },
+    { "slug": "apostille", "keyword": "אפוסטיל", "service": "אפוסטיל" },
+    { "slug": "prenuptial-agreement", "keyword": "הסכם ממון", "service": "הסכם ממון" },
+    { "slug": "affidavit", "keyword": "תצהיר נוטריוני", "service": "תצהיר" },
+    { "slug": "certified-copy", "keyword": "העתק נאמן למקור", "service": "העתק נאמן למקור" },
+    { "slug": "life-certificate", "keyword": "אישור חיים", "service": "אישור חיים" },
+    { "slug": "translator-declaration", "keyword": "הצהרת מתרגם", "service": "הצהרת מתרגם" }
+  ],
+  "use_cases": []
+}

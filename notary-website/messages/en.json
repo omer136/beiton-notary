@@ -1,0 +1,9 @@
+{
+  "meta": { "title": "Notary Services — Beit-On & Co.", "description": "Professional notary services: translation, signature authentication, wills, power of attorney and more. Fast digital service in 6 languages." },
+  "hero": { "tagline": "Digital Notary Services", "subtitle": "Translation, signature authentication, wills & power of attorney — all online, in 6 languages.", "cta": "Send document via WhatsApp" },
+  "chat": { "placeholder": "What do you need? (translation, signature, will...)", "send": "Send", "greeting": "Hi! I'm Noa from the notary team 😊 How can I help?" },
+  "services": { "title": "Our Services", "subtitle": "12 notary services — regulated fixed tariff", "presence_required": "Presence required", "digital_available": "Digital service" },
+  "calculator": { "title": "Price Calculator", "subtitle": "Tariff is set by law — same price everywhere", "select_service": "Select service", "word_count": "Word count", "extra_signers": "Additional signers", "extra_pages": "Additional pages", "with_apostille": "With apostille", "notary_translates": "Notary translates", "subtotal": "Subtotal before VAT", "vat": "VAT (18%)", "total": "Total", "regulated": "Tariff regulated by Notaries Regulations (Service Fees), 5739-1978" },
+  "track": { "title": "Order Tracking", "subtitle": "Enter your case number to check status", "placeholder": "Case number", "check": "Check", "not_found": "Case not found", "status_label": "Status" },
+  "footer": { "rights": "All rights reserved", "confidential": "Confidential — Attorney-Client Privilege", "address": "42 Rothschild Blvd., Tel Aviv-Yafo" }
+}
