@@ -1,6 +1,0 @@
-{
-  "buildCommand": "cd notary-website && npm run build",
-  "outputDirectory": "notary-website/.next",
-  "installCommand": "cd notary-website && npm install",
-  "framework": "nextjs"
-}
