@@ -14,7 +14,7 @@ const PLACEHOLDERS: Record<Lang, string> = {
 };
 
 const GREETINGS: Record<Lang, string> = {
-  he: "שלום, איך אוכל לעזור? ניתן לשאול על תרגום, אימות חתימה, אפוסטיל או כל שירות נוטריוני אחר.",
+  he: "היי! אני נועה מצוות הנוטריון. איך אפשר לעזור?",
   en: "Hello, how can I help? Feel free to ask about translation, signature authentication, apostille, or any other notary service.",
   ru: "Здравствуйте, чем могу помочь? Спрашивайте о переводе, заверении подписи, апостиле или любой другой нотариальной услуге.",
   ar: "مرحبا، كيف يمكنني مساعدتك؟ يمكنك السؤال عن الترجمة أو توثيق التوقيع أو الأبوستيل أو أي خدمة توثيقية أخرى.",

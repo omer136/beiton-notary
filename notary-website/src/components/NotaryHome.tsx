@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import AgentChat from "./AgentChat";
 
 /* ═══════════════════════════════════════════════════════════
@@ -274,8 +275,17 @@ const Arrow = ({ rtl }: { rtl: boolean }) => (
   </svg>
 );
 
+const VALID_LANGS = ["he", "en", "ru", "ar", "fr", "es"];
+
 export default function NotaryHome() {
-  const [lang, setLang] = useState("he");
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Read language from URL: /he, /en, /ru, /ar, /fr, /es
+  const urlLang = pathname.split("/").filter(Boolean)[0];
+  const initialLang = VALID_LANGS.includes(urlLang) ? urlLang : "he";
+
+  const [lang, setLangState] = useState(initialLang);
   const [menu, setMenu] = useState(false);
   const [langDrop, setLangDrop] = useState(false);
   const [selSvc, setSelSvc] = useState("");
@@ -291,6 +301,20 @@ export default function NotaryHome() {
 
   // Keep docs in scope
   void docs;
+
+  // Switch language and update URL
+  const setLang = (newLang: string) => {
+    setLangState(newLang);
+    router.push(`/${newLang}`);
+  };
+
+  // Sync if URL changes externally
+  useEffect(() => {
+    const seg = pathname.split("/").filter(Boolean)[0];
+    if (VALID_LANGS.includes(seg) && seg !== lang) {
+      setLangState(seg);
+    }
+  }, [pathname, lang]);
 
   const t = T[lang]; const cfg = LANGS[lang]; const rtl = cfg.dir === "rtl";
   const svc = selSvc ? PRICING_CONFIG[selSvc] : null;
@@ -493,7 +517,7 @@ export default function NotaryHome() {
           {t.blog.items && t.blog.items.length > 0 ? (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))", gap: 16 }}>
               {t.blog.items.map((post: any, i: number) => (
-                <Link key={i} href={`/blog/${post.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+                <Link key={i} href={`/${lang}/blog/${post.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
                   <article className="sc" style={{ background: "#FAFAF8", borderRadius: 12, padding: 24, border: "1px solid #E8E6E1", transition: "all .3s", cursor: "pointer", height: "100%" }}>
                     <p style={{ fontSize: 10, fontWeight: 500, letterSpacing: 2, color: "#999", textTransform: "uppercase", marginBottom: 8 }}>{post.tag}</p>
                     <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 8, lineHeight: 1.5 }}>{post.title}</h3>
