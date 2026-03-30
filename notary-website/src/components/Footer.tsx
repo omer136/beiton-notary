@@ -1,7 +1,9 @@
-import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const locale = useLocale();
 
   return (
     <footer className="border-t border-brand-border py-8 px-6">
@@ -26,7 +28,12 @@ export default function Footer() {
           <span>☎ 03-1234567</span>
         </div>
       </div>
-      <div className="max-w-6xl mx-auto mt-3 text-center">
+      <div className="max-w-6xl mx-auto mt-3 flex flex-col items-center gap-2">
+        <div className="flex gap-4 text-[11px] text-brand-muted">
+          <Link href={`/${locale}/privacy`} className="hover:text-brand-dark transition-colors">{t("privacy")}</Link>
+          <Link href={`/${locale}/terms`} className="hover:text-brand-dark transition-colors">{t("terms")}</Link>
+          <Link href={`/${locale}/accessibility`} className="hover:text-brand-dark transition-colors">{t("accessibility")}</Link>
+        </div>
         <p className="text-[10px] text-brand-muted/60">{t("confidential")}</p>
       </div>
     </footer>

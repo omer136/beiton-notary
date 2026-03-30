@@ -5,5 +5,5 @@
   "services": { "title": "השירותים שלנו", "subtitle": "12 שירותי נוטריון — תעריף קבוע בחוק", "presence_required": "דורש נוכחות", "digital_available": "שירות דיגיטלי" },
   "calculator": { "title": "מחשבון מחירים", "subtitle": "התעריף קבוע בתקנות — אותו מחיר בכל מקום", "select_service": "בחר שירות", "word_count": "מספר מילים", "extra_signers": "חותמים נוספים", "extra_pages": "עמודים נוספים", "with_apostille": "עם אפוסטיל", "notary_translates": "הנוטריון מתרגם", "subtotal": "סה״כ לפני מע״מ", "vat": "מע״מ (18%)", "total": "סה״כ לתשלום", "regulated": "תעריף קבוע בתקנות הנוטריונים (שכר שירותים), תשל״ט-1978" },
   "track": { "title": "מעקב הזמנה", "subtitle": "הכנס מספר תיק לבדיקת סטטוס", "placeholder": "מספר תיק", "check": "בדוק", "not_found": "תיק לא נמצא", "status_label": "סטטוס" },
-  "footer": { "rights": "כל הזכויות שמורות", "confidential": "מסמך חסוי — יחסי עו״ד-לקוח", "address": "רח׳ רוטשילד 42, תל אביב-יפו" }
+  "footer": { "rights": "כל הזכויות שמורות", "confidential": "מסמך חסוי — יחסי עו״ד-לקוח", "address": "רח׳ רוטשילד 42, תל אביב-יפו", "privacy": "מדיניות פרטיות", "terms": "תנאי שימוש", "accessibility": "הצהרת נגישות" }
 }

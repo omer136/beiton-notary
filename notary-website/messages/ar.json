@@ -5,5 +5,5 @@
   "services": { "title": "خدماتنا", "subtitle": "12 خدمة كاتب عدل — تعرفة ثابتة بالقانون", "presence_required": "يتطلب حضور شخصي", "digital_available": "خدمة رقمية" },
   "calculator": { "title": "حاسبة الأسعار", "subtitle": "التعرفة محددة بالقانون — نفس السعر في كل مكان", "select_service": "اختر خدمة", "word_count": "عدد الكلمات", "extra_signers": "موقّعين إضافيين", "extra_pages": "صفحات إضافية", "with_apostille": "مع أبوستيل", "notary_translates": "كاتب العدل يترجم", "subtotal": "المجموع قبل ض.ق.م", "vat": "ض.ق.م (18%)", "total": "المجموع للدفع", "regulated": "التعرفة محددة بأنظمة كاتب العدل (أجور الخدمات)، 1978" },
   "track": { "title": "تتبع الطلب", "subtitle": "أدخل رقم الملف للتحقق من الحالة", "placeholder": "رقم الملف", "check": "تحقق", "not_found": "الملف غير موجود", "status_label": "الحالة" },
-  "footer": { "rights": "جميع الحقوق محفوظة", "confidential": "سري — علاقة محامي-موكل", "address": "شارع روتشيلد 42، تل أبيب-يافا" }
+  "footer": { "rights": "جميع الحقوق محفوظة", "confidential": "سري — علاقة محامي-موكل", "address": "شارع روتشيلد 42، تل أبيب-يافا", "privacy": "سياسة الخصوصية", "terms": "شروط الاستخدام", "accessibility": "إمكانية الوصول" }
 }

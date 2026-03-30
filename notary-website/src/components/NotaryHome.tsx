@@ -562,7 +562,7 @@ export default function NotaryHome() {
             <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 13, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
             <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 9, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
           </div>
-          <div style={{ display: "flex", gap: 14, fontSize: 11, color: "#999" }}><span>{t.footer.privacy}</span><span>{t.footer.terms}</span><span>{t.footer.accessibility}</span></div>
+          <div style={{ display: "flex", gap: 14, fontSize: 11, color: "#999" }}><a href={`/${lang}/privacy`} style={{ color: "#999", textDecoration: "none" }}>{t.footer.privacy}</a><a href={`/${lang}/terms`} style={{ color: "#999", textDecoration: "none" }}>{t.footer.terms}</a><a href={`/${lang}/accessibility`} style={{ color: "#999", textDecoration: "none" }}>{t.footer.accessibility}</a></div>
           <p style={{ fontSize: 11, color: "#999" }}>© 2026 BEITON &amp; Co — {t.footer.rights}</p>
         </div>
       </footer>
