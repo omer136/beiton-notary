@@ -99,7 +99,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
         border: "1px solid #e8e6e1",
         borderRadius: 12,
         overflow: "hidden",
-        background: "#fff",
+        background: "#f5f4f1",
       }}
     >
       {/* Messages */}
@@ -185,7 +185,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
           display: "flex",
           gap: 8,
           alignItems: "center",
-          background: "#fafaf8",
+          background: "#ffffff",
         }}
       >
         {/* File upload button */}
