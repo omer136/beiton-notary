@@ -1,0 +1,9 @@
+{
+  "meta": { "title": "Servicios notariales — Beit-On & Co.", "description": "Servicios notariales profesionales: traduccion, autenticacion de firma, testamento, poder notarial. Servicio digital rapido en 6 idiomas." },
+  "hero": { "tagline": "Servicios notariales digitales", "subtitle": "Traduccion, autenticacion de firma, testamento y poder notarial — todo en linea, en 6 idiomas.", "cta": "Enviar documento por WhatsApp" },
+  "chat": { "placeholder": "Que necesita? (traduccion, firma, testamento...)", "send": "Enviar", "greeting": "Hola! Soy Noa del equipo notarial. Como puedo ayudarle?" },
+  "services": { "title": "Nuestros servicios", "subtitle": "12 servicios notariales — tarifa fija regulada", "presence_required": "Presencia requerida", "digital_available": "Servicio digital" },
+  "calculator": { "title": "Calculadora de precios", "subtitle": "La tarifa esta fijada por ley — mismo precio en todas partes", "select_service": "Seleccionar servicio", "word_count": "Numero de palabras", "extra_signers": "Firmantes adicionales", "extra_pages": "Paginas adicionales", "with_apostille": "Con apostilla", "notary_translates": "El notario traduce", "subtotal": "Subtotal antes de IVA", "vat": "IVA (18%)", "total": "Total", "regulated": "Tarifa regulada por el Reglamento de Notarios (Honorarios), 1978" },
+  "track": { "title": "Seguimiento de pedido", "subtitle": "Ingrese su numero de caso", "placeholder": "Numero de caso", "check": "Verificar", "not_found": "Caso no encontrado", "status_label": "Estado" },
+  "footer": { "rights": "Todos los derechos reservados", "confidential": "Confidencial — Privilegio abogado-cliente", "address": "Rothschild 42, Tel Aviv-Yafo", "privacy": "Politica de privacidad", "terms": "Terminos de uso", "accessibility": "Accesibilidad" }
+}

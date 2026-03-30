@@ -1,0 +1,9 @@
+{
+  "meta": { "title": "Services notariaux — Beit-On & Co.", "description": "Services notariaux professionnels : traduction, authentification de signature, testament, procuration. Service digital rapide en 6 langues." },
+  "hero": { "tagline": "Services notariaux digitaux", "subtitle": "Traduction, authentification de signature, testament et procuration — tout en ligne, en 6 langues.", "cta": "Envoyer un document via WhatsApp" },
+  "chat": { "placeholder": "De quoi avez-vous besoin ? (traduction, signature, testament...)", "send": "Envoyer", "greeting": "Bonjour ! Je suis Noa de l'equipe notariale. Comment puis-je vous aider ?" },
+  "services": { "title": "Nos services", "subtitle": "12 services notariaux — tarif fixe reglemente", "presence_required": "Presence requise", "digital_available": "Service digital" },
+  "calculator": { "title": "Calculateur de prix", "subtitle": "Le tarif est fixe par la loi — meme prix partout", "select_service": "Choisir un service", "word_count": "Nombre de mots", "extra_signers": "Signataires supplementaires", "extra_pages": "Pages supplementaires", "with_apostille": "Avec apostille", "notary_translates": "Le notaire traduit", "subtotal": "Sous-total hors TVA", "vat": "TVA (18%)", "total": "Total", "regulated": "Tarif reglemente par le Reglement des notaires (Honoraires), 1978" },
+  "track": { "title": "Suivi de commande", "subtitle": "Entrez votre numero de dossier", "placeholder": "Numero de dossier", "check": "Verifier", "not_found": "Dossier non trouve", "status_label": "Statut" },
+  "footer": { "rights": "Tous droits reserves", "confidential": "Confidentiel — Secret professionnel avocat-client", "address": "42 Bd Rothschild, Tel Aviv-Yafo", "privacy": "Politique de confidentialite", "terms": "Conditions d'utilisation", "accessibility": "Accessibilite" }
+}
