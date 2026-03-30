@@ -75,7 +75,7 @@ async function createMondayLead(lead: {
       variables: {
         board: BOARD_ID,
         group: GROUP_ID,
-        name: lead.name,
+        name: lead.name || "לקוח אנונימי — " + new Date().toLocaleDateString("he-IL"),
         cols: JSON.stringify(colValues),
       },
     }),
