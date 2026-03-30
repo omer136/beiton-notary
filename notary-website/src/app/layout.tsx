@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "BEITON & Co. — Notary Services",
   description: "Professional digital notary services in 6 languages",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
