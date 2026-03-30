@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 type Lang = "he" | "en" | "ru" | "ar" | "fr" | "es";
 
@@ -36,15 +36,61 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const prevLang = useRef(lang);
+  const savedRef = useRef(false);
+  const inactivityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Reset on language change
+  // Save transcript to Monday.com
+  const saveTranscript = useCallback(() => {
+    // Only save if there are user messages and not already saved
+    const userMsgs = messages.filter((m) => m.role === "user");
+    if (userMsgs.length === 0 || savedRef.current) return;
+    savedRef.current = true;
+
+    // Use sendBeacon for reliability (works even when page is closing)
+    const payload = JSON.stringify({ messages, language: lang });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("/api/chat/save-transcript", payload);
+    } else {
+      fetch("/api/chat/save-transcript", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+        keepalive: true,
+      }).catch(() => {});
+    }
+  }, [messages, lang]);
+
+  // Reset inactivity timer on every new message
+  const resetInactivityTimer = useCallback(() => {
+    if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
+    inactivityTimer.current = setTimeout(() => {
+      saveTranscript();
+    }, 10 * 60 * 1000); // 10 minutes
+  }, [saveTranscript]);
+
+  // Save on page leave / tab close
+  useEffect(() => {
+    const handleLeave = () => saveTranscript();
+    window.addEventListener("beforeunload", handleLeave);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") handleLeave();
+    });
+    return () => {
+      window.removeEventListener("beforeunload", handleLeave);
+      if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
+    };
+  }, [saveTranscript]);
+
+  // Reset on language change (save current conversation first)
   useEffect(() => {
     if (lang !== prevLang.current) {
+      saveTranscript();
       prevLang.current = lang;
+      savedRef.current = false;
       setMessages([{ role: "assistant", content: GREETINGS[lang] }]);
       setInput("");
     }
-  }, [lang]);
+  }, [lang, saveTranscript]);
 
   // Auto-scroll
   useEffect(() => {
@@ -87,6 +133,8 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
       ]);
     } finally {
       setLoading(false);
+      savedRef.current = false; // New messages added — allow re-save
+      resetInactivityTimer();
     }
   }
 
