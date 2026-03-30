@@ -29,6 +29,7 @@ async function createMondayLead(lead: {
   service: string;
   language: string;
   details?: string;
+  needs_human?: boolean;
 }) {
   const token = process.env.MONDAY_API_TOKEN;
   if (!token) {
@@ -57,6 +58,9 @@ async function createMondayLead(lead: {
       email: lead.email,
       text: lead.email,
     };
+  }
+  if (lead.needs_human) {
+    colValues.color_mm1yj27y = { label: "מבקש נציג" };
   }
 
   const query = `mutation ($board: ID!, $group: String!, $name: String!, $cols: JSON!) {
@@ -153,7 +157,8 @@ async function callClaude(
       text?: string;
       id?: string;
       name?: string;
-      input?: Record<string, string>;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      input?: Record<string, any>;
     }>;
 
     // Collect text blocks
@@ -180,6 +185,7 @@ async function callClaude(
           service: toolUse.input.service || "",
           language: toolUse.input.language || language,
           details: toolUse.input.details,
+          needs_human: toolUse.input.needs_human === "true" || toolUse.input.needs_human === true,
         });
         toolResult = JSON.stringify({
           success: true,
