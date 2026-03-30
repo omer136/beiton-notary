@@ -297,143 +297,67 @@ export default function NotaryPricing2026Article() {
           >
             {[
               {
-                service: "תרגום נוטריוני",
-                price: "251 ₪ עד 100 מילים, 197 ₪ לכל 100 מילים נוספות עד 1,000, 99 ₪ מעבר ל-1,000",
-                legalRef: "ס׳ 7(4) לחוק | פרט 3 לתקנות שכ״ש",
-                presence: "לא נדרשת",
-                delivery: "דיגיטלי / שליח / איסוף עצמי",
-                aiRole: "AI-first — AI מתרגם, נוטריון חותם",
-                docs: "סריקת מקור, צילום ת.ז.",
-                languages: "עברית ↔ אנגלית (נוטריון דובר); שאר השפות — הצהרת מתרגם",
-              },
-              {
                 service: "אימות חתימה",
-                price: "197 ₪ לחותם ראשון, 77 ₪ לכל חותם נוסף",
-                legalRef: "ס׳ 7(1)-(2) לחוק | פרט 1 לתקנות שכ״ש",
-                presence: "נדרשת — חתימה בפני הנוטריון",
-                delivery: "פגישה במשרד / נוטריון עד הבית",
-                aiRole: "קביעת תור + הכנת מסמך",
-                docs: "ת.ז./דרכון מקורי, המסמך לחתימה",
-                languages: "",
+                price:
+                  "197 ₪ לחותם ראשון, 77 ₪ לכל חותם נוסף",
               },
               {
                 service: "ייפוי כוח נוטריוני",
-                price: "197 ₪ לחותם ראשון + 77 ₪ לכל עותק נוסף",
-                legalRef: "ס׳ 20א לחוק | פרט 1 לתקנות שכ״ש",
-                presence: "נדרשת — חתימה בפני הנוטריון",
-                delivery: "פגישה במשרד / נוטריון עד הבית",
-                aiRole: "ניסוח טיוטה + קביעת תור",
-                docs: "ת.ז./דרכון מקורי, פרטי מיופה הכוח",
-                languages: "",
+                price:
+                  "197 ₪ לחותם ראשון + 77 ₪ לכל עותק נוסף",
               },
               {
-                service: "אישור העתק נאמן למקור",
+                service: "תרגום נוטריוני",
+                price:
+                  "251 ₪ עד 100 מילים, 197 ₪ לכל 100 מילים נוספות עד 1,000, 99 ₪ מעבר ל-1,000",
+              },
+              {
+                service: "אישור העתק",
                 price: "77 ₪ לעמוד ראשון, 13 ₪ לכל עמוד נוסף",
-                legalRef: "ס׳ 7(3) לחוק | פרט 2 לתקנות שכ״ש",
-                presence: "לא נדרשת (חובה להעביר מקור פיזי)",
-                delivery: "שליח / פגישה במשרד / איסוף עצמי",
-                aiRole: "קליטה בלבד — הנוטריון רואה מקור בעיניו",
-                docs: "מסמך מקורי פיזי, צילום ת.ז.",
-                languages: "",
-              },
-              {
-                service: "תצהיר נוטריוני",
-                price: "200 ₪ למצהיר ראשון, 80 ₪ לכל מצהיר נוסף",
-                legalRef: "ס׳ 7(5) לחוק | פרט 5 לתקנות שכ״ש",
-                presence: "נדרשת — הצהרה בשבועה בפני הנוטריון",
-                delivery: "פגישה במשרד",
-                aiRole: "ניסוח טיוטה + קביעת תור",
-                docs: "ת.ז./דרכון מקורי, טיוטה או פרטי התצהיר",
-                languages: "",
-              },
-              {
-                service: "צוואה נוטריונית",
-                price: "293 ₪ לחותם ראשון, 147 ₪ לכל חותם נוסף",
-                legalRef: "ס׳ 22 לחוק הירושה תשכ״ה-1965 | פרט 4 לתקנות שכ״ש",
-                presence: "נדרשת — הנוטריון משמש כרשות",
-                delivery: "פגישה במשרד / נוטריון עד הבית",
-                aiRole: "ניסוח טיוטה + קביעת תור",
-                docs: "ת.ז./דרכון מקורי, פרטי יורשים ונכסים",
-                languages: "",
               },
               {
                 service: "הסכם ממון",
                 price: "446 ₪, 74 ₪ לכל עותק נוסף",
-                legalRef: "ס׳ 7(11) לחוק | פרט 6 לתקנות שכ״ש | חוק יחסי ממון תשל״ג-1973",
-                presence: "נדרשת — שני בני הזוג יחד",
-                delivery: "פגישה במשרד",
-                aiRole: "ניסוח טיוטה + קביעת תור",
-                docs: "ת.ז./דרכון של שני בני הזוג, טיוטת הסכם",
-                languages: "",
               },
               {
-                service: "אישור חיים",
-                price: "197 ₪",
-                legalRef: "ס׳ 7(6) לחוק | פרט 4 לתקנות שכ״ש",
-                presence: "נדרשת — זיהוי אישי",
-                delivery: "פגישה במשרד / נוטריון עד הבית",
-                aiRole: "קביעת תור",
-                docs: "ת.ז./דרכון מקורי",
-                languages: "",
+                service: "צוואה נוטריונית",
+                price:
+                  "293 ₪ לחותם ראשון, 147 ₪ לכל חותם נוסף",
+              },
+              { service: "אישור חיים", price: "197 ₪" },
+              {
+                service: "תצהיר נוטריוני",
+                price:
+                  "200 ₪ למצהיר ראשון, 80 ₪ לכל מצהיר נוסף",
               },
             ].map((row, i) => (
               <div
                 key={i}
                 style={{
-                  padding: "16px 0",
-                  borderBottom: i < 7 ? "1px solid #E8E6E1" : "none",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  gap: 16,
+                  padding: "12px 0",
+                  borderBottom:
+                    i < 7 ? "1px solid #E8E6E1" : "none",
                 }}
               >
-                <div
+                <span
+                  style={{ fontSize: 14, fontWeight: 500, flexShrink: 0 }}
+                >
+                  {row.service}
+                </span>
+                <span
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    gap: 16,
-                    marginBottom: 8,
+                    fontSize: 13,
+                    fontWeight: 300,
+                    color: "#6B6B6B",
+                    textAlign: "left",
                   }}
                 >
-                  <span style={{ fontSize: 14, fontWeight: 500, flexShrink: 0 }}>
-                    {row.service}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 300,
-                      color: "#6B6B6B",
-                      textAlign: "left",
-                    }}
-                  >
-                    {row.price}
-                  </span>
-                </div>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "auto 1fr",
-                    gap: "2px 10px",
-                    fontSize: 11,
-                    color: "#999",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  <span style={{ fontWeight: 500 }}>מקור:</span>
-                  <span>{row.legalRef}</span>
-                  <span style={{ fontWeight: 500 }}>נוכחות:</span>
-                  <span>{row.presence}</span>
-                  <span style={{ fontWeight: 500 }}>הספקה:</span>
-                  <span>{row.delivery}</span>
-                  <span style={{ fontWeight: 500 }}>תפקיד AI:</span>
-                  <span>{row.aiRole}</span>
-                  <span style={{ fontWeight: 500 }}>מסמכים נדרשים:</span>
-                  <span>{row.docs}</span>
-                  {row.languages && (
-                    <>
-                      <span style={{ fontWeight: 500 }}>שפות:</span>
-                      <span>{row.languages}</span>
-                    </>
-                  )}
-                </div>
+                  {row.price}
+                </span>
               </div>
             ))}
             <p
