@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import AgentChat from "./AgentChat";
 
 /* ═══════════════════════════════════════════════════════════
    BEITON & Co — Notary Website v2
@@ -380,21 +381,8 @@ export default function NotaryHome() {
         <p className="fu" style={{ fontSize: 11, fontWeight: 500, letterSpacing: 4, textTransform: "uppercase", color: "#999", marginBottom: 14 }}>BEITON &amp; Co</p>
         <h1 className="fu fd1" style={{ fontSize: "clamp(30px,5vw,52px)", fontWeight: 300, lineHeight: 1.15, marginBottom: 28 }}>{t.hero.h1}</h1>
         <div className="la" style={{ height: 1, background: "#1A1A1A", margin: "0 auto 28px" }} />
-        <div className="fu fd2" style={{ maxWidth: 500, margin: "0 auto", background: "#FAFAF8", borderRadius: 14, border: "1px solid #E8E6E1", overflow: "hidden" }}>
-          <div style={{ padding: "20px 20px 64px" }}>
-            <div style={{ display: "inline-block", background: "#fff", borderRadius: 10, padding: "10px 18px", border: "1px solid #E8E6E1", maxWidth: "85%", textAlign: rtl?"right":"left" }}>
-              <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.6 }}>{t.hero.chatGreeting}</p>
-            </div>
-          </div>
-          <div style={{ padding: "10px 14px", borderTop: "1px solid #E8E6E1", background: "#fff", display: "flex", gap: 8, alignItems: "center" }}>
-            <button style={{ background: "none", border: "none", padding: 4, color: "#999", flexShrink: 0, width: 28, height: 28, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 6, transition: "color .2s" }} title={lang==="he"?"העלאת קובץ":"Upload file"}>
-              {I.attach}
-            </button>
-            <input readOnly placeholder={t.hero.chatPlaceholder} style={{ flex: 1, border: "none", background: "transparent", fontSize: 12, fontFamily: cfg.font, color: "#6B6B6B", outline: "none", direction: cfg.dir as "rtl" | "ltr", padding: "7px 0" }} />
-            <button style={{ background: "#1A1A1A", border: "none", borderRadius: "50%", width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "#fff", transition: "background .2s", cursor: "pointer" }} className="cb" title={lang==="he"?"שליחה":"Send"}>
-              <span style={{ width: 16, height: 16, display: "flex", transform: rtl?"scaleX(-1)":"none" }}>{I.send}</span>
-            </button>
-          </div>
+        <div className="fu fd2" style={{ maxWidth: 600, margin: "0 auto" }}>
+          <AgentChat lang={lang as "he" | "en" | "ru" | "ar" | "fr" | "es"} />
         </div>
       </section>
 

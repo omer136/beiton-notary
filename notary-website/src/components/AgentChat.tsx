@@ -1,0 +1,253 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+
+type Lang = "he" | "en" | "ru" | "ar" | "fr" | "es";
+
+const PLACEHOLDERS: Record<Lang, string> = {
+  he: "מה אתה צריך? תרגום, אימות חתימה, אפוסטיל...",
+  en: "What do you need? Translation, authentication, apostille...",
+  ru: "Что вам нужно? Перевод, заверение, апостиль...",
+  ar: "ما الذي تحتاجه؟ ترجمة، توثيق، أبوستيل...",
+  fr: "De quoi avez-vous besoin? Traduction, authentification, apostille...",
+  es: "Que necesita? Traduccion, autenticacion, apostilla...",
+};
+
+const GREETINGS: Record<Lang, string> = {
+  he: "שלום, איך אוכל לעזור? ניתן לשאול על תרגום, אימות חתימה, אפוסטיל או כל שירות נוטריוני אחר.",
+  en: "Hello, how can I help? Feel free to ask about translation, signature authentication, apostille, or any other notary service.",
+  ru: "Здравствуйте, чем могу помочь? Спрашивайте о переводе, заверении подписи, апостиле или любой другой нотариальной услуге.",
+  ar: "مرحبا، كيف يمكنني مساعدتك؟ يمكنك السؤال عن الترجمة أو توثيق التوقيع أو الأبوستيل أو أي خدمة توثيقية أخرى.",
+  fr: "Bonjour, comment puis-je vous aider? N'hesitez pas a poser vos questions sur nos services notaries.",
+  es: "Hola, como puedo ayudarle? Pregunte sobre traduccion, autenticacion o cualquier servicio notarial.",
+};
+
+interface Msg {
+  role: "user" | "assistant";
+  content: string;
+}
+
+export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
+  const rtl = lang === "he" || lang === "ar";
+  const [messages, setMessages] = useState<Msg[]>([
+    { role: "assistant", content: GREETINGS[lang] },
+  ]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const prevLang = useRef(lang);
+
+  // Reset on language change
+  useEffect(() => {
+    if (lang !== prevLang.current) {
+      prevLang.current = lang;
+      setMessages([{ role: "assistant", content: GREETINGS[lang] }]);
+      setInput("");
+    }
+  }, [lang]);
+
+  // Auto-scroll
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages, loading]);
+
+  async function send() {
+    const text = input.trim();
+    if (!text || loading) return;
+
+    const userMsg: Msg = { role: "user", content: text };
+    const updated = [...messages, userMsg];
+    setMessages(updated);
+    setInput("");
+    setLoading(true);
+
+    try {
+      const resp = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: updated, language: lang }),
+      });
+      const data = await resp.json();
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: data.reply || data.error || "..." },
+      ]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content:
+            lang === "he"
+              ? "מצטערים, אירעה שגיאה. אנא נסו שוב."
+              : "Sorry, an error occurred. Please try again.",
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div
+      dir={rtl ? "rtl" : "ltr"}
+      style={{
+        maxWidth: 600,
+        margin: "0 auto",
+        border: "1px solid #e8e6e1",
+        borderRadius: 12,
+        overflow: "hidden",
+        background: "#fff",
+      }}
+    >
+      {/* Messages */}
+      <div
+        ref={scrollRef}
+        style={{
+          height: 280,
+          overflowY: "auto",
+          padding: 16,
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+        }}
+      >
+        {messages.map((msg, i) => (
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              justifyContent:
+                msg.role === "user"
+                  ? rtl
+                    ? "flex-start"
+                    : "flex-end"
+                  : rtl
+                    ? "flex-end"
+                    : "flex-start",
+            }}
+          >
+            <div
+              style={{
+                maxWidth: "80%",
+                padding: "10px 16px",
+                borderRadius: 12,
+                fontSize: 13,
+                lineHeight: 1.7,
+                ...(msg.role === "user"
+                  ? {
+                      background: "#1a1a1a",
+                      color: "#fff",
+                      borderBottomLeftRadius: rtl ? 12 : 4,
+                      borderBottomRightRadius: rtl ? 4 : 12,
+                    }
+                  : {
+                      background: "#f5f4f1",
+                      color: "#1a1a1a",
+                      borderBottomLeftRadius: rtl ? 4 : 12,
+                      borderBottomRightRadius: rtl ? 12 : 4,
+                    }),
+              }}
+            >
+              {msg.content}
+            </div>
+          </div>
+        ))}
+        {loading && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: rtl ? "flex-end" : "flex-start",
+            }}
+          >
+            <div
+              style={{
+                background: "#f5f4f1",
+                padding: "10px 20px",
+                borderRadius: 12,
+                fontSize: 13,
+                color: "#999",
+              }}
+            >
+              ...
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Input */}
+      <div
+        style={{
+          borderTop: "1px solid #e8e6e1",
+          padding: "10px 14px",
+          display: "flex",
+          gap: 8,
+          alignItems: "center",
+          background: "#fafaf8",
+        }}
+      >
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && send()}
+          placeholder={PLACEHOLDERS[lang]}
+          disabled={loading}
+          style={{
+            flex: 1,
+            border: "none",
+            background: "transparent",
+            fontSize: 13,
+            fontFamily: "inherit",
+            color: "#1a1a1a",
+            outline: "none",
+            direction: rtl ? "rtl" : "ltr",
+            padding: "7px 0",
+          }}
+        />
+        <button
+          onClick={send}
+          disabled={loading || !input.trim()}
+          style={{
+            background: "#1a1a1a",
+            border: "none",
+            borderRadius: "50%",
+            width: 34,
+            height: 34,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: loading ? "wait" : "pointer",
+            opacity: loading || !input.trim() ? 0.4 : 1,
+            transition: "opacity .2s",
+            flexShrink: 0,
+          }}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{
+              width: 16,
+              height: 16,
+              transform: rtl ? "scaleX(-1)" : "none",
+            }}
+          >
+            <path
+              d="M22 2L11 13"
+              stroke="#fff"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M22 2L15 22L11 13L2 9L22 2Z"
+              stroke="#fff"
+              strokeWidth="1.5"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
