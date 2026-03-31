@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import AgentChat from "./AgentChat";
 import { PRICING_CONFIG } from "@/data/pricing-config";
+import { trackContactClick, trackServiceExplored } from "@/lib/analytics";
 import SiteFooter from "./SiteFooter";
 
 /* ═══════════════════════════════════════════════════════════
@@ -546,7 +547,7 @@ export default function NotaryHome() {
           <p style={S.sub}>{t.pricing.subtitle}</p>
           <div style={{ background: "#fff", borderRadius: 14, padding: 28, border: "1px solid #E8E6E1" }}>
             <label style={S.lbl}>{t.pricing.selectService}</label>
-            <select value={selSvc} onChange={e => { setSelSvc(e.target.value); setPages(1); setSigs(1); setDocs(1); setCopies(1); setWords(100); }} style={{ ...S.inp, appearance: "none" as const, direction: cfg.dir as "rtl" | "ltr" }}>
+            <select value={selSvc} onChange={e => { const v = e.target.value; setSelSvc(v); setPages(1); setSigs(1); setDocs(1); setCopies(1); setWords(100); if (v) trackServiceExplored(v); }} style={{ ...S.inp, appearance: "none" as const, direction: cfg.dir as "rtl" | "ltr" }}>
               <option value="">—</option>
               {Object.entries(PRICING_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label[lang]}</option>)}
             </select>
@@ -635,8 +636,8 @@ export default function NotaryHome() {
       <section id="contact" style={{ background: "#FAFAF8", padding: "64px 24px", textAlign: "center" }}>
         <h2 style={{ ...S.h2, marginBottom: 24 }}>{t.contact.h2}</h2>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="https://wa.me/972500000000" className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, fontFamily: cfg.font, textDecoration: "none", transition: "background .2s" }}>{t.contact.whatsapp}</a>
-          <a href="mailto:office@beiton.co" className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", transition: "all .2s" }}>{t.contact.email}</a>
+          <a href="https://wa.me/972500000000" onClick={() => trackContactClick("whatsapp")} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, fontFamily: cfg.font, textDecoration: "none", transition: "background .2s" }}>{t.contact.whatsapp}</a>
+          <a href="mailto:office@beiton.co" onClick={() => trackContactClick("email")} className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", transition: "all .2s" }}>{t.contact.email}</a>
         </div>
         <p style={{ fontSize: 11, color: "#999", marginTop: 14 }}>office@beiton.co</p>
       </section>

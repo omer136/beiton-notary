@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PRICING_CONFIG } from "@/data/pricing-config";
+import { trackServiceExplored } from "@/lib/analytics";
 
 const LABELS: Record<string, Record<string, string>> = {
   he: { selectService: "בחרו שירות", words: "מספר מילים במסמך", pages: "מספר עמודים", signatories: "מספר חותמים", copies: "מספר עותקים", documents: "מספר מסמכים", wordsFirst: "עד 100 מילים", firstPage: "עמוד ראשון", firstStamp: "חותם ראשון", total: "סה״כ לפני מע״מ", vat: "מע״מ (18%)", totalVat: "סה״כ כולל מע״מ", note: "המחירים נקבעים בתקנות ואינם ניתנים לשינוי.", additionalPages: "עמודים נוספים", basePrice: "תעריף בסיס", per100to1000: "לכל 100 מילים נוספות (עד 1,000)", per100above: "לכל 100 מילים נוספות (מעל 1,000)", notaryTranslates: "הנוטריון מתרגם (תוספת 50%)", foreignLang: "שפה לועזית — לא עברית/אנגלית/ערבית (+104 ₪)", notarySurcharge: "תוספת תרגום ע״י הנוטריון (50%)", foreignSurcharge: "תוספת שפה לועזית (פרט 10)", addSigners: "חותמים נוספים", addCopies: "עותקים נוספים", willFirst: "מצווה ראשון", willAdd: "מצווה נוסף (צוואה הדדית)" },
@@ -63,6 +64,15 @@ export default function PricingCalculator({ lang, initialService }: { lang: stri
   };
 
   const pr = calc();
+
+  // Track service explored when calculator shows a result
+  const trackedRef = useRef("");
+  useEffect(() => {
+    if (pr && selSvc && selSvc !== trackedRef.current) {
+      trackServiceExplored(selSvc, pr.withVat);
+      trackedRef.current = selSvc;
+    }
+  }, [pr, selSvc]);
 
   const S = {
     lbl: { display: "block" as const, fontSize: 11, fontWeight: 500, color: "#999", marginBottom: 6 },

@@ -30,6 +30,7 @@ async function createMondayLead(lead: {
   language: string;
   details?: string;
   needs_human?: boolean;
+  utm_source?: string;
 }) {
   const token = process.env.MONDAY_API_TOKEN;
   if (!token) {
@@ -61,6 +62,9 @@ async function createMondayLead(lead: {
   }
   if (lead.needs_human) {
     colValues.color_mm1yj27y = { label: "מבקש נציג" };
+  }
+  if (lead.utm_source) {
+    colValues.text_mm1za260 = lead.utm_source;
   }
 
   const query = `mutation ($board: ID!, $group: String!, $name: String!, $cols: JSON!) {
@@ -103,7 +107,8 @@ interface Message {
 
 async function callClaude(
   messages: Message[],
-  language: string
+  language: string,
+  utmSource?: string
 ): Promise<string> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
@@ -186,6 +191,7 @@ async function callClaude(
           language: toolUse.input.language || language,
           details: toolUse.input.details,
           needs_human: toolUse.input.needs_human === "true" || toolUse.input.needs_human === true,
+          utm_source: utmSource,
         });
         toolResult = JSON.stringify({
           success: true,
@@ -229,9 +235,10 @@ async function callClaude(
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { messages, language } = body as {
+    const { messages, language, utm } = body as {
       messages: Message[];
       language: string;
+      utm?: { utm_source?: string } | null;
     };
 
     if (!messages || !Array.isArray(messages)) {
@@ -241,7 +248,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const reply = await callClaude(messages, language || "he");
+    const reply = await callClaude(messages, language || "he", utm?.utm_source);
 
     return NextResponse.json({ reply });
   } catch (e) {

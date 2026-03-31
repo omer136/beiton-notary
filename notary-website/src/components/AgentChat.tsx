@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { trackChatInteraction } from "@/lib/analytics";
+import { getStoredUTM } from "@/lib/utm";
 
 type Lang = "he" | "en" | "ru" | "ar" | "fr" | "es";
 
@@ -105,6 +107,10 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
 
     const userMsg: Msg = { role: "user", content: text };
     const updated = [...messages, userMsg];
+    const userMsgCount = updated.filter(m => m.role === "user").length;
+    if (userMsgCount === 1) trackChatInteraction("opened");
+    trackChatInteraction("message_sent", userMsgCount);
+
     setMessages(updated);
     setInput("");
     setLoading(true);
@@ -113,7 +119,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
       const resp = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: updated, language: lang }),
+        body: JSON.stringify({ messages: updated, language: lang, utm: getStoredUTM() }),
       });
       const data = await resp.json();
       setMessages((prev) => [
