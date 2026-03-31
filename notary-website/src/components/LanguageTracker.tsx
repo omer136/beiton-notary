@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { captureUTM } from "@/lib/utm";
 
 const LANGS = ["he", "en", "ru", "ar", "fr", "es"] as const;
 type Lang = (typeof LANGS)[number];
@@ -37,7 +36,20 @@ export default function LanguageTracker() {
     }
     prev.current = lang;
 
-    captureUTM();
+    // UTM capture
+    const params = new URLSearchParams(window.location.search);
+    const source = params.get("utm_source");
+    if (source) {
+      const utm = {
+        utm_source: source,
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || "",
+        utm_content: params.get("utm_content") || "",
+        utm_term: params.get("utm_term") || "",
+      };
+      try { sessionStorage.setItem("beiton_utm", JSON.stringify(utm)); } catch { /* private browsing */ }
+      window.dataLayer.push({ event: "utm_captured", ...utm });
+    }
   }, [pathname]);
 
   return null;

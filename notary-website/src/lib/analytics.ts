@@ -46,13 +46,12 @@ export const trackContactClick = (method: string) =>
 export const trackOrderTracking = (orderId: string) =>
   push("order_tracking_view", { order_id: orderId, page_type: "tracking" });
 
-// ═══ Consent Mode — the only thing that talks directly (must run before GTM) ═══
+// ═══ Consent Mode ═══
 export function updateConsent(granted: boolean) {
   if (typeof window === "undefined") return;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dl: any[] = (window.dataLayer = window.dataLayer || []);
   const val = granted ? "granted" : "denied";
-  dl.push({ event: "consent_update" });
   dl.push(["consent", "update", {
     ad_storage: val, ad_user_data: val, ad_personalization: val, analytics_storage: val,
   }]);
