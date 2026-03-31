@@ -317,6 +317,7 @@ export default function NotaryHome() {
   const [copies, setCopies] = useState(1);
   const [words, setWords] = useState(100);
   const [notaryTranslates, setNotaryTranslates] = useState(false);
+  const [foreignLang, setForeignLang] = useState(false);
   const [faq, setFaq] = useState<number | null>(null);
   const [ucF, setUcF] = useState("all");
   const [cookie, setCookie] = useState(true);
@@ -350,6 +351,7 @@ export default function NotaryHome() {
     const lblPer100to1000 = lang === "he" ? "לכל 100 מילים נוספות (עד 1,000)" : "Per 100 additional words (up to 1,000)";
     const lblPer100above = lang === "he" ? "לכל 100 מילים נוספות (מעל 1,000)" : "Per 100 additional words (over 1,000)";
     const lblNotaryTranslates = lang === "he" ? "תוספת תרגום ע״י הנוטריון (50%)" : "Notary translation surcharge (50%)";
+    const lblForeignLang = lang === "he" ? "תוספת שפה לועזית (פרט 10)" : "Foreign language surcharge (Item 10)";
     const lblAdditional = lang === "he" ? "חותמים נוספים" : "Additional signers";
     const lblAddCopies = lang === "he" ? "עותקים נוספים" : "Additional copies";
     if (svc.type === "words") {
@@ -361,6 +363,7 @@ export default function NotaryHome() {
       total = p;
       // Notary translation surcharge: +50% when notary translates (not just certifies)
       if (selSvc === "translation" && notaryTranslates) { const surcharge = Math.round(total * 0.5); total += surcharge; lines.push({ label: lblNotaryTranslates, amount: surcharge }); }
+      if (selSvc === "translation" && foreignLang) { total += 104; lines.push({ label: lblForeignLang, amount: 104 }); }
     } else if (svc.type === "stamp") {
       lines.push({ label: t.pricing.firstStamp || (lang==="he"?"חותם ראשון":"First signatory"), amount: svc.firstStamp });
       total = svc.firstStamp;
@@ -494,7 +497,7 @@ export default function NotaryHome() {
               <option value="">—</option>
               {Object.entries(PRICING_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label[lang]}</option>)}
             </select>
-            {svc?.fields?.includes("words") && <><label style={S.lbl}>{t.pricing.words || "מילים"}</label><input type="number" min={1} value={words} onChange={e => setWords(Math.max(1,+e.target.value))} style={S.inp} /><label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#6B6B6B", marginBottom: 18, cursor: "pointer" }}><input type="checkbox" checked={notaryTranslates} onChange={e => setNotaryTranslates(e.target.checked)} style={{ width: 16, height: 16, accentColor: "#1A1A1A" }} />{lang === "he" ? "הנוטריון מתרגם (תוספת 50%)" : "Notary translates (50% surcharge)"}</label></>}
+            {svc?.fields?.includes("words") && <><label style={S.lbl}>{t.pricing.words || "מילים"}</label><input type="number" min={1} value={words} onChange={e => setWords(Math.max(1,+e.target.value))} style={S.inp} /><label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#6B6B6B", marginBottom: 8, cursor: "pointer" }}><input type="checkbox" checked={notaryTranslates} onChange={e => setNotaryTranslates(e.target.checked)} style={{ width: 16, height: 16, accentColor: "#1A1A1A" }} />{lang === "he" ? "הנוטריון מתרגם (תוספת 50%)" : "Notary translates (50% surcharge)"}</label><label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#6B6B6B", marginBottom: 18, cursor: "pointer" }}><input type="checkbox" checked={foreignLang} onChange={e => setForeignLang(e.target.checked)} style={{ width: 16, height: 16, accentColor: "#1A1A1A" }} />{lang === "he" ? "שפה לועזית — לא עברית/אנגלית/ערבית (+104 ₪)" : "Foreign language — not Hebrew/English/Arabic (+104 ₪)"}</label></>}
             {svc?.fields?.includes("pages") && <><label style={S.lbl}>{t.pricing.pages}</label><input type="number" min={1} max={50} value={pages} onChange={e => setPages(Math.max(1,+e.target.value))} style={S.inp} /></>}
             {svc?.fields?.includes("signatories") && <><label style={S.lbl}>{t.pricing.signatories}</label><input type="number" min={1} max={10} value={sigs} onChange={e => setSigs(Math.max(1,+e.target.value))} style={S.inp} /></>}
             {svc?.fields?.includes("documents") && <><label style={S.lbl}>{t.pricing.documents}</label><input type="number" min={1} max={20} value={docs} onChange={e => setDocs(Math.max(1,+e.target.value))} style={S.inp} /></>}
