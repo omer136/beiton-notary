@@ -30,6 +30,7 @@ async function createMondayLead(lead: {
   language: string;
   details?: string;
   needs_human?: boolean;
+  ready_for_quote?: boolean;
   utm_source?: string;
 }) {
   const token = process.env.MONDAY_API_TOKEN;
@@ -62,6 +63,9 @@ async function createMondayLead(lead: {
   }
   if (lead.needs_human) {
     colValues.color_mm1yj27y = { label: "מבקש נציג" };
+  }
+  if (lead.ready_for_quote) {
+    colValues.color_mm1wcc5y = { label: "ממתין להצעת מחיר" };
   }
   if (lead.utm_source) {
     colValues.text_mm1za260 = lead.utm_source;
@@ -191,6 +195,7 @@ async function callClaude(
           language: toolUse.input.language || language,
           details: toolUse.input.details,
           needs_human: toolUse.input.needs_human === "true" || toolUse.input.needs_human === true,
+          ready_for_quote: toolUse.input.ready_for_quote === "true" || toolUse.input.ready_for_quote === true,
           utm_source: utmSource,
         });
         toolResult = JSON.stringify({
