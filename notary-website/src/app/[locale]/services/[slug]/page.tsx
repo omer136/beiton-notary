@@ -52,6 +52,17 @@ export default async function ServicePage({
 
   const breadHome = locale === "he" ? "ראשי" : locale === "ar" ? "الرئيسية" : locale === "ru" ? "Главная" : "Home";
   const breadServices = locale === "he" ? "שירותים" : locale === "ar" ? "الخدمات" : locale === "ru" ? "Услуги" : "Services";
+  const textAlign = isRtl ? "right" as const : "left" as const;
+
+  const navItems: Record<string, Record<string, string>> = {
+    he: { services: "שירותים", pricing: "מחירון", blog: "בלוג", contact: "יצירת קשר" },
+    en: { services: "Services", pricing: "Pricing", blog: "Blog", contact: "Contact" },
+    ru: { services: "Услуги", pricing: "Цены", blog: "Блог", contact: "Контакты" },
+    ar: { services: "الخدمات", pricing: "الأسعار", blog: "مدونة", contact: "تواصل معنا" },
+    fr: { services: "Services", pricing: "Tarifs", blog: "Blog", contact: "Contact" },
+    es: { services: "Servicios", pricing: "Precios", blog: "Blog", contact: "Contacto" },
+  };
+  const nav = navItems[locale] || navItems.en;
 
   return (
     <>
@@ -125,14 +136,17 @@ export default async function ServicePage({
               <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 15, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
               <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 10, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
             </Link>
-            <Link href={`/${locale}`} style={{ fontSize: 12, color: "#6B6B6B", textDecoration: "none" }}>
-              {c.ctaBack}
-            </Link>
+            <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
+              <Link href={`/${locale}#services`} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none" }}>{nav.services}</Link>
+              <Link href={`/${locale}#pricing`} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none" }}>{nav.pricing}</Link>
+              <Link href={`/${locale}#blog`} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none" }}>{nav.blog}</Link>
+              <Link href={`/${locale}#contact`} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none" }}>{nav.contact}</Link>
+            </div>
           </div>
         </nav>
 
         {/* Article */}
-        <article style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 80px" }}>
+        <article style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 80px", textAlign }}>
           {/* Breadcrumb */}
           <p style={{ fontSize: 11, color: "#999", marginBottom: 24 }}>
             <Link href={`/${locale}`} style={{ color: "#999", textDecoration: "none" }}>{breadHome}</Link>
