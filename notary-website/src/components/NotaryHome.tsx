@@ -30,6 +30,7 @@ const PRICING_CONFIG: Record<string, any> = {
   will: { type: "stamp", label: { he: "צוואה נוטריונית", en: "Notarial Will", ru: "Нотариальное завещание", ar: "وصية توثيقية", fr: "Testament Notarial", es: "Testamento Notarial" }, firstStamp: 293, additionalStamp: 147, fields: ["signatories"] },
   prenup: { type: "fixed", label: { he: "הסכם ממון", en: "Prenuptial Agreement", ru: "Брачный договор", ar: "اتفاقية مالية", fr: "Contrat de Mariage", es: "Acuerdo Prenupcial" }, base: 446, perCopy: 74, fields: ["copies"] },
   certifiedCopy: { type: "page", label: { he: "העתק נאמן למקור", en: "Certified True Copy", ru: "Заверенная копия", ar: "نسخة طبق الأصل", fr: "Copie certifiee conforme", es: "Copia certificada" }, firstPage: 77, additionalPage: 13, fields: ["pages"] },
+  lifeCertificate: { type: "fixed", label: { he: "אישור חיים", en: "Life Certificate", ru: "Свидетельство о жизни", ar: "شهادة حياة", fr: "Certificat de vie", es: "Certificado de vida" }, base: 197, fields: [] },
 };
 
 /* ══ קונפיג לסוכן 1 (תקשורת) — שירותים נלווים ואפשרויות קבלה ══ */
@@ -62,6 +63,9 @@ const T: Record<string, any> = {
       { id: "affidavit", name: "תצהיר נוטריוני", desc: "הצהרה בכתב שנחתמת בפני נוטריון לאחר אזהרה — לבתי משפט ורשויות.", icon: "affidavit" },
       { id: "will", name: "צוואה נוטריונית", desc: "צוואה שנערכת ונחתמת בפני נוטריון לפי חוק הירושה — הבטוחה ביותר.", icon: "will" },
       { id: "prenup", name: "הסכם ממון", desc: "הסכם בין בני זוג לפי חוק יחסי ממון — מחייב אישור נוטריוני.", icon: "prenup" },
+      { id: "poa", name: "ייפוי כוח נוטריוני", desc: "ייפוי כוח כללי, למקרקעין, בלתי חוזר או למשכנתא — חתימה בפני נוטריון.", icon: "poa" },
+      { id: "certifiedCopy", name: "העתק נאמן למקור", desc: "אישור שהעתק מסמך זהה למקור — לדרכונים, תעודות ומסמכי חברה.", icon: "certifiedCopy" },
+      { id: "lifeCertificate", name: "אישור חיים", desc: "אישור נוטריוני שאדם נמצא בחיים — לקצבאות ופנסיה מחו״ל.", icon: "lifeCertificate" },
     ], calcBtn: "חישוב מחיר" },
     useCases: { tag: "USE CASES", h2: "שירותי נוטריון נפוצים", subtitle: "חיפוש לפי הצורך שלך", allFilter: "הכל", items: [
       { name: "ייפוי כוח נוטריוני", tag: "אימות חתימה" }, { name: "ייפוי כוח למכירת דירה", tag: "אימות חתימה" }, { name: "ייפוי כוח מתמשך", tag: "אימות חתימה" }, { name: "ביטול ייפוי כוח", tag: "אימות חתימה" }, { name: "הסכמה להוצאת קטין לחו״ל", tag: "אימות חתימה" }, { name: "אימות חתימה על NDA", tag: "אימות חתימה" },
@@ -95,6 +99,9 @@ const T: Record<string, any> = {
       { id: "affidavit", name: "Notarial Affidavit", desc: "A written statement signed before a notary after a warning — for courts and authorities.", icon: "affidavit" },
       { id: "will", name: "Notarial Will", desc: "A will drafted and signed before a notary — the most secure option.", icon: "will" },
       { id: "prenup", name: "Prenuptial Agreement", desc: "An agreement between spouses — requires notarial or court approval.", icon: "prenup" },
+      { id: "poa", name: "Power of Attorney", desc: "General, real estate, irrevocable, or mortgage POA — signed before a notary.", icon: "poa" },
+      { id: "certifiedCopy", name: "Certified True Copy", desc: "Certification that a copy is identical to the original — for passports, diplomas, and company documents.", icon: "certifiedCopy" },
+      { id: "lifeCertificate", name: "Life Certificate", desc: "Notarial certification that a person is alive — for pensions and benefits from abroad.", icon: "lifeCertificate" },
     ], calcBtn: "Calculate Price" },
     useCases: { tag: "USE CASES", h2: "Common Notary Use Cases", subtitle: "Search by your need", allFilter: "All", items: [
       { name: "Notarial Power of Attorney", tag: "Signature" }, { name: "POA for Property Sale", tag: "Signature" }, { name: "Continuing Power of Attorney", tag: "Signature" }, { name: "Revocation of POA", tag: "Signature" }, { name: "Consent for Minor Travel", tag: "Signature" }, { name: "NDA Signature Auth", tag: "Signature" },
@@ -128,6 +135,9 @@ const T: Record<string, any> = {
       { id: "affidavit", name: "Аффидевит", desc: "Письменное заявление перед нотариусом после предупреждения.", icon: "affidavit" },
       { id: "will", name: "Нотариальное завещание", desc: "Завещание, составленное перед нотариусом.", icon: "will" },
       { id: "prenup", name: "Брачный договор", desc: "Соглашение между супругами.", icon: "prenup" },
+      { id: "poa", name: "Доверенность", desc: "Генеральная, на недвижимость, безотзывная или ипотечная — подписание у нотариуса.", icon: "poa" },
+      { id: "certifiedCopy", name: "Заверенная копия", desc: "Подтверждение идентичности копии оригиналу — паспорта, дипломы, документы компании.", icon: "certifiedCopy" },
+      { id: "lifeCertificate", name: "Свидетельство о жизни", desc: "Нотариальное подтверждение, что лицо находится в живых — для пенсий из-за рубежа.", icon: "lifeCertificate" },
     ], calcBtn: "Рассчитать" },
     useCases: { tag: "USE CASES", h2: "Популярные нотариальные услуги", subtitle: "Ищите по потребности", allFilter: "Все", items: [
       { name: "Нотариальная доверенность", tag: "Подпись" }, { name: "Доверенность на продажу", tag: "Подпись" }, { name: "Постоянная доверенность", tag: "Подпись" }, { name: "Отмена доверенности", tag: "Подпись" }, { name: "Согласие на выезд ребёнка", tag: "Подпись" }, { name: "Заверение NDA", tag: "Подпись" },
@@ -160,6 +170,9 @@ const T: Record<string, any> = {
       { id: "affidavit", name: "إفادة خطية", desc: "بيان مكتوب يُوقّع أمام كاتب العدل.", icon: "affidavit" },
       { id: "will", name: "وصية توثيقية", desc: "وصية تُعَدّ أمام كاتب العدل.", icon: "will" },
       { id: "prenup", name: "اتفاقية مالية", desc: "اتفاق بين الزوجين.", icon: "prenup" },
+      { id: "poa", name: "توكيل رسمي", desc: "توكيل عام أو عقاري أو غير قابل للإلغاء — توقيع أمام كاتب العدل.", icon: "poa" },
+      { id: "certifiedCopy", name: "نسخة مصدّقة", desc: "تصديق أن النسخة مطابقة للأصل — جوازات سفر، شهادات، مستندات شركة.", icon: "certifiedCopy" },
+      { id: "lifeCertificate", name: "شهادة حياة", desc: "تصديق نوتاريوني بأن الشخص على قيد الحياة — للمعاشات من الخارج.", icon: "lifeCertificate" },
     ], calcBtn: "احسب السعر" },
     useCases: { tag: "USE CASES", h2: "خدمات كاتب عدل شائعة", subtitle: "ابحث/ي حسب احتياجك", allFilter: "الكل", items: [
       { name: "توكيل رسمي", tag: "توثيق" }, { name: "توكيل لبيع عقار", tag: "توثيق" }, { name: "توكيل مستمر", tag: "توثيق" }, { name: "إلغاء توكيل", tag: "توثيق" }, { name: "موافقة سفر قاصر", tag: "توثيق" }, { name: "توثيق NDA", tag: "توثيق" },
@@ -192,6 +205,9 @@ const T: Record<string, any> = {
       { id: "affidavit", name: "Affidavit Notarial", desc: "Declaration signee devant notaire.", icon: "affidavit" },
       { id: "will", name: "Testament Notarial", desc: "Testament redige devant notaire.", icon: "will" },
       { id: "prenup", name: "Contrat de Mariage", desc: "Accord entre epoux.", icon: "prenup" },
+      { id: "poa", name: "Procuration Notariale", desc: "Generale, immobiliere, irrevocable ou hypothecaire — signee devant notaire.", icon: "poa" },
+      { id: "certifiedCopy", name: "Copie Certifiee Conforme", desc: "Certification qu'une copie est identique a l'original — passeports, diplomes, documents d'entreprise.", icon: "certifiedCopy" },
+      { id: "lifeCertificate", name: "Certificat de Vie", desc: "Certification notariale qu'une personne est en vie — pour pensions de l'etranger.", icon: "lifeCertificate" },
     ], calcBtn: "Calculer" },
     useCases: { tag: "USE CASES", h2: "Services notariaux courants", subtitle: "Cherchez selon votre besoin", allFilter: "Tout", items: [
       { name: "Procuration notariale", tag: "Signature" }, { name: "Procuration vente immobiliere", tag: "Signature" }, { name: "Procuration permanente", tag: "Signature" }, { name: "Revocation de procuration", tag: "Signature" }, { name: "Voyage mineur", tag: "Signature" }, { name: "NDA", tag: "Signature" },
@@ -224,6 +240,9 @@ const T: Record<string, any> = {
       { id: "affidavit", name: "Declaracion Jurada", desc: "Declaracion ante notario.", icon: "affidavit" },
       { id: "will", name: "Testamento Notarial", desc: "Testamento ante notario.", icon: "will" },
       { id: "prenup", name: "Acuerdo Prenupcial", desc: "Acuerdo entre conyuges.", icon: "prenup" },
+      { id: "poa", name: "Poder Notarial", desc: "General, inmobiliario, irrevocable o hipotecario — firmado ante notario.", icon: "poa" },
+      { id: "certifiedCopy", name: "Copia Certificada", desc: "Certificacion de que la copia es identica al original — pasaportes, diplomas, documentos de empresa.", icon: "certifiedCopy" },
+      { id: "lifeCertificate", name: "Certificado de Vida", desc: "Certificacion notarial de que una persona esta viva — para pensiones del exterior.", icon: "lifeCertificate" },
     ], calcBtn: "Calcular" },
     useCases: { tag: "USE CASES", h2: "Servicios notariales comunes", subtitle: "Busca segun tu necesidad", allFilter: "Todo", items: [
       { name: "Poder notarial", tag: "Firma" }, { name: "Poder para venta", tag: "Firma" }, { name: "Poder permanente", tag: "Firma" }, { name: "Revocacion de poder", tag: "Firma" }, { name: "Viaje de menor", tag: "Firma" }, { name: "NDA", tag: "Firma" },
@@ -255,6 +274,9 @@ const I: Record<string, React.ReactNode> = {
   affidavit: <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><rect x="8" y="4" width="24" height="32" rx="2"/><path d="M13 12h14M13 18h14M13 24h8"/><circle cx="28" cy="30" r="4"/><path d="M26 30l1.5 1.5 3-3"/></svg>,
   will: <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 4h16l6 6v26a2 2 0 01-2 2H10a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M26 4v6h6"/><path d="M14 16h12M14 22h12M14 28h6"/></svg>,
   prenup: <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 36s-12-7-12-16c0-5 4-9 8-9a8 8 0 014 1 8 8 0 014-1c4 0 8 4 8 9 0 9-12 16-12 16z"/><path d="M14 20h12M20 14v12"/></svg>,
+  poa: <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><rect x="8" y="4" width="24" height="32" rx="2"/><path d="M14 12h12M14 18h12"/><path d="M14 28h5"/><circle cx="28" cy="28" r="5"/><path d="M28 25v3h3"/></svg>,
+  certifiedCopy: <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="6" width="22" height="28" rx="2"/><rect x="12" y="2" width="22" height="28" rx="2"/><path d="M18 12h10M18 18h10M18 24h6"/></svg>,
+  lifeCertificate: <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="20" cy="14" r="8"/><path d="M8 36c0-7 5-12 12-12s12 5 12 12"/><path d="M17 13l2 2 4-4"/></svg>,
   chevron: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>,
   menu: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>,
   close: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>,
