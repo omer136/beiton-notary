@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
+import SiteFooter from "./SiteFooter";
 
 interface Section {
   heading: string;
@@ -13,12 +14,6 @@ interface LegalContent {
   sections: Section[];
 }
 
-const footerLabels: Record<string, { privacy: string; terms: string; accessibility: string; rights: string }> = {
-  he: { privacy: "מדיניות פרטיות", terms: "תנאי שימוש", accessibility: "הצהרת נגישות", rights: "כל הזכויות שמורות" },
-  en: { privacy: "Privacy Policy", terms: "Terms of Use", accessibility: "Accessibility", rights: "All rights reserved" },
-  ru: { privacy: "Политика конфиденциальности", terms: "Условия использования", accessibility: "Доступность", rights: "Все права защищены" },
-  ar: { privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", accessibility: "إمكانية الوصول", rights: "جميع الحقوق محفوظة" },
-};
 
 export default function LegalPage({
   locale,
@@ -29,7 +24,6 @@ export default function LegalPage({
 }) {
   const isRtl = locale === "he" || locale === "ar";
   const backLabel = locale === "he" ? "חזרה לעמוד הראשי" : "Back to homepage";
-  const fl = footerLabels[locale] || footerLabels.en;
 
   return (
     <div
@@ -146,21 +140,7 @@ export default function LegalPage({
         ))}
       </article>
 
-      {/* FOOTER — identical to NotaryHome */}
-      <footer style={{ borderTop: "1px solid #E8E6E1", padding: "28px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
-          <div style={{ display: "flex", alignItems: "baseline", direction: "ltr" }}>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 13, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 9, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
-          </div>
-          <div style={{ display: "flex", gap: 14, fontSize: 11, color: "#999" }}>
-            <a href={`/${locale}/privacy`} style={{ color: "#999", textDecoration: "none" }}>{fl.privacy}</a>
-            <a href={`/${locale}/terms`} style={{ color: "#999", textDecoration: "none" }}>{fl.terms}</a>
-            <a href={`/${locale}/accessibility`} style={{ color: "#999", textDecoration: "none" }}>{fl.accessibility}</a>
-          </div>
-          <p style={{ fontSize: 11, color: "#999" }}>&copy; 2026 BEITON &amp; Co — {fl.rights}</p>
-        </div>
-      </footer>
+      <SiteFooter lang={locale} />
     </div>
   );
 }

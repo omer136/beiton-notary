@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "מחירון נוטריון 2026 — תעריפי משרד המשפטים המעודכנים | BEITON & Co",
@@ -381,16 +382,7 @@ export default async function NotaryPricing2026Article({
           </div>
         </article>
 
-        {/* Footer */}
-        <footer style={{ borderTop: "1px solid #E8E6E1", padding: "28px 24px" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
-            <div style={{ display: "flex", alignItems: "baseline", direction: "ltr" }}>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 13, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 9, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
-            </div>
-            <p style={{ fontSize: 11, color: "#999" }}>&copy; 2026 BEITON &amp; Co — {c.footerRights}</p>
-          </div>
-        </footer>
+        <SiteFooter lang={locale} />
       </div>
     </>
   );

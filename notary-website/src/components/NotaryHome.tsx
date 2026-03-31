@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import AgentChat from "./AgentChat";
 import { PRICING_CONFIG } from "@/data/pricing-config";
+import SiteFooter from "./SiteFooter";
 
 /* ═══════════════════════════════════════════════════════════
    BEITON & Co — Notary Website v2
@@ -623,16 +624,7 @@ export default function NotaryHome() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ borderTop: "1px solid #E8E6E1", padding: "28px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
-          <div style={{ display: "flex", alignItems: "baseline", direction: "ltr" }}>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 13, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 9, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
-          </div>
-          <div style={{ display: "flex", gap: 14, fontSize: 11, color: "#999" }}><a href={`/${lang}/privacy`} style={{ color: "#999", textDecoration: "none" }}>{t.footer.privacy}</a><a href={`/${lang}/terms`} style={{ color: "#999", textDecoration: "none" }}>{t.footer.terms}</a><a href={`/${lang}/accessibility`} style={{ color: "#999", textDecoration: "none" }}>{t.footer.accessibility}</a></div>
-          <p style={{ fontSize: 11, color: "#999" }}>© 2026 BEITON &amp; Co — {t.footer.rights}</p>
-        </div>
-      </footer>
+      <SiteFooter lang={lang} />
 
       {/* COOKIE */}
       {cookie && <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 200, background: "#fff", borderTop: "1px solid #E8E6E1", padding: "14px 24px", boxShadow: "0 -4px 16px rgba(0,0,0,.05)" }}>
