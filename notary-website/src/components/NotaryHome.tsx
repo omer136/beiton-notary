@@ -354,14 +354,15 @@ export default function NotaryHome() {
     const lblForeignLang = lang === "he" ? "תוספת שפה לועזית (פרט 10)" : "Foreign language surcharge (Item 10)";
     const lblAdditional = lang === "he" ? "חותמים נוספים" : "Additional signers";
     const lblAddCopies = lang === "he" ? "עותקים נוספים" : "Additional copies";
+    // LTR embed for numeric expressions so they render correctly in RTL
+    const mul = (qty: number, price: number) => `\u202A${qty} \u00D7 ${price} ${c}\u202C`;
     if (svc.type === "words") {
       const w = words || 0;
       let p = svc.base;
       lines.push({ label: t.pricing.wordsFirst || (lang==="he"?"עד 100 מילים":"Up to 100 words"), amount: svc.base });
-      if (w > 100) { const units = Math.ceil(Math.min(w - 100, 900) / 100); const extra = units * svc.per100to1000; p += extra; lines.push({ label: `${lblPer100to1000}: ${units} x ${svc.per100to1000} ${c}`, amount: extra }); }
-      if (w > 1000) { const units = Math.ceil((w - 1000) / 100); const extra = units * svc.per100above1000; p += extra; lines.push({ label: `${lblPer100above}: ${units} x ${svc.per100above1000} ${c}`, amount: extra }); }
+      if (w > 100) { const units = Math.ceil(Math.min(w - 100, 900) / 100); const extra = units * svc.per100to1000; p += extra; lines.push({ label: `${lblPer100to1000}: ${mul(units, svc.per100to1000)}`, amount: extra }); }
+      if (w > 1000) { const units = Math.ceil((w - 1000) / 100); const extra = units * svc.per100above1000; p += extra; lines.push({ label: `${lblPer100above}: ${mul(units, svc.per100above1000)}`, amount: extra }); }
       total = p;
-      // Notary translation surcharge: +50% when notary translates (not just certifies)
       if (selSvc === "translation" && notaryTranslates) { const surcharge = Math.round(total * 0.5); total += surcharge; lines.push({ label: lblNotaryTranslates, amount: surcharge }); }
       if (selSvc === "translation" && foreignLang) { total += 104; lines.push({ label: lblForeignLang, amount: 104 }); }
     } else if (svc.type === "stamp") {
@@ -374,16 +375,16 @@ export default function NotaryHome() {
         : lblAdditional;
       lines.push({ label: firstLabel, amount: svc.firstStamp });
       total = svc.firstStamp;
-      if (sigs > 1) { const add = (sigs - 1) * svc.additionalStamp; total += add; lines.push({ label: `${addLabel}: ${sigs - 1} x ${svc.additionalStamp} ${c}`, amount: add }); }
-      if (svc.fields?.includes("copies") && copies > 1) { const add = (copies - 1) * (svc.additionalStamp || 77); total += add; lines.push({ label: `${lblAddCopies}: ${copies - 1} x ${svc.additionalStamp||77} ${c}`, amount: add }); }
+      if (sigs > 1) { const add = (sigs - 1) * svc.additionalStamp; total += add; lines.push({ label: `${addLabel}: ${mul(sigs - 1, svc.additionalStamp)}`, amount: add }); }
+      if (svc.fields?.includes("copies") && copies > 1) { const add = (copies - 1) * (svc.additionalStamp || 77); total += add; lines.push({ label: `${lblAddCopies}: ${mul(copies - 1, svc.additionalStamp || 77)}`, amount: add }); }
     } else if (svc.type === "fixed") {
       lines.push({ label: t.pricing.basePrice || (lang==="he"?"בסיס":"Base"), amount: svc.base });
       total = svc.base;
-      if (svc.perCopy && copies > 1) { const add = (copies - 1) * svc.perCopy; total += add; lines.push({ label: `${lblAddCopies}: ${copies - 1} x ${svc.perCopy} ${c}`, amount: add }); }
+      if (svc.perCopy && copies > 1) { const add = (copies - 1) * svc.perCopy; total += add; lines.push({ label: `${lblAddCopies}: ${mul(copies - 1, svc.perCopy)}`, amount: add }); }
     } else if (svc.type === "page") {
       lines.push({ label: t.pricing.firstPage, amount: svc.firstPage });
       total = svc.firstPage;
-      if (pages > 1) { const add = (pages - 1) * svc.additionalPage; total += add; lines.push({ label: `${t.pricing.additionalPages}: ${pages - 1} x ${svc.additionalPage} ${c}`, amount: add }); }
+      if (pages > 1) { const add = (pages - 1) * svc.additionalPage; total += add; lines.push({ label: `${t.pricing.additionalPages}: ${mul(pages - 1, svc.additionalPage)}`, amount: add }); }
     }
     const vat = Math.round(total * 0.18);
     return { lines, total, vat, withVat: total + vat };
