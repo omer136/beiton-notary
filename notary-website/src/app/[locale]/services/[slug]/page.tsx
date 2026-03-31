@@ -50,8 +50,8 @@ export default async function ServicePage({
         ? "'Noto Sans Arabic', 'DM Sans', sans-serif"
         : "'DM Sans', sans-serif";
 
-  const breadHome = locale === "he" ? "ראשי" : "Home";
-  const breadServices = locale === "he" ? "שירותים" : "Services";
+  const breadHome = locale === "he" ? "ראשי" : locale === "ar" ? "الرئيسية" : locale === "ru" ? "Главная" : "Home";
+  const breadServices = locale === "he" ? "שירותים" : locale === "ar" ? "الخدمات" : locale === "ru" ? "Услуги" : "Services";
 
   return (
     <>
@@ -118,38 +118,10 @@ export default async function ServicePage({
           WebkitFontSmoothing: "antialiased",
         }}
       >
-        {/* Nav */}
-        <nav
-          style={{
-            position: "sticky",
-            top: 0,
-            zIndex: 100,
-            background: "rgba(255,255,255,.96)",
-            backdropFilter: "blur(12px)",
-            borderBottom: "1px solid #E8E6E1",
-          }}
-        >
-          <div
-            style={{
-              maxWidth: 1200,
-              margin: "0 auto",
-              padding: "0 24px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              height: 56,
-            }}
-          >
-            <Link
-              href={`/${locale}`}
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                direction: "ltr",
-                textDecoration: "none",
-                color: "#1A1A1A",
-              }}
-            >
+        {/* Nav — same as homepage */}
+        <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(255,255,255,.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E8E6E1" }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 56 }}>
+            <Link href={`/${locale}`} style={{ display: "flex", alignItems: "baseline", direction: "ltr", textDecoration: "none", color: "#1A1A1A" }}>
               <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 15, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
               <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 10, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
             </Link>
@@ -159,7 +131,7 @@ export default async function ServicePage({
           </div>
         </nav>
 
-        {/* Content */}
+        {/* Article */}
         <article style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 80px" }}>
           {/* Breadcrumb */}
           <p style={{ fontSize: 11, color: "#999", marginBottom: 24 }}>
@@ -174,16 +146,17 @@ export default async function ServicePage({
           <h1 style={{ fontSize: "clamp(26px,4vw,38px)", fontWeight: 300, lineHeight: 1.3, marginBottom: 16 }}>
             {c.h1}
           </h1>
-
           <div style={{ width: 50, height: 1, background: "#1A1A1A", marginBottom: 32 }} />
 
           {/* Intro */}
           <p style={{ fontSize: 15, fontWeight: 300, marginBottom: 40 }}>{c.intro}</p>
 
+          {/* What is */}
+          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.whatIsTitle}</h2>
+          <p style={{ fontSize: 15, fontWeight: 300, marginBottom: 40 }}>{c.whatIsBody}</p>
+
           {/* When needed */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12 }}>
-            {locale === "he" ? "מתי צריך את זה?" : locale === "ar" ? "متى تحتاجون لذلك؟" : locale === "ru" ? "Когда это нужно?" : "When do you need this?"}
-          </h2>
+          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.whenNeededTitle}</h2>
           <ul style={{ fontSize: 15, fontWeight: 300, marginBottom: 40, paddingInlineStart: 20 }}>
             {c.whenNeeded.map((item, i) => (
               <li key={i} style={{ marginBottom: 6 }}>{item}</li>
@@ -191,21 +164,30 @@ export default async function ServicePage({
           </ul>
 
           {/* Process */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12 }}>{c.processTitle}</h2>
+          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.processTitle}</h2>
           <ol style={{ fontSize: 15, fontWeight: 300, marginBottom: 40, paddingInlineStart: 20 }}>
             {c.processSteps.map((step, i) => (
               <li key={i} style={{ marginBottom: 8 }}>{step}</li>
             ))}
           </ol>
 
+          {/* Required documents */}
+          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.docsTitle}</h2>
+          <ul style={{ fontSize: 15, fontWeight: 300, marginBottom: 40, paddingInlineStart: 20 }}>
+            {c.docs.map((doc, i) => (
+              <li key={i} style={{ marginBottom: 6 }}>{doc}</li>
+            ))}
+          </ul>
+
           {/* Pricing */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 16 }}>{c.pricingTitle}</h2>
+          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 8, marginTop: 40 }}>{c.pricingTitle}</h2>
+          <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B", marginBottom: 16 }}>{c.pricingNote}</p>
           <div style={{ marginBottom: 40 }}>
             <PricingCalculator lang={locale} initialService={uc.pricingKey} />
           </div>
 
           {/* Delivery */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12 }}>{c.deliveryTitle}</h2>
+          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.deliveryTitle}</h2>
           <div style={{ display: "grid", gap: 10, marginBottom: 40 }}>
             {c.deliveryOptions.map((opt, i) => (
               <div key={i} style={{ padding: "14px 18px", borderRadius: 10, border: "1px solid #E8E6E1", background: "#FAFAF8" }}>
@@ -215,8 +197,16 @@ export default async function ServicePage({
             ))}
           </div>
 
+          {/* Why us (E-E-A-T) */}
+          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.whyUsTitle}</h2>
+          <ul style={{ fontSize: 15, fontWeight: 300, marginBottom: 40, paddingInlineStart: 20 }}>
+            {c.whyUsPoints.map((point, i) => (
+              <li key={i} style={{ marginBottom: 6 }}>{point}</li>
+            ))}
+          </ul>
+
           {/* FAQ */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 16 }}>{c.faqTitle}</h2>
+          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 16, marginTop: 40 }}>{c.faqTitle}</h2>
           <div style={{ marginBottom: 40 }}>
             {c.faq.map((item, i) => (
               <div key={i} style={{ borderBottom: "1px solid #E8E6E1", padding: "14px 0" }}>
@@ -231,47 +221,25 @@ export default async function ServicePage({
             <h2 style={{ fontSize: 20, fontWeight: 400, marginBottom: 8 }}>{c.ctaTitle}</h2>
             <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B", marginBottom: 16 }}>{c.ctaText}</p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-              <a
-                href="https://wa.me/972500000000"
-                style={{
-                  background: "#1A1A1A",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: 8,
-                  padding: "10px 22px",
-                  fontSize: 13,
-                  fontWeight: 500,
-                  textDecoration: "none",
-                }}
-              >
-                {c.ctaWhatsapp}
-              </a>
-              <Link
-                href={`/${locale}`}
-                style={{
-                  background: "transparent",
-                  color: "#1A1A1A",
-                  border: "1px solid #E8E6E1",
-                  borderRadius: 8,
-                  padding: "10px 22px",
-                  fontSize: 13,
-                  textDecoration: "none",
-                }}
-              >
-                {c.ctaBack}
-              </Link>
+              <a href="https://wa.me/972500000000" style={{ background: "#1A1A1A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}>{c.ctaWhatsapp}</a>
+              <Link href={`/${locale}`} style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, textDecoration: "none" }}>{c.ctaBack}</Link>
             </div>
           </div>
         </article>
 
-        {/* Footer */}
+        {/* Footer — same as homepage */}
         <footer style={{ borderTop: "1px solid #E8E6E1", padding: "28px 24px" }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
             <div style={{ display: "flex", alignItems: "baseline", direction: "ltr" }}>
               <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 13, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
               <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 9, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
             </div>
-            <p style={{ fontSize: 11, color: "#999" }}>&copy; 2026 BEITON &amp; Co</p>
+            <div style={{ display: "flex", gap: 14, fontSize: 11, color: "#999" }}>
+              <a href={`/${locale}/privacy`} style={{ color: "#999", textDecoration: "none" }}>{locale === "he" ? "מדיניות פרטיות" : "Privacy Policy"}</a>
+              <a href={`/${locale}/terms`} style={{ color: "#999", textDecoration: "none" }}>{locale === "he" ? "תנאי שימוש" : "Terms of Use"}</a>
+              <a href={`/${locale}/accessibility`} style={{ color: "#999", textDecoration: "none" }}>{locale === "he" ? "הצהרת נגישות" : "Accessibility"}</a>
+            </div>
+            <p style={{ fontSize: 11, color: "#999" }}>&copy; 2026 BEITON &amp; Co — {locale === "he" ? "כל הזכויות שמורות" : "All rights reserved"}</p>
           </div>
         </footer>
       </div>

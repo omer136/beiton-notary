@@ -25,6 +25,18 @@ const LANGS: Record<string, { label: string; dir: string; font: string }> = {
    שירותים נלווים (אפוסטיל, משלוח, איסוף) מנוהלים ע"י סוכן 1. */
 // PRICING_CONFIG imported from @/data/pricing-config
 
+// Slug for each use case item — same order as items arrays in all languages
+const UC_SLUGS = [
+  "birth-certificate-translation", "diploma-translation", "drivers-license-translation", "marriage-certificate-translation", "divorce-certificate-translation", "portuguese-citizenship-package",
+  "contract-signature-authentication", "nda-signature-authentication", "consent-minor-travel",
+  "general-power-of-attorney", "poa-property-sale", "continuing-power-of-attorney", "mortgage-poa",
+  "single-status-affidavit", "residency-affidavit", "translator-declaration",
+  "personal-will", "mutual-will-spouses",
+  "prenuptial-agreement", "postnuptial-agreement",
+  "passport-certified-copy", "academic-diploma-copy", "company-documents-copy",
+  "life-certificate-pension", "life-certificate-retirees",
+];
+
 /* ══ קונפיג לסוכן 1 (תקשורת) — שירותים נלווים ואפשרויות קבלה ══ */
 const AGENT_SERVICE_CONFIG = {
   deliveryOptions: {
@@ -498,11 +510,11 @@ export default function NotaryHome() {
           })}
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: 8 }}>
-          {t.useCases.items.filter((u: any) => ucF==="all"||u.tag===ucF).map((uc: any, i: number) => (
-            <div key={i} className="uc" style={{ padding: "12px 16px", borderRadius: 7, border: "1px solid #E8E6E1", background: "#fff", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, transition: "all .2s", cursor: "pointer" }}>
+          {t.useCases.items.map((uc: any, origIdx: number) => ({ ...uc, origIdx })).filter((u: any) => ucF==="all"||u.tag===ucF).map((uc: any) => (
+            <Link key={uc.origIdx} href={`/${lang}/services/${UC_SLUGS[uc.origIdx] || ""}`} className="uc" style={{ padding: "12px 16px", borderRadius: 7, border: "1px solid #E8E6E1", background: "#fff", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, transition: "all .2s", cursor: "pointer", textDecoration: "none", color: "inherit" }}>
               <span style={{ fontSize: 13 }}>{uc.name}</span>
               <span className="ut" style={{ fontSize: 10, color: "#999", background: "#F5F4F1", padding: "2px 8px", borderRadius: 8, whiteSpace: "nowrap", transition: "all .2s" }}>{uc.tag}</span>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
