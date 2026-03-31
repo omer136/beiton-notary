@@ -403,6 +403,7 @@ export default function NotaryHome() {
   const [faq, setFaq] = useState<number | null>(null);
   const [ucF, setUcF] = useState("all");
   const [cookie, setCookie] = useState(true);
+  const [blogF, setBlogF] = useState("all");
   const [trackN, setTrackN] = useState("");
 
   // Keep docs in scope
@@ -631,29 +632,37 @@ export default function NotaryHome() {
         </div>
       </section>
 
-      {/* BLOG */}
+      {/* BLOG — Carousel with filter chips */}
       <section id="blog" style={{ padding: "64px 24px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <p style={S.tag}>{t.blog.tag}</p>
           <h2 style={S.h2}>{t.blog.h2}</h2>
-          <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B", textAlign: "center", marginBottom: 36 }}>{t.blog.subtitle}</p>
-          {t.blog.items && t.blog.items.length > 0 ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))", gap: 16 }}>
-              {t.blog.items.map((post: any, i: number) => (
-                <Link key={i} href={`/${lang}/blog/${post.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
-                  <article className="sc" style={{ background: "#FAFAF8", borderRadius: 12, padding: 24, border: "1px solid #E8E6E1", transition: "all .3s", cursor: "pointer", height: "100%" }}>
-                    <p style={{ fontSize: 10, fontWeight: 500, letterSpacing: 2, color: "#999", textTransform: "uppercase", marginBottom: 8 }}>{post.tag}</p>
-                    <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 8, lineHeight: 1.5 }}>{post.title}</h3>
-                    <p style={{ fontSize: 12, fontWeight: 300, color: "#6B6B6B", lineHeight: 1.6 }}>{post.excerpt}</p>
-                  </article>
-                </Link>
-              ))}
+          <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B", textAlign: "center", marginBottom: 24 }}>{t.blog.subtitle}</p>
+          {t.blog.items && t.blog.items.length > 0 && <>
+            {/* Filter chips */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 5, justifyContent: "center", marginBottom: 24 }}>
+              {[lang === "he" ? "הכל" : lang === "ar" ? "الكل" : lang === "ru" ? "Все" : lang === "fr" ? "Tout" : lang === "es" ? "Todo" : "All", ...[...new Set(t.blog.items.map((p: any) => p.tag) as string[])]].map((tag: string, ti: number) => {
+                const isAll = ti === 0;
+                const act = isAll ? blogF === "all" : blogF === tag;
+                return <button key={tag} onClick={() => setBlogF(isAll ? "all" : tag)} style={{ padding: "4px 14px", borderRadius: 14, border: act ? "1px solid #1A1A1A" : "1px solid #E8E6E1", background: act ? "#1A1A1A" : "transparent", color: act ? "#fff" : "#6B6B6B", fontSize: 11, fontFamily: cfg.font, transition: "all .2s", cursor: "pointer" }}>{tag}</button>;
+              })}
             </div>
-          ) : (
-            <div style={{ textAlign: "center", padding: "40px 20px", background: "#FAFAF8", borderRadius: 12, border: "1px dashed #E8E6E1" }}>
-              <p style={{ fontSize: 13, color: "#999" }}>{lang === "he" ? "כתבות חדשות יפורסמו בקרוב" : lang === "ar" ? "ستنشر مقالات جديدة قريباً" : lang === "ru" ? "Новые статьи скоро появятся" : lang === "fr" ? "De nouveaux articles seront publies prochainement" : lang === "es" ? "Nuevos articulos proximamente" : "New articles coming soon"}</p>
+            {/* Horizontal scroll carousel */}
+            <div style={{ overflowX: "auto", scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollbarWidth: "none", msOverflowStyle: "none", paddingBottom: 8 }}>
+              <style>{`.blog-scroll::-webkit-scrollbar{display:none}`}</style>
+              <div className="blog-scroll" style={{ display: "flex", gap: 16, overflowX: "auto", scrollSnapType: "x mandatory", paddingInlineStart: 4, paddingInlineEnd: 4 }}>
+                {t.blog.items.filter((p: any) => blogF === "all" || p.tag === blogF).map((post: any, i: number) => (
+                  <Link key={i} href={`/${lang}/blog/${post.slug}`} style={{ textDecoration: "none", color: "inherit", flex: "0 0 280px", scrollSnapAlign: "start" }}>
+                    <article className="sc" style={{ background: "#FAFAF8", borderRadius: 12, padding: 24, border: "1px solid #E8E6E1", transition: "all .3s", cursor: "pointer", height: "100%", minHeight: 180 }}>
+                      <p style={{ fontSize: 10, fontWeight: 500, letterSpacing: 2, color: "#999", textTransform: "uppercase", marginBottom: 8 }}>{post.tag}</p>
+                      <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 8, lineHeight: 1.5 }}>{post.title}</h3>
+                      <p style={{ fontSize: 12, fontWeight: 300, color: "#6B6B6B", lineHeight: 1.6 }}>{post.excerpt}</p>
+                    </article>
+                  </Link>
+                ))}
+              </div>
             </div>
-          )}
+          </>}
         </div>
       </section>
 
