@@ -75,12 +75,21 @@ export function generateStaticParams() {
   return locales.flatMap(locale => BLOG_SLUGS.map(slug => ({ locale, slug })));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
+function resolveFile(locale: string, slug: string): string | null {
   const article = BLOG_MAP[slug];
-  if (!article) return {};
-  const filePath = path.join(process.cwd(), "content/blog", article.file);
-  if (!fs.existsSync(filePath)) return {};
+  if (!article) return null;
+  // Try locale-specific file first, then fall back to Hebrew (root)
+  const localePath = path.join(process.cwd(), "content/blog", locale, article.file);
+  if (fs.existsSync(localePath)) return localePath;
+  const rootPath = path.join(process.cwd(), "content/blog", article.file);
+  if (fs.existsSync(rootPath)) return rootPath;
+  return null;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const filePath = resolveFile(locale, slug);
+  if (!filePath) return {};
   const { meta } = parseFrontmatter(fs.readFileSync(filePath, "utf8"));
   return {
     title: (meta.title || slug) + " | BEITON & Co",
@@ -90,11 +99,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function BlogArticlePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  const article = BLOG_MAP[slug];
-  if (!article) notFound();
-
-  const filePath = path.join(process.cwd(), "content/blog", article.file);
-  if (!fs.existsSync(filePath)) notFound();
+  const filePath = resolveFile(locale, slug);
+  if (!filePath) notFound();
 
   const raw = fs.readFileSync(filePath, "utf8");
   const { meta, body } = parseFrontmatter(raw);
