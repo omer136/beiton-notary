@@ -62,13 +62,31 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
     }
   }, [messages, lang]);
 
+  const nudgedRef = useRef(false);
+  const nudgeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   // Reset inactivity timer on every new message
   const resetInactivityTimer = useCallback(() => {
     if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
+    if (nudgeTimer.current) clearTimeout(nudgeTimer.current);
+    nudgedRef.current = false;
+
+    // After 5 min inactivity — send a proactive nudge message
+    nudgeTimer.current = setTimeout(() => {
+      if (nudgedRef.current || savedRef.current) return;
+      nudgedRef.current = true;
+      const nudgeMsg = lang === "he" ? "היי, עדיין כאן? אם תצטרך לעזוב — תשאיר טלפון ונציג יחזור אליך עם כל הפרטים."
+        : lang === "ar" ? "مرحبا، لا تزال هنا؟ إذا احتجت للمغادرة — اترك رقم هاتف وسنعاود الاتصال بك."
+        : lang === "ru" ? "Привет, вы ещё здесь? Если нужно уйти — оставьте телефон и мы перезвоним."
+        : "Hi, are you still there? If you need to go, leave your phone number and we'll follow up with all the details.";
+      setMessages(prev => [...prev, { role: "assistant", content: nudgeMsg }]);
+    }, 5 * 60 * 1000); // 5 minutes
+
+    // After 10 min total inactivity — save transcript
     inactivityTimer.current = setTimeout(() => {
       saveTranscript();
     }, 10 * 60 * 1000); // 10 minutes
-  }, [saveTranscript]);
+  }, [saveTranscript, lang]);
 
   // Save on page leave / tab close
   useEffect(() => {
@@ -80,6 +98,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
     return () => {
       window.removeEventListener("beforeunload", handleLeave);
       if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
+      if (nudgeTimer.current) clearTimeout(nudgeTimer.current);
     };
   }, [saveTranscript]);
 
