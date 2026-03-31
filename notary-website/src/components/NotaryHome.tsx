@@ -316,6 +316,7 @@ export default function NotaryHome() {
   const [docs, setDocs] = useState(1);
   const [copies, setCopies] = useState(1);
   const [words, setWords] = useState(100);
+  const [notaryTranslates, setNotaryTranslates] = useState(false);
   const [faq, setFaq] = useState<number | null>(null);
   const [ucF, setUcF] = useState("all");
   const [cookie, setCookie] = useState(true);
@@ -346,26 +347,33 @@ export default function NotaryHome() {
     const lines: { label: string; amount: number }[] = [];
     let total = 0;
     const c = t.pricing.currency;
+    const lblPer100to1000 = lang === "he" ? "לכל 100 מילים נוספות (עד 1,000)" : "Per 100 additional words (up to 1,000)";
+    const lblPer100above = lang === "he" ? "לכל 100 מילים נוספות (מעל 1,000)" : "Per 100 additional words (over 1,000)";
+    const lblNotaryTranslates = lang === "he" ? "תוספת תרגום ע״י הנוטריון (50%)" : "Notary translation surcharge (50%)";
+    const lblAdditional = lang === "he" ? "חותמים נוספים" : "Additional signers";
+    const lblAddCopies = lang === "he" ? "עותקים נוספים" : "Additional copies";
     if (svc.type === "words") {
       const w = words || 0;
       let p = svc.base;
       lines.push({ label: t.pricing.wordsFirst || (lang==="he"?"עד 100 מילים":"Up to 100 words"), amount: svc.base });
-      if (w > 100) { const extra = Math.ceil(Math.min(w - 100, 900) / 100) * svc.per100to1000; p += extra; lines.push({ label: `${Math.ceil(Math.min(w-100,900)/100)} x ${svc.per100to1000} ${c}`, amount: extra }); }
-      if (w > 1000) { const extra = Math.ceil((w - 1000) / 100) * svc.per100above1000; p += extra; lines.push({ label: `${Math.ceil((w-1000)/100)} x ${svc.per100above1000} ${c}`, amount: extra }); }
+      if (w > 100) { const units = Math.ceil(Math.min(w - 100, 900) / 100); const extra = units * svc.per100to1000; p += extra; lines.push({ label: `${lblPer100to1000}: ${units} x ${svc.per100to1000} ${c}`, amount: extra }); }
+      if (w > 1000) { const units = Math.ceil((w - 1000) / 100); const extra = units * svc.per100above1000; p += extra; lines.push({ label: `${lblPer100above}: ${units} x ${svc.per100above1000} ${c}`, amount: extra }); }
       total = p;
+      // Notary translation surcharge: +50% when notary translates (not just certifies)
+      if (selSvc === "translation" && notaryTranslates) { const surcharge = Math.round(total * 0.5); total += surcharge; lines.push({ label: lblNotaryTranslates, amount: surcharge }); }
     } else if (svc.type === "stamp") {
       lines.push({ label: t.pricing.firstStamp || (lang==="he"?"חותם ראשון":"First signatory"), amount: svc.firstStamp });
       total = svc.firstStamp;
-      if (sigs > 1) { const add = (sigs - 1) * svc.additionalStamp; total += add; lines.push({ label: `${sigs-1} x ${svc.additionalStamp} ${c}`, amount: add }); }
-      if (svc.fields?.includes("copies") && copies > 1) { const add = (copies - 1) * (svc.additionalStamp || 77); total += add; lines.push({ label: `${t.pricing.copies}: ${copies-1} x ${svc.additionalStamp||77} ${c}`, amount: add }); }
+      if (sigs > 1) { const add = (sigs - 1) * svc.additionalStamp; total += add; lines.push({ label: `${lblAdditional}: ${sigs - 1} x ${svc.additionalStamp} ${c}`, amount: add }); }
+      if (svc.fields?.includes("copies") && copies > 1) { const add = (copies - 1) * (svc.additionalStamp || 77); total += add; lines.push({ label: `${lblAddCopies}: ${copies - 1} x ${svc.additionalStamp||77} ${c}`, amount: add }); }
     } else if (svc.type === "fixed") {
       lines.push({ label: t.pricing.basePrice || (lang==="he"?"בסיס":"Base"), amount: svc.base });
       total = svc.base;
-      if (copies > 1) { const add = (copies - 1) * svc.perCopy; total += add; lines.push({ label: `${t.pricing.copies}: ${copies-1} x ${svc.perCopy} ${c}`, amount: add }); }
+      if (svc.perCopy && copies > 1) { const add = (copies - 1) * svc.perCopy; total += add; lines.push({ label: `${lblAddCopies}: ${copies - 1} x ${svc.perCopy} ${c}`, amount: add }); }
     } else if (svc.type === "page") {
       lines.push({ label: t.pricing.firstPage, amount: svc.firstPage });
       total = svc.firstPage;
-      if (pages > 1) { const add = (pages - 1) * svc.additionalPage; total += add; lines.push({ label: `${t.pricing.additionalPages}: ${pages-1} x ${svc.additionalPage} ${c}`, amount: add }); }
+      if (pages > 1) { const add = (pages - 1) * svc.additionalPage; total += add; lines.push({ label: `${t.pricing.additionalPages}: ${pages - 1} x ${svc.additionalPage} ${c}`, amount: add }); }
     }
     const vat = Math.round(total * 0.18);
     return { lines, total, vat, withVat: total + vat };
@@ -486,7 +494,7 @@ export default function NotaryHome() {
               <option value="">—</option>
               {Object.entries(PRICING_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label[lang]}</option>)}
             </select>
-            {svc?.fields?.includes("words") && <><label style={S.lbl}>{t.pricing.words || "מילים"}</label><input type="number" min={1} value={words} onChange={e => setWords(Math.max(1,+e.target.value))} style={S.inp} /></>}
+            {svc?.fields?.includes("words") && <><label style={S.lbl}>{t.pricing.words || "מילים"}</label><input type="number" min={1} value={words} onChange={e => setWords(Math.max(1,+e.target.value))} style={S.inp} /><label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#6B6B6B", marginBottom: 18, cursor: "pointer" }}><input type="checkbox" checked={notaryTranslates} onChange={e => setNotaryTranslates(e.target.checked)} style={{ width: 16, height: 16, accentColor: "#1A1A1A" }} />{lang === "he" ? "הנוטריון מתרגם (תוספת 50%)" : "Notary translates (50% surcharge)"}</label></>}
             {svc?.fields?.includes("pages") && <><label style={S.lbl}>{t.pricing.pages}</label><input type="number" min={1} max={50} value={pages} onChange={e => setPages(Math.max(1,+e.target.value))} style={S.inp} /></>}
             {svc?.fields?.includes("signatories") && <><label style={S.lbl}>{t.pricing.signatories}</label><input type="number" min={1} max={10} value={sigs} onChange={e => setSigs(Math.max(1,+e.target.value))} style={S.inp} /></>}
             {svc?.fields?.includes("documents") && <><label style={S.lbl}>{t.pricing.documents}</label><input type="number" min={1} max={20} value={docs} onChange={e => setDocs(Math.max(1,+e.target.value))} style={S.inp} /></>}
