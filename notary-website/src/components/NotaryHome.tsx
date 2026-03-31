@@ -365,9 +365,16 @@ export default function NotaryHome() {
       if (selSvc === "translation" && notaryTranslates) { const surcharge = Math.round(total * 0.5); total += surcharge; lines.push({ label: lblNotaryTranslates, amount: surcharge }); }
       if (selSvc === "translation" && foreignLang) { total += 104; lines.push({ label: lblForeignLang, amount: 104 }); }
     } else if (svc.type === "stamp") {
-      lines.push({ label: t.pricing.firstStamp || (lang==="he"?"חותם ראשון":"First signatory"), amount: svc.firstStamp });
+      const isWill = selSvc === "will";
+      const firstLabel = isWill
+        ? (lang === "he" ? "מצווה ראשון" : "First testator")
+        : (t.pricing.firstStamp || (lang === "he" ? "חותם ראשון" : "First signatory"));
+      const addLabel = isWill
+        ? (lang === "he" ? "מצווה נוסף (צוואה הדדית)" : "Additional testator (mutual will)")
+        : lblAdditional;
+      lines.push({ label: firstLabel, amount: svc.firstStamp });
       total = svc.firstStamp;
-      if (sigs > 1) { const add = (sigs - 1) * svc.additionalStamp; total += add; lines.push({ label: `${lblAdditional}: ${sigs - 1} x ${svc.additionalStamp} ${c}`, amount: add }); }
+      if (sigs > 1) { const add = (sigs - 1) * svc.additionalStamp; total += add; lines.push({ label: `${addLabel}: ${sigs - 1} x ${svc.additionalStamp} ${c}`, amount: add }); }
       if (svc.fields?.includes("copies") && copies > 1) { const add = (copies - 1) * (svc.additionalStamp || 77); total += add; lines.push({ label: `${lblAddCopies}: ${copies - 1} x ${svc.additionalStamp||77} ${c}`, amount: add }); }
     } else if (svc.type === "fixed") {
       lines.push({ label: t.pricing.basePrice || (lang==="he"?"בסיס":"Base"), amount: svc.base });
