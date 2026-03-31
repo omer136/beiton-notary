@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { USE_CASE_MAP, USE_CASE_SLUGS, type UseCaseContent } from "@/data/use-cases";
 import { locales } from "@/lib/i18n";
 import PricingCalculator from "@/components/PricingCalculator";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -53,16 +55,6 @@ export default async function ServicePage({
   const breadHome = locale === "he" ? "ראשי" : locale === "ar" ? "الرئيسية" : locale === "ru" ? "Главная" : "Home";
   const breadServices = locale === "he" ? "שירותים" : locale === "ar" ? "الخدمات" : locale === "ru" ? "Услуги" : "Services";
   const textAlign = isRtl ? "right" as const : "left" as const;
-
-  const navItems: Record<string, Record<string, string>> = {
-    he: { services: "שירותים", pricing: "מחירון", blog: "בלוג", contact: "יצירת קשר" },
-    en: { services: "Services", pricing: "Pricing", blog: "Blog", contact: "Contact" },
-    ru: { services: "Услуги", pricing: "Цены", blog: "Блог", contact: "Контакты" },
-    ar: { services: "الخدمات", pricing: "الأسعار", blog: "مدونة", contact: "تواصل معنا" },
-    fr: { services: "Services", pricing: "Tarifs", blog: "Blog", contact: "Contact" },
-    es: { services: "Servicios", pricing: "Precios", blog: "Blog", contact: "Contacto" },
-  };
-  const nav = navItems[locale] || navItems.en;
 
   return (
     <>
@@ -129,21 +121,7 @@ export default async function ServicePage({
           WebkitFontSmoothing: "antialiased",
         }}
       >
-        {/* Nav — same as homepage */}
-        <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(255,255,255,.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E8E6E1" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 56 }}>
-            <Link href={`/${locale}`} style={{ display: "flex", alignItems: "baseline", direction: "ltr", textDecoration: "none", color: "#1A1A1A" }}>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 15, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 10, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
-            </Link>
-            <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
-              <Link href={`/${locale}#services`} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none" }}>{nav.services}</Link>
-              <Link href={`/${locale}#pricing`} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none" }}>{nav.pricing}</Link>
-              <Link href={`/${locale}#blog`} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none" }}>{nav.blog}</Link>
-              <Link href={`/${locale}#contact`} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none" }}>{nav.contact}</Link>
-            </div>
-          </div>
-        </nav>
+        <SiteHeader lang={locale} />
 
         {/* Article */}
         <article style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 80px", textAlign }}>
@@ -241,21 +219,7 @@ export default async function ServicePage({
           </div>
         </article>
 
-        {/* Footer — same as homepage */}
-        <footer style={{ borderTop: "1px solid #E8E6E1", padding: "28px 24px" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
-            <div style={{ display: "flex", alignItems: "baseline", direction: "ltr" }}>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 13, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
-              <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 9, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
-            </div>
-            <div style={{ display: "flex", gap: 14, fontSize: 11, color: "#999" }}>
-              <a href={`/${locale}/privacy`} style={{ color: "#999", textDecoration: "none" }}>{locale === "he" ? "מדיניות פרטיות" : "Privacy Policy"}</a>
-              <a href={`/${locale}/terms`} style={{ color: "#999", textDecoration: "none" }}>{locale === "he" ? "תנאי שימוש" : "Terms of Use"}</a>
-              <a href={`/${locale}/accessibility`} style={{ color: "#999", textDecoration: "none" }}>{locale === "he" ? "הצהרת נגישות" : "Accessibility"}</a>
-            </div>
-            <p style={{ fontSize: 11, color: "#999" }}>&copy; 2026 BEITON &amp; Co — {locale === "he" ? "כל הזכויות שמורות" : "All rights reserved"}</p>
-          </div>
-        </footer>
+        <SiteFooter lang={locale} />
       </div>
     </>
   );
