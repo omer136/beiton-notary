@@ -74,7 +74,9 @@ export async function POST(req: NextRequest) {
     const transcript = formatTranscript(messages, language);
     const service = detectService(messages);
     const msgCount = messages.filter((m) => m.role === "user").length;
-    const today = new Date().toISOString().split("T")[0];
+    const now = new Date();
+    const today = now.toISOString().split("T")[0];
+    const timeStr = now.toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Jerusalem" });
 
     // If we already have an item from capture_lead — add transcript as update
     if (itemId) {
@@ -102,7 +104,7 @@ export async function POST(req: NextRequest) {
       color_mm1wgvgc: { label: LANG_LABELS[language] || "עברית" },
       color_mm1wjcxx: { label: service },
       color_mm1wj0mz: { label: "אתר" },
-      date_mm1w6eek: { date: today },
+      date_mm1w6eek: { date: today, time: timeStr },
       numeric_mm1wtzxs: String(msgCount),
       long_text_mm1wcw3e: { text: transcript.slice(0, 2000) },
     };
@@ -114,7 +116,7 @@ export async function POST(req: NextRequest) {
       {
         board: BOARD_ID,
         group: GROUP_ID,
-        name: `שיחה — ${service} (${LANG_LABELS[language] || language})`,
+        name: `שיחה ${timeStr} — ${service} (${LANG_LABELS[language] || language})`,
         cols: JSON.stringify(colValues),
       }
     );

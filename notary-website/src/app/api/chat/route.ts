@@ -43,7 +43,7 @@ async function createMondayLead(lead: {
     color_mm1wgvgc: { label: LANG_LABELS[lead.language] || "עברית" },
     color_mm1wjcxx: { label: lead.service || "לא זוהה" },
     color_mm1wj0mz: { label: "אתר" },
-    date_mm1w6eek: { date: new Date().toISOString().split("T")[0] },
+    date_mm1w6eek: { date: new Date().toISOString().split("T")[0], time: new Date().toTimeString().slice(0, 5) },
     numeric_mm1wtzxs: "1",
     long_text_mm1wcw3e: { text: lead.details || "" },
   };
@@ -83,7 +83,7 @@ async function createMondayLead(lead: {
       variables: {
         board: BOARD_ID,
         group: GROUP_ID,
-        name: lead.name || "לקוח אנונימי — " + new Date().toLocaleDateString("he-IL"),
+        name: lead.name || "לקוח אנונימי — " + new Date().toLocaleDateString("he-IL") + " " + new Date().toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit" }),
         cols: JSON.stringify(colValues),
       },
     }),
