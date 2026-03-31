@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import AgentChat from "./AgentChat";
@@ -404,6 +404,7 @@ export default function NotaryHome() {
   const [ucF, setUcF] = useState("all");
   const [cookie, setCookie] = useState(true);
   const [blogF, setBlogF] = useState("all");
+  const blogScrollRef = useRef<HTMLDivElement>(null);
   const [trackN, setTrackN] = useState("");
 
   // Keep docs in scope
@@ -647,10 +648,19 @@ export default function NotaryHome() {
                 return <button key={tag} onClick={() => setBlogF(isAll ? "all" : tag)} style={{ padding: "4px 14px", borderRadius: 14, border: act ? "1px solid #1A1A1A" : "1px solid #E8E6E1", background: act ? "#1A1A1A" : "transparent", color: act ? "#fff" : "#6B6B6B", fontSize: 11, fontFamily: cfg.font, transition: "all .2s", cursor: "pointer" }}>{tag}</button>;
               })}
             </div>
-            {/* Horizontal scroll carousel */}
-            <div style={{ overflowX: "auto", scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollbarWidth: "none", msOverflowStyle: "none", paddingBottom: 8 }}>
+            {/* Horizontal scroll carousel with arrows */}
+            <div style={{ position: "relative" }}>
+              {/* Left arrow */}
+              <button onClick={() => blogScrollRef.current?.scrollBy({ left: rtl ? 296 : -296, behavior: "smooth" })} aria-label="Previous" style={{ position: "absolute", [rtl ? "right" : "left"]: -8, top: "50%", transform: "translateY(-50%)", zIndex: 10, width: 36, height: 36, borderRadius: "50%", border: "1px solid #E8E6E1", background: "rgba(255,255,255,.95)", boxShadow: "0 2px 8px rgba(0,0,0,.08)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#1A1A1A" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16, transform: rtl ? "rotate(180deg)" : "none" }}><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              {/* Right arrow */}
+              <button onClick={() => blogScrollRef.current?.scrollBy({ left: rtl ? -296 : 296, behavior: "smooth" })} aria-label="Next" style={{ position: "absolute", [rtl ? "left" : "right"]: -8, top: "50%", transform: "translateY(-50%)", zIndex: 10, width: 36, height: 36, borderRadius: "50%", border: "1px solid #E8E6E1", background: "rgba(255,255,255,.95)", boxShadow: "0 2px 8px rgba(0,0,0,.08)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#1A1A1A" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16, transform: rtl ? "rotate(180deg)" : "none" }}><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+              {/* Scroll container */}
               <style>{`.blog-scroll::-webkit-scrollbar{display:none}`}</style>
-              <div className="blog-scroll" style={{ display: "flex", gap: 16, overflowX: "auto", scrollSnapType: "x mandatory", paddingInlineStart: 4, paddingInlineEnd: 4 }}>
+              <div ref={blogScrollRef} className="blog-scroll" style={{ display: "flex", gap: 16, overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none", paddingInlineStart: 4, paddingInlineEnd: 4, paddingBottom: 8 }}>
                 {t.blog.items.filter((p: any) => blogF === "all" || p.tag === blogF).map((post: any, i: number) => (
                   <Link key={i} href={`/${lang}/blog/${post.slug}`} style={{ textDecoration: "none", color: "inherit", flex: "0 0 280px", scrollSnapAlign: "start" }}>
                     <article className="sc" style={{ background: "#FAFAF8", borderRadius: 12, padding: 24, border: "1px solid #E8E6E1", transition: "all .3s", cursor: "pointer", height: "100%", minHeight: 180 }}>
