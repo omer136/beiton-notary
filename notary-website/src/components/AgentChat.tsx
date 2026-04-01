@@ -7,12 +7,12 @@ import { getStoredUTM } from "@/lib/utm";
 type Lang = "he" | "en" | "ru" | "ar" | "fr" | "es";
 
 const PLACEHOLDERS: Record<Lang, string> = {
-  he: "מה אתה צריך? תרגום, אימות חתימה, אפוסטיל...",
-  en: "What do you need? Translation, authentication, apostille...",
-  ru: "Что вам нужно? Перевод, заверение, апостиль...",
-  ar: "ما الذي تحتاجه؟ ترجمة، توثيق، أبوستيل...",
-  fr: "De quoi avez-vous besoin? Traduction, authentification, apostille...",
-  es: "Que necesita? Traduccion, autenticacion, apostilla...",
+  he: "איך נוכל לעזור? תרגום, אימות חתימה, אפוסטיל...",
+  en: "How can we help? Translation, authentication, apostille...",
+  ru: "Как мы можем помочь? Перевод, заверение, апостиль...",
+  ar: "كيف يمكننا مساعدتكم؟ ترجمة، توثيق، أبوستيل...",
+  fr: "Comment pouvons-nous vous aider? Traduction, authentification...",
+  es: "Como podemos ayudarle? Traduccion, autenticacion, apostilla...",
 };
 
 const GREETINGS: Record<Lang, string> = {
