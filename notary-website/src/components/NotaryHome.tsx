@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import AgentChat from "./AgentChat";
 import { PRICING_CONFIG } from "@/data/pricing-config";
-import { trackContactClick, trackServiceExplored } from "@/lib/analytics";
+import { trackContactClick, trackServiceExplored, updateConsent } from "@/lib/analytics";
 import SiteFooter from "./SiteFooter";
 
 /* ═══════════════════════════════════════════════════════════
@@ -402,7 +402,7 @@ export default function NotaryHome() {
   const [foreignLang, setForeignLang] = useState(false);
   const [faq, setFaq] = useState<number | null>(null);
   const [ucF, setUcF] = useState("all");
-  const [cookie, setCookie] = useState(true);
+  const [cookie, setCookie] = useState(false); // start hidden, show after checking localStorage
   const [blogF, setBlogF] = useState("all");
   const blogScrollRef = useRef<HTMLDivElement>(null);
   const [trackN, setTrackN] = useState("");
@@ -423,6 +423,17 @@ export default function NotaryHome() {
       setLangState(seg);
     }
   }, [pathname, lang]);
+
+  // Cookie consent — check localStorage, show banner only if not yet decided
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("beiton_consent");
+      if (stored === null) {
+        setCookie(true); // no decision yet — show banner
+      }
+      // If stored is "true" or "false", consent was already given — don't show
+    } catch { setCookie(true); } // if localStorage fails, show banner
+  }, []);
 
   const t = T[lang]; const cfg = LANGS[lang]; const rtl = cfg.dir === "rtl";
   const svc = selSvc ? PRICING_CONFIG[selSvc] : null;
@@ -697,16 +708,21 @@ export default function NotaryHome() {
       {/* FOOTER */}
       <SiteFooter lang={lang} />
 
-      {/* COOKIE */}
-      {cookie && <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 200, background: "#fff", borderTop: "1px solid #E8E6E1", padding: "14px 24px", boxShadow: "0 -4px 16px rgba(0,0,0,.05)" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-          <p style={{ fontSize: 11, color: "#6B6B6B", flex: 1, minWidth: 180 }}>{t.cookie.text}</p>
-          <div style={{ display: "flex", gap: 6 }}>
-            <button onClick={() => setCookie(false)} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 6, padding: "7px 18px", fontSize: 11, fontWeight: 500, fontFamily: cfg.font, transition: "background .2s" }}>{t.cookie.accept}</button>
-            <button onClick={() => setCookie(false)} style={{ background: "transparent", color: "#6B6B6B", border: "1px solid #E8E6E1", borderRadius: 6, padding: "7px 14px", fontSize: 11, fontFamily: cfg.font }}>{t.cookie.decline}</button>
+      {/* COOKIE CONSENT — overlay + banner */}
+      {cookie && <>
+        {/* Dim overlay */}
+        <div style={{ position: "fixed", inset: 0, zIndex: 199, background: "rgba(0,0,0,.4)", backdropFilter: "blur(2px)" }} />
+        {/* Banner */}
+        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 200, background: "#fff", borderTop: "1px solid #E8E6E1", padding: "20px 24px", boxShadow: "0 -4px 24px rgba(0,0,0,.12)" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+            <p style={{ fontSize: 12, color: "#6B6B6B", flex: 1, minWidth: 200, lineHeight: 1.6 }}>{t.cookie.text}</p>
+            <div style={{ display: "flex", gap: 8 }}>
+              <button onClick={() => { updateConsent(true); try { localStorage.setItem("beiton_consent", "true"); } catch {} setCookie(false); }} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 6, padding: "9px 22px", fontSize: 12, fontWeight: 500, fontFamily: cfg.font, transition: "background .2s", cursor: "pointer" }}>{t.cookie.accept}</button>
+              <button onClick={() => { updateConsent(false); try { localStorage.setItem("beiton_consent", "false"); } catch {} setCookie(false); }} style={{ background: "transparent", color: "#6B6B6B", border: "1px solid #E8E6E1", borderRadius: 6, padding: "9px 18px", fontSize: 12, fontFamily: cfg.font, cursor: "pointer" }}>{t.cookie.decline}</button>
+            </div>
           </div>
         </div>
-      </div>}
+      </>}
     </div>
   );
 }
