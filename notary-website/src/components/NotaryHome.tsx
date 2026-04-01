@@ -424,17 +424,13 @@ export default function NotaryHome() {
     }
   }, [pathname, lang]);
 
-  // Cookie consent — check localStorage, restore consent state, show banner only if not yet decided
+  // Cookie consent — show banner only if user hasn't decided yet
+  // (consent defaults are already set in layout.tsx based on localStorage)
   useEffect(() => {
     try {
-      const stored = localStorage.getItem("beiton_consent");
-      if (stored === "granted") {
-        updateConsent(true); // restore consent — unblock GTM tags
-      } else if (stored === "denied") {
-        updateConsent(false); // keep blocked
-      } else {
-        setCookie(true); // no decision yet — show banner
-      }
+      const saved = localStorage.getItem("beiton_consent");
+      if (!saved) setCookie(true); // no decision yet — show banner
+      // if saved is "granted" or "denied", banner stays hidden
     } catch { setCookie(true); }
   }, []);
 

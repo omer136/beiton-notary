@@ -49,10 +49,15 @@ export function updateConsent(granted: boolean) {
   window.dataLayer = window.dataLayer || [];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function gtag(..._args: any[]) { window.dataLayer.push(arguments as any); }
+  const state = granted ? "granted" : "denied";
   gtag("consent", "update", {
-    ad_storage: granted ? "granted" : "denied",
-    ad_user_data: granted ? "granted" : "denied",
-    ad_personalization: granted ? "granted" : "denied",
-    analytics_storage: granted ? "granted" : "denied",
+    ad_storage: state,
+    ad_user_data: state,
+    ad_personalization: state,
+    analytics_storage: state,
   });
+  // Send event so GTM can use it as additional trigger for GA4/Meta init
+  if (granted) {
+    window.dataLayer.push({ event: "consent_granted" });
+  }
 }
