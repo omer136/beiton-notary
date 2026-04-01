@@ -689,7 +689,7 @@ export default function NotaryHome() {
         <h2 style={{ ...S.h2, marginBottom: 24 }}>{t.contact.h2}</h2>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
           <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp")} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, fontFamily: cfg.font, textDecoration: "none", transition: "background .2s" }}>{t.contact.whatsapp}</a>
-          <a href="mailto:office@beiton.co" onClick={() => trackContactClick("email")} className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", transition: "all .2s" }}>{t.contact.email}</a>
+          <a href="mailto:office@beiton.co" target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("email")} className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", transition: "all .2s" }}>{t.contact.email}</a>
         </div>
         <p style={{ fontSize: 11, color: "#999", marginTop: 14 }}>office@beiton.co</p>
       </section>
