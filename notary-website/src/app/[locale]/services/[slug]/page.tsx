@@ -213,7 +213,7 @@ export default async function ServicePage({
             <h2 style={{ fontSize: 20, fontWeight: 400, marginBottom: 8 }}>{c.ctaTitle}</h2>
             <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B", marginBottom: 16 }}>{c.ctaText}</p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="https://wa.me/972500000000" style={{ background: "#1A1A1A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}>{c.ctaWhatsapp}</a>
+              <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" style={{ background: "#1A1A1A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}>{c.ctaWhatsapp}</a>
               <Link href={`/${locale}`} style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, textDecoration: "none" }}>{c.ctaBack}</Link>
             </div>
           </div>

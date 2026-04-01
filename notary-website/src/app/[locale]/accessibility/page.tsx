@@ -38,7 +38,7 @@ const he = {
     },
     {
       heading: "7. רכז/ת נגישות ויצירת קשר",
-      body: "נתקלתם בבעיית נגישות באתר? נשמח לטפל בכך.\nדוא\"ל: office@beiton.co\nטלפון: 050-0000000\nפניות בנושא נגישות יטופלו בתוך 14 ימי עסקים.",
+      body: "נתקלתם בבעיית נגישות באתר? נשמח לטפל בכך.\nדוא\"ל: office@beiton.co\nטלפון: 03-3817776\nפניות בנושא נגישות יטופלו בתוך 14 ימי עסקים.",
     },
     {
       heading: "8. הגשת תלונה",
@@ -78,7 +78,7 @@ const en = {
     },
     {
       heading: "7. Accessibility Coordinator and Contact",
-      body: "Encountered an accessibility issue on the Website? We would be happy to address it.\nEmail: office@beiton.co\nPhone: 050-0000000\nAccessibility inquiries will be addressed within 14 business days.",
+      body: "Encountered an accessibility issue on the Website? We would be happy to address it.\nEmail: office@beiton.co\nPhone: 03-3817776\nAccessibility inquiries will be addressed within 14 business days.",
     },
     {
       heading: "8. Filing a Complaint",

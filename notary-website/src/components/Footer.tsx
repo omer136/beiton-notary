@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
         <div className="flex gap-4">
           <span>{t("address")}</span>
-          <span>☎ 03-1234567</span>
+          <span>☎ 03-3817776</span>
         </div>
       </div>
       <div className="max-w-6xl mx-auto mt-3 flex flex-col items-center gap-2">

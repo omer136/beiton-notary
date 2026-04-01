@@ -366,7 +366,7 @@ export default async function NotaryPricing2026Article({
           <div style={{ background: "#FAFAF8", borderRadius: 12, border: "1px solid #E8E6E1", padding: "28px 24px", textAlign: "center", marginTop: 40 }}>
             <p style={{ fontSize: 15, fontWeight: 400, marginBottom: 16 }}>{c.ctaContact}</p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="https://wa.me/972500000000" style={{ background: "#1A1A1A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, textDecoration: "none", transition: "background .2s" }}>{c.ctaWhatsapp}</a>
+              <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" style={{ background: "#1A1A1A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, textDecoration: "none", transition: "background .2s" }}>{c.ctaWhatsapp}</a>
               <Link href={`/${locale}`} style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, textDecoration: "none", transition: "all .2s" }}>{c.ctaBack}</Link>
             </div>
           </div>
