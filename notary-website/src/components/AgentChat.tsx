@@ -7,12 +7,12 @@ import { getStoredUTM } from "@/lib/utm";
 type Lang = "he" | "en" | "ru" | "ar" | "fr" | "es";
 
 const PLACEHOLDERS: Record<Lang, string> = {
-  he: "למשל: צריך תרגום תעודת לידה לאנגלית עם אפוסטיל",
-  en: "e.g.: I need a birth certificate translated to English with apostille",
-  ru: "напр.: нужен перевод свидетельства о рождении с апостилем",
-  ar: "مثال: أحتاج ترجمة شهادة ميلاد للإنجليزية مع أبوستيل",
-  fr: "ex: j'ai besoin d'une traduction d'acte de naissance avec apostille",
-  es: "ej: necesito traducir un certificado de nacimiento con apostilla",
+  he: "למשל: צריך תרגום תעודת נישואין לאנגלית עם אפוסטיל",
+  en: "e.g.: I need a marriage certificate translated to English with apostille",
+  ru: "напр.: нужен перевод свидетельства о браке с апостилем",
+  ar: "مثال: أحتاج ترجمة شهادة زواج للإنجليزية مع أبوستيل",
+  fr: "ex: j'ai besoin d'une traduction d'acte de mariage avec apostille",
+  es: "ej: necesito traducir un certificado de matrimonio con apostilla",
 };
 
 const GREETINGS: Record<Lang, string> = {
