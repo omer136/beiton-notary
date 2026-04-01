@@ -424,15 +424,18 @@ export default function NotaryHome() {
     }
   }, [pathname, lang]);
 
-  // Cookie consent — check localStorage, show banner only if not yet decided
+  // Cookie consent — check localStorage, restore consent state, show banner only if not yet decided
   useEffect(() => {
     try {
       const stored = localStorage.getItem("beiton_consent");
-      if (stored === null) {
+      if (stored === "granted") {
+        updateConsent(true); // restore consent — unblock GTM tags
+      } else if (stored === "denied") {
+        updateConsent(false); // keep blocked
+      } else {
         setCookie(true); // no decision yet — show banner
       }
-      // If stored is "true" or "false", consent was already given — don't show
-    } catch { setCookie(true); } // if localStorage fails, show banner
+    } catch { setCookie(true); }
   }, []);
 
   const t = T[lang]; const cfg = LANGS[lang]; const rtl = cfg.dir === "rtl";
@@ -717,8 +720,8 @@ export default function NotaryHome() {
           <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
             <p style={{ fontSize: 12, color: "#6B6B6B", flex: 1, minWidth: 200, lineHeight: 1.6 }}>{t.cookie.text}</p>
             <div style={{ display: "flex", gap: 8 }}>
-              <button onClick={() => { updateConsent(true); try { localStorage.setItem("beiton_consent", "true"); } catch {} setCookie(false); }} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 6, padding: "9px 22px", fontSize: 12, fontWeight: 500, fontFamily: cfg.font, transition: "background .2s", cursor: "pointer" }}>{t.cookie.accept}</button>
-              <button onClick={() => { updateConsent(false); try { localStorage.setItem("beiton_consent", "false"); } catch {} setCookie(false); }} style={{ background: "transparent", color: "#6B6B6B", border: "1px solid #E8E6E1", borderRadius: 6, padding: "9px 18px", fontSize: 12, fontFamily: cfg.font, cursor: "pointer" }}>{t.cookie.decline}</button>
+              <button onClick={() => { updateConsent(true); try { localStorage.setItem("beiton_consent", "granted"); } catch {} setCookie(false); }} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 6, padding: "9px 22px", fontSize: 12, fontWeight: 500, fontFamily: cfg.font, transition: "background .2s", cursor: "pointer" }}>{t.cookie.accept}</button>
+              <button onClick={() => { updateConsent(false); try { localStorage.setItem("beiton_consent", "denied"); } catch {} setCookie(false); }} style={{ background: "transparent", color: "#6B6B6B", border: "1px solid #E8E6E1", borderRadius: 6, padding: "9px 18px", fontSize: 12, fontFamily: cfg.font, cursor: "pointer" }}>{t.cookie.decline}</button>
             </div>
           </div>
         </div>
