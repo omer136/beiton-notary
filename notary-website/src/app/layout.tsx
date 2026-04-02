@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import LanguageTracker from "@/components/LanguageTracker";
@@ -6,6 +6,13 @@ import RouteChangeTracker from "@/components/RouteChangeTracker";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "";
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: "BEITON & Co. — Notary Services",
@@ -19,7 +26,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="he" dir="rtl">
+    <html lang="he">
       <head>
         {/* Consent Mode V2 defaults — BEFORE GTM, checks localStorage first */}
         <Script id="consent-defaults" strategy="beforeInteractive">

@@ -309,7 +309,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
             flex: 1,
             border: "none",
             background: "transparent",
-            fontSize: 13,
+            fontSize: 16, // 16px prevents iOS Safari auto-zoom on focus
             fontFamily: "inherit",
             color: "#1a1a1a",
             outline: "none",
