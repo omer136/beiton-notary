@@ -20,7 +20,10 @@ interface ChatMessage {
 
 async function mondayMutation(query: string, variables: Record<string, unknown>) {
   const token = process.env.MONDAY_API_TOKEN;
-  if (!token) return null;
+  if (!token) {
+    console.error("MONDAY_API_TOKEN not set — cannot save to Monday");
+    return null;
+  }
 
   const resp = await fetch(MONDAY_URL, {
     method: "POST",
@@ -31,7 +34,11 @@ async function mondayMutation(query: string, variables: Record<string, unknown>)
     },
     body: JSON.stringify({ query, variables }),
   });
-  return resp.json();
+  const data = await resp.json();
+  if (data.errors) {
+    console.error("Monday API error:", JSON.stringify(data.errors));
+  }
+  return data;
 }
 
 function formatTranscript(messages: ChatMessage[], language: string): string {

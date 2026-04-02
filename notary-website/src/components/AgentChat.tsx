@@ -50,8 +50,9 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
 
     // Use sendBeacon for reliability (works even when page is closing)
     const payload = JSON.stringify({ messages, language: lang });
+    const blob = new Blob([payload], { type: "application/json" });
     if (navigator.sendBeacon) {
-      navigator.sendBeacon("/api/chat/save-transcript", payload);
+      navigator.sendBeacon("/api/chat/save-transcript", blob);
     } else {
       fetch("/api/chat/save-transcript", {
         method: "POST",
