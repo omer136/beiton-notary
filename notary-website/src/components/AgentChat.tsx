@@ -39,6 +39,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const prevLang = useRef(lang);
   const savedRef = useRef(false);
+  const mondayItemIdRef = useRef<string | null>(null);
   const inactivityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Save transcript to Monday.com
@@ -49,7 +50,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
     savedRef.current = true;
 
     // Use sendBeacon for reliability (works even when page is closing)
-    const payload = JSON.stringify({ messages, language: lang });
+    const payload = JSON.stringify({ messages, language: lang, itemId: mondayItemIdRef.current });
     const blob = new Blob([payload], { type: "application/json" });
     if (navigator.sendBeacon) {
       navigator.sendBeacon("/api/chat/save-transcript", blob);
@@ -142,6 +143,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
         body: JSON.stringify({ messages: updated, language: lang, utm: getStoredUTM() }),
       });
       const data = await resp.json();
+      if (data.itemId) mondayItemIdRef.current = data.itemId;
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: data.reply || data.error || "..." },

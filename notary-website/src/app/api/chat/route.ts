@@ -113,12 +113,12 @@ async function callClaude(
   messages: Message[],
   language: string,
   utmSource?: string
-): Promise<{ text: string; leadCaptured: boolean }> {
+): Promise<{ text: string; leadCaptured: boolean; mondayItemId: string | null }> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return { text: language === "he"
       ? "מצטערים, השירות אינו זמין כרגע. אנא נסו שוב מאוחר יותר."
-      : "Sorry, the service is temporarily unavailable. Please try again later.", leadCaptured: false };
+      : "Sorry, the service is temporarily unavailable. Please try again later.", leadCaptured: false, mondayItemId: null };
   }
 
   // Build Anthropic messages format
@@ -129,6 +129,7 @@ async function callClaude(
 
   let assistantText = "";
   let leadCaptured = false;
+  let mondayItemId: string | null = null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let loopMessages: any[] = [...anthropicMessages];
   let iterations = 0;
@@ -158,7 +159,7 @@ async function callClaude(
       console.error("Anthropic API error:", resp.status, err);
       return { text: language === "he"
         ? "מצטערים, אירעה שגיאה. אנא נסו שוב."
-        : "Sorry, an error occurred. Please try again.", leadCaptured: false };
+        : "Sorry, an error occurred. Please try again.", leadCaptured: false, mondayItemId: null };
     }
 
     const data = await resp.json();
@@ -201,10 +202,12 @@ async function callClaude(
           ready_for_quote: toolUse.input.ready_for_quote === "true" || toolUse.input.ready_for_quote === true,
           utm_source: utmSource,
         });
-        console.log("Monday lead result:", JSON.stringify(result?.data || result?.errors || "no response").slice(0, 200));
+        mondayItemId = result?.data?.create_item?.id || null;
+        console.log("Monday lead result:", mondayItemId || JSON.stringify(result?.errors || "no response").slice(0, 200));
         toolResult = JSON.stringify({
           success: true,
           message: "Lead saved to Monday.com",
+          itemId: mondayItemId,
         });
       } catch (e) {
         console.error("capture_lead error:", e);
@@ -235,7 +238,7 @@ async function callClaude(
     assistantText = "";
   }
 
-  return { text: assistantText || "...", leadCaptured };
+  return { text: assistantText || "...", leadCaptured, mondayItemId };
 }
 
 // ---------------------------------------------------------------------------
@@ -258,7 +261,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { text: reply, leadCaptured } = await callClaude(messages, language || "he", utm?.utm_source);
+    const { text: reply, leadCaptured, mondayItemId } = await callClaude(messages, language || "he", utm?.utm_source);
+
+    let itemId = mondayItemId;
 
     // Fallback: if agent didn't call capture_lead but there are 2+ user messages, force save
     if (!leadCaptured && messages.filter(m => m.role === "user").length >= 2) {
@@ -273,16 +278,19 @@ export async function POST(req: NextRequest) {
         : /העתק|copy/i.test(allText) ? "העתק נאמן"
         : "לא זוהה";
       console.log("Fallback lead save — agent did not call capture_lead, service:", service);
-      await createMondayLead({
-        name: "",
-        service,
-        language: language || "he",
-        details: messages.map(m => (m.role === "user" ? "לקוח: " : "נועה: ") + m.content).join("\n").slice(0, 2000),
-        utm_source: utm?.utm_source,
-      }).catch(e => console.error("Fallback lead save error:", e));
+      try {
+        const fallbackResult = await createMondayLead({
+          name: "",
+          service,
+          language: language || "he",
+          details: messages.map(m => (m.role === "user" ? "לקוח: " : "נועה: ") + m.content).join("\n").slice(0, 2000),
+          utm_source: utm?.utm_source,
+        });
+        itemId = fallbackResult?.data?.create_item?.id || null;
+      } catch (e) { console.error("Fallback lead save error:", e); }
     }
 
-    return NextResponse.json({ reply });
+    return NextResponse.json({ reply, itemId });
   } catch (e) {
     console.error("Chat API error:", e);
     return NextResponse.json(
