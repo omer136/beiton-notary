@@ -113,12 +113,12 @@ async function callClaude(
   messages: Message[],
   language: string,
   utmSource?: string
-): Promise<string> {
+): Promise<{ text: string; leadCaptured: boolean }> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
-    return language === "he"
+    return { text: language === "he"
       ? "מצטערים, השירות אינו זמין כרגע. אנא נסו שוב מאוחר יותר."
-      : "Sorry, the service is temporarily unavailable. Please try again later.";
+      : "Sorry, the service is temporarily unavailable. Please try again later.", leadCaptured: false };
   }
 
   // Build Anthropic messages format
@@ -128,6 +128,7 @@ async function callClaude(
   }));
 
   let assistantText = "";
+  let leadCaptured = false;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let loopMessages: any[] = [...anthropicMessages];
   let iterations = 0;
@@ -155,9 +156,9 @@ async function callClaude(
     if (!resp.ok) {
       const err = await resp.text();
       console.error("Anthropic API error:", resp.status, err);
-      return language === "he"
+      return { text: language === "he"
         ? "מצטערים, אירעה שגיאה. אנא נסו שוב."
-        : "Sorry, an error occurred. Please try again.";
+        : "Sorry, an error occurred. Please try again.", leadCaptured: false };
     }
 
     const data = await resp.json();
@@ -187,6 +188,7 @@ async function callClaude(
     let toolResult = "";
     if (toolUse.name === "capture_lead" && toolUse.input) {
       console.log("capture_lead called:", JSON.stringify(toolUse.input).slice(0, 200));
+      leadCaptured = true;
       try {
         const result = await createMondayLead({
           name: toolUse.input.name || "",
@@ -233,7 +235,7 @@ async function callClaude(
     assistantText = "";
   }
 
-  return assistantText || "...";
+  return { text: assistantText || "...", leadCaptured };
 }
 
 // ---------------------------------------------------------------------------
@@ -256,7 +258,29 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const reply = await callClaude(messages, language || "he", utm?.utm_source);
+    const { text: reply, leadCaptured } = await callClaude(messages, language || "he", utm?.utm_source);
+
+    // Fallback: if agent didn't call capture_lead but there are 2+ user messages, force save
+    if (!leadCaptured && messages.filter(m => m.role === "user").length >= 2) {
+      const allText = messages.map(m => m.content).join(" ");
+      const service = /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
+        : /חתימה|signature/i.test(allText) ? "אימות חתימה"
+        : /ייפוי כוח|power of attorney/i.test(allText) ? "ייפוי כוח"
+        : /צוואה|will/i.test(allText) ? "צוואה"
+        : /תצהיר|affidavit/i.test(allText) ? "תצהיר"
+        : /הסכם ממון|prenup/i.test(allText) ? "הסכם ממון"
+        : /אפוסטיל|apostil/i.test(allText) ? "אפוסטיל"
+        : /העתק|copy/i.test(allText) ? "העתק נאמן"
+        : "לא זוהה";
+      console.log("Fallback lead save — agent did not call capture_lead, service:", service);
+      await createMondayLead({
+        name: "",
+        service,
+        language: language || "he",
+        details: messages.map(m => (m.role === "user" ? "לקוח: " : "נועה: ") + m.content).join("\n").slice(0, 2000),
+        utm_source: utm?.utm_source,
+      }).catch(e => console.error("Fallback lead save error:", e));
+    }
 
     return NextResponse.json({ reply });
   } catch (e) {
