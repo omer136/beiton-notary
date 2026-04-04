@@ -186,8 +186,9 @@ async function callClaude(
     // Execute tool
     let toolResult = "";
     if (toolUse.name === "capture_lead" && toolUse.input) {
+      console.log("capture_lead called:", JSON.stringify(toolUse.input).slice(0, 200));
       try {
-        await createMondayLead({
+        const result = await createMondayLead({
           name: toolUse.input.name || "",
           phone: toolUse.input.phone,
           email: toolUse.input.email,
@@ -198,11 +199,13 @@ async function callClaude(
           ready_for_quote: toolUse.input.ready_for_quote === "true" || toolUse.input.ready_for_quote === true,
           utm_source: utmSource,
         });
+        console.log("Monday lead result:", JSON.stringify(result?.data || result?.errors || "no response").slice(0, 200));
         toolResult = JSON.stringify({
           success: true,
           message: "Lead saved to Monday.com",
         });
       } catch (e) {
+        console.error("capture_lead error:", e);
         toolResult = JSON.stringify({
           success: false,
           message: String(e),
