@@ -15,6 +15,15 @@ const PLACEHOLDERS: Record<Lang, string> = {
   es: "ej: cuanto cuesta traducir un certificado de matrimonio al ingles",
 };
 
+const PLACEHOLDERS_ACTIVE: Record<Lang, string> = {
+  he: "כתוב הודעה...",
+  en: "Type a message...",
+  ru: "Напишите сообщение...",
+  ar: "اكتب رسالة...",
+  fr: "Ecrire un message...",
+  es: "Escribe un mensaje...",
+};
+
 const GREETINGS: Record<Lang, string> = {
   he: "היי! אני נועה מצוות הנוטריון. איך אפשר לעזור?",
   en: "Hello, how can I help? Feel free to ask about translation, signature authentication, apostille, or any other notary service.",
@@ -124,15 +133,19 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
 
   async function send() {
     const text = input.trim();
-    if (!text || loading) return;
+    if (!text) return;
 
     const userMsg: Msg = { role: "user", content: text };
-    const updated = [...messages, userMsg];
-    const userMsgCount = updated.filter(m => m.role === "user").length;
+    // Use functional update so concurrent sends always see the latest history
+    let snapshot: Msg[] = [];
+    setMessages((prev) => {
+      snapshot = [...prev, userMsg];
+      return snapshot;
+    });
+    const userMsgCount = snapshot.filter(m => m.role === "user").length;
     if (userMsgCount === 1) trackChatInteraction("opened");
     trackChatInteraction("message_sent", userMsgCount);
 
-    setMessages(updated);
     setInput("");
     setLoading(true);
 
@@ -140,7 +153,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
       const resp = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: updated, language: lang, utm: getStoredUTM() }),
+        body: JSON.stringify({ messages: snapshot, language: lang, utm: getStoredUTM() }),
       });
       const data = await resp.json();
       if (data.itemId) mondayItemIdRef.current = data.itemId;
@@ -308,8 +321,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && send()}
-          placeholder={PLACEHOLDERS[lang]}
-          disabled={loading}
+          placeholder={messages.some(m => m.role === "user") ? PLACEHOLDERS_ACTIVE[lang] : PLACEHOLDERS[lang]}
           style={{
             flex: 1,
             border: "none",
@@ -326,7 +338,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
         {/* Send button */}
         <button
           onClick={send}
-          disabled={loading || !input.trim()}
+          disabled={!input.trim()}
           style={{
             background: "#1a1a1a",
             border: "none",
@@ -336,8 +348,8 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            cursor: loading ? "wait" : "pointer",
-            opacity: loading || !input.trim() ? 0.4 : 1,
+            cursor: "pointer",
+            opacity: !input.trim() ? 0.4 : 1,
             transition: "opacity .2s",
             flexShrink: 0,
           }}
