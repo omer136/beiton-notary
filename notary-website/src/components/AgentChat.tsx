@@ -153,7 +153,7 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
       const resp = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: snapshot, language: lang, utm: getStoredUTM() }),
+        body: JSON.stringify({ messages: snapshot, language: lang, utm: getStoredUTM(), existingItemId: mondayItemIdRef.current }),
       });
       const data = await resp.json();
       if (data.itemId) mondayItemIdRef.current = data.itemId;

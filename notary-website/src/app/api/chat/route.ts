@@ -122,6 +122,17 @@ async function createMondayLead(lead: {
   const data = await resp.json();
   if (data.errors) {
     console.error("Monday API error:", JSON.stringify(data.errors));
+    sendErrorAlert(
+      "Monday API error on lead save",
+      `Lead: ${JSON.stringify(lead).slice(0, 400)}\nErrors: ${JSON.stringify(data.errors).slice(0, 500)}`
+    ).catch(() => {});
+  }
+  if (!resp.ok) {
+    console.error("Monday HTTP error:", resp.status);
+    sendErrorAlert(
+      `Monday HTTP ${resp.status}`,
+      `Lead: ${JSON.stringify(lead).slice(0, 400)}`
+    ).catch(() => {});
   }
   return data;
 }
@@ -221,7 +232,6 @@ async function callClaude(
     let toolResult = "";
     if (toolUse.name === "capture_lead" && toolUse.input) {
       console.log("capture_lead called:", JSON.stringify(toolUse.input).slice(0, 200));
-      leadCaptured = true;
       try {
         const result = await createMondayLead({
           name: toolUse.input.name || "",
@@ -236,9 +246,17 @@ async function callClaude(
         });
         mondayItemId = result?.data?.create_item?.id || null;
         console.log("Monday lead result:", mondayItemId || JSON.stringify(result?.errors || "no response").slice(0, 200));
+        if (mondayItemId) {
+          leadCaptured = true;
+        } else {
+          sendErrorAlert(
+            "capture_lead: Monday returned no itemId",
+            `Result: ${JSON.stringify(result).slice(0, 500)}`
+          ).catch(() => {});
+        }
         toolResult = JSON.stringify({
-          success: true,
-          message: "Lead saved to Monday.com",
+          success: !!mondayItemId,
+          message: mondayItemId ? "Lead saved to Monday.com" : "Monday save failed",
           itemId: mondayItemId,
         });
       } catch (e) {
@@ -280,10 +298,11 @@ async function callClaude(
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { messages, language, utm } = body as {
+    const { messages, language, utm, existingItemId } = body as {
       messages: Message[];
       language: string;
       utm?: { utm_source?: string } | null;
+      existingItemId?: string | null;
     };
 
     if (!messages || !Array.isArray(messages)) {
@@ -303,10 +322,10 @@ export async function POST(req: NextRequest) {
       ).catch(() => {});
     }
 
-    let itemId = mondayItemId;
+    let itemId = mondayItemId || existingItemId || null;
 
-    // Fallback: if agent didn't call capture_lead but there are 2+ user messages, force save
-    if (!leadCaptured && messages.filter(m => m.role === "user").length >= 2) {
+    // Fallback: if no Monday item exists for this conversation yet and user has sent any message, force save
+    if (!itemId && messages.filter(m => m.role === "user").length >= 1) {
       const allText = messages.map(m => m.content).join(" ");
       const service = /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
         : /חתימה|signature/i.test(allText) ? "אימות חתימה"
