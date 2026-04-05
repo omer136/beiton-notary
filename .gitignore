@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Claude Code — memory, agent state, transcripts — NEVER commit
+.claude/
+**/.claude/
+
+# Private notary department working folder
+notary-department/
+
+# Brand assets & logo guide (managed separately)
+Logo : brand guide/
+
+# Internal legal docs source (published versions live in /notary-website)
+notary-website/Legal/
+
+# Internal prompts / scratch
+notary-website/CLAUDE-CODE-PROMPT.md
+notary-website/claude-code-deploy-prompt.md
+notary-website/SEO-AGENT.md
+notary-website/beiton-notary-v2.jsx
+
+# Env files
+.env
+.env.*
+!.env.example

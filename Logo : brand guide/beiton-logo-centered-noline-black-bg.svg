@@ -1,7 +1,0 @@
-<svg width="600" height="110" viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="110" fill="#1a1a1a"/>
-  <g transform="translate(300, 42)">
-    <text text-anchor="middle" dominant-baseline="central" y="-10" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="44" letter-spacing="5" fill="#ffffff">BEITON<tspan font-weight="400" font-size="18" letter-spacing="3" fill="#a0a0a0" dy="8"> &amp; Co</tspan></text>
-    <text text-anchor="middle" x="0" y="30" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="10" letter-spacing="6" fill="#777777">BEYOND LAW</text>
-  </g>
-</svg>
