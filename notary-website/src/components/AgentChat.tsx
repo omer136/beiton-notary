@@ -49,7 +49,11 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
   const prevLang = useRef(lang);
   const savedRef = useRef(false);
   const mondayItemIdRef = useRef<string | null>(null);
+  const messagesRef = useRef<Msg[]>([{ role: "assistant", content: GREETINGS[lang] }]);
   const inactivityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Keep ref in sync with state for reliable reads inside async send()
+  useEffect(() => { messagesRef.current = messages; }, [messages]);
 
   // Save transcript to Monday.com
   const saveTranscript = useCallback(() => {
@@ -136,12 +140,10 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
     if (!text) return;
 
     const userMsg: Msg = { role: "user", content: text };
-    // Use functional update so concurrent sends always see the latest history
-    let snapshot: Msg[] = [];
-    setMessages((prev) => {
-      snapshot = [...prev, userMsg];
-      return snapshot;
-    });
+    // Build snapshot from the ref (which is always up to date) so concurrent sends work
+    const snapshot: Msg[] = [...messagesRef.current, userMsg];
+    messagesRef.current = snapshot;
+    setMessages(snapshot);
     const userMsgCount = snapshot.filter(m => m.role === "user").length;
     if (userMsgCount === 1) trackChatInteraction("opened");
     trackChatInteraction("message_sent", userMsgCount);

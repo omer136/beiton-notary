@@ -305,9 +305,10 @@ export async function POST(req: NextRequest) {
       existingItemId?: string | null;
     };
 
-    if (!messages || !Array.isArray(messages)) {
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      console.warn("Chat API called with empty/invalid messages", { messages });
       return NextResponse.json(
-        { error: "messages array required" },
+        { error: "messages array required and cannot be empty" },
         { status: 400 }
       );
     }
