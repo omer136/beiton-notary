@@ -698,15 +698,14 @@ export default function NotaryHome() {
       <section id="contact" style={{ background: "#FAFAF8", padding: "64px 24px", textAlign: "center" }}>
         <h2 style={{ ...S.h2, marginBottom: 24 }}>{t.contact.h2}</h2>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="tel:+97233817776" onClick={() => trackContactClick("phone")} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, fontFamily: cfg.font, textDecoration: "none", transition: "background .2s" }}>{t.contact.phone} · 03-3817776</a>
-          <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp")} className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", transition: "all .2s" }}>{t.contact.whatsapp}</a>
+          <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp")} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, fontFamily: cfg.font, textDecoration: "none", transition: "background .2s" }}>{t.contact.whatsapp}</a>
           <a href="mailto:office@beiton.co" target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("email")} className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", transition: "all .2s" }}>{t.contact.email}</a>
+          <a href="tel:+97233817776" onClick={() => trackContactClick("phone")} className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", direction: "ltr", transition: "all .2s" }}>03-3817776</a>
         </div>
         <div style={{ marginTop: 20, fontSize: 12, color: "#6B6B6B", lineHeight: 1.9 }}>
           <p style={{ margin: 0 }}>
             <a href="https://maps.google.com/?q=נח+מוזס+2+ראשון+לציון" target="_blank" rel="noopener noreferrer" style={{ color: "#6B6B6B", textDecoration: "none", borderBottom: "1px dotted #B8B8B8" }}>{t.contact.address}</a>
           </p>
-          <p style={{ margin: "4px 0 0" }}>{t.contact.hours}</p>
           <p style={{ margin: "4px 0 0" }}>office@beiton.co</p>
         </div>
       </section>
