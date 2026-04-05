@@ -33,13 +33,13 @@ const CATEGORIES: Record<string, Category[]> = {
   ],
 };
 
-const FOOTER_LABELS: Record<string, { rights: string; privacy: string; terms: string; accessibility: string }> = {
-  he: { rights: "כל הזכויות שמורות", privacy: "מדיניות פרטיות", terms: "תנאי שימוש", accessibility: "הצהרת נגישות" },
-  en: { rights: "All rights reserved", privacy: "Privacy Policy", terms: "Terms of Use", accessibility: "Accessibility" },
-  ru: { rights: "Все права защищены", privacy: "Конфиденциальность", terms: "Условия", accessibility: "Доступность" },
-  ar: { rights: "جميع الحقوق محفوظة", privacy: "الخصوصية", terms: "الشروط", accessibility: "إمكانية الوصول" },
-  fr: { rights: "Tous droits reserves", privacy: "Confidentialite", terms: "Conditions", accessibility: "Accessibilite" },
-  es: { rights: "Todos los derechos reservados", privacy: "Privacidad", terms: "Terminos", accessibility: "Accesibilidad" },
+const FOOTER_LABELS: Record<string, { rights: string; privacy: string; terms: string; accessibility: string; contact: string; address: string; hours: string }> = {
+  he: { rights: "כל הזכויות שמורות", privacy: "מדיניות פרטיות", terms: "תנאי שימוש", accessibility: "הצהרת נגישות", contact: "יצירת קשר", address: "נח מוזס 2, ראשון לציון", hours: "א׳–ה׳ 09:00–18:00" },
+  en: { rights: "All rights reserved", privacy: "Privacy Policy", terms: "Terms of Use", accessibility: "Accessibility", contact: "Contact", address: "2 Noach Mozes St., Rishon LeZion", hours: "Sun–Thu 09:00–18:00" },
+  ru: { rights: "Все права защищены", privacy: "Конфиденциальность", terms: "Условия", accessibility: "Доступность", contact: "Контакты", address: "ул. Ноах Мозес 2, Ришон-ле-Цион", hours: "Вс–Чт 09:00–18:00" },
+  ar: { rights: "جميع الحقوق محفوظة", privacy: "الخصوصية", terms: "الشروط", accessibility: "إمكانية الوصول", contact: "تواصل", address: "شارع نوح موزس 2، ראשון לציון", hours: "الأحد–الخميس 09:00–18:00" },
+  fr: { rights: "Tous droits reserves", privacy: "Confidentialite", terms: "Conditions", accessibility: "Accessibilite", contact: "Contact", address: "2 rue Noach Mozes, Rishon LeZion", hours: "Dim–Jeu 09h00–18h00" },
+  es: { rights: "Todos los derechos reservados", privacy: "Privacidad", terms: "Terminos", accessibility: "Accesibilidad", contact: "Contacto", address: "Calle Noach Mozes 2, Rishon LeZion", hours: "Dom–Jue 09:00–18:00" },
 };
 
 export default function SiteFooter({ lang }: { lang: string }) {
@@ -61,6 +61,18 @@ export default function SiteFooter({ lang }: { lang: string }) {
               ))}
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Contact row */}
+      <div style={{ borderTop: "1px solid #E8E6E1", padding: "20px 24px", background: "#FAFAF8" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "10px 28px", fontSize: 12, color: "#6B6B6B" }}>
+          <p style={{ margin: 0, fontWeight: 600, color: "#1A1A1A" }}>{fl.contact}:</p>
+          <a href="tel:+97233817776" style={{ color: "#1A1A1A", textDecoration: "none", direction: "ltr" }}>📞 03-3817776</a>
+          <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" style={{ color: "#1A1A1A", textDecoration: "none" }}>WhatsApp</a>
+          <a href="mailto:office@beiton.co" style={{ color: "#1A1A1A", textDecoration: "none", direction: "ltr" }}>office@beiton.co</a>
+          <a href="https://maps.google.com/?q=נח+מוזס+2+ראשון+לציון" target="_blank" rel="noopener noreferrer" style={{ color: "#6B6B6B", textDecoration: "none" }}>{fl.address}</a>
+          <span style={{ color: "#999" }}>{fl.hours}</span>
         </div>
       </div>
 

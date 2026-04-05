@@ -104,7 +104,7 @@ const T: Record<string, any> = {
       { title: "תצהיר נוטריוני — מתי נדרש, איך מכינים וכמה עולה?", tag: "תצהיר", excerpt: "מתי חייבים תצהיר נוטריוני, ההבדל מתצהיר בפני עו״ד, סוגים נפוצים ותעריפים.", slug: "notarial-affidavit" },
     ] },
     about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "אנחנו לא רק עורכי דין — אנחנו שותפים לדרך. BEYOND LAW אומר שאנחנו חושבים מעבר למשפט: חשיבה עסקית, ליווי מקיף, ופתרונות מותאמים שמשלבים מקצועיות משפטית עם ראייה מסחרית. כל שירות נוטריוני אצלנו הוא דיגיטלי, שקוף ומהיר — כי פעולה משפטית לא צריכה להיות מסובכת." },
-    contact: { h2: "יצירת קשר", whatsapp: "פנייה בוואטסאפ", email: "פנייה במייל" },
+    contact: { h2: "יצירת קשר", whatsapp: "פנייה בוואטסאפ", email: "פנייה במייל", phone: "חיוג טלפוני", address: "נח מוזס 2, ראשון לציון", hours: "ימים א׳–ה׳, 09:00–18:00" },
     footer: { rights: "כל הזכויות שמורות", privacy: "מדיניות פרטיות", terms: "תנאי שימוש", accessibility: "נגישות" },
     cookie: { text: "אתר זה משתמש בעוגיות לצורך שיפור חוויית הגלישה. בהמשך הגלישה הינך מסכים/ה לשימוש בעוגיות.", accept: "מסכים/ה", decline: "דחייה" },
   },
@@ -152,7 +152,7 @@ const T: Record<string, any> = {
       { title: "Notarial Affidavit — When Required and How to Prepare", tag: "Affidavit", excerpt: "When needed, difference from lawyer affidavit, types and pricing.", slug: "notarial-affidavit" },
     ] },
     about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "We're not just lawyers — we're partners. BEYOND LAW means we think beyond legal practice: business strategy, comprehensive support, and tailored solutions that combine legal expertise with commercial insight. Every notary service is digital, transparent, and fast." },
-    contact: { h2: "Get in Touch", whatsapp: "Message on WhatsApp", email: "Send an Email" },
+    contact: { h2: "Get in Touch", whatsapp: "Message on WhatsApp", email: "Send an Email", phone: "Call us", address: "2 Noach Mozes St., Rishon LeZion", hours: "Sun–Thu, 09:00–18:00" },
     footer: { rights: "All rights reserved", privacy: "Privacy Policy", terms: "Terms of Use", accessibility: "Accessibility" },
     cookie: { text: "This site uses cookies to improve your experience. By continuing, you agree to their use.", accept: "Accept", decline: "Decline" },
   },
@@ -200,7 +200,7 @@ const T: Record<string, any> = {
       { title: "Нотариальный аффидевит — когда нужен", tag: "Аффидевит", excerpt: "Когда требуется, виды, стоимость.", slug: "notarial-affidavit" },
     ] },
     about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "Мы не просто юристы — мы партнёры. BEYOND LAW означает мышление за рамками права: бизнес-стратегия, комплексное сопровождение и индивидуальные решения. Каждая нотариальная услуга — цифровая, прозрачная и быстрая." },
-    contact: { h2: "Связаться", whatsapp: "WhatsApp", email: "Email" },
+    contact: { h2: "Связаться", whatsapp: "WhatsApp", email: "Email", phone: "Позвонить", address: "ул. Ноах Мозес 2, Ришон-ле-Цион", hours: "Вс–Чт, 09:00–18:00" },
     footer: { rights: "Все права защищены", privacy: "Конфиденциальность", terms: "Условия", accessibility: "Доступность" },
     cookie: { text: "Сайт использует cookie. Продолжая, вы соглашаетесь.", accept: "Принять", decline: "Отклонить" },
   },
@@ -248,7 +248,7 @@ const T: Record<string, any> = {
       { title: "الإفادة الخطية التوثيقية — متى تحتاجها؟", tag: "إفادة", excerpt: "متى مطلوبة، الأنواع والتكلفة.", slug: "notarial-affidavit" },
     ] },
     about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "نحن لسنا مجرد محامين — نحن شركاء. BEYOND LAW يعني التفكير فيما هو أبعد من القانون: استراتيجية تجارية، مرافقة شاملة، وحلول مخصصة. كل خدمة توثيقية لدينا رقمية وشفافة وسريعة." },
-    contact: { h2: "تواصل معنا", whatsapp: "واتساب", email: "بريد إلكتروني" },
+    contact: { h2: "تواصل معنا", whatsapp: "واتساب", email: "بريد إلكتروني", phone: "اتصل بنا", address: "شارع نوح موزس 2، ראשון לציון", hours: "الأحد–الخميس، 09:00–18:00" },
     footer: { rights: "جميع الحقوق محفوظة", privacy: "الخصوصية", terms: "الشروط", accessibility: "إمكانية الوصول" },
     cookie: { text: "يستخدم الموقع ملفات تعريف الارتباط. بالاستمرار توافق/ين.", accept: "موافق/ة", decline: "رفض" },
   },
@@ -296,7 +296,7 @@ const T: Record<string, any> = {
       { title: "Affidavit notarie", tag: "Affidavit", excerpt: "Quand necessaire, types et cout.", slug: "notarial-affidavit" },
     ] },
     about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "Nous ne sommes pas de simples avocats — nous sommes des partenaires. BEYOND LAW signifie penser au-dela du droit: strategie commerciale, accompagnement complet et solutions sur mesure. Chaque service notarial est numerique, transparent et rapide." },
-    contact: { h2: "Nous contacter", whatsapp: "WhatsApp", email: "Email" },
+    contact: { h2: "Nous contacter", whatsapp: "WhatsApp", email: "Email", phone: "Appelez-nous", address: "2 rue Noach Mozes, Rishon LeZion", hours: "Dim–Jeu, 09h00–18h00" },
     footer: { rights: "Tous droits reserves", privacy: "Confidentialite", terms: "Conditions", accessibility: "Accessibilite" },
     cookie: { text: "Ce site utilise des cookies. En continuant, vous acceptez.", accept: "Accepter", decline: "Refuser" },
   },
@@ -344,7 +344,7 @@ const T: Record<string, any> = {
       { title: "Declaracion jurada notarial", tag: "Declaracion", excerpt: "Cuando necesaria, tipos y costo.", slug: "notarial-affidavit" },
     ] },
     about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "No somos solo abogados — somos socios. BEYOND LAW significa pensar mas alla del derecho: estrategia comercial, acompanamiento integral y soluciones a medida. Cada servicio notarial es digital, transparente y rapido." },
-    contact: { h2: "Contacto", whatsapp: "WhatsApp", email: "Email" },
+    contact: { h2: "Contacto", whatsapp: "WhatsApp", email: "Email", phone: "Llamar", address: "Calle Noach Mozes 2, Rishon LeZion", hours: "Dom–Jue, 09:00–18:00" },
     footer: { rights: "Todos los derechos reservados", privacy: "Privacidad", terms: "Terminos", accessibility: "Accesibilidad" },
     cookie: { text: "Este sitio usa cookies. Al continuar, aceptas su uso.", accept: "Aceptar", decline: "Rechazar" },
   },
@@ -698,10 +698,17 @@ export default function NotaryHome() {
       <section id="contact" style={{ background: "#FAFAF8", padding: "64px 24px", textAlign: "center" }}>
         <h2 style={{ ...S.h2, marginBottom: 24 }}>{t.contact.h2}</h2>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp")} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, fontFamily: cfg.font, textDecoration: "none", transition: "background .2s" }}>{t.contact.whatsapp}</a>
+          <a href="tel:+97233817776" onClick={() => trackContactClick("phone")} className="cb" style={{ background: "#2C2C2A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, fontFamily: cfg.font, textDecoration: "none", transition: "background .2s" }}>{t.contact.phone} · 03-3817776</a>
+          <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp")} className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", transition: "all .2s" }}>{t.contact.whatsapp}</a>
           <a href="mailto:office@beiton.co" target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("email")} className="ob" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontFamily: cfg.font, textDecoration: "none", transition: "all .2s" }}>{t.contact.email}</a>
         </div>
-        <p style={{ fontSize: 11, color: "#999", marginTop: 14 }}>office@beiton.co</p>
+        <div style={{ marginTop: 20, fontSize: 12, color: "#6B6B6B", lineHeight: 1.9 }}>
+          <p style={{ margin: 0 }}>
+            <a href="https://maps.google.com/?q=נח+מוזס+2+ראשון+לציון" target="_blank" rel="noopener noreferrer" style={{ color: "#6B6B6B", textDecoration: "none", borderBottom: "1px dotted #B8B8B8" }}>{t.contact.address}</a>
+          </p>
+          <p style={{ margin: "4px 0 0" }}>{t.contact.hours}</p>
+          <p style={{ margin: "4px 0 0" }}>office@beiton.co</p>
+        </div>
       </section>
 
       {/* FOOTER */}
