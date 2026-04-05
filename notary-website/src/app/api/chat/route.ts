@@ -18,6 +18,32 @@ const LANG_LABELS: Record<string, string> = {
   es: "Español",
 };
 
+// Send error alert via email using Resend (if RESEND_API_KEY is set)
+// and also log as Monday update on an alert board
+async function sendErrorAlert(subject: string, details: string) {
+  console.error("[CHAT ERROR ALERT]", subject, details);
+  const resendKey = process.env.RESEND_API_KEY;
+  if (resendKey) {
+    try {
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${resendKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "alerts@notary.beiton.co",
+          to: "office@beiton.co",
+          subject: `[BEITON Chat Alert] ${subject}`,
+          html: `<h3>${subject}</h3><pre>${details}</pre><p>Time: ${new Date().toISOString()}</p>`,
+        }),
+      });
+    } catch (e) {
+      console.error("Resend alert failed:", e);
+    }
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Monday.com: create lead
 // ---------------------------------------------------------------------------
@@ -116,6 +142,8 @@ async function callClaude(
 ): Promise<{ text: string; leadCaptured: boolean; mondayItemId: string | null }> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
+    console.error("ANTHROPIC_API_KEY not set!");
+    sendErrorAlert("ANTHROPIC_API_KEY missing", "The API key is not configured in Vercel env vars. Chat is completely broken.").catch(() => {});
     return { text: language === "he"
       ? "מצטערים, השירות אינו זמין כרגע. אנא נסו שוב מאוחר יותר."
       : "Sorry, the service is temporarily unavailable. Please try again later.", leadCaptured: false, mondayItemId: null };
@@ -146,7 +174,7 @@ async function callClaude(
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
+        model: "claude-sonnet-4-6",
         max_tokens: 1024,
         system: AGENT1_SYSTEM_PROMPT,
         tools: AGENT1_TOOLS,
@@ -157,6 +185,10 @@ async function callClaude(
     if (!resp.ok) {
       const err = await resp.text();
       console.error("Anthropic API error:", resp.status, err);
+      sendErrorAlert(
+        `Anthropic API error ${resp.status}`,
+        `Status: ${resp.status}\nError: ${err}\nLanguage: ${language}\nLast user message: ${messages[messages.length - 1]?.content || "N/A"}`
+      ).catch(() => {});
       return { text: language === "he"
         ? "מצטערים, אירעה שגיאה. אנא נסו שוב."
         : "Sorry, an error occurred. Please try again.", leadCaptured: false, mondayItemId: null };
@@ -234,8 +266,8 @@ async function callClaude(
       },
     ];
 
-    // Reset text — the final response comes in the next iteration
-    assistantText = "";
+    // Don't reset text — keep any text that came with the tool use
+    // The next iteration will append the final response on top
   }
 
   return { text: assistantText || "...", leadCaptured, mondayItemId };
@@ -262,6 +294,14 @@ export async function POST(req: NextRequest) {
     }
 
     const { text: reply, leadCaptured, mondayItemId } = await callClaude(messages, language || "he", utm?.utm_source);
+
+    // Alert if response is empty or error-like
+    if (!reply || reply === "..." || reply.includes("מצטערים") || reply.toLowerCase().includes("sorry, an error")) {
+      sendErrorAlert(
+        "Chat returned empty/error response",
+        `Reply: ${reply}\nLanguage: ${language}\nMessages count: ${messages.length}\nLast user msg: ${messages[messages.length - 1]?.content || "N/A"}`
+      ).catch(() => {});
+    }
 
     let itemId = mondayItemId;
 
