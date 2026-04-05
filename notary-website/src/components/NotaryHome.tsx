@@ -48,8 +48,8 @@ const AGENT_SERVICE_CONFIG = {
     homeVisit: { he: "נוטריון עד הבית", en: "Notary home visit", price: null, note: "הצעת מחיר לפי מקרה. לפי התקנות: 645₪/שעה + נסיעות, אך BEITON מתמחר לפי מקרה.", availableFor: ["signature", "poa", "affidavit", "will"] },
   },
   ancillaryServices: {
-    apostille_court: { he: "אפוסטיל בית משפט", en: "Apostille (Court)", govFee: 41, included: true, note: "אגרה 41₪ למסמך. כלול בשירות הנוטריוני. נדרש למסמכים נוטריוניים שמיועדים למדינות חברות באמנת האג." },
-    apostille_mofa: { he: "אפוסטיל משרד החוץ", en: "Apostille (Foreign Ministry)", govFee: 40, orderLink: "https://beta.delawvery.co.il/he/forms/ForeignApostille?mode=continueAsGuest", note: "אגרה ממשלתית 40₪ למסמך. למסמכים ציבוריים (תעודת לידה, נישואין וכו׳). ניתן להזמין דרך דלוברי." },
+    apostille_court: { he: "אפוסטיל בית משפט", en: "Apostille (Court)", govFee: 41, handlingFee: 50, note: "אגרה 41₪ למסמך + דמי טיפול 50₪ + מע\"מ לכל תעודה. נדרש למסמכים נוטריוניים שמיועדים למדינות חברות באמנת האג." },
+    apostille_mofa: { he: "אפוסטיל משרד החוץ", en: "Apostille (Foreign Ministry)", govFee: 41, handlingFee: 250, orderLink: "https://beta.delawvery.co.il/he/forms/ForeignApostille?mode=continueAsGuest", note: "אגרה ממשלתית 41₪ למסמך + דמי טיפול 250₪ + מע\"מ לכל תעודה. למסמכים ציבוריים (תעודת לידה, נישואין וכו׳). דרושה תעודה מקורית — הבאה עצמית למשרד ללא עלות או שליח בתוספת." },
     urgentTranslation: { he: "תרגום דחוף (24 שעות)", en: "Urgent translation (24h)", surcharge: "50%", note: "תוספת 50% על שכר התרגום לפי התקנות" },
     foreignLanguageSurcharge: { he: "תוספת שפה (לא עברית/אנגלית/ערבית)", en: "Foreign language surcharge", amount: 104, note: "תוספת 104₪ לאישור בשפה שאינה עברית, אנגלית או ערבית — קבוע בתקנות" },
     afterHoursSurcharge: { he: "תוספת שעות חריגות", en: "After-hours surcharge", surcharge: "50%", note: "תוספת 50% לשירות בין 19:00-08:00 או בימי מנוחה — קבוע בתקנות" },

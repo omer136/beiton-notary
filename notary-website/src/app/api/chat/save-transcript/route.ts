@@ -83,7 +83,8 @@ export async function POST(req: NextRequest) {
     const msgCount = messages.filter((m) => m.role === "user").length;
     const now = new Date();
     const today = now.toISOString().split("T")[0];
-    const timeStr = now.toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Jerusalem" });
+    // Monday requires HH:MM:SS for date column time field
+    const timeStr = now.toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Asia/Jerusalem", hour12: false });
 
     // If we already have an item from capture_lead — add transcript as update
     if (itemId) {

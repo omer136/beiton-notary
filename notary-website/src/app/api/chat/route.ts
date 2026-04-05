@@ -70,9 +70,11 @@ async function createMondayLead(lead: {
     color_mm1wgvgc: { label: LANG_LABELS[lead.language] || "עברית" },
     color_mm1wjcxx: { label: lead.service || "לא זוהה" },
     color_mm1wj0mz: { label: "אתר" },
-    date_mm1w6eek: { date: new Date().toISOString().split("T")[0], time: new Date().toTimeString().slice(0, 5) },
+    date_mm1w6eek: { date: new Date().toISOString().split("T")[0], time: new Date().toTimeString().slice(0, 8) },
     numeric_mm1wtzxs: "1",
-    long_text_mm1wcw3e: { text: lead.details || "" },
+    long_text_mm1wcw3e: {
+      text: (lead.ready_for_quote ? "[READY FOR QUOTE]\n" : "") + (lead.details || ""),
+    },
   };
 
   if (lead.phone) {
@@ -90,9 +92,12 @@ async function createMondayLead(lead: {
   if (lead.needs_human) {
     colValues.color_mm1yj27y = { label: "מבקש נציג" };
   }
-  if (lead.ready_for_quote) {
-    colValues.color_mm1wcc5y = { label: "ממתין להצעת מחיר" };
-  }
+  // Valid status labels on board 18406004253 (col color_mm1wcc5y):
+  // פנייה ראשונית, זיהוי שירות, הצעת מחיר נשלחה, הצעה אושרה, תשלום בוצע,
+  // קיבל מסמכים, נטש באמצע, סירב להצעה
+  // When ready_for_quote=true the lead is ready for the notary to send a quote,
+  // so we keep the default "פנייה ראשונית" status and surface the flag via details.
+  // (There is no "waiting for quote" label in the board; do not invent one.)
   if (lead.utm_source) {
     colValues.text_mm1za260 = lead.utm_source;
   }
