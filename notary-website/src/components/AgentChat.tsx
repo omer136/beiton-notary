@@ -212,6 +212,8 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
                 borderRadius: 12,
                 fontSize: 13,
                 lineHeight: 1.7,
+                whiteSpace: "pre-wrap",
+                wordBreak: "break-word",
                 ...(msg.role === "user"
                   ? {
                       background: "#1a1a1a",
