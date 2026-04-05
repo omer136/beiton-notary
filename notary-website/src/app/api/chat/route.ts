@@ -3,23 +3,17 @@ import {
   AGENT1_SYSTEM_PROMPT,
   AGENT1_TOOLS,
 } from "@/lib/agent1-system-prompt";
+import {
+  MONDAY_URL,
+  SALES_BOARD_ID,
+  SALES_GROUPS,
+  SALES_COLS,
+  SALES_STATUS_LABELS,
+} from "@/lib/monday-boards";
 
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
-const MONDAY_URL = "https://api.monday.com/v2";
-const BOARD_ID = "18406004253";
-const GROUP_ID = "group_mm1wxy0k";
-
-const LANG_LABELS: Record<string, string> = {
-  he: "עברית",
-  en: "English",
-  ru: "Русский",
-  ar: "العربية",
-  fr: "Français",
-  es: "Español",
-};
 
 // Send error alert via email using Resend (if RESEND_API_KEY is set)
-// and also log as Monday update on an alert board
 async function sendErrorAlert(subject: string, details: string) {
   console.error("[CHAT ERROR ALERT]", subject, details);
   const resendKey = process.env.RESEND_API_KEY;
@@ -45,67 +39,37 @@ async function sendErrorAlert(subject: string, details: string) {
 }
 
 // ---------------------------------------------------------------------------
-// Monday.com: create lead
+// Monday.com: upsert lead (create if new, update if existing)
 // ---------------------------------------------------------------------------
 
-async function createMondayLead(lead: {
-  name: string;
+interface LeadArgs {
+  name?: string;
   phone?: string;
   email?: string;
-  service: string;
-  language: string;
-  details?: string;
+  city?: string;
+  target_country?: string;
+  service?: string;
+  language?: string;
+  language_pair?: string;
+  quantity_description?: string;
+  urgency?: string;
+  summary_for_notary?: string;
+  missing_info?: string;
+  client_questions?: string;
+  full_transcript?: string;
+  estimated_price?: number;
+  msg_count?: number;
   needs_human?: boolean;
   ready_for_quote?: boolean;
   utm_source?: string;
-}) {
+}
+
+async function mondayRequest(query: string, variables: Record<string, unknown>) {
   const token = process.env.MONDAY_API_TOKEN;
   if (!token) {
-    console.warn("MONDAY_API_TOKEN not set — skipping lead capture");
+    console.warn("MONDAY_API_TOKEN not set — skipping Monday call");
     return null;
   }
-
-  const colValues: Record<string, unknown> = {
-    color_mm1wcc5y: { label: "פנייה ראשונית" },
-    color_mm1wgvgc: { label: LANG_LABELS[lead.language] || "עברית" },
-    color_mm1wjcxx: { label: lead.service || "לא זוהה" },
-    color_mm1wj0mz: { label: "אתר" },
-    date_mm1w6eek: { date: new Date().toISOString().split("T")[0], time: new Date().toTimeString().slice(0, 8) },
-    numeric_mm1wtzxs: "1",
-    long_text_mm1wcw3e: {
-      text: (lead.ready_for_quote ? "[READY FOR QUOTE]\n" : "") + (lead.details || ""),
-    },
-  };
-
-  if (lead.phone) {
-    colValues.phone_mm1y71kv = {
-      phone: lead.phone,
-      countryShortName: "IL",
-    };
-  }
-  if (lead.email) {
-    colValues.email_mm1y3e3 = {
-      email: lead.email,
-      text: lead.email,
-    };
-  }
-  if (lead.needs_human) {
-    colValues.color_mm1yj27y = { label: "מבקש נציג" };
-  }
-  // Valid status labels on board 18406004253 (col color_mm1wcc5y):
-  // פנייה ראשונית, זיהוי שירות, הצעת מחיר נשלחה, הצעה אושרה, תשלום בוצע,
-  // קיבל מסמכים, נטש באמצע, סירב להצעה
-  // When ready_for_quote=true the lead is ready for the notary to send a quote,
-  // so we keep the default "פנייה ראשונית" status and surface the flag via details.
-  // (There is no "waiting for quote" label in the board; do not invent one.)
-  if (lead.utm_source) {
-    colValues.text_mm1za260 = lead.utm_source;
-  }
-
-  const query = `mutation ($board: ID!, $group: String!, $name: String!, $cols: JSON!) {
-    create_item(board_id: $board, group_id: $group, item_name: $name, column_values: $cols) { id }
-  }`;
-
   const resp = await fetch(MONDAY_URL, {
     method: "POST",
     headers: {
@@ -113,33 +77,134 @@ async function createMondayLead(lead: {
       "Content-Type": "application/json",
       "API-Version": "2024-10",
     },
-    body: JSON.stringify({
-      query,
-      variables: {
-        board: BOARD_ID,
-        group: GROUP_ID,
-        name: lead.name || "לקוח אנונימי — " + new Date().toLocaleDateString("he-IL") + " " + new Date().toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit" }),
-        cols: JSON.stringify(colValues),
-      },
-    }),
+    body: JSON.stringify({ query, variables }),
   });
-
   const data = await resp.json();
   if (data.errors) {
     console.error("Monday API error:", JSON.stringify(data.errors));
     sendErrorAlert(
-      "Monday API error on lead save",
-      `Lead: ${JSON.stringify(lead).slice(0, 400)}\nErrors: ${JSON.stringify(data.errors).slice(0, 500)}`
+      "Monday API error",
+      `Variables: ${JSON.stringify(variables).slice(0, 500)}\nErrors: ${JSON.stringify(data.errors).slice(0, 800)}`
     ).catch(() => {});
   }
   if (!resp.ok) {
     console.error("Monday HTTP error:", resp.status);
-    sendErrorAlert(
-      `Monday HTTP ${resp.status}`,
-      `Lead: ${JSON.stringify(lead).slice(0, 400)}`
-    ).catch(() => {});
+    sendErrorAlert(`Monday HTTP ${resp.status}`, JSON.stringify(variables).slice(0, 500)).catch(() => {});
   }
   return data;
+}
+
+function buildColumnValues(args: LeadArgs): Record<string, unknown> {
+  const cols: Record<string, unknown> = {};
+
+  if (args.language) {
+    const langLabel = SALES_STATUS_LABELS.language[args.language];
+    if (langLabel) cols[SALES_COLS.language] = { label: langLabel };
+  }
+
+  if (args.service && args.service !== "לא זוהה") {
+    cols[SALES_COLS.service] = { label: args.service };
+  } else if (args.service === "לא זוהה") {
+    cols[SALES_COLS.service] = { label: "לא זוהה" };
+  }
+
+  if (args.phone) {
+    cols[SALES_COLS.phone] = { phone: args.phone, countryShortName: "IL" };
+  }
+  if (args.email) {
+    cols[SALES_COLS.email] = { email: args.email, text: args.email };
+  }
+
+  if (args.city) cols[SALES_COLS.city] = args.city;
+  if (args.target_country) cols[SALES_COLS.targetCountry] = args.target_country;
+  if (args.language_pair) cols[SALES_COLS.languagePair] = args.language_pair;
+  if (args.quantity_description) cols[SALES_COLS.quantityDescription] = args.quantity_description;
+  if (args.utm_source) cols[SALES_COLS.utmSource] = args.utm_source;
+
+  if (args.summary_for_notary) {
+    cols[SALES_COLS.summaryForNotary] = { text: args.summary_for_notary };
+  }
+  if (args.missing_info) {
+    cols[SALES_COLS.missingInfo] = { text: args.missing_info };
+  }
+  if (args.client_questions) {
+    cols[SALES_COLS.clientQuestions] = { text: args.client_questions };
+  }
+  if (args.full_transcript) {
+    cols[SALES_COLS.fullTranscript] = { text: args.full_transcript.slice(0, 2000) };
+  }
+
+  if (args.urgency) {
+    cols[SALES_COLS.urgency] = { label: args.urgency };
+  }
+
+  if (args.estimated_price !== undefined && args.estimated_price !== null) {
+    cols[SALES_COLS.quoteAmount] = String(args.estimated_price);
+  }
+
+  if (args.msg_count !== undefined) {
+    cols[SALES_COLS.msgCount] = String(args.msg_count);
+  }
+
+  if (args.needs_human) {
+    cols[SALES_COLS.needsAttention] = { label: "Stuck" };
+  }
+
+  // When ready for quote — flag the client as waiting for a quote
+  if (args.ready_for_quote) {
+    cols[SALES_COLS.clientWaitingFor] = { label: SALES_STATUS_LABELS.clientWaitingFor.quote };
+  }
+
+  return cols;
+}
+
+async function upsertMondayLead(
+  args: LeadArgs,
+  existingItemId?: string | null
+): Promise<string | null> {
+  const cols = buildColumnValues(args);
+
+  if (existingItemId) {
+    // UPDATE existing item — only writes fields provided in args
+    const result = await mondayRequest(
+      `mutation ($board: ID!, $item: ID!, $cols: JSON!) {
+        change_multiple_column_values(board_id: $board, item_id: $item, column_values: $cols) { id }
+      }`,
+      {
+        board: SALES_BOARD_ID,
+        item: existingItemId,
+        cols: JSON.stringify(cols),
+      }
+    );
+    return result?.data?.change_multiple_column_values?.id || existingItemId;
+  }
+
+  // CREATE new item — add default status + channel + inquiry date
+  cols[SALES_COLS.mainStatus] = { label: SALES_STATUS_LABELS.mainStatus.initialInquiry };
+  cols[SALES_COLS.channel] = { label: SALES_STATUS_LABELS.channel.website };
+  const now = new Date();
+  cols[SALES_COLS.inquiryDate] = {
+    date: now.toISOString().split("T")[0],
+    time: now.toTimeString().slice(0, 8),
+  };
+
+  const name = args.name && args.name.trim()
+    ? args.name.trim()
+    : `שיחה ${now.toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Jerusalem" })} — ${args.service || "לא זוהה"}`;
+
+  const result = await mondayRequest(
+    `mutation ($board: ID!, $group: String!, $name: String!, $cols: JSON!) {
+      create_item(board_id: $board, group_id: $group, item_name: $name, column_values: $cols) { id }
+    }`,
+    {
+      board: SALES_BOARD_ID,
+      group: SALES_GROUPS.active,
+      name,
+      cols: JSON.stringify(cols),
+    }
+  );
+
+  return result?.data?.create_item?.id || null;
 }
 
 // ---------------------------------------------------------------------------
@@ -154,34 +219,29 @@ interface Message {
 async function callClaude(
   messages: Message[],
   language: string,
-  utmSource?: string
-): Promise<{ text: string; leadCaptured: boolean; mondayItemId: string | null }> {
+  utmSource: string | undefined,
+  existingItemId: string | null | undefined
+): Promise<{ text: string; mondayItemId: string | null }> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     console.error("ANTHROPIC_API_KEY not set!");
     sendErrorAlert("ANTHROPIC_API_KEY missing", "The API key is not configured in Vercel env vars. Chat is completely broken.").catch(() => {});
-    return { text: language === "he"
-      ? "מצטערים, השירות אינו זמין כרגע. אנא נסו שוב מאוחר יותר."
-      : "Sorry, the service is temporarily unavailable. Please try again later.", leadCaptured: false, mondayItemId: null };
+    return {
+      text: language === "he"
+        ? "מצטערים, השירות אינו זמין כרגע. אנא נסו שוב מאוחר יותר."
+        : "Sorry, the service is temporarily unavailable. Please try again later.",
+      mondayItemId: existingItemId || null,
+    };
   }
 
-  // Build Anthropic messages format
-  const anthropicMessages = messages.map((m) => ({
-    role: m.role,
-    content: m.content,
-  }));
+  const anthropicMessages = messages.map((m) => ({ role: m.role, content: m.content }));
 
   let assistantText = "";
-  let leadCaptured = false;
-  let mondayItemId: string | null = null;
+  let mondayItemId: string | null = existingItemId || null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let loopMessages: any[] = [...anthropicMessages];
-  let iterations = 0;
 
-  // Tool use loop — max 3 iterations
-  while (iterations < 3) {
-    iterations++;
-
+  for (let iterations = 0; iterations < 3; iterations++) {
     const resp = await fetch(ANTHROPIC_URL, {
       method: "POST",
       headers: {
@@ -191,7 +251,7 @@ async function callClaude(
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-6",
-        max_tokens: 1024,
+        max_tokens: 1536,
         system: AGENT1_SYSTEM_PROMPT,
         tools: AGENT1_TOOLS,
         messages: loopMessages,
@@ -205,9 +265,12 @@ async function callClaude(
         `Anthropic API error ${resp.status}`,
         `Status: ${resp.status}\nError: ${err}\nLanguage: ${language}\nLast user message: ${messages[messages.length - 1]?.content || "N/A"}`
       ).catch(() => {});
-      return { text: language === "he"
-        ? "מצטערים, אירעה שגיאה. אנא נסו שוב."
-        : "Sorry, an error occurred. Please try again.", leadCaptured: false, mondayItemId: null };
+      return {
+        text: language === "he"
+          ? "מצטערים, אירעה שגיאה. אנא נסו שוב."
+          : "Sorry, an error occurred. Please try again.",
+        mondayItemId,
+      };
     }
 
     const data = await resp.json();
@@ -220,80 +283,71 @@ async function callClaude(
       input?: Record<string, any>;
     }>;
 
-    // Collect text blocks
     for (const block of content) {
       if (block.type === "text" && block.text) {
         assistantText += block.text;
       }
     }
 
-    // Check for tool use
     const toolUse = content.find((b) => b.type === "tool_use");
-    if (!toolUse || data.stop_reason !== "tool_use") {
-      break; // No tool call — done
-    }
+    if (!toolUse || data.stop_reason !== "tool_use") break;
 
-    // Execute tool
+    // Execute capture_lead — upsert semantics
     let toolResult = "";
     if (toolUse.name === "capture_lead" && toolUse.input) {
       console.log("capture_lead called:", JSON.stringify(toolUse.input).slice(0, 200));
       try {
-        const result = await createMondayLead({
-          name: toolUse.input.name || "",
-          phone: toolUse.input.phone,
-          email: toolUse.input.email,
-          service: toolUse.input.service || "",
-          language: toolUse.input.language || language,
-          details: toolUse.input.details,
-          needs_human: toolUse.input.needs_human === "true" || toolUse.input.needs_human === true,
-          ready_for_quote: toolUse.input.ready_for_quote === "true" || toolUse.input.ready_for_quote === true,
+        const input = toolUse.input;
+        const leadArgs: LeadArgs = {
+          name: input.name,
+          phone: input.phone,
+          email: input.email,
+          city: input.city,
+          target_country: input.target_country,
+          service: input.service,
+          language: input.language || language,
+          language_pair: input.language_pair,
+          quantity_description: input.quantity_description,
+          urgency: input.urgency,
+          summary_for_notary: input.summary_for_notary,
+          missing_info: input.missing_info,
+          client_questions: input.client_questions,
+          estimated_price: typeof input.estimated_price === "number" ? input.estimated_price : undefined,
+          needs_human: input.needs_human === true || input.needs_human === "true",
+          ready_for_quote: input.ready_for_quote === true || input.ready_for_quote === "true",
           utm_source: utmSource,
-        });
-        mondayItemId = result?.data?.create_item?.id || null;
-        console.log("Monday lead result:", mondayItemId || JSON.stringify(result?.errors || "no response").slice(0, 200));
-        if (mondayItemId) {
-          leadCaptured = true;
+        };
+        const resultId = await upsertMondayLead(leadArgs, mondayItemId);
+        if (resultId) {
+          mondayItemId = resultId;
+          toolResult = JSON.stringify({
+            success: true,
+            message: existingItemId ? "Lead updated" : "Lead saved",
+            itemId: resultId,
+          });
         } else {
-          sendErrorAlert(
-            "capture_lead: Monday returned no itemId",
-            `Result: ${JSON.stringify(result).slice(0, 500)}`
-          ).catch(() => {});
+          sendErrorAlert("capture_lead: upsert returned no id", `Args: ${JSON.stringify(leadArgs).slice(0, 500)}`).catch(() => {});
+          toolResult = JSON.stringify({ success: false, message: "Monday save failed" });
         }
-        toolResult = JSON.stringify({
-          success: !!mondayItemId,
-          message: mondayItemId ? "Lead saved to Monday.com" : "Monday save failed",
-          itemId: mondayItemId,
-        });
       } catch (e) {
         console.error("capture_lead error:", e);
-        toolResult = JSON.stringify({
-          success: false,
-          message: String(e),
-        });
+        toolResult = JSON.stringify({ success: false, message: String(e) });
       }
     }
 
-    // Add assistant response + tool result to messages for next iteration
     loopMessages = [
       ...loopMessages,
       { role: "assistant" as const, content },
       {
         role: "user" as const,
         content: [
-          {
-            type: "tool_result",
-            tool_use_id: toolUse.id,
-            content: toolResult,
-          },
+          { type: "tool_result", tool_use_id: toolUse.id, content: toolResult },
         ],
       },
     ];
-
-    // Don't reset text — keep any text that came with the tool use
-    // The next iteration will append the final response on top
   }
 
-  return { text: assistantText || "...", leadCaptured, mondayItemId };
+  return { text: assistantText || "...", mondayItemId };
 }
 
 // ---------------------------------------------------------------------------
@@ -318,7 +372,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { text: reply, leadCaptured, mondayItemId } = await callClaude(messages, language || "he", utm?.utm_source);
+    const { text: reply, mondayItemId } = await callClaude(
+      messages,
+      language || "he",
+      utm?.utm_source,
+      existingItemId
+    );
 
     // Alert if response is empty or error-like
     if (!reply || reply === "..." || reply.includes("מצטערים") || reply.toLowerCase().includes("sorry, an error")) {
@@ -328,62 +387,43 @@ export async function POST(req: NextRequest) {
       ).catch(() => {});
     }
 
-    let itemId = mondayItemId || existingItemId || null;
-
     // Build full transcript including the just-generated reply
     const fullMessages: Message[] = [...messages, { role: "assistant", content: reply }];
     const transcript = fullMessages
-      .map(m => (m.role === "user" ? "לקוח: " : "נועה: ") + m.content)
+      .map((m) => (m.role === "user" ? "לקוח: " : "נועה: ") + m.content)
       .join("\n");
-    const msgCount = fullMessages.filter(m => m.role === "user").length;
+    const msgCount = fullMessages.filter((m) => m.role === "user").length;
 
-    const allText = fullMessages.map(m => m.content).join(" ");
-    const service = /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
+    // Heuristic service detection (used only for initial fallback lead creation)
+    const allText = fullMessages.map((m) => m.content).join(" ");
+    const heuristicService =
+      /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
       : /חתימה|signature/i.test(allText) ? "אימות חתימה"
       : /ייפוי כוח|power of attorney/i.test(allText) ? "ייפוי כוח"
       : /צוואה|will/i.test(allText) ? "צוואה"
       : /תצהיר|affidavit/i.test(allText) ? "תצהיר"
       : /הסכם ממון|prenup/i.test(allText) ? "הסכם ממון"
       : /אפוסטיל|apostil/i.test(allText) ? "אפוסטיל"
-      : /העתק|copy/i.test(allText) ? "העתק נאמן"
+      : /העתק|copy/i.test(allText) ? "העתק נאמן למקור"
       : "לא זוהה";
 
-    // Case 1: no item yet + user sent at least 1 message → create item with full transcript
-    if (!itemId && msgCount >= 1) {
-      console.log("Creating Monday lead (no itemId yet), service:", service);
-      try {
-        const fallbackResult = await createMondayLead({
-          name: "",
-          service,
+    let itemId: string | null = mondayItemId;
+
+    // Ensure an item exists — if the agent didn't call capture_lead, create/update one
+    // with the transcript + message count. This is the safety net.
+    try {
+      itemId = await upsertMondayLead(
+        {
+          service: heuristicService,
           language: language || "he",
-          details: transcript.slice(0, 2000),
+          full_transcript: transcript,
+          msg_count: msgCount,
           utm_source: utm?.utm_source,
-        });
-        itemId = fallbackResult?.data?.create_item?.id || null;
-      } catch (e) { console.error("Fallback lead save error:", e); }
-    }
-    // Case 2: item already exists → update its transcript column so every turn is persisted server-side
-    else if (itemId && msgCount >= 1) {
-      try {
-        const token = process.env.MONDAY_API_TOKEN;
-        if (token) {
-          await fetch(MONDAY_URL, {
-            method: "POST",
-            headers: { Authorization: token, "Content-Type": "application/json", "API-Version": "2024-10" },
-            body: JSON.stringify({
-              query: `mutation ($board: ID!, $item: ID!, $cols: JSON!) { change_multiple_column_values(board_id: $board, item_id: $item, column_values: $cols) { id } }`,
-              variables: {
-                board: BOARD_ID,
-                item: itemId,
-                cols: JSON.stringify({
-                  long_text_mm1wcw3e: { text: transcript.slice(0, 2000) },
-                  numeric_mm1wtzxs: String(msgCount),
-                }),
-              },
-            }),
-          });
-        }
-      } catch (e) { console.error("Transcript update error:", e); }
+        },
+        itemId
+      );
+    } catch (e) {
+      console.error("Safety-net upsert error:", e);
     }
 
     return NextResponse.json({ reply, itemId });

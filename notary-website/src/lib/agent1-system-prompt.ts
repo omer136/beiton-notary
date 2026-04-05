@@ -459,26 +459,59 @@ export const AGENT1_TOOLS = [
   {
     name: "capture_lead",
     description:
-      "שמור ליד למערכת. חובה להפעיל מיד כשהלקוח מביע עניין בשירות כלשהו — גם בלי שם או טלפון. ליד חלקי עדיף מבלי ליד. כשהשיחה מסתיימת בהצלחה — הפעל שוב עם ready_for_quote=true וסיכום מלא.",
+      "שמור או עדכן ליד במערכת. קריאה חכמה: השרת יודע אם כבר קיים ליד לשיחה הזו ויעדכן אותו במקום ליצור חדש. הפעל מוקדם (כשמתחיל להיות ברור איזה שירות) והפעל שוב בכל פעם שיש מידע חדש (טלפון, מייל, פרטים, סיכום). בסוף שיחה מוצלחת — הפעל עם כל השדות הרלוונטיים + ready_for_quote=true. רק שדות שיש לך מידע אמיתי עבורם — אל תמציא.",
     input_schema: {
       type: "object" as const,
       properties: {
-        name: { type: "string" as const, description: "שם הלקוח. אם לא ידוע — כתוב 'לקוח אנונימי'" },
-        phone: { type: "string" as const, description: "מספר טלפון (אם נמסר)" },
-        email: { type: "string" as const, description: "כתובת מייל (אם נמסרה)" },
+        name: { type: "string" as const, description: "שם הלקוח. השאר ריק אם לא ידוע." },
+        phone: { type: "string" as const, description: "מספר טלפון. בפורמט ישראלי אם רלוונטי." },
+        email: { type: "string" as const, description: "כתובת מייל." },
+        city: { type: "string" as const, description: "עיר מגורים של הלקוח." },
+        target_country: { type: "string" as const, description: "מדינת יעד — לאפוסטיל, תרגום לשימוש בחו״ל וכו׳." },
         service: {
           type: "string" as const,
-          description: "סוג השירות המבוקש",
+          description: "השירות הנוטריוני הראשי. אחד מ: תרגום נוטריוני / אימות חתימה / ייפוי כוח / תצהיר / העתק נאמן למקור / צוואה / הסכם ממון / אפוסטיל / אישור חיים / לא זוהה",
         },
         language: {
           type: "string" as const,
-          description: "שפת השיחה (he/en/ru/ar/fr/es)",
+          description: "קוד שפת השיחה: he / en / ru / ar / fr / es",
         },
-        details: { type: "string" as const, description: "סיכום מלא: שירותים, כמויות, שפות, מחיר משוער, זמן משוער, נוכחות/דיגיטלי, מסמכים להכין, אופן הספקה, כתובת לשליח" },
-        needs_human: { type: "boolean" as const, description: "סמן true כשהלקוח מבקש נציג אנושי או כשהשאלה מורכבת מדי" },
-        ready_for_quote: { type: "boolean" as const, description: "סמן true כשהשיחה הגיעה לסיום מוצלח — הלקוח הבין הכל, תיאם, ונותר לשלוח הצעת מחיר רשמית. הליד יעבור לבורד עסקאות." },
+        language_pair: { type: "string" as const, description: "רק לתרגום: צמד השפות. דוגמה: 'עברית→אנגלית'" },
+        quantity_description: {
+          type: "string" as const,
+          description:
+            "טקסט חופשי שמתאר בדיוק מה הכמות ועל מה. חובה לציין מפורשות כי יכול להיות שילוב של כמה דברים באותה הצעה. דוגמאות: '2 עותקים תעודת לידה + תרגום 450 מילים תעודת נישואין לאנגלית' | 'צוואה אחת + 2 חותמים נוספים' | 'ייפוי כוח, 3 עותקים'",
+        },
+        urgency: {
+          type: "string" as const,
+          enum: ["רגיל", "דחוף (+50%)", "מיידי (+100%)"],
+          description: "רמת דחיפות",
+        },
+        summary_for_notary: {
+          type: "string" as const,
+          description:
+            "השורה התחתונה שהלקוח קיבל בסוף השיחה — מה הובטח: שירות, כמות, מחיר סופי, זמן אספקה, אופן הספקה. זה בדיוק מה שהלקוח זוכר, כדי שהנוטריון יוכל לתקשר איתו על אותה בסיס. בעברית גם אם השיחה לא בעברית.",
+        },
+        missing_info: {
+          type: "string" as const,
+          description:
+            "מה חסר מהלקוח כדי שהנוטריון יוכל לספק את השירות. דוגמאות: 'צילום ת.ז, תעודת לידה מקורית, כתובת למשלוח' | 'אישור תשלום, תמונה של החותם' | 'אין — הלקוח מסר הכל'",
+        },
+        client_questions: {
+          type: "string" as const,
+          description: "שאלות / חששות / הערות שהלקוח העלה ושחשוב שהנוטריון יתייחס אליהן כשיתקשר איתו.",
+        },
+        estimated_price: {
+          type: "number" as const,
+          description: "מחיר משוער כולל מע״מ בשקלים. העתק את הסכום שנקבת בשיחה.",
+        },
+        needs_human: { type: "boolean" as const, description: "true כשהלקוח ביקש נציג אנושי או שהשאלה מורכבת מדי" },
+        ready_for_quote: {
+          type: "boolean" as const,
+          description: "true כשהשיחה הגיעה לסיום מוצלח — הלקוח הבין הכל, תיאם, ונותר רק לשלוח הצעת מחיר רשמית. סמן גם את הלקוח כממתין להצעת מחיר.",
+        },
       },
-      required: ["service", "language", "details"],
+      required: ["service", "language"],
     },
   },
 ];
