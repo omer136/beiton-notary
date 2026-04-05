@@ -324,29 +324,60 @@ export async function POST(req: NextRequest) {
 
     let itemId = mondayItemId || existingItemId || null;
 
-    // Fallback: if no Monday item exists for this conversation yet and user has sent any message, force save
-    if (!itemId && messages.filter(m => m.role === "user").length >= 1) {
-      const allText = messages.map(m => m.content).join(" ");
-      const service = /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
-        : /חתימה|signature/i.test(allText) ? "אימות חתימה"
-        : /ייפוי כוח|power of attorney/i.test(allText) ? "ייפוי כוח"
-        : /צוואה|will/i.test(allText) ? "צוואה"
-        : /תצהיר|affidavit/i.test(allText) ? "תצהיר"
-        : /הסכם ממון|prenup/i.test(allText) ? "הסכם ממון"
-        : /אפוסטיל|apostil/i.test(allText) ? "אפוסטיל"
-        : /העתק|copy/i.test(allText) ? "העתק נאמן"
-        : "לא זוהה";
-      console.log("Fallback lead save — agent did not call capture_lead, service:", service);
+    // Build full transcript including the just-generated reply
+    const fullMessages: Message[] = [...messages, { role: "assistant", content: reply }];
+    const transcript = fullMessages
+      .map(m => (m.role === "user" ? "לקוח: " : "נועה: ") + m.content)
+      .join("\n");
+    const msgCount = fullMessages.filter(m => m.role === "user").length;
+
+    const allText = fullMessages.map(m => m.content).join(" ");
+    const service = /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
+      : /חתימה|signature/i.test(allText) ? "אימות חתימה"
+      : /ייפוי כוח|power of attorney/i.test(allText) ? "ייפוי כוח"
+      : /צוואה|will/i.test(allText) ? "צוואה"
+      : /תצהיר|affidavit/i.test(allText) ? "תצהיר"
+      : /הסכם ממון|prenup/i.test(allText) ? "הסכם ממון"
+      : /אפוסטיל|apostil/i.test(allText) ? "אפוסטיל"
+      : /העתק|copy/i.test(allText) ? "העתק נאמן"
+      : "לא זוהה";
+
+    // Case 1: no item yet + user sent at least 1 message → create item with full transcript
+    if (!itemId && msgCount >= 1) {
+      console.log("Creating Monday lead (no itemId yet), service:", service);
       try {
         const fallbackResult = await createMondayLead({
           name: "",
           service,
           language: language || "he",
-          details: messages.map(m => (m.role === "user" ? "לקוח: " : "נועה: ") + m.content).join("\n").slice(0, 2000),
+          details: transcript.slice(0, 2000),
           utm_source: utm?.utm_source,
         });
         itemId = fallbackResult?.data?.create_item?.id || null;
       } catch (e) { console.error("Fallback lead save error:", e); }
+    }
+    // Case 2: item already exists → update its transcript column so every turn is persisted server-side
+    else if (itemId && msgCount >= 1) {
+      try {
+        const token = process.env.MONDAY_API_TOKEN;
+        if (token) {
+          await fetch(MONDAY_URL, {
+            method: "POST",
+            headers: { Authorization: token, "Content-Type": "application/json", "API-Version": "2024-10" },
+            body: JSON.stringify({
+              query: `mutation ($board: ID!, $item: ID!, $cols: JSON!) { change_multiple_column_values(board_id: $board, item_id: $item, column_values: $cols) { id } }`,
+              variables: {
+                board: BOARD_ID,
+                item: itemId,
+                cols: JSON.stringify({
+                  long_text_mm1wcw3e: { text: transcript.slice(0, 2000) },
+                  numeric_mm1wtzxs: String(msgCount),
+                }),
+              },
+            }),
+          });
+        }
+      } catch (e) { console.error("Transcript update error:", e); }
     }
 
     return NextResponse.json({ reply, itemId });
