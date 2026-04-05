@@ -62,7 +62,7 @@ void AGENT_SERVICE_CONFIG;
 const T: Record<string, any> = {
   he: {
     nav: { home: "ראשי", services: "שירותים", usecases: "מקרי שימוש", pricing: "מחירון", track: "מעקב הזמנה", blog: "בלוג", about: "אודות", contact: "יצירת קשר" },
-    hero: { h1: "שירותי נוטריון בישראל", chatGreeting: "היי! אני נועה מצוות הנוטריון. איך אפשר לעזור?", chatPlaceholder: "כמה עולה תרגום תעודת נישואין?", chatSend: "שלח" },
+    hero: { h1: "שירותי נוטריון בישראל", chatGreeting: "היי! אני נועה מצוות הנוטריון. איך אפשר לעזור?", chatPlaceholder: "למשל: כמה עולה תרגום תעודת נישואין לאנגלית", chatSend: "שלח" },
     services: { tag: "NOTARY SERVICES", h2: "שירותים נוטריוניים בישראל", subtitle: "כל הפעולות הנוטריוניות במקום אחד", items: [
       { id: "translation", name: "תרגום נוטריוני", desc: "תרגום מסמכים רשמי עם אימות נוטריוני — מוכר בכל הרשויות.", icon: "translate" },
       { id: "signature", name: "אימות חתימה", desc: "הנוטריון מאשר שפלוני חתם על מסמך בפניו — נדרש לייפוי כוח, NDA, ועוד.", icon: "signature" },
@@ -110,7 +110,7 @@ const T: Record<string, any> = {
   },
   en: {
     nav: { home: "Home", services: "Services", usecases: "Use Cases", pricing: "Pricing", track: "Track Order", blog: "Blog", about: "About", contact: "Contact" },
-    hero: { h1: "Notary Services in Israel", chatGreeting: "Hi! I'm Noa from the notary team. How can I help?", chatPlaceholder: "How much does a marriage certificate translation cost?", chatSend: "Send" },
+    hero: { h1: "Notary Services in Israel", chatGreeting: "Hi! I'm Noa from the notary team. How can I help?", chatPlaceholder: "e.g.: How much to translate a marriage certificate to English", chatSend: "Send" },
     services: { tag: "NOTARY SERVICES", h2: "Notary Services in Israel", subtitle: "All notarial actions in one place", items: [
       { id: "translation", name: "Notarial Translation", desc: "Official document translation with notarial certification — recognized worldwide.", icon: "translate" },
       { id: "signature", name: "Signature Authentication", desc: "The notary certifies a person signed in their presence — for POA, NDA, and more.", icon: "signature" },
@@ -158,7 +158,7 @@ const T: Record<string, any> = {
   },
   ru: {
     nav: { home: "Главная", services: "Услуги", usecases: "Примеры", pricing: "Цены", track: "Отслеживание", blog: "Блог", about: "О нас", contact: "Контакты" },
-    hero: { h1: "Нотариальные услуги в Израиле", chatGreeting: "Привет! Я Ноа из нотариальной команды. Чем помочь?", chatPlaceholder: "Сколько стоит перевод свидетельства о браке?", chatSend: "Отправить" },
+    hero: { h1: "Нотариальные услуги в Израиле", chatGreeting: "Привет! Я Ноа из нотариальной команды. Чем помочь?", chatPlaceholder: "напр.: сколько стоит перевод свидетельства о браке на английский", chatSend: "Отправить" },
     services: { tag: "NOTARY SERVICES", h2: "Нотариальные услуги в Израиле", subtitle: "Все нотариальные действия в одном месте", items: [
       { id: "translation", name: "Нотариальный перевод", desc: "Официальный перевод с нотариальным заверением.", icon: "translate" },
       { id: "signature", name: "Заверение подписи", desc: "Нотариус подтверждает подписание в его присутствии.", icon: "signature" },
@@ -206,7 +206,7 @@ const T: Record<string, any> = {
   },
   ar: {
     nav: { home: "الرئيسية", services: "الخدمات", usecases: "حالات الاستخدام", pricing: "الأسعار", track: "تتبع الطلب", blog: "مدونة", about: "عن المكتب", contact: "تواصل معنا" },
-    hero: { h1: "خدمات كاتب العدل في إسرائيل", chatGreeting: "مرحباً! أنا نوعة من فريق كاتب العدل. كيف أساعدك؟", chatPlaceholder: "كم تكلفة ترجمة شهادة زواج؟", chatSend: "إرسال" },
+    hero: { h1: "خدمات كاتب العدل في إسرائيل", chatGreeting: "مرحباً! أنا نوعة من فريق كاتب العدل. كيف أساعدك؟", chatPlaceholder: "مثال: كم تكلفة ترجمة شهادة زواج للإنجليزية", chatSend: "إرسال" },
     services: { tag: "NOTARY SERVICES", h2: "خدمات كاتب العدل في إسرائيل", subtitle: "جميع الإجراءات في مكان واحد", items: [
       { id: "translation", name: "ترجمة توثيقية", desc: "ترجمة رسمية مع تصديق كاتب العدل.", icon: "translate" },
       { id: "signature", name: "توثيق التوقيع", desc: "يشهد كاتب العدل على التوقيع أمامه.", icon: "signature" },
@@ -254,7 +254,7 @@ const T: Record<string, any> = {
   },
   fr: {
     nav: { home: "Accueil", services: "Services", usecases: "Cas d'usage", pricing: "Tarifs", track: "Suivi", blog: "Blog", about: "A propos", contact: "Contact" },
-    hero: { h1: "Services Notariaux en Israel", chatGreeting: "Bonjour! Je suis Noa. Comment puis-je aider?", chatPlaceholder: "Combien coute la traduction d'un acte de mariage?", chatSend: "Envoyer" },
+    hero: { h1: "Services Notariaux en Israel", chatGreeting: "Bonjour! Je suis Noa. Comment puis-je aider?", chatPlaceholder: "ex: combien pour traduire un acte de mariage en anglais", chatSend: "Envoyer" },
     services: { tag: "NOTARY SERVICES", h2: "Services notariaux en Israel", subtitle: "Toutes les actions en un seul endroit", items: [
       { id: "translation", name: "Traduction Notariale", desc: "Traduction officielle avec certification.", icon: "translate" },
       { id: "signature", name: "Authentification de Signature", desc: "Le notaire certifie la signature.", icon: "signature" },
@@ -302,7 +302,7 @@ const T: Record<string, any> = {
   },
   es: {
     nav: { home: "Inicio", services: "Servicios", usecases: "Casos", pricing: "Precios", track: "Seguimiento", blog: "Blog", about: "Acerca de", contact: "Contacto" },
-    hero: { h1: "Servicios Notariales en Israel", chatGreeting: "Hola! Soy Noa del equipo notarial. Como puedo ayudar?", chatPlaceholder: "Cuanto cuesta traducir un certificado de matrimonio?", chatSend: "Enviar" },
+    hero: { h1: "Servicios Notariales en Israel", chatGreeting: "Hola! Soy Noa del equipo notarial. Como puedo ayudar?", chatPlaceholder: "ej: cuanto cuesta traducir un certificado de matrimonio al ingles", chatSend: "Enviar" },
     services: { tag: "NOTARY SERVICES", h2: "Servicios notariales en Israel", subtitle: "Todas las acciones en un solo lugar", items: [
       { id: "translation", name: "Traduccion Notarial", desc: "Traduccion oficial con certificacion.", icon: "translate" },
       { id: "signature", name: "Autenticacion de Firma", desc: "El notario certifica la firma.", icon: "signature" },

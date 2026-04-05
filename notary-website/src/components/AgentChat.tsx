@@ -7,12 +7,12 @@ import { getStoredUTM } from "@/lib/utm";
 type Lang = "he" | "en" | "ru" | "ar" | "fr" | "es";
 
 const PLACEHOLDERS: Record<Lang, string> = {
-  he: "כמה עולה תרגום תעודת נישואין?",
-  en: "How much does a marriage certificate translation cost?",
-  ru: "Сколько стоит перевод свидетельства о браке?",
-  ar: "كم تكلفة ترجمة شهادة زواج؟",
-  fr: "Combien coute la traduction d'un acte de mariage?",
-  es: "Cuanto cuesta traducir un certificado de matrimonio?",
+  he: "למשל: כמה עולה תרגום תעודת נישואין לאנגלית",
+  en: "e.g.: How much to translate a marriage certificate to English",
+  ru: "напр.: сколько стоит перевод свидетельства о браке на английский",
+  ar: "مثال: كم تكلفة ترجمة شهادة زواج للإنجليزية",
+  fr: "ex: combien pour traduire un acte de mariage en anglais",
+  es: "ej: cuanto cuesta traducir un certificado de matrimonio al ingles",
 };
 
 const GREETINGS: Record<Lang, string> = {
