@@ -45,12 +45,14 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [uploadingFile, setUploadingFile] = useState<string | null>(null); // filename while uploading
   const scrollRef = useRef<HTMLDivElement>(null);
   const prevLang = useRef(lang);
   const savedRef = useRef(false);
   const mondayItemIdRef = useRef<string | null>(null);
   const messagesRef = useRef<Msg[]>([{ role: "assistant", content: GREETINGS[lang] }]);
   const inactivityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingFilesRef = useRef<File[]>([]);
 
   // Keep ref in sync with state for reliable reads inside async send()
   useEffect(() => { messagesRef.current = messages; }, [messages]);
@@ -158,7 +160,23 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
         body: JSON.stringify({ messages: snapshot, language: lang, utm: getStoredUTM(), existingItemId: mondayItemIdRef.current }),
       });
       const data = await resp.json();
-      if (data.itemId) mondayItemIdRef.current = data.itemId;
+      if (data.itemId) {
+        mondayItemIdRef.current = data.itemId;
+        // Upload any files that were queued before the item existed
+        if (pendingFilesRef.current.length > 0) {
+          const pending = [...pendingFilesRef.current];
+          pendingFilesRef.current = [];
+          for (const pf of pending) {
+            const fd = new FormData();
+            fd.append("file", pf);
+            fd.append("itemId", data.itemId);
+            fetch("/api/monday/upload-file", { method: "POST", body: fd })
+              .then(r => r.json())
+              .then(d => d.ok ? console.log("Deferred file uploaded:", pf.name) : console.error("Deferred upload failed:", d.error))
+              .catch(err => console.error("Deferred upload error:", err));
+          }
+        }
+      }
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: data.reply || data.error || "..." },
@@ -248,6 +266,13 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
             </div>
           </div>
         ))}
+        {uploadingFile && (
+          <div style={{ display: "flex", justifyContent: rtl ? "flex-start" : "flex-end" }}>
+            <div style={{ background: "#1a1a1a", color: "#fff", padding: "6px 14px", borderRadius: 12, fontSize: 11, opacity: 0.7 }}>
+              {uploadingFile}...
+            </div>
+          </div>
+        )}
         {loading && (
           <div
             style={{
@@ -301,17 +326,44 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
         >
           <input
             type="file"
-            accept="image/*,.pdf"
+            accept="image/*,.pdf,.doc,.docx"
             style={{ display: "none" }}
-            onChange={(e) => {
+            onChange={async (e) => {
               const file = e.target.files?.[0];
-              if (file) {
-                const name = file.name;
-                setInput((prev) =>
-                  prev ? `${prev} [${name}]` : `[${name}]`
-                );
-              }
+              if (!file) return;
               e.target.value = "";
+
+              // Add file name to chat input so user sees it
+              const name = file.name;
+              setInput((prev) => prev ? `${prev} [${name}]` : `[${name}]`);
+
+              // Upload to Monday in background if we have an itemId
+              const itemId = mondayItemIdRef.current;
+              if (!itemId) {
+                // No item yet — send a message first to create the item, then retry
+                console.log("No Monday itemId yet — file will be uploaded after first message");
+                // Store file for deferred upload
+                pendingFilesRef.current.push(file);
+                return;
+              }
+
+              setUploadingFile(name);
+              try {
+                const fd = new FormData();
+                fd.append("file", file);
+                fd.append("itemId", itemId);
+                const resp = await fetch("/api/monday/upload-file", { method: "POST", body: fd });
+                const data = await resp.json();
+                if (data.ok) {
+                  console.log("File uploaded:", data.file?.name);
+                } else {
+                  console.error("File upload failed:", data.error);
+                }
+              } catch (err) {
+                console.error("File upload error:", err);
+              } finally {
+                setUploadingFile(null);
+              }
             }}
           />
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" style={{ width: 18, height: 18 }}>

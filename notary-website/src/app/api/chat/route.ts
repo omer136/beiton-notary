@@ -58,6 +58,16 @@ interface LeadArgs {
   client_questions?: string;
   full_transcript?: string;
   estimated_price?: number;
+  notary_fee?: number;
+  translation_fee?: number;
+  gov_fees?: number;
+  handling_fee?: number;
+  surcharges?: number;
+  shipping_fee?: number;
+  word_count?: number;
+  document_type?: string;
+  delivery_method?: string;
+  apostille_needed?: string;
   msg_count?: number;
   needs_human?: boolean;
   ready_for_quote?: boolean;
@@ -141,6 +151,18 @@ function buildColumnValues(args: LeadArgs): Record<string, unknown> {
   if (args.estimated_price !== undefined && args.estimated_price !== null) {
     cols[SALES_COLS.quoteAmount] = String(args.estimated_price);
   }
+
+  // Pricing breakdown
+  if (args.notary_fee !== undefined) cols[SALES_COLS.notaryFee] = String(args.notary_fee);
+  if (args.translation_fee !== undefined) cols[SALES_COLS.translationFee] = String(args.translation_fee);
+  if (args.gov_fees !== undefined) cols[SALES_COLS.govFees] = String(args.gov_fees);
+  if (args.handling_fee !== undefined) cols[SALES_COLS.handlingFee] = String(args.handling_fee);
+  if (args.surcharges !== undefined) cols[SALES_COLS.surcharges] = String(args.surcharges);
+  if (args.shipping_fee !== undefined) cols[SALES_COLS.shippingFee] = String(args.shipping_fee);
+  if (args.word_count !== undefined) cols[SALES_COLS.wordCount] = String(args.word_count);
+  if (args.document_type) cols[SALES_COLS.documentType] = args.document_type;
+  if (args.delivery_method) cols[SALES_COLS.deliveryMethod] = { label: args.delivery_method };
+  if (args.apostille_needed) cols[SALES_COLS.apostilleNeeded] = { label: args.apostille_needed };
 
   if (args.msg_count !== undefined) {
     cols[SALES_COLS.msgCount] = String(args.msg_count);
@@ -313,6 +335,16 @@ async function callClaude(
           missing_info: input.missing_info,
           client_questions: input.client_questions,
           estimated_price: typeof input.estimated_price === "number" ? input.estimated_price : undefined,
+          notary_fee: typeof input.notary_fee === "number" ? input.notary_fee : undefined,
+          translation_fee: typeof input.translation_fee === "number" ? input.translation_fee : undefined,
+          gov_fees: typeof input.gov_fees === "number" ? input.gov_fees : undefined,
+          handling_fee: typeof input.handling_fee === "number" ? input.handling_fee : undefined,
+          surcharges: typeof input.surcharges === "number" ? input.surcharges : undefined,
+          shipping_fee: typeof input.shipping_fee === "number" ? input.shipping_fee : undefined,
+          word_count: typeof input.word_count === "number" ? input.word_count : undefined,
+          document_type: input.document_type,
+          delivery_method: input.delivery_method,
+          apostille_needed: input.apostille_needed,
           needs_human: input.needs_human === true || input.needs_human === "true",
           ready_for_quote: input.ready_for_quote === true || input.ready_for_quote === "true",
           utm_source: utmSource,

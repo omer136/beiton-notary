@@ -515,7 +515,25 @@ export const AGENT1_TOOLS = [
         },
         estimated_price: {
           type: "number" as const,
-          description: "מחיר משוער כולל מע״מ בשקלים. העתק את הסכום שנקבת בשיחה.",
+          description: "סה״כ לתשלום כולל מע״מ בשקלים.",
+        },
+        notary_fee: { type: "number" as const, description: "שכר נוטריוני לפני מע״מ (מהתקנות). דוגמה: 289 לתרגום עד 100 מילים." },
+        translation_fee: { type: "number" as const, description: "שכר תרגום (שוק חופשי, לא מתקנות). רלוונטי רק אם הנוטריון מתרגם." },
+        gov_fees: { type: "number" as const, description: "אגרות ממשלתיות (פטור ממע״מ). למשל 41₪ × כמות אפוסטילים." },
+        handling_fee: { type: "number" as const, description: "דמי טיפול. למשל 50₪ לאפוסטיל ביהמ״ש, 250₪ למשה״ח, 200₪ לאימות מקדים." },
+        surcharges: { type: "number" as const, description: "תוספות: דחיפות +50%/+100%, שפה זרה +104₪, שעות חריגות +50%." },
+        shipping_fee: { type: "number" as const, description: "עלות משלוח/שליח (אם רלוונטי)." },
+        word_count: { type: "number" as const, description: "מספר מילים משוער (לתרגום)." },
+        document_type: { type: "string" as const, description: "סוג המסמך: תעודת לידה / תעודת נישואין / חוזה / דרכון / דיפלומה / אחר" },
+        delivery_method: {
+          type: "string" as const,
+          enum: ["דיגיטלי", "פגישה במשרד", "איסוף עצמי", "שליח", "נוטריון עד הבית"],
+          description: "אופן הספקה שסוכם עם הלקוח",
+        },
+        apostille_needed: {
+          type: "string" as const,
+          enum: ["לא נדרש", "בית משפט", "משרד החוץ", "שניהם"],
+          description: "האם נדרש אפוסטיל ומאיזה סוג",
         },
         needs_human: { type: "boolean" as const, description: "true כשהלקוח ביקש נציג אנושי או שהשאלה מורכבת מדי" },
         ready_for_quote: {

@@ -63,6 +63,21 @@ export const SALES_COLS = {
   nextActionDate: "date_mm24863m",          // תאריך פעולה הבאה
   quotePdf: "file_mm24v4de",                // PDF הצעת מחיר
   clientName: "text_mm276sbx",              // שם לקוח
+
+  // --- pricing breakdown (2026-04-08) --- mirrors Cases board structure
+  notaryFee: "numeric_mm27qj1d",            // שכר נוטריוני (₪)
+  translationFee: "numeric_mm27h68z",        // שכר תרגום (₪)
+  govFees: "numeric_mm27gzy7",               // אגרות ממשלתיות (₪)
+  handlingFee: "numeric_mm276g3s",           // דמי טיפול (₪)
+  surcharges: "numeric_mm278dr5",            // תוספות (₪)
+  shippingFee: "numeric_mm27z1g5",           // משלוח / שליחויות (₪)
+  subtotalBeforeVat: "numeric_mm2717rs",     // סה״כ לפני מע״מ (₪)
+  vatAmount: "numeric_mm27f9zg",             // מע״מ (₪)
+  totalAmount: "numeric_mm27a8ce",           // סה״כ לתשלום (₪)
+  wordCount: "numeric_mm27t4rf",             // מספר מילים
+  documentType: "text_mm27ap4h",             // סוג מסמך
+  deliveryMethod: "color_mm27zq45",          // אופן הספקה
+  apostilleNeeded: "color_mm27pzft",         // אפוסטיל נדרש
 } as const;
 
 // Status labels (must exist on the board — do not invent new ones at runtime)
