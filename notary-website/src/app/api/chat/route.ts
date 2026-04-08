@@ -46,7 +46,7 @@ interface LeadArgs {
   name?: string;
   phone?: string;
   email?: string;
-  city?: string;
+  address?: string;
   target_country?: string;
   service?: string;
   language?: string;
@@ -115,7 +115,8 @@ function buildColumnValues(args: LeadArgs): Record<string, unknown> {
     cols[SALES_COLS.email] = { email: args.email, text: args.email };
   }
 
-  if (args.city) cols[SALES_COLS.city] = args.city;
+  if (args.address) cols[SALES_COLS.clientAddress] = args.address;
+  if (args.name) cols[SALES_COLS.clientName] = args.name;
   if (args.target_country) cols[SALES_COLS.targetCountry] = args.target_country;
   if (args.language_pair) cols[SALES_COLS.languagePair] = args.language_pair;
   if (args.quantity_description) cols[SALES_COLS.quantityDescription] = args.quantity_description;
@@ -130,9 +131,8 @@ function buildColumnValues(args: LeadArgs): Record<string, unknown> {
   if (args.client_questions) {
     cols[SALES_COLS.clientQuestions] = { text: args.client_questions };
   }
-  if (args.full_transcript) {
-    cols[SALES_COLS.fullTranscript] = { text: args.full_transcript.slice(0, 2000) };
-  }
+  // full_transcript no longer written to a column — it goes as a single Monday
+  // "update" (comment) via save-transcript at end of conversation, with no char limit.
 
   if (args.urgency) {
     cols[SALES_COLS.urgency] = { label: args.urgency };
@@ -302,7 +302,7 @@ async function callClaude(
           name: input.name,
           phone: input.phone,
           email: input.email,
-          city: input.city,
+          address: input.address || input.city,
           target_country: input.target_country,
           service: input.service,
           language: input.language || language,
@@ -387,43 +387,36 @@ export async function POST(req: NextRequest) {
       ).catch(() => {});
     }
 
-    // Build full transcript including the just-generated reply
-    const fullMessages: Message[] = [...messages, { role: "assistant", content: reply }];
-    const transcript = fullMessages
-      .map((m) => (m.role === "user" ? "לקוח: " : "נועה: ") + m.content)
-      .join("\n");
-    const msgCount = fullMessages.filter((m) => m.role === "user").length;
-
-    // Heuristic service detection (used only for initial fallback lead creation)
-    const allText = fullMessages.map((m) => m.content).join(" ");
-    const heuristicService =
-      /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
-      : /חתימה|signature/i.test(allText) ? "אימות חתימה"
-      : /ייפוי כוח|power of attorney/i.test(allText) ? "ייפוי כוח"
-      : /צוואה|will/i.test(allText) ? "צוואה"
-      : /תצהיר|affidavit/i.test(allText) ? "תצהיר"
-      : /הסכם ממון|prenup/i.test(allText) ? "הסכם ממון"
-      : /אפוסטיל|apostil/i.test(allText) ? "אפוסטיל"
-      : /העתק|copy/i.test(allText) ? "העתק נאמן למקור"
-      : "לא זוהה";
-
     let itemId: string | null = mondayItemId;
 
-    // Ensure an item exists — if the agent didn't call capture_lead, create/update one
-    // with the transcript + message count. This is the safety net.
-    try {
-      itemId = await upsertMondayLead(
-        {
-          service: heuristicService,
-          language: language || "he",
-          full_transcript: transcript,
-          msg_count: msgCount,
-          utm_source: utm?.utm_source,
-        },
-        itemId
-      );
-    } catch (e) {
-      console.error("Safety-net upsert error:", e);
+    // Safety net: ensure a Monday item exists for this conversation.
+    // If the agent already called capture_lead and we have an itemId — skip.
+    // Only create a MINIMAL item on the first message so there's something in the board.
+    // Don't write transcript/count here — that happens once via save-transcript at end.
+    if (!itemId) {
+      const allText = messages.map((m) => m.content).join(" ");
+      const heuristicService =
+        /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
+        : /חתימה|signature/i.test(allText) ? "אימות חתימה"
+        : /ייפוי כוח|power of attorney/i.test(allText) ? "ייפוי כוח"
+        : /צוואה|will/i.test(allText) ? "צוואה"
+        : /תצהיר|affidavit/i.test(allText) ? "תצהיר"
+        : /הסכם ממון|prenup/i.test(allText) ? "הסכם ממון"
+        : /אפוסטיל|apostil/i.test(allText) ? "אפוסטיל"
+        : /העתק|copy/i.test(allText) ? "העתק נאמן למקור"
+        : "לא זוהה";
+      try {
+        itemId = await upsertMondayLead(
+          {
+            service: heuristicService,
+            language: language || "he",
+            utm_source: utm?.utm_source,
+          },
+          null // force create
+        );
+      } catch (e) {
+        console.error("Safety-net create error:", e);
+      }
     }
 
     return NextResponse.json({ reply, itemId });

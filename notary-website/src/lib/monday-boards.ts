@@ -52,9 +52,9 @@ export const SALES_COLS = {
   summaryForNotary: "long_text_mm24zb8f",   // סיכום לנוטריון (שורה תחתונה)
   missingInfo: "long_text_mm24vqvw",        // מה חסר מהלקוח להשלמה
   clientQuestions: "long_text_mm24xhyb",    // שאלות וחששות הלקוח
-  fullTranscript: "long_text_mm248txk",     // תמלול שיחה מלא
+  // fullTranscript column removed — transcript goes as Monday "update" (comment)
   chatFiles: "file_mm24mvk2",               // קבצים מהצ'אט
-  city: "text_mm244awg",                    // עיר
+  clientAddress: "text_mm244awg",             // כתובת הלקוח (renamed from עיר)
   targetCountry: "text_mm24ff9n",           // מדינת יעד
   languagePair: "text_mm24bqv7",            // צמד שפות (לתרגום)
   quantityDescription: "text_mm248sjq",     // כמות ופירוט (טקסט חופשי)
@@ -62,6 +62,7 @@ export const SALES_COLS = {
   clientWaitingFor: "color_mm24f7jn",       // הלקוח מחכה ל…
   nextActionDate: "date_mm24863m",          // תאריך פעולה הבאה
   quotePdf: "file_mm24v4de",                // PDF הצעת מחיר
+  clientName: "text_mm276sbx",              // שם לקוח
 } as const;
 
 // Status labels (must exist on the board — do not invent new ones at runtime)

@@ -478,7 +478,7 @@ export const AGENT1_TOOLS = [
         name: { type: "string" as const, description: "שם הלקוח. השאר ריק אם לא ידוע." },
         phone: { type: "string" as const, description: "מספר טלפון. בפורמט ישראלי אם רלוונטי." },
         email: { type: "string" as const, description: "כתובת מייל." },
-        city: { type: "string" as const, description: "עיר מגורים של הלקוח." },
+        address: { type: "string" as const, description: "כתובת מגורים של הלקוח (עיר + רחוב אם רלוונטי, למשל למשלוח)." },
         target_country: { type: "string" as const, description: "מדינת יעד — לאפוסטיל, תרגום לשימוש בחו״ל וכו׳." },
         service: {
           type: "string" as const,
