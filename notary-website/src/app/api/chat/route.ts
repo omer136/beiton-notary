@@ -168,9 +168,7 @@ function buildColumnValues(args: LeadArgs): Record<string, unknown> {
     cols[SALES_COLS.msgCount] = String(args.msg_count);
   }
 
-  if (args.needs_human) {
-    cols[SALES_COLS.needsAttention] = { label: "Stuck" };
-  }
+  // needs_human flag — surfaced via summary_for_notary and clientWaitingFor
 
   // When ready for quote — flag the client as waiting for a quote
   if (args.ready_for_quote) {

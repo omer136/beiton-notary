@@ -61,17 +61,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true, skipped: true });
     }
 
-    // Check if we already posted an update on this item — prevent duplicates
-    const existingUpdates = await mondayMutation(
-      `query ($id: [ID!]!) { items(ids: $id) { updates(limit: 1) { id } } }`,
-      { id: [itemId] }
-    );
-    const hasUpdates = (existingUpdates?.data?.items?.[0]?.updates?.length || 0) > 0;
-    if (hasUpdates) {
-      console.log("save-transcript: update already exists for", itemId, "— skipping");
-      return NextResponse.json({ ok: true, skipped: true, reason: "update_exists" });
-    }
-
     const transcript = formatTranscript(messages, language);
     const msgCount = messages.filter((m) => m.role === "user").length;
 

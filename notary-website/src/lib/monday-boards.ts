@@ -44,7 +44,7 @@ export const SALES_COLS = {
   transcriptLink: "link_mm1wxe9b",          // תמלול שיחה (link)
   linkedCase: "board_relation_mm1w1vza",    // תיק שנפתח
   followup: "color_mm1wbhmq",               // פולואפ
-  needsAttention: "color_mm1yj27y",         // דורש התערבות
+  // needsAttention removed from board
   utmSource: "text_mm1za260",               // מקור הגעה (UTM)
   landingPage: "text_mm1z9by5",             // Landing Page
 
