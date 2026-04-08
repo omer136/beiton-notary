@@ -149,7 +149,7 @@ function buildColumnValues(args: LeadArgs): Record<string, unknown> {
   }
 
   if (args.estimated_price !== undefined && args.estimated_price !== null) {
-    cols[SALES_COLS.quoteAmount] = String(args.estimated_price);
+    cols[SALES_COLS.totalAmount] = String(args.estimated_price);
   }
 
   // Pricing breakdown

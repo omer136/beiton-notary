@@ -38,7 +38,7 @@ export const SALES_COLS = {
   channel: "color_mm1wj0mz",                // ערוץ
   inquiryDate: "date_mm1w6eek",             // תאריך פנייה
   msgCount: "numeric_mm1wtzxs",             // מספר הודעות
-  quoteAmount: "numeric_mm1wgak1",          // סכום הצעה (₪)
+  // quoteAmount removed from board — use totalAmount instead
   agentAnalysis: "long_text_mm1wcw3e",      // ניתוח הסוכן (legacy — kept for backward compat)
   futureLesson: "long_text_mm1wq6kg",       // לקח לשיחות הבאות
   transcriptLink: "link_mm1wxe9b",          // תמלול שיחה (link)
