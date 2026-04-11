@@ -409,8 +409,14 @@ export async function POST(req: NextRequest) {
       existingItemId
     );
 
-    // Alert if response is empty or error-like
-    if (!reply || reply === "..." || reply.includes("מצטערים") || reply.toLowerCase().includes("sorry, an error")) {
+    // Detect error-like reply (Anthropic failed, credit issue, rate limit, etc.)
+    const isErrorReply = !reply
+      || reply === "..."
+      || reply.includes("מצטערים")
+      || reply.toLowerCase().includes("sorry, an error")
+      || reply.toLowerCase().includes("temporarily unavailable");
+
+    if (isErrorReply) {
       sendErrorAlert(
         "Chat returned empty/error response",
         `Reply: ${reply}\nLanguage: ${language}\nMessages count: ${messages.length}\nLast user msg: ${messages[messages.length - 1]?.content || "N/A"}`
@@ -420,10 +426,10 @@ export async function POST(req: NextRequest) {
     let itemId: string | null = mondayItemId;
 
     // Safety net: ensure a Monday item exists for this conversation.
-    // If the agent already called capture_lead and we have an itemId — skip.
-    // Only create a MINIMAL item on the first message so there's something in the board.
-    // Don't write transcript/count here — that happens once via save-transcript at end.
-    if (!itemId) {
+    // Skip entirely if:
+    //   - We already have an itemId (agent called capture_lead)
+    //   - The reply was an error (don't spam the board with items for failed calls)
+    if (!itemId && !isErrorReply) {
       const allText = messages.map((m) => m.content).join(" ");
       const heuristicService =
         /תרגום|translat/i.test(allText) ? "תרגום נוטריוני"
