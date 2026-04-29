@@ -9,9 +9,13 @@ export interface PriceBreakdown {
   total: number;
 }
 
+/**
+ * מדיניות המשרד: לא מציעים את חלופת ׳נוטריון מתרגם׳ עם תוספת 50%.
+ * הפרמטר notaryTranslates נשמר לתאימות אחורה ותמיד מטופל כ-false.
+ */
 export function calculateTranslation(
   wordCount: number,
-  notaryTranslates: boolean = true
+  _notaryTranslates: boolean = false
 ): PriceBreakdown {
   const items = pricingData.pricing.translation_approval.items;
   const lines: { label: string; amount: number }[] = [];
@@ -33,15 +37,6 @@ export function calculateTranslation(
     const f2 = b2 * items[2].amount;
     fee += f2;
     lines.push({ label: `${items[2].description_he} ×${b2}`, amount: f2 });
-  }
-
-  if (notaryTranslates) {
-    const surchargeRate =
-      pricingData.pricing.translation_approval.translation_by_notary_surcharge
-        .surcharge_rate;
-    const surcharge = fee * surchargeRate;
-    fee += surcharge;
-    lines.push({ label: "תוספת תרגום ע״י נוטריון (50%)", amount: surcharge });
   }
 
   // Translation fee (free market)

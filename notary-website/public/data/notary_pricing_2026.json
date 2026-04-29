@@ -39,15 +39,17 @@
         { "description_he": "עותק נוסף של אישור התרגום", "amount": 77 }
       ],
       "translation_by_notary_surcharge": {
-        "description_he": "אם הנוטריון מתרגם בעצמו — תוספת מחצית משכר האישור",
-        "surcharge_rate": 0.5,
-        "note": "מחצית משכר אישור התרגום לפי מספר המילים"
+        "policy": "DO_NOT_OFFER",
+        "description_he": "מדיניות המשרד: לא מציעים ללקוחות את חלופת ׳נוטריון מתרגם בעצמו׳ עם תוספת 50%. תמיד מציעים את החלופה הזולה — תרגום + אישור נוטריוני על נכונות התרגום.",
+        "regulation_note": "התקנות מאפשרות תוספת מחצית משכר האישור אם הנוטריון מתרגם בעצמו (פרט 3 לתקנות) — אבל זו אינה החלופה שאנחנו מציעים.",
+        "surcharge_rate": 0,
+        "_legal_max_rate": 0.5
       },
       "calculation_example": {
         "words": 450,
         "breakdown": "251 (ראשונות) + 197×4 (400 מילים) = 1,039 ₪",
-        "with_notary_translation": "1,039 + 519.5 = 1,558.5 ₪",
-        "with_vat": "1,039 × 1.18 = 1,226.02 ₪"
+        "with_vat": "1,039 × 1.18 = 1,226.02 ₪",
+        "note": "אין תוספת ׳נוטריון מתרגם׳ — המודל הוא תרגום + אישור נוטריוני בלבד"
       }
     },
     "will_and_life_certificate": {
@@ -60,7 +62,10 @@
       "life_certificate": [
         { "description_he": "אישור שפלוני נמצא בחיים", "amount": 197 }
       ],
-      "will_translation_surcharge": "אם כרוך בתרגום — תוספת מחצית משכר תרגום לפי מספר המילים"
+      "will_translation_surcharge": {
+        "policy": "DO_NOT_OFFER",
+        "note": "מדיניות המשרד: גם בצוואה לא מציעים ׳נוטריון מתרגם׳. אם נדרש תרגום — מחיר תרגום + אישור נוטריוני, ללא תוספת 50%."
+      }
     },
     "affidavit": {
       "regulation_ref": "פרט 5",
@@ -76,7 +81,10 @@
         { "description_he": "אימות הסכם ממון", "amount": 446 },
         { "description_he": "עותק נוסף", "amount": 74 }
       ],
-      "translation_surcharge": "אם כרוך בתרגום — תוספת מחצית משכר תרגום"
+      "translation_surcharge": {
+        "policy": "DO_NOT_OFFER",
+        "note": "גם בהסכם ממון — לא מציעים ׳נוטריון מתרגם׳. תרגום + אישור בלבד."
+      }
     },
     "negotiable_instrument": {
       "regulation_ref": "פרט 7",
@@ -129,9 +137,9 @@
     "immediate_multiplier": 2.0
   },
   "apostille_fee": {
-    "court_fee": 41,
-    "handling_fee": 50,
+    "court_fee": 60,
+    "handling_fee": 150,
     "courier_fee": "לפי תעריף דלוורי",
-    "note": "אגרת בית משפט 41₪ + דמי טיפול 50₪ לכל תעודה + שליח (אופציונלי). משה\"ח: 41₪ אגרה + 250₪ טיפול לתעודה, דורש תעודה מקורית."
+    "note": "אגרת בית משפט + שכר טיפול + שליח"
   }
 }

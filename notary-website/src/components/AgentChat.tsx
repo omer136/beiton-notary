@@ -327,43 +327,44 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
           <input
             type="file"
             accept="image/*,.pdf,.doc,.docx"
+            multiple
             style={{ display: "none" }}
             onChange={async (e) => {
-              const file = e.target.files?.[0];
-              if (!file) return;
+              const files = Array.from(e.target.files ?? []);
+              if (files.length === 0) return;
               e.target.value = "";
 
-              // Add file name to chat input so user sees it
-              const name = file.name;
-              setInput((prev) => prev ? `${prev} [${name}]` : `[${name}]`);
+              // Add file names to chat input so user sees them
+              const names = files.map((f) => f.name);
+              const tag = names.map((n) => `[${n}]`).join(" ");
+              setInput((prev) => prev ? `${prev} ${tag}` : tag);
 
               // Upload to Monday in background if we have an itemId
               const itemId = mondayItemIdRef.current;
               if (!itemId) {
-                // No item yet — send a message first to create the item, then retry
-                console.log("No Monday itemId yet — file will be uploaded after first message");
-                // Store file for deferred upload
-                pendingFilesRef.current.push(file);
+                console.log(`No Monday itemId yet — ${files.length} file(s) will be uploaded after first message`);
+                pendingFilesRef.current.push(...files);
                 return;
               }
 
-              setUploadingFile(name);
-              try {
-                const fd = new FormData();
-                fd.append("file", file);
-                fd.append("itemId", itemId);
-                const resp = await fetch("/api/monday/upload-file", { method: "POST", body: fd });
-                const data = await resp.json();
-                if (data.ok) {
-                  console.log("File uploaded:", data.file?.name);
-                } else {
-                  console.error("File upload failed:", data.error);
+              for (const file of files) {
+                setUploadingFile(file.name);
+                try {
+                  const fd = new FormData();
+                  fd.append("file", file);
+                  fd.append("itemId", itemId);
+                  const resp = await fetch("/api/monday/upload-file", { method: "POST", body: fd });
+                  const data = await resp.json();
+                  if (data.ok) {
+                    console.log("File uploaded:", data.file?.name);
+                  } else {
+                    console.error("File upload failed:", data.error);
+                  }
+                } catch (err) {
+                  console.error("File upload error:", err);
                 }
-              } catch (err) {
-                console.error("File upload error:", err);
-              } finally {
-                setUploadingFile(null);
               }
+              setUploadingFile(null);
             }}
           />
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" style={{ width: 18, height: 18 }}>

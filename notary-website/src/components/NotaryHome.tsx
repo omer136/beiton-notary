@@ -398,7 +398,6 @@ export default function NotaryHome() {
   const [docs, setDocs] = useState(1);
   const [copies, setCopies] = useState(1);
   const [words, setWords] = useState(100);
-  const [notaryTranslates, setNotaryTranslates] = useState(false);
   const [foreignLang, setForeignLang] = useState(false);
   const [faq, setFaq] = useState<number | null>(null);
   const [ucF, setUcF] = useState("all");
@@ -444,7 +443,6 @@ export default function NotaryHome() {
     const c = t.pricing.currency;
     const lblPer100to1000 = lang === "he" ? "לכל 100 מילים נוספות (עד 1,000)" : "Per 100 additional words (up to 1,000)";
     const lblPer100above = lang === "he" ? "לכל 100 מילים נוספות (מעל 1,000)" : "Per 100 additional words (over 1,000)";
-    const lblNotaryTranslates = lang === "he" ? "תוספת תרגום ע״י הנוטריון (50%)" : "Notary translation surcharge (50%)";
     const lblForeignLang = lang === "he" ? "תוספת שפה לועזית (פרט 10)" : "Foreign language surcharge (Item 10)";
     const lblAdditional = lang === "he" ? "חותמים נוספים" : "Additional signers";
     const lblAddCopies = lang === "he" ? "עותקים נוספים" : "Additional copies";
@@ -457,7 +455,7 @@ export default function NotaryHome() {
       if (w > 100) { const units = Math.ceil(Math.min(w - 100, 900) / 100); const extra = units * svc.per100to1000; p += extra; lines.push({ label: `${lblPer100to1000}: ${mul(units, svc.per100to1000)}`, amount: extra }); }
       if (w > 1000) { const units = Math.ceil((w - 1000) / 100); const extra = units * svc.per100above1000; p += extra; lines.push({ label: `${lblPer100above}: ${mul(units, svc.per100above1000)}`, amount: extra }); }
       total = p;
-      if (selSvc === "translation" && notaryTranslates) { const surcharge = Math.round(total * 0.5); total += surcharge; lines.push({ label: lblNotaryTranslates, amount: surcharge }); }
+      // Policy: never offer the +50% "notary translates" option in the calculator.
       if (selSvc === "translation" && foreignLang) { total += 104; lines.push({ label: lblForeignLang, amount: 104 }); }
     } else if (svc.type === "stamp") {
       const isWill = selSvc === "will";
@@ -493,7 +491,21 @@ export default function NotaryHome() {
     sub: { fontSize: 14, fontWeight: 300, color: "#6B6B6B", textAlign: "center" as const, marginBottom: 36, maxWidth: 520, margin: "0 auto 36px", lineHeight: 1.7 },
     lbl: { display: "block" as const, fontSize: 11, fontWeight: 500, color: "#999", marginBottom: 6 },
     inp: { width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid #E8E6E1", fontSize: 13, fontFamily: cfg.font, background: "#FAFAF8", marginBottom: 18, direction: "ltr" as const },
+    inpCenter: { width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid #E8E6E1", fontSize: 13, fontFamily: cfg.font, background: "#FAFAF8", direction: "ltr" as const, textAlign: "center" as const, flex: 1 },
+    btn: { width: 40, minWidth: 40, height: 40, borderRadius: 8, border: "1px solid #E8E6E1", background: "#FAFAF8", fontSize: 18, fontWeight: 500, color: "#1A1A1A", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", padding: 0, lineHeight: 1, userSelect: "none" as const },
+    selWrap: { position: "relative" as const, marginBottom: 18 },
+    chev: { position: "absolute" as const, insetInlineEnd: 14, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" as const, color: "#666", fontSize: 11, lineHeight: 1 },
+    numWrap: { display: "flex", alignItems: "stretch", gap: 8, marginBottom: 18 },
   };
+
+  // Stepper component for clearer +/− on numeric inputs
+  const stepper = (value: number, set: (n: number) => void, min: number, max: number, step: number) => (
+    <div style={S.numWrap}>
+      <button type="button" aria-label={lang === "he" ? "הפחתה" : "Decrease"} onClick={() => set(Math.max(min, value - step))} style={S.btn}>−</button>
+      <input type="number" min={min} max={max} value={value} onChange={e => set(Math.max(min, Math.min(max, +e.target.value || min)))} style={S.inpCenter} />
+      <button type="button" aria-label={lang === "he" ? "הוספה" : "Increase"} onClick={() => set(Math.min(max, value + step))} style={S.btn}>+</button>
+    </div>
+  );
 
   return (
     <div dir={cfg.dir} style={{ fontFamily: cfg.font, color: "#1A1A1A", background: "#fff", minHeight: "100vh", lineHeight: 1.7, WebkitFontSmoothing: "antialiased" }}>
@@ -595,15 +607,29 @@ export default function NotaryHome() {
           <p style={S.sub}>{t.pricing.subtitle}</p>
           <div style={{ background: "#fff", borderRadius: 14, padding: 28, border: "1px solid #E8E6E1" }}>
             <label style={S.lbl}>{t.pricing.selectService}</label>
-            <select value={selSvc} onChange={e => { const v = e.target.value; setSelSvc(v); setPages(1); setSigs(1); setDocs(1); setCopies(1); setWords(100); if (v) trackServiceExplored(v); }} style={{ ...S.inp, appearance: "none" as const, direction: cfg.dir as "rtl" | "ltr" }}>
-              <option value="">—</option>
-              {Object.entries(PRICING_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label[lang]}</option>)}
-            </select>
-            {svc?.fields?.includes("words") && <><label style={S.lbl}>{t.pricing.words || "מילים"}</label><input type="number" min={1} value={words} onChange={e => setWords(Math.max(1,+e.target.value))} style={S.inp} /><label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#6B6B6B", marginBottom: 8, cursor: "pointer" }}><input type="checkbox" checked={notaryTranslates} onChange={e => setNotaryTranslates(e.target.checked)} style={{ width: 16, height: 16, accentColor: "#1A1A1A" }} />{lang === "he" ? "הנוטריון מתרגם (תוספת 50%)" : "Notary translates (50% surcharge)"}</label><label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#6B6B6B", marginBottom: 18, cursor: "pointer" }}><input type="checkbox" checked={foreignLang} onChange={e => setForeignLang(e.target.checked)} style={{ width: 16, height: 16, accentColor: "#1A1A1A" }} />{lang === "he" ? "שפה לועזית — לא עברית/אנגלית/ערבית (+104 ₪)" : "Foreign language — not Hebrew/English/Arabic (+104 ₪)"}</label></>}
-            {svc?.fields?.includes("pages") && <><label style={S.lbl}>{t.pricing.pages}</label><input type="number" min={1} max={50} value={pages} onChange={e => setPages(Math.max(1,+e.target.value))} style={S.inp} /></>}
-            {svc?.fields?.includes("signatories") && <><label style={S.lbl}>{t.pricing.signatories}</label><input type="number" min={1} max={10} value={sigs} onChange={e => setSigs(Math.max(1,+e.target.value))} style={S.inp} /></>}
-            {svc?.fields?.includes("documents") && <><label style={S.lbl}>{t.pricing.documents}</label><input type="number" min={1} max={20} value={docs} onChange={e => setDocs(Math.max(1,+e.target.value))} style={S.inp} /></>}
-            {svc?.fields?.includes("copies") && <><label style={S.lbl}>{t.pricing.copies}</label><input type="number" min={1} max={10} value={copies} onChange={e => setCopies(Math.max(1,+e.target.value))} style={S.inp} /></>}
+            <div style={S.selWrap}>
+              <select
+                value={selSvc}
+                onChange={e => { const v = e.target.value; setSelSvc(v); setPages(1); setSigs(1); setDocs(1); setCopies(1); setWords(100); setForeignLang(false); if (v) trackServiceExplored(v); }}
+                style={{ ...S.inp, marginBottom: 0, paddingInlineEnd: 36, appearance: "none", WebkitAppearance: "none", MozAppearance: "none", direction: cfg.dir as "rtl" | "ltr", textAlign: cfg.dir === "rtl" ? "right" : "left", cursor: "pointer" } as React.CSSProperties}
+              >
+                <option value="">—</option>
+                {Object.entries(PRICING_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label[lang]}</option>)}
+              </select>
+              <span style={S.chev} aria-hidden="true">▼</span>
+            </div>
+            {svc?.fields?.includes("words") && <>
+              <label style={S.lbl}>{t.pricing.words || "מילים"}</label>
+              {stepper(words, setWords, 1, 50000, 50)}
+              <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#6B6B6B", marginBottom: 18, cursor: "pointer" }}>
+                <input type="checkbox" checked={foreignLang} onChange={e => setForeignLang(e.target.checked)} style={{ width: 16, height: 16, accentColor: "#1A1A1A" }} />
+                {lang === "he" ? "שפה לועזית — לא עברית/אנגלית/ערבית (+104 ₪)" : "Foreign language — not Hebrew/English/Arabic (+104 ₪)"}
+              </label>
+            </>}
+            {svc?.fields?.includes("pages") && <><label style={S.lbl}>{t.pricing.pages}</label>{stepper(pages, setPages, 1, 50, 1)}</>}
+            {svc?.fields?.includes("signatories") && <><label style={S.lbl}>{t.pricing.signatories}</label>{stepper(sigs, setSigs, 1, 10, 1)}</>}
+            {svc?.fields?.includes("documents") && <><label style={S.lbl}>{t.pricing.documents}</label>{stepper(docs, setDocs, 1, 20, 1)}</>}
+            {svc?.fields?.includes("copies") && <><label style={S.lbl}>{t.pricing.copies}</label>{stepper(copies, setCopies, 1, 10, 1)}</>}
 
             {pr && <div style={{ borderTop: "1px solid #E8E6E1", paddingTop: 16, marginTop: 4 }}>
               {pr.lines.map((l, i) => <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, color: "#6B6B6B", marginBottom: 4 }}><span>{l.label}</span><span>{l.amount.toLocaleString()} {t.pricing.currency}</span></div>)}
