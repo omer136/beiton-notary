@@ -65,15 +65,23 @@ export const SALES_COLS = {
   clientName: "text_mm276sbx",              // שם לקוח
 
   // --- pricing breakdown (2026-04-08) --- mirrors Cases board structure
-  notaryFee: "numeric_mm27qj1d",            // שכר נוטריוני (₪)
-  translationFee: "numeric_mm27h68z",        // שכר תרגום (₪)
-  govFees: "numeric_mm27gzy7",               // אגרות ממשלתיות (₪)
-  handlingFee: "numeric_mm276g3s",           // דמי טיפול (₪)
-  surcharges: "numeric_mm278dr5",            // תוספות (₪)
-  shippingFee: "numeric_mm27z1g5",           // משלוח / שליחויות (₪)
-  subtotalBeforeVat: "numeric_mm2717rs",     // סה״כ לפני מע״מ (₪)
-  vatAmount: "numeric_mm27f9zg",             // מע״מ (₪)
-  totalAmount: "numeric_mm27a8ce",           // סה״כ לתשלום (₪)
+  // --- legacy pre-VAT pricing columns (kept for historical data, no longer written) ---
+  notaryFee: "numeric_mm27qj1d",            // שכר נוטריוני (₪) — legacy
+  translationFee: "numeric_mm27h68z",        // שכר תרגום (₪) — legacy
+  govFees: "numeric_mm27gzy7",               // אגרות ממשלתיות (₪) — legacy
+  handlingFee: "numeric_mm276g3s",           // דמי טיפול (₪) — legacy
+  surcharges: "numeric_mm278dr5",            // תוספות (₪) — legacy
+  shippingFee: "numeric_mm27z1g5",           // משלוח / שליחויות (₪) — legacy
+  subtotalBeforeVat: "numeric_mm2717rs",     // סה״כ לפני מע״מ (₪) — legacy
+  vatAmount: "numeric_mm27f9zg",             // מע״מ (₪) — legacy
+  totalAmount: "numeric_mm27a8ce",           // סה״כ לתשלום (₪) — manual override
+  // --- new simplified VAT-inclusive pricing (2026-04-29) ---
+  priceTranslation: "numeric_mm2w8cwn",     // מחיר תרגום נוטריוני (כולל מע״מ)
+  priceNotaryService: "numeric_mm2w66y6",   // מחיר שירות נוטריון (כולל מע״מ)
+  priceApostille: "numeric_mm2wkng2",       // מחיר אפוסטיל (כולל מע״מ, BEITON + אימות מקדים)
+  priceShipping: "numeric_mm2wjc4p",        // מחיר משלוח (כולל מע״מ)
+  priceGovFee: "numeric_mm2ws3m",           // אגרה (פטור ממע״מ)
+  totalAutoCalc: "formula_mm2wnxx0",         // סה״כ אוטומטי — Monday formula (must be configured manually in Monday UI)
   wordCount: "numeric_mm27t4rf",             // מספר מילים
   documentType: "text_mm27ap4h",             // סוג מסמך
   deliveryMethod: "color_mm27zq45",          // אופן הספקה

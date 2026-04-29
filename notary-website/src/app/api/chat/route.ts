@@ -58,12 +58,19 @@ interface LeadArgs {
   client_questions?: string;
   full_transcript?: string;
   estimated_price?: number;
+  // legacy pre-VAT components (kept for back-compat; agent should stop writing these)
   notary_fee?: number;
   translation_fee?: number;
   gov_fees?: number;
   handling_fee?: number;
   surcharges?: number;
   shipping_fee?: number;
+  // new simplified VAT-inclusive pricing (5 columns)
+  price_translation?: number;     // תרגום + אישור נוטריוני, כולל מע״מ. מלא רק אם השירות תרגום.
+  price_notary_service?: number;  // שירות נוטריון שאינו תרגום, כולל מע״מ
+  price_apostille?: number;       // BEITON apostille handling + pre-auth, כולל מע״מ
+  price_shipping?: number;        // משלוח כולל מע״מ
+  price_gov_fee?: number;         // אגרות ממשלתיות, פטור ממע״מ
   word_count?: number;
   document_type?: string;
   delivery_method?: string;
@@ -152,7 +159,17 @@ function buildColumnValues(args: LeadArgs): Record<string, unknown> {
     cols[SALES_COLS.totalAmount] = String(args.estimated_price);
   }
 
-  // Pricing breakdown
+  // Pricing breakdown — new simplified VAT-inclusive 5-column model.
+  // Agent fills only the relevant columns (e.g. translation case → priceTranslation
+  // only; non-translation notary case → priceNotaryService only; apostille adds to
+  // priceApostille; shipping adds to priceShipping; gov fees go to priceGovFee).
+  if (args.price_translation !== undefined) cols[SALES_COLS.priceTranslation] = String(args.price_translation);
+  if (args.price_notary_service !== undefined) cols[SALES_COLS.priceNotaryService] = String(args.price_notary_service);
+  if (args.price_apostille !== undefined) cols[SALES_COLS.priceApostille] = String(args.price_apostille);
+  if (args.price_shipping !== undefined) cols[SALES_COLS.priceShipping] = String(args.price_shipping);
+  if (args.price_gov_fee !== undefined) cols[SALES_COLS.priceGovFee] = String(args.price_gov_fee);
+
+  // Legacy pre-VAT breakdown — still accepted for back-compat but not promoted.
   if (args.notary_fee !== undefined) cols[SALES_COLS.notaryFee] = String(args.notary_fee);
   if (args.translation_fee !== undefined) cols[SALES_COLS.translationFee] = String(args.translation_fee);
   if (args.gov_fees !== undefined) cols[SALES_COLS.govFees] = String(args.gov_fees);
@@ -333,6 +350,13 @@ async function callClaude(
           missing_info: input.missing_info,
           client_questions: input.client_questions,
           estimated_price: typeof input.estimated_price === "number" ? input.estimated_price : undefined,
+          // new simplified VAT-inclusive pricing
+          price_translation: typeof input.price_translation === "number" ? input.price_translation : undefined,
+          price_notary_service: typeof input.price_notary_service === "number" ? input.price_notary_service : undefined,
+          price_apostille: typeof input.price_apostille === "number" ? input.price_apostille : undefined,
+          price_shipping: typeof input.price_shipping === "number" ? input.price_shipping : undefined,
+          price_gov_fee: typeof input.price_gov_fee === "number" ? input.price_gov_fee : undefined,
+          // legacy pre-VAT components (back-compat only)
           notary_fee: typeof input.notary_fee === "number" ? input.notary_fee : undefined,
           translation_fee: typeof input.translation_fee === "number" ? input.translation_fee : undefined,
           gov_fees: typeof input.gov_fees === "number" ? input.gov_fees : undefined,
