@@ -547,7 +547,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
         ],
         faqTitle: "שאלות נפוצות על הצהרת מתרגם",
         faq: [
-          { q: "מה ההבדל בין תרגום נוטריוני להצהרת מתרגם?", a: "תרגום נוטריוני — הנוטריון מתרגם בעצמו (רק אם דובר את שתי השפות, תוספת 50%). הצהרת מתרגם — מתרגם חיצוני מתרגם ומצהיר, הנוטריון מאשר את ההצהרה. התוצאה המשפטית זהה." },
+          { q: "מה ההבדל בין תרגום נוטריוני להצהרת מתרגם?", a: "אצלנו מתרגם מקצועי מטעמנו מתרגם והנוטריון מאשר את נכונות התרגום. זה למעשה דומה להצהרת מתרגם — והתוצאה המשפטית זהה. כל מסמך מקבל חותמת נוטריונית רשמית." },
           { q: "האם המתרגם חייב להגיע למשרד?", a: "כן. המתרגם חייב לחתום על ההצהרה בנוכחות הנוטריון — זו דרישת חוק." },
           { q: "האם אני (מבקש השירות) צריך להגיע?", a: "לא. רק המתרגם צריך להיות נוכח. אתם יכולים לשלוח את המסמך בוואטסאפ ואנחנו מטפלים בהכל." },
           { q: "לאילו שפות אפשר?", a: "לכל שפה. יש לנו רשת מתרגמים מקצועיים ברוסית, צרפתית, גרמנית, ספרדית, פורטוגלית, סינית, יפנית ועוד." },
@@ -607,7 +607,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
         ],
         faqTitle: "Frequently Asked Questions",
         faq: [
-          { q: "What's the difference between notarial translation and a translator declaration?", a: "Notarial translation — the notary translates personally (only if fluent in both languages, 50% surcharge). Translator declaration — an external translator translates and declares, the notary certifies the declaration. The legal result is identical." },
+          { q: "What's the difference between notarial translation and a translator declaration?", a: "Our model: a professional translator on our team translates, and the notary certifies the accuracy. This is functionally similar to a translator declaration — and the legal result is identical. Every document receives an official notarial stamp." },
           { q: "Does the translator need to visit the office?", a: "Yes. The translator must sign the declaration in the notary's presence — this is a legal requirement." },
           { q: "Do I (the service requester) need to come?", a: "No. Only the translator needs to be present. You can send the document via WhatsApp and we handle everything." },
           { q: "What languages are available?", a: "Any language. We have a network of professional translators in Russian, French, German, Spanish, Portuguese, Chinese, Japanese, and more." },
@@ -667,7 +667,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
         ],
         faqTitle: "Часто задаваемые вопросы",
         faq: [
-          { q: "В чём разница между нотариальным переводом и декларацией переводчика?", a: "Нотариальный перевод — нотариус переводит лично (только если владеет обоими языками, надбавка 50%). Декларация переводчика — внешний переводчик переводит и заявляет, нотариус заверяет. Юридический результат одинаков." },
+          { q: "В чём разница между нотариальным переводом и декларацией переводчика?", a: "Профессиональный переводчик нашей команды переводит, а нотариус заверяет точность. Это функционально аналогично декларации переводчика — и юридический результат идентичен. Каждый документ получает официальную нотариальную печать." },
           { q: "Должен ли переводчик прийти в офис?", a: "Да. Переводчик должен подписать декларацию в присутствии нотариуса — требование закона." },
           { q: "Должен ли я (заказчик) приходить?", a: "Нет. Только переводчик должен присутствовать. Вы можете отправить документ через WhatsApp, мы всё организуем." },
           { q: "Какие языки доступны?", a: "Любые. У нас сеть переводчиков на русском, французском, немецком, испанском, португальском, китайском, японском и других языках." },
@@ -727,7 +727,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
         ],
         faqTitle: "أسئلة شائعة",
         faq: [
-          { q: "ما الفرق بين الترجمة النوتارية وإقرار المترجم؟", a: "الترجمة النوتارية — النوتاري يترجم بنفسه (فقط إذا يتقن اللغتين، مع إضافة 50%). إقرار المترجم — مترجم خارجي يترجم ويُقرّ، النوتاري يصدّق. النتيجة القانونية متطابقة." },
+          { q: "ما الفرق بين الترجمة النوتارية وإقرار المترجم؟", a: "مترجم محترف من فريقنا يترجم، وكاتب العدل يصادق على دقة الترجمة. هذا يماثل إقرار المترجم وظيفياً — والنتيجة القانونية متطابقة. كل مستند يحصل على ختم نوتاري رسمي." },
           { q: "هل يجب أن يحضر المترجم للمكتب؟", a: "نعم. المترجم يجب أن يوقّع الإقرار بحضور النوتاري — مطلب قانوني." },
           { q: "هل أنا (طالب الخدمة) أحتاج للحضور؟", a: "لا. فقط المترجم يحتاج للحضور. يمكنكم إرسال المستند عبر واتساب ونحن نتولى كل شيء." },
           { q: "ما اللغات المتاحة؟", a: "أي لغة. لدينا شبكة مترجمين بالروسية، الفرنسية، الألمانية، الإسبانية، البرتغالية، الصينية، اليابانية وغيرها." },
