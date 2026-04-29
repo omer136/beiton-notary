@@ -39,7 +39,7 @@ export const SALES_COLS = {
   inquiryDate: "date_mm1w6eek",             // תאריך פנייה
   msgCount: "numeric_mm1wtzxs",             // מספר הודעות
   // quoteAmount removed from board — use totalAmount instead
-  agentAnalysis: "long_text_mm1wcw3e",      // ניתוח הסוכן (legacy — kept for backward compat)
+  liveTranscript: "long_text_mm1wcw3e",     // תמלול שיחה — נכתב חי בכל הודעה (idempotent overwrite, repurposed from legacy agentAnalysis)
   futureLesson: "long_text_mm1wq6kg",       // לקח לשיחות הבאות
   transcriptLink: "link_mm1wxe9b",          // תמלול שיחה (link)
   linkedCase: "board_relation_mm1w1vza",    // תיק שנפתח

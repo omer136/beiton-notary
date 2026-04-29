@@ -425,6 +425,40 @@ export async function POST(req: NextRequest) {
 
     let itemId: string | null = mondayItemId;
 
+    // Live transcript: write the full conversation (incl. this turn's reply)
+    // to a long_text column on every chat call. Idempotent overwrite — so the
+    // last value is always the most up-to-date snapshot of the chat. Survives
+    // browser crashes / mobile screen-locks where save-transcript may not fire.
+    const writeLiveTranscript = async (id: string) => {
+      const roleLabel = language === "he" || language === "ar"
+        ? { user: "לקוח", assistant: "נועה" }
+        : { user: "Client", assistant: "Noa" };
+      const fullMessages: Message[] = reply && !isErrorReply
+        ? [...messages, { role: "assistant" as const, content: reply }]
+        : [...messages];
+      let transcript = fullMessages
+        .map((m) => `${roleLabel[m.role]}: ${m.content}`)
+        .join("\n\n");
+      // Monday long_text accepts ~32KB; keep tail to stay safe and preserve recency.
+      if (transcript.length > 28000) {
+        transcript = "…(truncated to last 28KB)\n\n" + transcript.slice(-28000);
+      }
+      try {
+        await mondayRequest(
+          `mutation ($board: ID!, $item: ID!, $cols: JSON!) {
+            change_multiple_column_values(board_id: $board, item_id: $item, column_values: $cols) { id }
+          }`,
+          {
+            board: SALES_BOARD_ID,
+            item: id,
+            cols: JSON.stringify({ [SALES_COLS.liveTranscript]: { text: transcript } }),
+          }
+        );
+      } catch (e) {
+        console.error("Live transcript write error:", e);
+      }
+    };
+
     // Safety net: ensure a Monday item exists for this conversation.
     // Skip entirely if:
     //   - We already have an itemId (agent called capture_lead)
@@ -453,6 +487,12 @@ export async function POST(req: NextRequest) {
       } catch (e) {
         console.error("Safety-net create error:", e);
       }
+    }
+
+    // Live transcript snapshot — only meaningful once we have an itemId and
+    // a successful (non-error) reply. Fire and forget so chat latency isn't affected.
+    if (itemId && !isErrorReply) {
+      writeLiveTranscript(itemId).catch(() => {});
     }
 
     return NextResponse.json({ reply, itemId });
