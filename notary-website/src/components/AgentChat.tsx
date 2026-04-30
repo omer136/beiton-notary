@@ -38,6 +38,25 @@ interface Msg {
   content: string;
 }
 
+// Generate a session ID like BEI-20260430-A3F9K2.
+// Stable per browser via localStorage so a returning client lands on the same lead.
+function getOrCreateSessionId(): string {
+  if (typeof window === "undefined") return "";
+  const KEY = "beiton_chat_session_id";
+  try {
+    const existing = window.localStorage.getItem(KEY);
+    if (existing && /^BEI-\d{8}-[A-Z0-9]{6}$/.test(existing)) return existing;
+  } catch { /* localStorage may be blocked — fall back to in-memory */ }
+  const d = new Date();
+  const yyyymmdd = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no I/O/0/1 — readable
+  let suffix = "";
+  for (let i = 0; i < 6; i++) suffix += alphabet[Math.floor(Math.random() * alphabet.length)];
+  const id = `BEI-${yyyymmdd}-${suffix}`;
+  try { window.localStorage.setItem(KEY, id); } catch { /* ignore */ }
+  return id;
+}
+
 export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
   const rtl = lang === "he" || lang === "ar";
   const [messages, setMessages] = useState<Msg[]>([
@@ -50,12 +69,16 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
   const prevLang = useRef(lang);
   const savedRef = useRef(false);
   const mondayItemIdRef = useRef<string | null>(null);
+  const sessionIdRef = useRef<string>("");
   const messagesRef = useRef<Msg[]>([{ role: "assistant", content: GREETINGS[lang] }]);
   const inactivityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingFilesRef = useRef<File[]>([]);
 
   // Keep ref in sync with state for reliable reads inside async send()
   useEffect(() => { messagesRef.current = messages; }, [messages]);
+
+  // Resolve session ID once on mount (client-only — uses window.localStorage).
+  useEffect(() => { sessionIdRef.current = getOrCreateSessionId(); }, []);
 
   // Save transcript to Monday.com
   const saveTranscript = useCallback(() => {
@@ -65,7 +88,12 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
     savedRef.current = true;
 
     // Use sendBeacon for reliability (works even when page is closing)
-    const payload = JSON.stringify({ messages, language: lang, itemId: mondayItemIdRef.current });
+    const payload = JSON.stringify({
+      messages,
+      language: lang,
+      itemId: mondayItemIdRef.current,
+      sessionId: sessionIdRef.current,
+    });
     const blob = new Blob([payload], { type: "application/json" });
     if (navigator.sendBeacon) {
       navigator.sendBeacon("/api/chat/save-transcript", blob);
@@ -157,7 +185,13 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
       const resp = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: snapshot, language: lang, utm: getStoredUTM(), existingItemId: mondayItemIdRef.current }),
+        body: JSON.stringify({
+          messages: snapshot,
+          language: lang,
+          utm: getStoredUTM(),
+          existingItemId: mondayItemIdRef.current,
+          session_id: sessionIdRef.current,
+        }),
       });
       const data = await resp.json();
       if (data.itemId) {

@@ -10,8 +10,216 @@ import {
   SALES_COLS,
   SALES_STATUS_LABELS,
 } from "@/lib/monday-boards";
+import pricingData from "@/../public/data/notary_pricing_2026.json";
 
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
+const VAT = 1.18;
+const round2 = (n: number) => Math.round(n * 100) / 100;
+
+// ---------------------------------------------------------------------------
+// calculate_price — canonical pricing logic. Single source of truth = JSON.
+// Agent calls this tool every time it needs to quote; it never computes prices
+// itself in prose. Returns 5 VAT-inclusive components matching the Monday board
+// columns + a total.
+// ---------------------------------------------------------------------------
+interface CalcPriceInput {
+  service: string;
+  word_count?: number;
+  foreign_language?: boolean;
+  extra_signers?: number;
+  extra_pages?: number;
+  extra_copies?: number;
+  apostille_court_count?: number;
+  apostille_mfa_count?: number;
+  pre_auth_required?: boolean;
+  pre_auth_count?: number;
+  pre_auth_court_pricing?: boolean;
+  shipping_directions?: number;
+}
+
+interface CalcPriceResult {
+  price_translation: number;
+  price_notary_service: number;
+  price_apostille: number;
+  price_shipping: number;
+  price_gov_fee: number;
+  estimated_price: number;
+  breakdown: string;
+}
+
+function calculatePrice(input: CalcPriceInput): CalcPriceResult {
+  const lines: string[] = [];
+  let priceTranslation = 0;
+  let priceNotaryService = 0;
+  let priceApostille = 0;
+  let priceShipping = 0;
+  let priceGovFee = 0;
+
+  const trItems = pricingData.pricing.translation_approval.items;
+  const sigItems = pricingData.pricing.signature_authentication.items;
+  const willItems = pricingData.pricing.will_and_life_certificate.will;
+  const lifeItems = pricingData.pricing.will_and_life_certificate.life_certificate;
+  const affItems = pricingData.pricing.affidavit.items;
+  const prenupItems = pricingData.pricing.prenuptial_agreement.items;
+  const copyItems = pricingData.pricing.certified_copy.items;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const beiton = (pricingData as any).beiton_pricing;
+
+  switch (input.service) {
+    case "translation_approval": {
+      const w = input.word_count ?? 0;
+      let pre = trItems[0].amount;
+      lines.push(`עד 100 מילים: ${trItems[0].amount} ₪`);
+      const remaining = Math.max(0, w - 100);
+      const blocksTo1k = remaining > 0 ? Math.min(Math.ceil(remaining / 100), 9) : 0;
+      if (blocksTo1k > 0) {
+        const extra = blocksTo1k * trItems[1].amount;
+        pre += extra;
+        lines.push(`${blocksTo1k} × 100 מילים נוספות: ${extra} ₪`);
+      }
+      const above1k = Math.max(0, w - 1000);
+      if (above1k > 0) {
+        const blocks = Math.ceil(above1k / 100);
+        const extra = blocks * trItems[2].amount;
+        pre += extra;
+        lines.push(`${blocks} × 100 מילים מעל 1,000: ${extra} ₪`);
+      }
+      if (input.foreign_language) {
+        pre += pricingData.pricing.foreign_language_surcharge.items[0].amount;
+        lines.push(`שפה לועזית: 104 ₪`);
+      }
+      const copies = input.extra_copies ?? 0;
+      if (copies > 0) {
+        const extra = copies * trItems[3].amount;
+        pre += extra;
+        lines.push(`${copies} עותק נוסף של אישור: ${extra} ₪`);
+      }
+      priceTranslation = round2(pre * VAT);
+      break;
+    }
+    case "signature_authentication":
+    case "power_of_attorney": {
+      let pre = sigItems[0].amount;
+      lines.push(`חותם ראשון: ${sigItems[0].amount} ₪`);
+      const extra = (input.extra_signers ?? 0) * sigItems[1].amount;
+      if (extra > 0) {
+        pre += extra;
+        lines.push(`${input.extra_signers} חותמים נוספים: ${extra} ₪`);
+      }
+      const copies = input.extra_copies ?? 0;
+      if (copies > 0) {
+        pre += copies * sigItems[3].amount;
+        lines.push(`${copies} עותקים נוספים: ${copies * sigItems[3].amount} ₪`);
+      }
+      priceNotaryService = round2(pre * VAT);
+      break;
+    }
+    case "affidavit": {
+      let pre = affItems[0].amount;
+      lines.push(`מצהיר ראשון: ${affItems[0].amount} ₪`);
+      const extra = (input.extra_signers ?? 0) * affItems[1].amount;
+      if (extra > 0) {
+        pre += extra;
+        lines.push(`${input.extra_signers} מצהירים נוספים: ${extra} ₪`);
+      }
+      const copies = input.extra_copies ?? 0;
+      if (copies > 0) {
+        pre += copies * affItems[2].amount;
+      }
+      priceNotaryService = round2(pre * VAT);
+      break;
+    }
+    case "will": {
+      let pre = willItems[0].amount;
+      lines.push(`צוואה — חותם ראשון: ${willItems[0].amount} ₪`);
+      const extra = (input.extra_signers ?? 0) * willItems[1].amount;
+      if (extra > 0) {
+        pre += extra;
+        lines.push(`${input.extra_signers} חותמים נוספים: ${extra} ₪`);
+      }
+      const copies = input.extra_copies ?? 0;
+      if (copies > 0) pre += copies * willItems[2].amount;
+      priceNotaryService = round2(pre * VAT);
+      break;
+    }
+    case "prenup": {
+      let pre = prenupItems[0].amount;
+      lines.push(`הסכם ממון: ${prenupItems[0].amount} ₪`);
+      const copies = input.extra_copies ?? 0;
+      if (copies > 0) pre += copies * prenupItems[1].amount;
+      priceNotaryService = round2(pre * VAT);
+      break;
+    }
+    case "certified_copy": {
+      let pre = copyItems[0].amount;
+      lines.push(`עמוד ראשון: ${copyItems[0].amount} ₪`);
+      const pages = input.extra_pages ?? 0;
+      if (pages > 0) {
+        const extra = pages * copyItems[1].amount;
+        pre += extra;
+        lines.push(`${pages} עמודים נוספים: ${extra} ₪`);
+      }
+      priceNotaryService = round2(pre * VAT);
+      break;
+    }
+    case "life_certificate": {
+      lines.push(`אישור חיים: ${lifeItems[0].amount} ₪`);
+      priceNotaryService = round2(lifeItems[0].amount * VAT);
+      break;
+    }
+  }
+
+  // Apostille (BEITON handling) + government fees
+  const courtCount = input.apostille_court_count ?? 0;
+  const mfaCount = input.apostille_mfa_count ?? 0;
+  if (courtCount > 0 || mfaCount > 0 || input.pre_auth_required) {
+    let apostilleHandlingPre = 0;
+    if (courtCount > 0) {
+      const cost = courtCount * beiton.apostille_court.handling;
+      apostilleHandlingPre += cost;
+      lines.push(`${courtCount} × אפוסטיל בית משפט (טיפול): ${cost} ₪`);
+      priceGovFee += courtCount * beiton.apostille_court.gov_fee;
+    }
+    if (mfaCount > 0) {
+      const cost = mfaCount * beiton.apostille_mfa.handling;
+      apostilleHandlingPre += cost;
+      lines.push(`${mfaCount} × אפוסטיל משה״ח (טיפול): ${cost} ₪`);
+      priceGovFee += mfaCount * beiton.apostille_mfa.gov_fee;
+    }
+    if (input.pre_auth_required) {
+      const cnt = input.pre_auth_count ?? 1;
+      const perLoc = input.pre_auth_court_pricing
+        ? beiton.pre_auth_for_mfa_apostille.court_documents_per_location
+        : beiton.pre_auth_for_mfa_apostille.standard_per_location;
+      const cost = cnt * perLoc;
+      apostilleHandlingPre += cost;
+      lines.push(`${cnt} × אימות מקדים (${perLoc} ₪): ${cost} ₪`);
+    }
+    priceApostille = round2(apostilleHandlingPre * VAT);
+  }
+
+  // Shipping
+  const dirs = input.shipping_directions ?? 0;
+  if (dirs > 0) {
+    const pre = dirs * beiton.shipping_per_direction.amount;
+    priceShipping = round2(pre * VAT);
+    lines.push(`${dirs} × שליחות (100 ₪ + מע״מ): ${priceShipping} ₪`);
+  }
+
+  const estimated = round2(
+    priceTranslation + priceNotaryService + priceApostille + priceShipping + priceGovFee
+  );
+
+  return {
+    price_translation: priceTranslation,
+    price_notary_service: priceNotaryService,
+    price_apostille: priceApostille,
+    price_shipping: priceShipping,
+    price_gov_fee: priceGovFee,
+    estimated_price: estimated,
+    breakdown: lines.join("\n"),
+  };
+}
 
 // Send error alert via email using Resend (if RESEND_API_KEY is set)
 async function sendErrorAlert(subject: string, details: string) {
@@ -43,6 +251,7 @@ async function sendErrorAlert(subject: string, details: string) {
 // ---------------------------------------------------------------------------
 
 interface LeadArgs {
+  session_id?: string;
   name?: string;
   phone?: string;
   email?: string;
@@ -138,6 +347,7 @@ function buildColumnValues(args: LeadArgs): Record<string, unknown> {
   if (args.language_pair) cols[SALES_COLS.languagePair] = args.language_pair;
   if (args.quantity_description) cols[SALES_COLS.quantityDescription] = args.quantity_description;
   if (args.utm_source) cols[SALES_COLS.utmSource] = args.utm_source;
+  if (args.session_id) cols[SALES_COLS.sessionId] = args.session_id;
 
   if (args.summary_for_notary) {
     cols[SALES_COLS.summaryForNotary] = { text: args.summary_for_notary };
@@ -225,9 +435,11 @@ async function upsertMondayLead(
     time: now.toTimeString().slice(0, 8),
   };
 
-  const name = args.name && args.name.trim()
+  const baseName = args.name && args.name.trim()
     ? args.name.trim()
     : `שיחה ${now.toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Jerusalem" })} — ${args.service || "לא זוהה"}`;
+  // Prefix the item name with the session ID so it's instantly searchable in Monday.
+  const name = args.session_id ? `${args.session_id} — ${baseName}` : baseName;
 
   const result = await mondayRequest(
     `mutation ($board: ID!, $group: String!, $name: String!, $cols: JSON!) {
@@ -257,7 +469,8 @@ async function callClaude(
   messages: Message[],
   language: string,
   utmSource: string | undefined,
-  existingItemId: string | null | undefined
+  existingItemId: string | null | undefined,
+  sessionId: string | undefined
 ): Promise<{ text: string; mondayItemId: string | null }> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
@@ -329,9 +542,19 @@ async function callClaude(
     const toolUse = content.find((b) => b.type === "tool_use");
     if (!toolUse || data.stop_reason !== "tool_use") break;
 
-    // Execute capture_lead — upsert semantics
+    // Execute tools
     let toolResult = "";
-    if (toolUse.name === "capture_lead" && toolUse.input) {
+
+    if (toolUse.name === "calculate_price" && toolUse.input) {
+      console.log("calculate_price called:", JSON.stringify(toolUse.input).slice(0, 200));
+      try {
+        const result = calculatePrice(toolUse.input as CalcPriceInput);
+        toolResult = JSON.stringify(result);
+      } catch (e) {
+        console.error("calculate_price error:", e);
+        toolResult = JSON.stringify({ error: String(e) });
+      }
+    } else if (toolUse.name === "capture_lead" && toolUse.input) {
       console.log("capture_lead called:", JSON.stringify(toolUse.input).slice(0, 200));
       try {
         const input = toolUse.input;
@@ -370,6 +593,7 @@ async function callClaude(
           needs_human: input.needs_human === true || input.needs_human === "true",
           ready_for_quote: input.ready_for_quote === true || input.ready_for_quote === "true",
           utm_source: utmSource,
+          session_id: sessionId,
         };
         const resultId = await upsertMondayLead(leadArgs, mondayItemId);
         if (resultId) {
@@ -411,11 +635,12 @@ async function callClaude(
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { messages, language, utm, existingItemId } = body as {
+    const { messages, language, utm, existingItemId, session_id } = body as {
       messages: Message[];
       language: string;
       utm?: { utm_source?: string } | null;
       existingItemId?: string | null;
+      session_id?: string;
     };
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
@@ -430,7 +655,8 @@ export async function POST(req: NextRequest) {
       messages,
       language || "he",
       utm?.utm_source,
-      existingItemId
+      existingItemId,
+      session_id
     );
 
     // Detect error-like reply (Anthropic failed, credit issue, rate limit, etc.)
@@ -505,6 +731,7 @@ export async function POST(req: NextRequest) {
             service: heuristicService,
             language: language || "he",
             utm_source: utm?.utm_source,
+            session_id: session_id,
           },
           null // force create
         );

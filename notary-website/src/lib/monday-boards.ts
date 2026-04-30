@@ -81,7 +81,8 @@ export const SALES_COLS = {
   priceApostille: "numeric_mm2wkng2",       // מחיר אפוסטיל (כולל מע״מ, BEITON + אימות מקדים)
   priceShipping: "numeric_mm2wjc4p",        // מחיר משלוח (כולל מע״מ)
   priceGovFee: "numeric_mm2ws3m",           // אגרה (פטור ממע״מ)
-  totalAutoCalc: "formula_mm2wnxx0",         // סה״כ אוטומטי — Monday formula (must be configured manually in Monday UI)
+  totalAutoCalc: "formula_mm2wnxx0",         // סה״כ אוטומטי — Monday formula
+  sessionId: "text_mm2xd0ca",                // מזהה שיחה — BEI-yyyymmdd-XXXXXX, persisted in client localStorage
   wordCount: "numeric_mm27t4rf",             // מספר מילים
   documentType: "text_mm27ap4h",             // סוג מסמך
   deliveryMethod: "color_mm27zq45",          // אופן הספקה
