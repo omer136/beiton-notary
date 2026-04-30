@@ -24,6 +24,15 @@ const PLACEHOLDERS_ACTIVE: Record<Lang, string> = {
   es: "Escribe un mensaje...",
 };
 
+const TYPING_LABEL: Record<Lang, string> = {
+  he: "נועה כותבת",
+  en: "Noa is typing",
+  ru: "Ноа печатает",
+  ar: "نوعا تكتب",
+  fr: "Noa écrit",
+  es: "Noa está escribiendo",
+};
+
 const GREETINGS: Record<Lang, string> = {
   he: "היי! אני נועה מצוות הנוטריון. איך אפשר לעזור?",
   en: "Hello, how can I help? Feel free to ask about translation, signature authentication, apostille, or any other notary service.",
@@ -308,24 +317,49 @@ export default function AgentChat({ lang = "he" }: { lang?: Lang }) {
           </div>
         )}
         {loading && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: rtl ? "flex-end" : "flex-start",
-            }}
-          >
+          <>
+            <style>{`
+              @keyframes beiton-typing-bounce {
+                0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+                40% { transform: translateY(-4px); opacity: 1; }
+              }
+              .beiton-typing-dot {
+                width: 7px; height: 7px; border-radius: 50%;
+                background: #1A1A1A; display: inline-block;
+                animation: beiton-typing-bounce 1.2s infinite ease-in-out;
+              }
+              .beiton-typing-dot:nth-child(1) { animation-delay: 0s; }
+              .beiton-typing-dot:nth-child(2) { animation-delay: 0.18s; }
+              .beiton-typing-dot:nth-child(3) { animation-delay: 0.36s; }
+            `}</style>
             <div
               style={{
-                background: "#f5f4f1",
-                padding: "10px 20px",
-                borderRadius: 12,
-                fontSize: 13,
-                color: "#999",
+                display: "flex",
+                justifyContent: rtl ? "flex-end" : "flex-start",
               }}
             >
-              ...
+              <div
+                style={{
+                  background: "#f5f4f1",
+                  padding: "12px 18px",
+                  borderRadius: 14,
+                  fontSize: 14,
+                  color: "#1A1A1A",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  border: "1px solid #E8E6E1",
+                }}
+              >
+                <span>{TYPING_LABEL[lang]}</span>
+                <span style={{ display: "inline-flex", gap: 4, alignItems: "center" }}>
+                  <span className="beiton-typing-dot" />
+                  <span className="beiton-typing-dot" />
+                  <span className="beiton-typing-dot" />
+                </span>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
 
