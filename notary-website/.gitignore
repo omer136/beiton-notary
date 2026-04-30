@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local mirror of chat transcripts — synced from Monday via `npm run sync-chats`
+# (privacy: contains client conversations, do NOT commit)
+/conversations/

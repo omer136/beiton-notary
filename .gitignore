@@ -27,6 +27,5 @@ notary-website/beiton-notary-v2.jsx
 !.env.example
 .vercel
 
-# Local mirror of chat transcripts — synced from Monday via `npm run sync-chats`
-# (privacy: contains client conversations, do NOT commit)
-conversations/
+# (Local chat-transcript mirror is gitignored at the per-project level —
+# see notary-website/.gitignore. Repo root keeps no separate rule.)

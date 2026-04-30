@@ -24,9 +24,12 @@ import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const REPO_ROOT = path.resolve(__dirname, "..", "..");
-const CONVERSATIONS_DIR = path.join(REPO_ROOT, "conversations");
-const ENV_FILE = path.join(__dirname, "..", ".env.local");
+// Conversations folder lives inside the website project: notary-website/conversations/
+// (Originally it was placed at ai-law-firm/conversations/ but moved here 2026-04-30
+// per Omer — keeps everything under the project root for portability.)
+const PROJECT_ROOT = path.resolve(__dirname, "..");
+const CONVERSATIONS_DIR = path.join(PROJECT_ROOT, "conversations");
+const ENV_FILE = path.join(PROJECT_ROOT, ".env.local");
 
 const BOARD_ID = "18406004253";
 const SESSION_ID_COL = "text_mm2xd0ca";
