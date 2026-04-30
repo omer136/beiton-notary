@@ -502,8 +502,25 @@ async function callClaude(
       body: JSON.stringify({
         model: "claude-sonnet-4-6",
         max_tokens: 1536,
-        system: AGENT1_SYSTEM_PROMPT,
-        tools: AGENT1_TOOLS,
+        // Prompt caching: mark the (large, stable) system prompt + tool definitions
+        // as cacheable. First call in a 5-min window pays full price + 25% to write
+        // the cache; subsequent calls read at ~10% of input cost AND don't burn
+        // through the 30K-tokens/min input rate limit. This is the difference between
+        // chat working at scale vs hitting 429s on every other message.
+        system: [
+          {
+            type: "text",
+            text: AGENT1_SYSTEM_PROMPT,
+            cache_control: { type: "ephemeral" },
+          },
+        ],
+        tools: AGENT1_TOOLS.map((t, i) =>
+          // Cache the last tool — Anthropic caches everything up to and including
+          // the marked breakpoint, so one mark covers all tool definitions.
+          i === AGENT1_TOOLS.length - 1
+            ? { ...t, cache_control: { type: "ephemeral" } }
+            : t
+        ),
         messages: loopMessages,
       }),
     });
