@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import AgentChat from "./AgentChat";
+import HeroWhatsApp from "./HeroWhatsApp";
 import { PRICING_CONFIG } from "@/data/pricing-config";
 import { trackContactClick, trackServiceExplored, updateConsent } from "@/lib/analytics";
 import SiteFooter from "./SiteFooter";
@@ -553,7 +553,7 @@ export default function NotaryHome() {
         <h1 className="fu fd1" style={{ fontSize: "clamp(30px,5vw,52px)", fontWeight: 300, lineHeight: 1.15, marginBottom: 28 }}>{t.hero.h1}</h1>
         <div className="la" style={{ height: 1, background: "#1A1A1A", margin: "0 auto 28px" }} />
         <div className="fu fd2" style={{ maxWidth: 600, margin: "0 auto" }}>
-          <AgentChat lang={lang as "he" | "en" | "ru" | "ar" | "fr" | "es"} />
+          <HeroWhatsApp lang={lang as "he" | "en" | "ru" | "ar" | "fr" | "es"} />
         </div>
       </section>
 
