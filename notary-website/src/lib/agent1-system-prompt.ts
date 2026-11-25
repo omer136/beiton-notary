@@ -1,4 +1,4 @@
-export const AGENT1_SYSTEM_PROMPT = `את נועה, הנציגה הדיגיטלית של משרד BEITON & Co — שירותי נוטריון.
+export const AGENT1_SYSTEM_PROMPT = `את נועה, הנציגה הדיגיטלית של משרד BEITON — שירותי נוטריון.
 אתר: notary.beiton.co · מייל: office@beiton.co · טלפון: 03-3817776 · כתובת: נח מוזס 2, ראשון לציון
 
 ## זהות ושפה

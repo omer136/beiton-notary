@@ -8,7 +8,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "העתק נאמן למקור של דרכון — אישור נוטריוני",
-        metaTitle: "העתק נאמן למקור של דרכון — אישור נוטריוני | BEITON & Co",
+        metaTitle: "העתק נאמן למקור של דרכון — אישור נוטריוני | BEITON",
         metaDescription: "העתק נאמן למקור של דרכון עם אישור נוטריוני — כמה עולה, מה התהליך, למי מתאים. תעריף קבוע בתקנות. שירות דיגיטלי מהיר.",
         intro: "העתק נאמן למקור (Certified Copy) של דרכון הוא צילום מאושר של הדרכון שמאומת על ידי נוטריון כנאמן למקור. העתק נאמן נדרש לעיתים קרובות על ידי שגרירויות, בנקים, מוסדות אקדמיים ורשויות בחו״ל — כתחליף להצגת הדרכון המקורי.",
         whatIsTitle: "מה זה העתק נאמן למקור?",
@@ -45,7 +45,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "הביאו את הדרכון המקורי. נצלם, נאשר ותיקחו בחזרה על המקום." },
           { name: "איסוף עצמי", desc: "שלחו את הדרכון ואספו את ההעתק המאושר מהמשרד." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "שירות מהיר — אישור תוך שעות",
           "שליח עד הבית — לא צריך להגיע",
@@ -69,7 +69,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Certified Copy of Passport — Notarial Certification",
-        metaTitle: "Certified Copy of Passport in Israel — Notarized | BEITON & Co",
+        metaTitle: "Certified Copy of Passport in Israel — Notarized | BEITON",
         metaDescription: "Certified copy of passport with notarial certification in Israel — cost, process, who needs it. Fixed regulated tariff. Fast service.",
         intro: "A certified copy of a passport is a notarized photocopy verified by a notary as a true copy of the original. Certified copies are frequently required by embassies, banks, academic institutions, and foreign authorities — as a substitute for presenting the original passport.",
         whatIsTitle: "What is a certified copy?",
@@ -106,7 +106,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Bring the original passport. We copy, certify, and you take it back on the spot." },
           { name: "Self pickup", desc: "Send the passport and pick up the certified copy from our office." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Fast service — certification within hours",
           "Courier to your door — no need to come",
@@ -130,7 +130,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Заверенная копия паспорта — нотариальное заверение",
-        metaTitle: "Заверенная копия паспорта в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Заверенная копия паспорта в Израиле — цена и процесс | BEITON",
         metaDescription: "Нотариально заверенная копия паспорта в Израиле — стоимость, процесс. Фиксированный тариф. Быстрый сервис.",
         intro: "Заверенная копия паспорта — это нотариально заверенная фотокопия, подтверждённая нотариусом как верная копия оригинала. Часто требуется посольствами, банками, учебными заведениями и зарубежными органами — как замена предъявлению оригинала.",
         whatIsTitle: "Что такое заверенная копия?",
@@ -167,7 +167,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Принесите оригинал. Мы скопируем, заверим, и вы заберёте на месте." },
           { name: "Самовывоз", desc: "Отправьте паспорт и заберите заверенную копию из офиса." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Быстрый сервис — заверение за часы",
           "Курьер до двери — не нужно приходить",
@@ -191,7 +191,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "نسخة مصدّقة طبق الأصل من جواز السفر — تصديق نوتاري",
-        metaTitle: "نسخة مصدّقة من جواز السفر في إسرائيل — السعر والإجراءات | BEITON & Co",
+        metaTitle: "نسخة مصدّقة من جواز السفر في إسرائيل — السعر والإجراءات | BEITON",
         metaDescription: "نسخة مصدّقة من جواز السفر بتصديق نوتاري — التكلفة، الإجراءات. تعرفة ثابتة. خدمة سريعة.",
         intro: "النسخة المصدّقة طبق الأصل من جواز السفر هي صورة مصدّقة من النوتاري كنسخة أمينة للأصل. تُطلب كثيراً من السفارات والبنوك والمؤسسات الأكاديمية والسلطات الأجنبية — كبديل عن تقديم جواز السفر الأصلي.",
         whatIsTitle: "ما هي النسخة المصدّقة طبق الأصل؟",
@@ -228,7 +228,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "أحضروا الأصل. نصوّر ونصدّق وتأخذونه فوراً." },
           { name: "استلام ذاتي", desc: "أرسلوا جواز السفر واستلموا النسخة المصدّقة من المكتب." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خدمة سريعة — تصديق خلال ساعات",
           "مندوب حتى البيت — لا حاجة للحضور",
@@ -258,7 +258,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "העתק נאמן למקור של תעודה אקדמית — אישור נוטריוני",
-        metaTitle: "העתק נאמן של תעודה אקדמית — אישור נוטריוני | BEITON & Co",
+        metaTitle: "העתק נאמן של תעודה אקדמית — אישור נוטריוני | BEITON",
         metaDescription: "העתק נאמן למקור של תעודת תואר אקדמית עם אישור נוטריוני — מחיר, תהליך ושימושים. תעריף קבוע, שירות דיגיטלי.",
         intro: "העתק נאמן למקור של תעודה אקדמית הוא צילום מאושר של תעודת תואר (BA, MA, PhD, דיפלומה) שנוטריון מאשר כנאמן למקור. מוסדות אקדמיים, מעסיקים ורשויות בחו״ל דורשים לעיתים קרובות העתק מאושר של התעודה כחלק מהליכי קבלה, הכרה בתארים או רישוי מקצועי.",
         whatIsTitle: "מה זה העתק נאמן של תעודה אקדמית?",
@@ -294,7 +294,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "הביאו את המקור ותקבלו העתק מאושר על המקום." },
           { name: "איסוף עצמי", desc: "שלחו ואספו מהמשרד." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "שירות מהיר — אישור תוך שעות",
           "שליח עד הבית",
@@ -318,7 +318,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Certified Copy of Academic Diploma — Notarial Certification",
-        metaTitle: "Certified Copy of Academic Diploma in Israel | BEITON & Co",
+        metaTitle: "Certified Copy of Academic Diploma in Israel | BEITON",
         metaDescription: "Certified copy of academic diploma with notarial certification — cost, process and uses. Fixed tariff, digital service.",
         intro: "A certified copy of an academic diploma is a notarized photocopy of a degree certificate (BA, MA, PhD, diploma) that a notary certifies as a true copy of the original. Academic institutions, employers, and foreign authorities frequently require certified copies for admissions, degree recognition, or professional licensing.",
         whatIsTitle: "What is a certified copy of an academic diploma?",
@@ -354,7 +354,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Bring the original and get the certified copy on the spot." },
           { name: "Self pickup", desc: "Send and pick up from our office." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Fast — certification within hours",
           "Courier to your door",
@@ -378,7 +378,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Заверенная копия диплома — нотариальное заверение",
-        metaTitle: "Заверенная копия диплома в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Заверенная копия диплома в Израиле — цена и процесс | BEITON",
         metaDescription: "Нотариально заверенная копия диплома в Израиле — стоимость, процесс, применение. Фиксированный тариф, цифровой сервис.",
         intro: "Заверенная копия диплома — нотариально заверенная фотокопия диплома (BA, MA, PhD), подтверждённая нотариусом как верная копия оригинала. Учебные заведения, работодатели и зарубежные органы часто требуют заверенные копии для приёма, признания степеней или профессионального лицензирования.",
         whatIsTitle: "Что такое заверенная копия диплома?",
@@ -414,7 +414,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Принесите оригинал — получите копию на месте." },
           { name: "Самовывоз", desc: "Отправьте и заберите из офиса." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Быстро — заверение за часы",
           "Курьер до двери",
@@ -438,7 +438,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "نسخة مصدّقة من شهادة أكاديمية — تصديق نوتاري",
-        metaTitle: "نسخة مصدّقة من شهادة أكاديمية في إسرائيل | BEITON & Co",
+        metaTitle: "نسخة مصدّقة من شهادة أكاديمية في إسرائيل | BEITON",
         metaDescription: "نسخة مصدّقة من شهادة أكاديمية بتصديق نوتاري — التكلفة، الإجراءات والاستخدامات. تعرفة ثابتة، خدمة رقمية.",
         intro: "النسخة المصدّقة من شهادة أكاديمية هي صورة مصدّقة نوتارياً من شهادة الدرجة (BA, MA, PhD) يصدّق النوتاري على أنها مطابقة للأصل. تُطلب كثيراً من المؤسسات الأكاديمية والمشغّلين والسلطات الأجنبية لأغراض القبول والاعتراف بالشهادات والترخيص المهني.",
         whatIsTitle: "ما هي النسخة المصدّقة من شهادة أكاديمية؟",
@@ -474,7 +474,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "أحضروا الأصل واحصلوا على النسخة المصدّقة فوراً." },
           { name: "استلام ذاتي", desc: "أرسلوا واستلموا من المكتب." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خدمة سريعة — تصديق خلال ساعات",
           "مندوب حتى البيت",
@@ -504,7 +504,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "העתק נאמן למקור של מסמכי חברה — אישור נוטריוני",
-        metaTitle: "העתק נאמן של מסמכי חברה — אישור נוטריוני | BEITON & Co",
+        metaTitle: "העתק נאמן של מסמכי חברה — אישור נוטריוני | BEITON",
         metaDescription: "העתק נאמן למקור של מסמכי חברה — תקנון, נסח חברה, פרוטוקולים. אישור נוטריוני, תעריף קבוע, שירות מהיר.",
         intro: "העתק נאמן למקור של מסמכי חברה הוא צילום מאושר של מסמכים עסקיים — תקנון חברה, נסח רשם החברות, פרוטוקולים, תעודת התאגדות ועוד — שנוטריון מאשר כנאמן למקור. מסמכים אלה נדרשים לעיתים קרובות בעסקאות בינלאומיות, פתיחת חשבונות בנק בחו״ל ורישום חברות במדינות זרות.",
         whatIsTitle: "מה זה העתק נאמן של מסמכי חברה?",
@@ -541,7 +541,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "הביאו את המסמכים המקוריים ותקבלו העתקים מאושרים." },
           { name: "איסוף עצמי", desc: "שלחו את המסמכים ואספו מהמשרד." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "ניסיון רב באישור מסמכי חברה לעסקאות בינלאומיות",
           "שירות מהיר — אישור תוך שעות",
@@ -565,7 +565,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Certified Copy of Company Documents — Notarial Certification",
-        metaTitle: "Certified Copy of Company Documents in Israel | BEITON & Co",
+        metaTitle: "Certified Copy of Company Documents in Israel | BEITON",
         metaDescription: "Certified copies of company documents — articles, registry extract, minutes. Notarial certification, fixed tariff, fast service.",
         intro: "A certified copy of company documents is a notarized photocopy of business documents — articles of association, company registry extract, board minutes, certificate of incorporation, etc. — certified by a notary as true copies of the originals. These are frequently required for international transactions, opening bank accounts abroad, and registering companies in foreign jurisdictions.",
         whatIsTitle: "What is a certified copy of company documents?",
@@ -602,7 +602,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Bring original documents and receive certified copies." },
           { name: "Self pickup", desc: "Send documents and pick up from our office." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Extensive experience certifying company documents for international transactions",
           "Fast service — certification within hours",
@@ -626,7 +626,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Заверенная копия документов компании — нотариальное заверение",
-        metaTitle: "Заверенная копия документов компании в Израиле | BEITON & Co",
+        metaTitle: "Заверенная копия документов компании в Израиле | BEITON",
         metaDescription: "Заверенные копии документов компании — устав, выписка, протоколы. Нотариальное заверение, фиксированный тариф, быстрый сервис.",
         intro: "Заверенная копия документов компании — нотариально заверенная фотокопия деловых документов: устава, выписки из реестра компаний, протоколов, свидетельства о регистрации и т.д. Часто требуются для международных сделок, открытия счетов за рубежом и регистрации компаний в иностранных юрисдикциях.",
         whatIsTitle: "Что такое заверенная копия документов компании?",
@@ -663,7 +663,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Принесите оригиналы — получите заверенные копии." },
           { name: "Самовывоз", desc: "Отправьте и заберите из офиса." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Большой опыт заверения документов компаний для международных сделок",
           "Быстро — заверение за часы",
@@ -687,7 +687,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "نسخة مصدّقة من مستندات شركة — تصديق نوتاري",
-        metaTitle: "نسخة مصدّقة من مستندات شركة في إسرائيل | BEITON & Co",
+        metaTitle: "نسخة مصدّقة من مستندات شركة في إسرائيل | BEITON",
         metaDescription: "نسخ مصدّقة من مستندات شركة — نظام أساسي، مستخرج سجل، محاضر. تصديق نوتاري، تعرفة ثابتة، خدمة سريعة.",
         intro: "النسخة المصدّقة من مستندات شركة هي صورة نوتارية مصدّقة من مستندات تجارية — النظام الأساسي، مستخرج سجل الشركات، محاضر الاجتماعات، شهادة التأسيس وغيرها. تُطلب كثيراً في المعاملات الدولية وفتح حسابات بنكية في الخارج وتسجيل شركات في دول أجنبية.",
         whatIsTitle: "ما هي النسخة المصدّقة من مستندات شركة؟",
@@ -724,7 +724,7 @@ export const CERTIFIED_COPY_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "أحضروا المستندات الأصلية واحصلوا على نسخ مصدّقة." },
           { name: "استلام ذاتي", desc: "أرسلوا واستلموا من المكتب." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خبرة واسعة في تصديق مستندات شركات للمعاملات الدولية",
           "خدمة سريعة — تصديق خلال ساعات",

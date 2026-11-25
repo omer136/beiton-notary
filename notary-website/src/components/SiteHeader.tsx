@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import BrandLogo from "./BrandLogo";
 import { usePathname, useRouter } from "next/navigation";
 
 const LANGS: Record<string, { label: string; dir: string; font: string }> = {
@@ -49,8 +50,7 @@ export default function SiteHeader({ lang }: { lang: string }) {
       <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(255,255,255,.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E8E6E1" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 56 }}>
           <Link href={`/${lang}`} style={{ display: "flex", alignItems: "baseline", direction: "ltr", textDecoration: "none", color: "#1A1A1A" }}>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 15, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 10, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
+            <BrandLogo size={16} />
           </Link>
           <div className="sh-dn" style={{ display: "flex", alignItems: "center", gap: 22 }}>
             {Object.entries(nav).map(([k, v]) => (

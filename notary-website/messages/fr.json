@@ -1,5 +1,5 @@
 {
-  "meta": { "title": "Services notariaux — Beit-On & Co.", "description": "Services notariaux professionnels : traduction, authentification de signature, testament, procuration. Service digital rapide en 6 langues." },
+  "meta": { "title": "Services notariaux — BEITON", "description": "Services notariaux professionnels : traduction, authentification de signature, testament, procuration. Service digital rapide en 6 langues." },
   "hero": { "tagline": "Services notariaux digitaux", "subtitle": "Traduction, authentification de signature, testament et procuration — tout en ligne, en 6 langues.", "cta": "Envoyer un document via WhatsApp" },
   "chat": { "placeholder": "De quoi avez-vous besoin ? (traduction, signature, testament...)", "send": "Envoyer", "greeting": "Bonjour ! Je suis Noa de l'equipe notariale. Comment puis-je vous aider ?" },
   "services": { "title": "Nos services", "subtitle": "12 services notariaux — tarif fixe reglemente", "presence_required": "Presence requise", "digital_available": "Service digital" },

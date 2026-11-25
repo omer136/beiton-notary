@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BrandLogo from "./BrandLogo";
 
 const UC_SLUGS = [
   "birth-certificate-translation", "diploma-translation", "drivers-license-translation", "marriage-certificate-translation", "divorce-certificate-translation", "portuguese-citizenship-package",
@@ -68,15 +69,14 @@ export default function SiteFooter({ lang }: { lang: string }) {
       <div style={{ borderTop: "1px solid #E8E6E1", padding: "20px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
           <div style={{ display: "flex", alignItems: "baseline", direction: "ltr" }}>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 13, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 9, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
+            <BrandLogo size={13} />
           </div>
           <div style={{ display: "flex", gap: 14, fontSize: 11, color: "#999" }}>
             <Link href={`/${lang}/privacy`} style={{ color: "#999", textDecoration: "none" }}>{fl.privacy}</Link>
             <Link href={`/${lang}/terms`} style={{ color: "#999", textDecoration: "none" }}>{fl.terms}</Link>
             <Link href={`/${lang}/accessibility`} style={{ color: "#999", textDecoration: "none" }}>{fl.accessibility}</Link>
           </div>
-          <p style={{ fontSize: 11, color: "#999" }}>&copy; 2026 BEITON &amp; Co — {fl.rights}</p>
+          <p style={{ fontSize: 11, color: "#999" }}>&copy; 2026 עו״ד עומר בית און · BEITON — {fl.rights}</p>
         </div>
       </div>
     </footer>

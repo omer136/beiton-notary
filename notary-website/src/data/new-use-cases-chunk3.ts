@@ -8,7 +8,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "הסכם ממון לפני נישואין — אישור נוטריוני",
-        metaTitle: "הסכם ממון לפני נישואין — אישור נוטריוני, מחיר ותהליך | BEITON & Co",
+        metaTitle: "הסכם ממון לפני נישואין — אישור נוטריוני, מחיר ותהליך | BEITON",
         metaDescription: "הסכם ממון לפני נישואין עם אישור נוטריוני — כמה עולה, מה התהליך, מסמכים נדרשים. לפי סעיף 2(ג1) לחוק יחסי ממון. תעריף קבוע.",
         intro: "הסכם ממון לפני נישואין הוא הסכם בין בני זוג העומדים להינשא, שמסדיר את חלוקת הרכוש ביניהם במקרה של גירושין או פטירה. לפי סעיף 2(ג1) לחוק יחסי ממון בין בני זוג, תשל״ג-1973, ניתן לאשר הסכם ממון בפני נוטריון — ללא צורך בבית משפט. זוהי הדרך המהירה, הפשוטה והחסכונית ביותר.",
         whatIsTitle: "מה זה הסכם ממון?",
@@ -46,7 +46,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "שני בני הזוג חייבים להגיע יחד. התהליך אורך כ-45-60 דקות." },
           { name: "שירות עד הבית", desc: "הנוטריון מגיע אליכם — בתיאום מראש ובתוספת דמי נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "ניסיון עשיר בהסכמי ממון מורכבים — עסקים, נכסים, ירושות",
           "הכנת טיוטה מותאמת אישית מראש",
@@ -72,7 +72,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Prenuptial Agreement — Notarial Certification",
-        metaTitle: "Prenuptial Agreement in Israel — Notarized | BEITON & Co",
+        metaTitle: "Prenuptial Agreement in Israel — Notarized | BEITON",
         metaDescription: "Prenuptial agreement with notarial certification in Israel — cost, process, documents. Under Section 2(g1) of Financial Relations Law. Fixed tariff.",
         intro: "A prenuptial agreement is an agreement between partners about to marry, regulating the division of property in case of divorce or death. Under Section 2(g1) of the Financial Relations Between Spouses Law, 1973 (חוק יחסי ממון בין בני זוג, תשל״ג-1973), a financial agreement can be certified by a notary — no court required. This is the fastest, simplest, and most cost-effective way.",
         whatIsTitle: "What is a prenuptial agreement?",
@@ -110,7 +110,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Both partners must come together. Process takes about 45-60 minutes." },
           { name: "Home service", desc: "The notary comes to you — by appointment with travel fee." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Rich experience with complex financial agreements — businesses, assets, inheritances",
           "Custom draft prepared in advance",
@@ -136,7 +136,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Брачный договор до брака — нотариальное заверение",
-        metaTitle: "Брачный договор до брака в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Брачный договор до брака в Израиле — цена и процесс | BEITON",
         metaDescription: "Брачный договор до брака с нотариальным заверением в Израиле — стоимость, процесс, документы. По статье 2(г1) Закона об имущественных отношениях. Фиксированный тариф.",
         intro: "Брачный договор до брака — это соглашение между будущими супругами, регулирующее раздел имущества при разводе или смерти. Согласно статье 2(г1) Закона об имущественных отношениях между супругами 1973 года (חוק יחסי ממון בין בני זוג, תשל״ג-1973), финансовое соглашение можно заверить у нотариуса — без суда. Это самый быстрый, простой и экономичный путь.",
         whatIsTitle: "Что такое брачный договор?",
@@ -174,7 +174,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Оба партнёра должны прийти вместе. Процесс 45-60 минут." },
           { name: "Выезд на дом", desc: "Нотариус приедет к вам — по записи с оплатой выезда." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Богатый опыт со сложными финансовыми соглашениями — бизнес, активы, наследство",
           "Индивидуальный проект готовится заранее",
@@ -200,7 +200,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "اتفاقية مالية قبل الزواج — تصديق نوتاري",
-        metaTitle: "اتفاقية مالية قبل الزواج في إسرائيل — السعر والإجراءات | BEITON & Co",
+        metaTitle: "اتفاقية مالية قبل الزواج في إسرائيل — السعر والإجراءات | BEITON",
         metaDescription: "اتفاقية مالية قبل الزواج بتصديق نوتاري — التكلفة، الإجراءات، المستندات. وفق المادة 2(ج1) من قانون العلاقات المالية. تعرفة ثابتة.",
         intro: "اتفاقية مالية قبل الزواج هي اتفاق بين شريكين مقبلين على الزواج، ينظم توزيع الممتلكات بينهما في حال الطلاق أو الوفاة. وفقاً للمادة 2(ج1) من قانون العلاقات المالية بين الأزواج 1973 (חוק יחסי ממון בין בני זוג, תשל״ג-1973)، يمكن توثيق الاتفاقية أمام نوتاري — بدون الحاجة لمحكمة. هذا هو الطريق الأسرع والأبسط والأكثر توفيراً.",
         whatIsTitle: "ما هي الاتفاقية المالية؟",
@@ -238,7 +238,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "كلا الشريكين يجب أن يحضرا معاً. العملية تستغرق 45-60 دقيقة." },
           { name: "خدمة حتى البيت", desc: "النوتاري يأتي إليكم — بموعد مسبق مع رسوم تنقل." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خبرة غنية في اتفاقيات مالية معقدة — أعمال، أصول، إرث",
           "مسودة مخصصة تُحضّر مسبقاً",
@@ -270,7 +270,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "הסכם ממון אחרי נישואין — אישור נוטריוני",
-        metaTitle: "הסכם ממון אחרי נישואין — אישור נוטריוני | BEITON & Co",
+        metaTitle: "הסכם ממון אחרי נישואין — אישור נוטריוני | BEITON",
         metaDescription: "הסכם ממון לאחר נישואין עם אישור נוטריוני — מחיר, תהליך ומסמכים. לפי סעיף 2(ג1) לחוק יחסי ממון. תעריף קבוע בתקנות.",
         intro: "הסכם ממון לאחר נישואין הוא הסכם בין בני זוג נשואים שמסדיר את חלוקת הרכוש ביניהם. בדומה להסכם לפני נישואין, גם הסכם שנחתם במהלך הנישואין ניתן לאשר בפני נוטריון לפי סעיף 2(ג1) לחוק יחסי ממון — ללא צורך בבית משפט.",
         whatIsTitle: "מה זה הסכם ממון אחרי נישואין?",
@@ -306,7 +306,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "שני בני הזוג מגיעים יחד. כ-45-60 דקות." },
           { name: "שירות עד הבית", desc: "הנוטריון מגיע אליכם — בתיאום מראש ובתוספת דמי נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "ניסיון רב בהסכמי ממון תוך נישואין",
           "רגישות למצב — הסבר מקצועי בלי לחץ",
@@ -330,7 +330,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Postnuptial Agreement — Notarial Certification",
-        metaTitle: "Postnuptial Agreement in Israel — Notarized | BEITON & Co",
+        metaTitle: "Postnuptial Agreement in Israel — Notarized | BEITON",
         metaDescription: "Postnuptial agreement with notarial certification in Israel — cost, process, documents. Under Section 2(g1) of Financial Relations Law. Fixed tariff.",
         intro: "A postnuptial agreement is an agreement between married spouses regulating the division of property between them. Like a prenuptial agreement, a postnuptial agreement can also be certified by a notary under Section 2(g1) of the Financial Relations Between Spouses Law, 1973 — no court required.",
         whatIsTitle: "What is a postnuptial agreement?",
@@ -366,7 +366,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Both spouses come together. About 45-60 minutes." },
           { name: "Home service", desc: "The notary comes to you — by appointment with travel fee." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Extensive experience with postnuptial agreements",
           "Sensitive approach — professional explanation without pressure",
@@ -390,7 +390,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Брачный договор после свадьбы — нотариальное заверение",
-        metaTitle: "Брачный договор после свадьбы в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Брачный договор после свадьбы в Израиле — цена и процесс | BEITON",
         metaDescription: "Брачный договор после свадьбы с нотариальным заверением — стоимость, процесс, документы. По статье 2(г1) Закона об имущественных отношениях.",
         intro: "Брачный договор после свадьбы — это соглашение между уже состоящими в браке супругами, регулирующее раздел имущества. Как и добрачный договор, он может быть заверен нотариусом по статье 2(г1) Закона об имущественных отношениях 1973 года — без суда.",
         whatIsTitle: "Что такое послебрачный договор?",
@@ -426,7 +426,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Оба супруга приходят вместе. 45-60 минут." },
           { name: "Выезд на дом", desc: "Нотариус приедет к вам — по записи с оплатой выезда." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Большой опыт с послебрачными договорами",
           "Деликатный подход — профессиональное разъяснение без давления",
@@ -450,7 +450,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "اتفاقية مالية بعد الزواج — تصديق نوتاري",
-        metaTitle: "اتفاقية مالية بعد الزواج في إسرائيل — السعر والإجراءات | BEITON & Co",
+        metaTitle: "اتفاقية مالية بعد الزواج في إسرائيل — السعر والإجراءات | BEITON",
         metaDescription: "اتفاقية مالية بعد الزواج بتصديق نوتاري — التكلفة، الإجراءات، المستندات. وفق المادة 2(ج1) من قانون العلاقات المالية.",
         intro: "اتفاقية مالية بعد الزواج هي اتفاق بين زوجين متزوجين ينظم توزيع الممتلكات بينهما. كالاتفاقية قبل الزواج، يمكن توثيقها أمام نوتاري وفقاً للمادة 2(ج1) من قانون العلاقات المالية 1973 — بدون محكمة.",
         whatIsTitle: "ما هي الاتفاقية المالية بعد الزواج؟",
@@ -486,7 +486,7 @@ export const PRENUP_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "كلا الزوجين يحضران معاً. 45-60 دقيقة." },
           { name: "خدمة حتى البيت", desc: "النوتاري يأتي إليكم — بموعد مسبق مع رسوم تنقل." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خبرة واسعة في اتفاقيات ما بعد الزواج",
           "نهج حساس — شرح مهني بدون ضغط",

@@ -23,3 +23,10 @@ body {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--color-brand-border); border-radius: 3px; }
+
+/* the logo (src/components/BrandLogo.tsx), in the proportions of the brand files: BEITON 44, letter-spacing 5;
+   line 0.5 #aaa; BEYOND LAW 10, letter-spacing 6, #999; everything centred on one axis (as on beiton.co) */
+.bLogo { display: inline-flex; flex-direction: column; align-items: center; direction: ltr; line-height: 1; font-size: 16px; color: #1a1a1a; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; }
+.bLogo b { font-weight: 500; font-size: 1em; letter-spacing: .1136em; margin-right: -.1136em; text-transform: uppercase; }
+.bLogo i { display: block; align-self: stretch; height: 1px; background: #aaa; margin: .28em 0 .21em; }
+.bLogo span { font-weight: 400; font-size: .2273em; letter-spacing: .6em; margin-right: -.6em; color: #999; text-transform: uppercase; }

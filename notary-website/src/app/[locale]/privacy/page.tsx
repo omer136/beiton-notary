@@ -3,18 +3,18 @@ import LegalPage from "@/components/LegalPage";
 import type { Locale } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "מדיניות פרטיות | Privacy Policy — BEITON & Co",
+  title: "מדיניות פרטיות | Privacy Policy — BEITON",
   robots: "noindex, follow",
 };
 
 const he = {
   title: "מדיניות פרטיות",
   subtitle: "אתר notary.beiton.co",
-  lastUpdated: "עדכון אחרון: מרץ 2026",
+  lastUpdated: "עדכון אחרון: נובמבר 2026",
   sections: [
     {
       heading: "1. כללי",
-      body: 'מדיניות פרטיות זו חלה על אתר notary.beiton.co המופעל על ידי משרד עורכי דין BEITON & Co (להלן: "המשרד"). המדיניות מפרטת כיצד המשרד אוסף, משתמש ושומר מידע אודות משתמשי האתר, בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, ותקנות הגנת הפרטיות (אבטחת מידע), התשע"ז-2017.\nמסירת מידע אישי באתר נעשית מרצונך החופשי. אינך חייב/ת על פי חוק למסור מידע, אולם ללא מסירת פרטים מסוימים לא ניתן יהיה לספק את השירות המבוקש.',
+      body: 'מדיניות פרטיות זו חלה על אתר notary.beiton.co המופעל על ידי משרד עו״ד עומר בית און, BEITON (להלן: "המשרד"). המדיניות מפרטת כיצד המשרד אוסף, משתמש ושומר מידע אודות משתמשי האתר, בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, ותקנות הגנת הפרטיות (אבטחת מידע), התשע"ז-2017.\nמסירת מידע אישי באתר נעשית מרצונך החופשי. אינך חייב/ת על פי חוק למסור מידע, אולם ללא מסירת פרטים מסוימים לא ניתן יהיה לספק את השירות המבוקש.',
     },
     {
       heading: "2. מידע שנאסף",
@@ -62,11 +62,11 @@ const he = {
 const en = {
   title: "Privacy Policy",
   subtitle: "notary.beiton.co",
-  lastUpdated: "Last updated: March 2026",
+  lastUpdated: "Last updated: November 2026",
   sections: [
     {
       heading: "1. General",
-      body: 'This Privacy Policy applies to notary.beiton.co, operated by BEITON & Co, Law Firm (the "Firm"). This policy describes how the Firm collects, uses, and stores information about Website users, in accordance with the Protection of Privacy Law, 1981, and the Protection of Privacy Regulations (Data Security), 2017.\nProviding personal information on the Website is voluntary. You are not required by law to provide information; however, without certain details, the Firm may be unable to provide the requested service.',
+      body: 'This Privacy Policy applies to notary.beiton.co, operated by the law office of Adv. Omer Beit-On, BEITON (the "Firm"). This policy describes how the Firm collects, uses, and stores information about Website users, in accordance with the Protection of Privacy Law, 1981, and the Protection of Privacy Regulations (Data Security), 2017.\nProviding personal information on the Website is voluntary. You are not required by law to provide information; however, without certain details, the Firm may be unable to provide the requested service.',
     },
     {
       heading: "2. Information Collected",

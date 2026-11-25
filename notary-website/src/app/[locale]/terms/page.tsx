@@ -3,18 +3,18 @@ import LegalPage from "@/components/LegalPage";
 import type { Locale } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "תנאי שימוש | Terms of Use — BEITON & Co",
+  title: "תנאי שימוש | Terms of Use — BEITON",
   robots: "noindex, follow",
 };
 
 const he = {
   title: "תנאי שימוש",
   subtitle: "אתר notary.beiton.co",
-  lastUpdated: "עדכון אחרון: מרץ 2026",
+  lastUpdated: "עדכון אחרון: נובמבר 2026",
   sections: [
     {
       heading: "1. כללי",
-      body: 'ברוכים הבאים לאתר notary.beiton.co (להלן: "האתר"), המופעל על ידי משרד עורכי דין BEITON & Co (להלן: "המשרד"). השימוש באתר מהווה הסכמה לתנאים המפורטים להלן. אם אינך מסכים/ה לתנאים אלה, נא להימנע משימוש באתר.\nתנאי שימוש אלה מנוסחים בלשון זכר לצורכי נוחות בלבד, אולם הם מיועדים לכל אדם ללא הבדלי מגדר.',
+      body: 'ברוכים הבאים לאתר notary.beiton.co (להלן: "האתר"), המופעל על ידי משרד עו״ד עומר בית און, BEITON (להלן: "המשרד"). השימוש באתר מהווה הסכמה לתנאים המפורטים להלן. אם אינך מסכים/ה לתנאים אלה, נא להימנע משימוש באתר.\nתנאי שימוש אלה מנוסחים בלשון זכר לצורכי נוחות בלבד, אולם הם מיועדים לכל אדם ללא הבדלי מגדר.',
     },
     {
       heading: "2. מהות האתר והשירותים",
@@ -62,11 +62,11 @@ const he = {
 const en = {
   title: "Terms of Use",
   subtitle: "notary.beiton.co",
-  lastUpdated: "Last updated: March 2026",
+  lastUpdated: "Last updated: November 2026",
   sections: [
     {
       heading: "1. General",
-      body: 'Welcome to notary.beiton.co (the "Website"), operated by BEITON & Co, Law Firm (the "Firm"). Use of the Website constitutes acceptance of these terms. If you do not agree, please refrain from using the Website.',
+      body: 'Welcome to notary.beiton.co (the "Website"), operated by the law office of Adv. Omer Beit-On, BEITON (the "Firm"). Use of the Website constitutes acceptance of these terms. If you do not agree, please refrain from using the Website.',
     },
     {
       heading: "2. Nature of the Website and Services",

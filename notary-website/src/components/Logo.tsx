@@ -7,12 +7,6 @@ export default function Logo({ className = "" }: { className?: string }) {
       >
         BEITON
       </span>
-      <span
-        className="text-sm font-normal tracking-[0.15em] text-brand-gray"
-        style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}
-      >
-        &amp; Co
-      </span>
     </div>
   );
 }

@@ -7,9 +7,10 @@ import HeroWhatsApp from "./HeroWhatsApp";
 import { PRICING_CONFIG } from "@/data/pricing-config";
 import { trackContactClick, trackServiceExplored, updateConsent } from "@/lib/analytics";
 import SiteFooter from "./SiteFooter";
+import BrandLogo from "./BrandLogo";
 
 /* ═══════════════════════════════════════════════════════════
-   BEITON & Co — Notary Website v2
+   BEITON — Notary Website v2
    All fixes applied per Omer's feedback
    ═══════════════════════════════════════════════════════════ */
 
@@ -103,7 +104,7 @@ const T: Record<string, any> = {
       { title: "צוואה נוטריונית — למה חשוב ומה ההבדל מצוואה רגילה?", tag: "צוואה", excerpt: "מהי צוואה נוטריונית, מה היתרונות, כמה עולה ומתי חייבים לערוך אחת.", slug: "notarial-will" },
       { title: "תצהיר נוטריוני — מתי נדרש, איך מכינים וכמה עולה?", tag: "תצהיר", excerpt: "מתי חייבים תצהיר נוטריוני, ההבדל מתצהיר בפני עו״ד, סוגים נפוצים ותעריפים.", slug: "notarial-affidavit" },
     ] },
-    about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "אנחנו לא רק עורכי דין — אנחנו שותפים לדרך. BEYOND LAW אומר שאנחנו חושבים מעבר למשפט: חשיבה עסקית, ליווי מקיף, ופתרונות מותאמים שמשלבים מקצועיות משפטית עם ראייה מסחרית. כל שירות נוטריוני אצלנו הוא דיגיטלי, שקוף ומהיר — כי פעולה משפטית לא צריכה להיות מסובכת." },
+    about: { tag: "ABOUT", h2: "BEITON", slogan: "BEYOND LAW", desc: "אנחנו לא רק עורכי דין — אנחנו שותפים לדרך. BEYOND LAW אומר שאנחנו חושבים מעבר למשפט: חשיבה עסקית, ליווי מקיף, ופתרונות מותאמים שמשלבים מקצועיות משפטית עם ראייה מסחרית. כל שירות נוטריוני אצלנו הוא דיגיטלי, שקוף ומהיר — כי פעולה משפטית לא צריכה להיות מסובכת." },
     contact: { h2: "יצירת קשר", whatsapp: "פנייה בוואטסאפ", email: "פנייה במייל", phone: "חיוג טלפוני", address: "נח מוזס 2, ראשון לציון", hours: "ימים א׳–ה׳, 09:00–18:00" },
     footer: { rights: "כל הזכויות שמורות", privacy: "מדיניות פרטיות", terms: "תנאי שימוש", accessibility: "נגישות" },
     cookie: { text: "אתר זה משתמש בעוגיות לצורך שיפור חוויית הגלישה. בהמשך הגלישה הינך מסכים/ה לשימוש בעוגיות.", accept: "מסכים/ה", decline: "דחייה" },
@@ -151,7 +152,7 @@ const T: Record<string, any> = {
       { title: "Notarial Will — Why It Matters", tag: "Will", excerpt: "Advantages over regular will, pricing, Section 22 Inheritance Law.", slug: "notarial-will" },
       { title: "Notarial Affidavit — When Required and How to Prepare", tag: "Affidavit", excerpt: "When needed, difference from lawyer affidavit, types and pricing.", slug: "notarial-affidavit" },
     ] },
-    about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "We're not just lawyers — we're partners. BEYOND LAW means we think beyond legal practice: business strategy, comprehensive support, and tailored solutions that combine legal expertise with commercial insight. Every notary service is digital, transparent, and fast." },
+    about: { tag: "ABOUT", h2: "BEITON", slogan: "BEYOND LAW", desc: "We're not just lawyers — we're partners. BEYOND LAW means we think beyond legal practice: business strategy, comprehensive support, and tailored solutions that combine legal expertise with commercial insight. Every notary service is digital, transparent, and fast." },
     contact: { h2: "Get in Touch", whatsapp: "Message on WhatsApp", email: "Send an Email", phone: "Call us", address: "2 Noach Mozes St., Rishon LeZion", hours: "Sun–Thu, 09:00–18:00" },
     footer: { rights: "All rights reserved", privacy: "Privacy Policy", terms: "Terms of Use", accessibility: "Accessibility" },
     cookie: { text: "This site uses cookies to improve your experience. By continuing, you agree to their use.", accept: "Accept", decline: "Decline" },
@@ -199,7 +200,7 @@ const T: Record<string, any> = {
       { title: "Нотариальное завещание — почему это важно", tag: "Завещание", excerpt: "Преимущества, стоимость, закон о наследовании.", slug: "notarial-will" },
       { title: "Нотариальный аффидевит — когда нужен", tag: "Аффидевит", excerpt: "Когда требуется, виды, стоимость.", slug: "notarial-affidavit" },
     ] },
-    about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "Мы не просто юристы — мы партнёры. BEYOND LAW означает мышление за рамками права: бизнес-стратегия, комплексное сопровождение и индивидуальные решения. Каждая нотариальная услуга — цифровая, прозрачная и быстрая." },
+    about: { tag: "ABOUT", h2: "BEITON", slogan: "BEYOND LAW", desc: "Мы не просто юристы — мы партнёры. BEYOND LAW означает мышление за рамками права: бизнес-стратегия, комплексное сопровождение и индивидуальные решения. Каждая нотариальная услуга — цифровая, прозрачная и быстрая." },
     contact: { h2: "Связаться", whatsapp: "WhatsApp", email: "Email", phone: "Позвонить", address: "ул. Ноах Мозес 2, Ришон-ле-Цион", hours: "Вс–Чт, 09:00–18:00" },
     footer: { rights: "Все права защищены", privacy: "Конфиденциальность", terms: "Условия", accessibility: "Доступность" },
     cookie: { text: "Сайт использует cookie. Продолжая, вы соглашаетесь.", accept: "Принять", decline: "Отклонить" },
@@ -247,7 +248,7 @@ const T: Record<string, any> = {
       { title: "الوصية التوثيقية — لماذا مهمة؟", tag: "وصية", excerpt: "المزايا، التكلفة، قانون الميراث.", slug: "notarial-will" },
       { title: "الإفادة الخطية التوثيقية — متى تحتاجها؟", tag: "إفادة", excerpt: "متى مطلوبة، الأنواع والتكلفة.", slug: "notarial-affidavit" },
     ] },
-    about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "نحن لسنا مجرد محامين — نحن شركاء. BEYOND LAW يعني التفكير فيما هو أبعد من القانون: استراتيجية تجارية، مرافقة شاملة، وحلول مخصصة. كل خدمة توثيقية لدينا رقمية وشفافة وسريعة." },
+    about: { tag: "ABOUT", h2: "BEITON", slogan: "BEYOND LAW", desc: "نحن لسنا مجرد محامين — نحن شركاء. BEYOND LAW يعني التفكير فيما هو أبعد من القانون: استراتيجية تجارية، مرافقة شاملة، وحلول مخصصة. كل خدمة توثيقية لدينا رقمية وشفافة وسريعة." },
     contact: { h2: "تواصل معنا", whatsapp: "واتساب", email: "بريد إلكتروني", phone: "اتصل بنا", address: "شارع نوح موزس 2، ראשון לציון", hours: "الأحد–الخميس، 09:00–18:00" },
     footer: { rights: "جميع الحقوق محفوظة", privacy: "الخصوصية", terms: "الشروط", accessibility: "إمكانية الوصول" },
     cookie: { text: "يستخدم الموقع ملفات تعريف الارتباط. بالاستمرار توافق/ين.", accept: "موافق/ة", decline: "رفض" },
@@ -295,7 +296,7 @@ const T: Record<string, any> = {
       { title: "Testament notarie", tag: "Testament", excerpt: "Avantages, cout, loi sur la succession.", slug: "notarial-will" },
       { title: "Affidavit notarie", tag: "Affidavit", excerpt: "Quand necessaire, types et cout.", slug: "notarial-affidavit" },
     ] },
-    about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "Nous ne sommes pas de simples avocats — nous sommes des partenaires. BEYOND LAW signifie penser au-dela du droit: strategie commerciale, accompagnement complet et solutions sur mesure. Chaque service notarial est numerique, transparent et rapide." },
+    about: { tag: "ABOUT", h2: "BEITON", slogan: "BEYOND LAW", desc: "Nous ne sommes pas de simples avocats — nous sommes des partenaires. BEYOND LAW signifie penser au-dela du droit: strategie commerciale, accompagnement complet et solutions sur mesure. Chaque service notarial est numerique, transparent et rapide." },
     contact: { h2: "Nous contacter", whatsapp: "WhatsApp", email: "Email", phone: "Appelez-nous", address: "2 rue Noach Mozes, Rishon LeZion", hours: "Dim–Jeu, 09h00–18h00" },
     footer: { rights: "Tous droits reserves", privacy: "Confidentialite", terms: "Conditions", accessibility: "Accessibilite" },
     cookie: { text: "Ce site utilise des cookies. En continuant, vous acceptez.", accept: "Accepter", decline: "Refuser" },
@@ -343,7 +344,7 @@ const T: Record<string, any> = {
       { title: "Testamento notarial", tag: "Testamento", excerpt: "Ventajas, costo, ley de herencia.", slug: "notarial-will" },
       { title: "Declaracion jurada notarial", tag: "Declaracion", excerpt: "Cuando necesaria, tipos y costo.", slug: "notarial-affidavit" },
     ] },
-    about: { tag: "ABOUT", h2: "BEITON & Co", slogan: "BEYOND LAW", desc: "No somos solo abogados — somos socios. BEYOND LAW significa pensar mas alla del derecho: estrategia comercial, acompanamiento integral y soluciones a medida. Cada servicio notarial es digital, transparente y rapido." },
+    about: { tag: "ABOUT", h2: "BEITON", slogan: "BEYOND LAW", desc: "No somos solo abogados — somos socios. BEYOND LAW significa pensar mas alla del derecho: estrategia comercial, acompanamiento integral y soluciones a medida. Cada servicio notarial es digital, transparente y rapido." },
     contact: { h2: "Contacto", whatsapp: "WhatsApp", email: "Email", phone: "Llamar", address: "Calle Noach Mozes 2, Rishon LeZion", hours: "Dom–Jue, 09:00–18:00" },
     footer: { rights: "Todos los derechos reservados", privacy: "Privacidad", terms: "Terminos", accessibility: "Accesibilidad" },
     cookie: { text: "Este sitio usa cookies. Al continuar, aceptas su uso.", accept: "Aceptar", decline: "Rechazar" },
@@ -525,8 +526,7 @@ export default function NotaryHome() {
       <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(255,255,255,.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E8E6E1" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 56 }}>
           <div style={{ display: "flex", alignItems: "baseline", direction: "ltr" }}>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 500, fontSize: 15, letterSpacing: 5, textTransform: "uppercase" }}>BEITON</span>
-            <span style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif", fontWeight: 300, fontSize: 10, letterSpacing: 3, color: "#999", marginLeft: 6 }}>&amp; Co</span>
+            <BrandLogo size={16} />
           </div>
           <div className="dn" style={{ display: "flex", alignItems: "center", gap: 22 }}>
             {Object.entries(t.nav).map(([k, v]: [string, any]) => <a key={k} className="nl" onClick={() => go(k)} style={{ fontSize: 12, color: "#1A1A1A", textDecoration: "none", transition: "opacity .2s" }}>{v}</a>)}
@@ -549,7 +549,7 @@ export default function NotaryHome() {
 
       {/* HERO */}
       <section id="home" style={{ padding: "72px 24px 52px", maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-        <p className="fu" style={{ fontSize: 11, fontWeight: 500, letterSpacing: 4, textTransform: "uppercase", color: "#999", marginBottom: 14 }}>BEITON &amp; Co</p>
+        <p className="fu" style={{ fontSize: 11, fontWeight: 500, letterSpacing: 4, textTransform: "uppercase", color: "#999", marginBottom: 14 }}>BEITON</p>
         <h1 className="fu fd1" style={{ fontSize: "clamp(30px,5vw,52px)", fontWeight: 300, lineHeight: 1.15, marginBottom: 28 }}>{t.hero.h1}</h1>
         <div className="la" style={{ height: 1, background: "#1A1A1A", margin: "0 auto 28px" }} />
         <div className="fu fd2" style={{ maxWidth: 600, margin: "0 auto" }}>
@@ -713,9 +713,7 @@ export default function NotaryHome() {
       <section id="about" style={{ padding: "32px 24px 64px" }}>
         <div style={{ maxWidth: 580, margin: "0 auto", textAlign: "center" }}>
           <p style={S.tag}>{t.about.tag}</p>
-          <h2 style={{ ...S.h2, direction: "ltr", marginBottom: 4 }}>{t.about.h2}</h2>
-          <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: 3, color: "#999", textTransform: "uppercase", marginBottom: 18, direction: "ltr" }}>{t.about.slogan}</p>
-          <div style={{ width: 40, height: 1, background: "#1A1A1A", margin: "0 auto 18px" }} />
+          <h2 style={{ margin: "6px 0 24px" }}><BrandLogo slogan size="clamp(32px,5vw,44px)" /></h2>
           <p style={{ fontSize: 13, fontWeight: 300, color: "#6B6B6B", lineHeight: 1.9 }}>{t.about.desc}</p>
         </div>
       </section>

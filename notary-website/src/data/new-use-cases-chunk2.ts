@@ -8,7 +8,7 @@ export const WILL_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "צוואה אישית — אישור נוטריוני",
-        metaTitle: "צוואה נוטריונית אישית — מחיר, תהליך ומסמכים | BEITON & Co",
+        metaTitle: "צוואה נוטריונית אישית — מחיר, תהליך ומסמכים | BEITON",
         metaDescription: "צוואה אישית עם אישור נוטריוני — כמה עולה, מה התהליך, מסמכים נדרשים. צוואה בפני נוטריון לפי סעיף 22 לחוק הירושה. תעריף קבוע.",
         intro: "צוואה נוטריונית אישית היא אחת הדרכים המוכרות ביותר לערוך צוואה בישראל. לפי סעיף 22 לחוק הירושה, תשכ״ה-1965, צוואה שנערכה בפני נוטריון מקבלת תוקף מיוחד — היא נחשבת ראיה מספקת לכך שהמצווה הבין את תוכנה ועשה אותה מרצונו החופשי. זוהי הצוואה הקשה ביותר לערעור.",
         whatIsTitle: "מה זו צוואה נוטריונית?",
@@ -46,7 +46,7 @@ export const WILL_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "צוואה נוטריונית מחייבת נוכחות פיזית של המצווה. הגיעו למשרדנו בתיאום מראש — התהליך אורך כ-30 דקות." },
           { name: "שירות עד הבית", desc: "הנוטריון מגיע לביתכם — מתאים למצווים מבוגרים או מוגבלי ניידות. בתיאום מראש ובתוספת דמי נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "ניסיון רב בעריכת צוואות מורכבות — נכסים מרובים, משפחות מורחבות",
           "הכנת טיוטה מראש — מגיעים, קוראים, חותמים",
@@ -72,7 +72,7 @@ export const WILL_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Personal Will — Notarial Certification",
-        metaTitle: "Notarized Personal Will in Israel — Price & Process | BEITON & Co",
+        metaTitle: "Notarized Personal Will in Israel — Price & Process | BEITON",
         metaDescription: "Personal will with notarial certification in Israel — cost, process, documents. Under Section 22 of the Inheritance Law. Fixed regulated tariff.",
         intro: "A notarized personal will is one of the most recognized ways to make a will in Israel. Under Section 22 of the Inheritance Law, 1965 (חוק הירושה, תשכ״ה-1965), a will made before a notary receives special legal status — it constitutes sufficient evidence that the testator understood its content and acted of their own free will. This makes it the most difficult will to contest.",
         whatIsTitle: "What is a notarized will?",
@@ -110,7 +110,7 @@ export const WILL_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "A notarized will requires physical presence of the testator. Visit by appointment — process takes about 30 minutes." },
           { name: "Home service", desc: "The notary comes to your home — suitable for elderly or mobility-limited testators. By appointment with travel fee." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Extensive experience drafting complex wills — multiple assets, extended families",
           "Draft prepared in advance — arrive, review, sign",
@@ -136,7 +136,7 @@ export const WILL_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Личное завещание — нотариальное заверение",
-        metaTitle: "Нотариальное завещание в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Нотариальное завещание в Израиле — цена и процесс | BEITON",
         metaDescription: "Личное завещание с нотариальным заверением в Израиле — стоимость, процесс, документы. По статье 22 Закона о наследовании. Фиксированный тариф.",
         intro: "Нотариальное завещание — один из самых надёжных способов составить завещание в Израиле. Согласно статье 22 Закона о наследовании 1965 года (חוק הירושה, תשכ״ה-1965), завещание, составленное перед нотариусом, получает особый правовой статус — оно является достаточным доказательством того, что завещатель понимал содержание и действовал по собственной воле. Это завещание, которое сложнее всего оспорить.",
         whatIsTitle: "Что такое нотариальное завещание?",
@@ -174,7 +174,7 @@ export const WILL_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Нотариальное завещание требует личного присутствия. Запишитесь — процесс около 30 минут." },
           { name: "Выезд на дом", desc: "Нотариус приедет к вам — для пожилых или маломобильных клиентов. По записи с оплатой выезда." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Большой опыт составления сложных завещаний — множество активов, расширенные семьи",
           "Проект подготовлен заранее — приходите, читаете, подписываете",
@@ -200,7 +200,7 @@ export const WILL_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "وصية شخصية — تصديق نوتاري",
-        metaTitle: "وصية نوتارية شخصية في إسرائيل — السعر والإجراءات | BEITON & Co",
+        metaTitle: "وصية نوتارية شخصية في إسرائيل — السعر والإجراءات | BEITON",
         metaDescription: "وصية شخصية بتصديق نوتاري في إسرائيل — التكلفة، الإجراءات، المستندات. وفق المادة 22 من قانون الإرث. تعرفة ثابتة.",
         intro: "الوصية النوتارية الشخصية هي واحدة من أكثر الطرق المعترف بها لتحرير وصية في إسرائيل. وفقاً للمادة 22 من قانون الإرث 1965 (חוק הירושה, תשכ״ה-1965)، الوصية المحررة أمام نوتاري تحصل على مكانة قانونية خاصة — تُعتبر دليلاً كافياً على أن الموصي فهم محتواها وعملها بإرادته الحرة. هذه هي الوصية الأصعب للطعن فيها.",
         whatIsTitle: "ما هي الوصية النوتارية؟",
@@ -238,7 +238,7 @@ export const WILL_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "الوصية النوتارية تتطلب حضور الموصي شخصياً. احجزوا موعداً — العملية تستغرق حوالي 30 دقيقة." },
           { name: "خدمة حتى البيت", desc: "النوتاري يأتي لبيتكم — مناسب لكبار السن أو ذوي القدرة المحدودة على التنقل. بموعد مسبق مع رسوم تنقل." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خبرة واسعة في تحرير وصايا معقدة — أصول متعددة، عائلات ممتدة",
           "المسودة تُحضّر مسبقاً — تحضرون، تقرأون، توقّعون",
@@ -270,7 +270,7 @@ export const WILL_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "צוואה הדדית לבני זוג — אישור נוטריוני",
-        metaTitle: "צוואה הדדית נוטריונית לבני זוג — מחיר ותהליך | BEITON & Co",
+        metaTitle: "צוואה הדדית נוטריונית לבני זוג — מחיר ותהליך | BEITON",
         metaDescription: "צוואה הדדית לבני זוג עם אישור נוטריוני — כמה עולה, מה התהליך, יתרונות. לפי סעיף 22 לחוק הירושה. תעריף קבוע בתקנות.",
         intro: "צוואה הדדית היא צוואה שבה שני בני זוג מצווים זה לטובת זה. בדרך כלל — כל אחד מוריש את רכושו לבן/בת הזוג, ולאחר פטירת שניהם — הרכוש עובר לילדים או ליורשים אחרים. צוואה הדדית נוטריונית לפי סעיף 22 לחוק הירושה מעניקה ודאות משפטית מרבית ומקשה מאוד על ערעור.",
         whatIsTitle: "מה זו צוואה הדדית?",
@@ -307,7 +307,7 @@ export const WILL_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "שני בני הזוג מגיעים יחד. התהליך אורך כ-45 דקות." },
           { name: "שירות עד הבית", desc: "הנוטריון מגיע לביתכם — בתיאום מראש ובתוספת דמי נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "ניסיון רב בעריכת צוואות הדדיות מורכבות",
           "הכנת טיוטה מותאמת אישית מראש",
@@ -332,7 +332,7 @@ export const WILL_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Mutual Will for Spouses — Notarial Certification",
-        metaTitle: "Mutual Will for Spouses in Israel — Notarized | BEITON & Co",
+        metaTitle: "Mutual Will for Spouses in Israel — Notarized | BEITON",
         metaDescription: "Mutual will for spouses with notarial certification in Israel — cost, process, advantages. Under Section 22 of the Inheritance Law. Fixed tariff.",
         intro: "A mutual will is a will in which two spouses bequeath in each other's favor. Typically, each spouse leaves their assets to the other, and after both pass away, the assets transfer to children or other designated heirs. A notarized mutual will under Section 22 of the Inheritance Law provides maximum legal certainty and makes contesting extremely difficult.",
         whatIsTitle: "What is a mutual will?",
@@ -369,7 +369,7 @@ export const WILL_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Both spouses come together. Process takes about 45 minutes." },
           { name: "Home service", desc: "The notary comes to your home — by appointment with travel fee." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Extensive experience drafting complex mutual wills",
           "Custom draft prepared in advance",
@@ -394,7 +394,7 @@ export const WILL_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Взаимное завещание супругов — нотариальное заверение",
-        metaTitle: "Взаимное завещание супругов в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Взаимное завещание супругов в Израиле — цена и процесс | BEITON",
         metaDescription: "Взаимное завещание супругов с нотариальным заверением — стоимость, процесс, преимущества. По статье 22 Закона о наследовании. Фиксированный тариф.",
         intro: "Взаимное завещание — это завещание, в котором двое супругов завещают в пользу друг друга. Обычно каждый оставляет имущество супругу/супруге, а после смерти обоих — имущество переходит детям или другим назначенным наследникам. Нотариальное взаимное завещание по статье 22 Закона о наследовании обеспечивает максимальную юридическую определённость.",
         whatIsTitle: "Что такое взаимное завещание?",
@@ -431,7 +431,7 @@ export const WILL_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Оба супруга приходят вместе. Процесс около 45 минут." },
           { name: "Выезд на дом", desc: "Нотариус приедет к вам — по записи с оплатой выезда." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Большой опыт составления сложных взаимных завещаний",
           "Индивидуальный проект готовится заранее",
@@ -456,7 +456,7 @@ export const WILL_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "وصية متبادلة للأزواج — تصديق نوتاري",
-        metaTitle: "وصية متبادلة للأزواج في إسرائيل — السعر والإجراءات | BEITON & Co",
+        metaTitle: "وصية متبادلة للأزواج في إسرائيل — السعر والإجراءات | BEITON",
         metaDescription: "وصية متبادلة للأزواج بتصديق نوتاري — التكلفة، الإجراءات، المزايا. وفق المادة 22 من قانون الإرث. تعرفة ثابتة.",
         intro: "الوصية المتبادلة هي وصية يوصي فيها الزوجان لصالح بعضهما البعض. عادةً — كل واحد يورّث ممتلكاته لزوجه/زوجته، وبعد وفاة كليهما — الممتلكات تنتقل للأولاد أو ورثة آخرين. الوصية المتبادلة النوتارية وفق المادة 22 من قانون الإرث توفر أقصى يقين قانوني.",
         whatIsTitle: "ما هي الوصية المتبادلة؟",
@@ -493,7 +493,7 @@ export const WILL_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "كلا الزوجين يحضران معاً. العملية تستغرق حوالي 45 دقيقة." },
           { name: "خدمة حتى البيت", desc: "النوتاري يأتي لبيتكم — بموعد مسبق مع رسوم تنقل." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خبرة واسعة في تحرير وصايا متبادلة معقدة",
           "مسودة مخصصة تُحضّر مسبقاً",

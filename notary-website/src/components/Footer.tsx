@@ -15,12 +15,6 @@ export default function Footer() {
           >
             BEITON
           </span>
-          <span
-            className="text-[10px] tracking-[0.1em] text-brand-gray"
-            style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}
-          >
-            &amp; Co
-          </span>
           <span className="ms-3">© {new Date().getFullYear()} {t("rights")}</span>
         </div>
         <div className="flex gap-4">

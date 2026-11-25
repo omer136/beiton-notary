@@ -85,7 +85,7 @@ export default async function ServicePage({
             description: c.intro,
             provider: {
               "@type": "LegalService",
-              name: "BEITON & Co",
+              name: "BEITON",
               url: "https://notary.beiton.co",
             },
             areaServed: { "@type": "Country", name: "Israel" },

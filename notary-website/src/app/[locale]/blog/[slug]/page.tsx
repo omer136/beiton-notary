@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!filePath) return {};
   const { meta } = parseFrontmatter(fs.readFileSync(filePath, "utf8"));
   return {
-    title: (meta.title || slug) + " | BEITON & Co",
+    title: (meta.title || slug) + " | BEITON",
     description: meta.description || "",
   };
 }
@@ -118,8 +118,8 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "Article",
         headline: meta.title, description: meta.description, inLanguage: meta.lang || locale,
-        datePublished: meta.date, author: { "@type": "Organization", name: "BEITON & Co", url: "https://notary.beiton.co" },
-        publisher: { "@type": "Organization", name: "BEITON & Co", logo: { "@type": "ImageObject", url: "https://notary.beiton.co/logo.png" } },
+        datePublished: meta.date, author: { "@type": "Organization", name: "BEITON", url: "https://notary.beiton.co" },
+        publisher: { "@type": "Organization", name: "BEITON", logo: { "@type": "ImageObject", url: "https://notary.beiton.co/logo.png" } },
         mainEntityOfPage: { "@type": "WebPage", "@id": `https://notary.beiton.co/${locale}/blog/${slug}` },
       })}} />
 
@@ -137,7 +137,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ lo
           </p>
 
           {/* Meta */}
-          <p style={{ fontSize: 12, color: "#999", marginBottom: 32 }}>BEITON &amp; Co | {meta.date}</p>
+          <p style={{ fontSize: 12, color: "#999", marginBottom: 32 }}>BEITON | {meta.date}</p>
 
           {/* Content */}
           {sections.map((sec, i) => {

@@ -241,7 +241,7 @@ export async function generateNotarialDOCX(
             new Paragraph({
               alignment: AlignmentType.CENTER,
               children: [
-                new TextRun({ text: "BEITON & Co  |  ", font: "Arial", size: 18, bold: true }),
+                new TextRun({ text: "BEITON  |  ", font: "Arial", size: 18, bold: true }),
                 new TextRun({ text: "Notarial Translation", font: "Arial", size: 18, color: "666666" }),
               ],
             }),

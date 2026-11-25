@@ -50,7 +50,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "תרגום נוטריוני של תעודת לידה",
-        metaTitle: "תרגום נוטריוני תעודת לידה — מחיר, תהליך וזמנים | BEITON & Co",
+        metaTitle: "תרגום נוטריוני תעודת לידה — מחיר, תהליך וזמנים | BEITON",
         metaDescription: "תרגום תעודת לידה עם אישור נוטריוני — כמה עולה, מה התהליך, מסמכים נדרשים ואיך מקבלים את השירות. תעריף קבוע בתקנות, שירות דיגיטלי מהיר.",
         intro: "תרגום נוטריוני של תעודת לידה הוא אחד השירותים הנפוצים ביותר במשרדי נוטריון בישראל. כשרשויות בחו״ל, שגרירויות, מוסדות אקדמיים או גורמים ממשלתיים דורשים תעודת לידה ישראלית מתורגמת — הם דורשים שהתרגום יהיה מאושר על ידי נוטריון מוסמך. האישור הנוטריוני מעניק למסמך תוקף משפטי בינלאומי ומבטיח שהתרגום נאמן למקור.",
         whatIsTitle: "מה זה תרגום נוטריוני של תעודת לידה?",
@@ -90,7 +90,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "שליח עד הבית", desc: "שליח אוסף את המסמך המקורי (אם נדרש) ומחזיר את המסמך החתום. 100 ₪ + מע״מ לכיוון." },
           { name: "איסוף עצמי מהמשרד", desc: "ניתן לאסוף את המסמך החתום ממשרדנו בתיאום מראש." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "שירות דיגיטלי מלא — שלחו מסמך בוואטסאפ וקבלו תרגום חתום בחזרה, בלי להגיע למשרד",
           "מענה תוך דקות — צוות זמין לשאלות ולהצעות מחיר",
@@ -116,7 +116,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Notarial Translation of a Birth Certificate",
-        metaTitle: "Birth Certificate Notarial Translation in Israel — Price, Process & Timeline | BEITON & Co",
+        metaTitle: "Birth Certificate Notarial Translation in Israel — Price, Process & Timeline | BEITON",
         metaDescription: "Notarial translation of birth certificate in Israel — cost, process, required documents and delivery options. Fixed regulated tariff, fast digital service.",
         intro: "Notarial translation of a birth certificate is one of the most common notary services in Israel. When foreign authorities, embassies, academic institutions, or government agencies require a translated Israeli birth certificate, they require the translation to be certified by a licensed notary. The notarial certification gives the document international legal validity and ensures the translation is faithful to the original.",
         whatIsTitle: "What is a notarial translation of a birth certificate?",
@@ -156,7 +156,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Courier to your door", desc: "Courier picks up the original document (if needed) and returns the signed document. 100 ₪ + VAT per direction." },
           { name: "Self pickup from office", desc: "Pick up the signed document from our office by appointment." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Fully digital service — send a document via WhatsApp and receive a signed translation back, no office visit needed",
           "Response within minutes — our team is available for questions and quotes",
@@ -182,7 +182,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Нотариальный перевод свидетельства о рождении",
-        metaTitle: "Нотариальный перевод свидетельства о рождении в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Нотариальный перевод свидетельства о рождении в Израиле — цена и процесс | BEITON",
         metaDescription: "Нотариальный перевод свидетельства о рождении в Израиле — стоимость, процесс, необходимые документы и способы получения. Фиксированный тариф, быстрый цифровой сервис.",
         intro: "Нотариальный перевод свидетельства о рождении — одна из самых востребованных нотариальных услуг в Израиле. Когда зарубежные органы, посольства, университеты или государственные учреждения требуют переведённое израильское свидетельство о рождении — они требуют заверение перевода лицензированным нотариусом. Нотариальное заверение придаёт документу международную юридическую силу.",
         whatIsTitle: "Что такое нотариальный перевод свидетельства о рождении?",
@@ -222,7 +222,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Курьер к двери", desc: "Курьер заберёт оригинал (если нужно) и вернёт подписанный документ. 100 ₪ + НДС за направление." },
           { name: "Самовывоз из офиса", desc: "Забрать подписанный документ из офиса по предварительной записи." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Полностью цифровой сервис — отправьте документ в WhatsApp и получите подписанный перевод",
           "Ответ в течение минут — команда доступна для вопросов и расчётов",
@@ -248,7 +248,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "ترجمة توثيقية لشهادة الميلاد",
-        metaTitle: "ترجمة شهادة ميلاد توثيقية في إسرائيل — السعر والعملية | BEITON & Co",
+        metaTitle: "ترجمة شهادة ميلاد توثيقية في إسرائيل — السعر والعملية | BEITON",
         metaDescription: "ترجمة توثيقية لشهادة الميلاد في إسرائيل — التكلفة والعملية والمستندات المطلوبة وطرق الاستلام. تعرفة ثابتة، خدمة رقمية سريعة.",
         intro: "الترجمة التوثيقية لشهادة الميلاد هي من أكثر الخدمات طلباً في مكاتب كتّاب العدل في إسرائيل. عندما تطلب جهات أجنبية أو سفارات أو مؤسسات أكاديمية أو جهات حكومية شهادة ميلاد إسرائيلية مترجمة — فإنها تشترط أن يكون التصديق من كاتب عدل مرخّص. التصديق التوثيقي يمنح المستند قوة قانونية دولية.",
         whatIsTitle: "ما هي الترجمة التوثيقية لشهادة الميلاد؟",
@@ -288,7 +288,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "مندوب حتى الباب", desc: "المندوب يجمع الأصل (إن لزم) ويعيد المستند الموقّع. 100 ₪ + ض.ق.م لكل اتجاه." },
           { name: "استلام ذاتي من المكتب", desc: "استلام المستند الموقّع من مكتبنا بموعد مسبق." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خدمة رقمية كاملة — أرسلوا مستند عبر واتساب واحصلوا على ترجمة موقّعة",
           "رد خلال دقائق — فريق متاح للأسئلة وعروض الأسعار",
@@ -320,7 +320,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "תרגום נוטריוני של תעודת השכלה (דיפלומה)",
-        metaTitle: "תרגום נוטריוני תעודת השכלה ודיפלומה — מחיר, תהליך וזמנים | BEITON & Co",
+        metaTitle: "תרגום נוטריוני תעודת השכלה ודיפלומה — מחיר, תהליך וזמנים | BEITON",
         metaDescription: "תרגום נוטריוני של דיפלומה ותעודת השכלה — כמה עולה, מה התהליך, מסמכים נדרשים ואיך מקבלים את השירות. תעריף קבוע בתקנות, שירות דיגיטלי מהיר.",
         intro: "תרגום נוטריוני של תעודת השכלה (דיפלומה) הוא שירות חיוני למי שמעוניין להמשיך לימודים בחו״ל, להגיש בקשת הכרה בתואר במדינה זרה, או לעבוד בתפקיד המחייב הצגת תעודה אקדמית מתורגמת ומאושרת. אוניברסיטאות, גופי רגולציה מקצועית, מעסיקים בינלאומיים ורשויות הגירה דורשים שהתרגום ייחתם ויאושר על ידי נוטריון מוסמך. האישור הנוטריוני מעניק לתרגום תוקף משפטי בינלאומי ומבטיח שהתרגום נאמן למסמך המקורי.",
         whatIsTitle: "מה זה תרגום נוטריוני של תעודת השכלה?",
@@ -360,7 +360,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "שליח עד הבית", desc: "שליח אוסף את המסמך המקורי (אם נדרש) ומחזיר את המסמך החתום. 100 ₪ + מע״מ לכיוון." },
           { name: "איסוף עצמי מהמשרד", desc: "ניתן לאסוף את המסמך החתום ממשרדנו בתיאום מראש." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "שירות דיגיטלי מלא — שלחו מסמך בוואטסאפ וקבלו תרגום חתום בחזרה, בלי להגיע למשרד",
           "ניסיון בתרגום מסמכים אקדמיים — דיפלומות, גיליונות ציונים ואישורי לימודים",
@@ -386,7 +386,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Notarial Translation of a Diploma & Academic Certificate",
-        metaTitle: "Diploma Notarial Translation in Israel — Price, Process & Timeline | BEITON & Co",
+        metaTitle: "Diploma Notarial Translation in Israel — Price, Process & Timeline | BEITON",
         metaDescription: "Notarial translation of diploma and academic certificates in Israel — cost, process, required documents and delivery. Fixed regulated tariff, fast digital service.",
         intro: "Notarial translation of a diploma or academic certificate is essential for anyone looking to continue education abroad, obtain professional licensure in a foreign country, or apply for skilled-worker immigration. Universities, regulatory bodies, international employers, and immigration authorities require the translation to be certified by a licensed notary. The notarial certification gives the document international legal validity and ensures the translation is faithful to the original.",
         whatIsTitle: "What is a notarial translation of a diploma?",
@@ -426,7 +426,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Courier to your door", desc: "Courier picks up the original document (if needed) and returns the signed document. 100 ₪ + VAT per direction." },
           { name: "Self pickup from office", desc: "Pick up the signed document from our office by appointment." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Fully digital service — send a document via WhatsApp and receive a signed translation back, no office visit needed",
           "Experience with academic documents — diplomas, transcripts, and study certificates",
@@ -452,7 +452,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Нотариальный перевод диплома и академического документа",
-        metaTitle: "Нотариальный перевод диплома в Израиле — цена, процесс и сроки | BEITON & Co",
+        metaTitle: "Нотариальный перевод диплома в Израиле — цена, процесс и сроки | BEITON",
         metaDescription: "Нотариальный перевод диплома и академических документов в Израиле — стоимость, процесс, документы и способы получения. Фиксированный тариф, быстрый цифровой сервис.",
         intro: "Нотариальный перевод диплома или академического документа необходим тем, кто хочет продолжить обучение за рубежом, получить профессиональную лицензию в другой стране или подать документы на иммиграцию по программе для квалифицированных специалистов. Университеты, регулирующие органы, международные работодатели и иммиграционные службы требуют, чтобы перевод был заверен лицензированным нотариусом. Нотариальное заверение придаёт документу международную юридическую силу.",
         whatIsTitle: "Что такое нотариальный перевод диплома?",
@@ -492,7 +492,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Курьер к двери", desc: "Курьер заберёт оригинал (если нужно) и вернёт подписанный документ. 100 ₪ + НДС за направление." },
           { name: "Самовывоз из офиса", desc: "Забрать подписанный документ из офиса по предварительной записи." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Полностью цифровой сервис — отправьте документ в WhatsApp и получите подписанный перевод",
           "Опыт перевода академических документов — дипломы, приложения, справки",
@@ -518,7 +518,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "ترجمة توثيقية للشهادة الجامعية (دبلوم)",
-        metaTitle: "ترجمة شهادة جامعية توثيقية في إسرائيل — السعر والعملية | BEITON & Co",
+        metaTitle: "ترجمة شهادة جامعية توثيقية في إسرائيل — السعر والعملية | BEITON",
         metaDescription: "ترجمة توثيقية للشهادة الجامعية والدبلوم في إسرائيل — التكلفة والعملية والمستندات المطلوبة. تعرفة ثابتة، خدمة رقمية سريعة.",
         intro: "الترجمة التوثيقية للشهادة الجامعية (الدبلوم) خدمة أساسية لمن يرغب في متابعة الدراسة في الخارج، أو الحصول على ترخيص مهني في دولة أجنبية، أو تقديم طلب هجرة للعمالة المتخصصة. الجامعات والهيئات التنظيمية وأرباب العمل الدوليون وسلطات الهجرة يشترطون تصديق الترجمة من كاتب عدل مرخّص. التصديق التوثيقي يمنح المستند قوة قانونية دولية.",
         whatIsTitle: "ما هي الترجمة التوثيقية للشهادة الجامعية؟",
@@ -558,7 +558,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "مندوب حتى الباب", desc: "المندوب يجمع الأصل (إن لزم) ويعيد المستند الموقّع. 100 ₪ + ض.ق.م لكل اتجاه." },
           { name: "استلام ذاتي من المكتب", desc: "استلام المستند الموقّع من مكتبنا بموعد مسبق." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خدمة رقمية كاملة — أرسلوا مستند عبر واتساب واحصلوا على ترجمة موقّعة",
           "خبرة في ترجمة المستندات الأكاديمية — شهادات، كشوف علامات، إفادات دراسية",
@@ -590,7 +590,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "תרגום נוטריוני של רישיון נהיגה",
-        metaTitle: "תרגום נוטריוני רישיון נהיגה — מחיר, תהליך וזמנים | BEITON & Co",
+        metaTitle: "תרגום נוטריוני רישיון נהיגה — מחיר, תהליך וזמנים | BEITON",
         metaDescription: "תרגום נוטריוני של רישיון נהיגה — כמה עולה, מה התהליך, מסמכים נדרשים ואיך מקבלים את השירות. תעריף קבוע בתקנות, שירות דיגיטלי מהיר.",
         intro: "תרגום נוטריוני של רישיון נהיגה הוא שירות נפוץ ומבוקש, במיוחד עבור ישראלים שנוסעים לחו״ל לתקופות ארוכות, עולים חדשים שמבקשים להמיר רישיון זר לישראלי, או תושבים זרים בישראל שצריכים להמיר את רישיונם. רשויות התחבורה, חברות השכרת רכב וגופי ביטוח במדינות רבות דורשים תרגום רשמי ומאושר של רישיון הנהיגה. האישור הנוטריוני מעניק לתרגום תוקף משפטי ומבטיח שהתרגום נאמן למסמך המקורי.",
         whatIsTitle: "מה זה תרגום נוטריוני של רישיון נהיגה?",
@@ -626,7 +626,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "שליח עד הבית", desc: "שליח מחזיר את המסמך החתום. 100 ₪ + מע״מ לכיוון." },
           { name: "איסוף עצמי מהמשרד", desc: "ניתן לאסוף את המסמך החתום ממשרדנו בתיאום מראש." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "שירות דיגיטלי מלא — שלחו צילום רישיון בוואטסאפ וקבלו תרגום חתום בחזרה",
           "מענה תוך דקות — צוות זמין לשאלות ולהצעות מחיר",
@@ -652,7 +652,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Notarial Translation of a Driver's License",
-        metaTitle: "Driver's License Notarial Translation in Israel — Price & Process | BEITON & Co",
+        metaTitle: "Driver's License Notarial Translation in Israel — Price & Process | BEITON",
         metaDescription: "Notarial translation of driver's license in Israel — cost, process, required documents and delivery. Fixed regulated tariff, fast digital service.",
         intro: "Notarial translation of a driver's license is a commonly requested service, especially for Israelis traveling abroad for extended periods, new immigrants converting a foreign license to an Israeli one, or foreign residents in Israel who need to convert their license. Transportation authorities, car rental companies, and insurance agencies in many countries require an official certified translation of the driver's license. The notarial certification gives the translation legal validity and ensures accuracy.",
         whatIsTitle: "What is a notarial translation of a driver's license?",
@@ -688,7 +688,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Courier to your door", desc: "Courier returns the signed document. 100 ₪ + VAT per direction." },
           { name: "Self pickup from office", desc: "Pick up the signed document from our office by appointment." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Fully digital service — send a photo of the license via WhatsApp and receive a signed translation back",
           "Response within minutes — our team is available for questions and quotes",
@@ -714,7 +714,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Нотариальный перевод водительского удостоверения",
-        metaTitle: "Нотариальный перевод водительских прав в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Нотариальный перевод водительских прав в Израиле — цена и процесс | BEITON",
         metaDescription: "Нотариальный перевод водительского удостоверения в Израиле — стоимость, процесс, документы и способы получения. Фиксированный тариф, быстрый цифровой сервис.",
         intro: "Нотариальный перевод водительского удостоверения — востребованная услуга, особенно для израильтян, выезжающих за рубеж на длительный срок, новых репатриантов, обменивающих иностранные права на израильские, или иностранных граждан в Израиле. Транспортные ведомства, компании по аренде автомобилей и страховые организации во многих странах требуют официальный заверенный перевод водительских прав. Нотариальное заверение придаёт переводу юридическую силу.",
         whatIsTitle: "Что такое нотариальный перевод водительских прав?",
@@ -750,7 +750,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Курьер к двери", desc: "Курьер вернёт подписанный документ. 100 ₪ + НДС за направление." },
           { name: "Самовывоз из офиса", desc: "Забрать документ из офиса по предварительной записи." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Полностью цифровой сервис — отправьте фото прав в WhatsApp и получите перевод",
           "Ответ в течение минут — команда доступна для вопросов",
@@ -776,7 +776,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "ترجمة توثيقية لرخصة القيادة",
-        metaTitle: "ترجمة رخصة قيادة توثيقية في إسرائيل — السعر والعملية | BEITON & Co",
+        metaTitle: "ترجمة رخصة قيادة توثيقية في إسرائيل — السعر والعملية | BEITON",
         metaDescription: "ترجمة توثيقية لرخصة القيادة في إسرائيل — التكلفة والعملية والمستندات المطلوبة. تعرفة ثابتة، خدمة رقمية سريعة.",
         intro: "الترجمة التوثيقية لرخصة القيادة خدمة شائعة ومطلوبة، خاصة للإسرائيليين المسافرين للخارج لفترات طويلة، والمهاجرين الجدد الراغبين في تحويل رخصة أجنبية إلى إسرائيلية، أو المقيمين الأجانب في إسرائيل. سلطات النقل وشركات تأجير السيارات ومؤسسات التأمين في كثير من الدول تشترط ترجمة رسمية مصدّقة لرخصة القيادة.",
         whatIsTitle: "ما هي الترجمة التوثيقية لرخصة القيادة؟",
@@ -812,7 +812,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "مندوب حتى الباب", desc: "المندوب يعيد المستند الموقّع. 100 ₪ + ض.ق.م لكل اتجاه." },
           { name: "استلام ذاتي من المكتب", desc: "استلام المستند من مكتبنا بموعد مسبق." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خدمة رقمية كاملة — أرسلوا صورة الرخصة عبر واتساب واحصلوا على ترجمة موقّعة",
           "رد خلال دقائق — فريق متاح للأسئلة",
@@ -844,7 +844,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "תרגום נוטריוני של תעודת נישואין",
-        metaTitle: "תרגום נוטריוני תעודת נישואין — מחיר, תהליך וזמנים | BEITON & Co",
+        metaTitle: "תרגום נוטריוני תעודת נישואין — מחיר, תהליך וזמנים | BEITON",
         metaDescription: "תרגום נוטריוני של תעודת נישואין — כמה עולה, מה התהליך, מסמכים נדרשים ואיך מקבלים את השירות. תעריף קבוע בתקנות, שירות דיגיטלי מהיר.",
         intro: "תרגום נוטריוני של תעודת נישואין הוא שירות נפוץ הנדרש בעשרות מצבים — מהגירה ואזרחות זרה, דרך רישום נישואין בחו״ל, ועד הליכים ביורוקרטיים כמו שינוי שם משפחה או איחוד משפחות. שגרירויות, רשויות הגירה, בתי משפט ומוסדות פיננסיים בחו״ל דורשים שתעודת הנישואין תהיה מתורגמת ומאושרת על ידי נוטריון מוסמך. האישור הנוטריוני מעניק למסמך תוקף משפטי בינלאומי ומבטיח שהתרגום נאמן למקור.",
         whatIsTitle: "מה זה תרגום נוטריוני של תעודת נישואין?",
@@ -884,7 +884,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "שליח עד הבית", desc: "שליח אוסף את המסמך המקורי (אם נדרש) ומחזיר את המסמך החתום. 100 ₪ + מע״מ לכיוון." },
           { name: "איסוף עצמי מהמשרד", desc: "ניתן לאסוף את המסמך החתום ממשרדנו בתיאום מראש." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "שירות דיגיטלי מלא — שלחו מסמך בוואטסאפ וקבלו תרגום חתום בחזרה, בלי להגיע למשרד",
           "מענה תוך דקות — צוות זמין לשאלות ולהצעות מחיר",
@@ -910,7 +910,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Notarial Translation of a Marriage Certificate",
-        metaTitle: "Marriage Certificate Notarial Translation in Israel — Price & Process | BEITON & Co",
+        metaTitle: "Marriage Certificate Notarial Translation in Israel — Price & Process | BEITON",
         metaDescription: "Notarial translation of marriage certificate in Israel — cost, process, required documents and delivery options. Fixed regulated tariff, fast digital service.",
         intro: "Notarial translation of a marriage certificate is required in dozens of scenarios — from immigration and foreign citizenship applications, to registering a marriage abroad, to bureaucratic procedures such as name changes or family reunification. Embassies, immigration authorities, courts, and financial institutions abroad require the marriage certificate to be translated and certified by a licensed notary. The notarial certification gives the document international legal validity.",
         whatIsTitle: "What is a notarial translation of a marriage certificate?",
@@ -950,7 +950,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Courier to your door", desc: "Courier picks up the original (if needed) and returns the signed document. 100 ₪ + VAT per direction." },
           { name: "Self pickup from office", desc: "Pick up the signed document from our office by appointment." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Fully digital service — send a document via WhatsApp and receive a signed translation back, no office visit needed",
           "Response within minutes — our team is available for questions and quotes",
@@ -976,7 +976,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Нотариальный перевод свидетельства о браке",
-        metaTitle: "Нотариальный перевод свидетельства о браке в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Нотариальный перевод свидетельства о браке в Израиле — цена и процесс | BEITON",
         metaDescription: "Нотариальный перевод свидетельства о браке в Израиле — стоимость, процесс, документы и способы получения. Фиксированный тариф, быстрый цифровой сервис.",
         intro: "Нотариальный перевод свидетельства о браке требуется в десятках ситуаций — от иммиграции и получения иностранного гражданства до регистрации брака за рубежом, смены фамилии или воссоединения семьи. Посольства, иммиграционные службы, суды и финансовые учреждения за рубежом требуют, чтобы свидетельство было переведено и заверено лицензированным нотариусом. Нотариальное заверение придаёт документу международную юридическую силу.",
         whatIsTitle: "Что такое нотариальный перевод свидетельства о браке?",
@@ -1016,7 +1016,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Курьер к двери", desc: "Курьер заберёт оригинал (если нужно) и вернёт подписанный документ. 100 ₪ + НДС за направление." },
           { name: "Самовывоз из офиса", desc: "Забрать документ из офиса по предварительной записи." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Полностью цифровой сервис — отправьте документ в WhatsApp и получите перевод",
           "Ответ в течение минут — команда доступна для вопросов",
@@ -1042,7 +1042,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "ترجمة توثيقية لشهادة الزواج",
-        metaTitle: "ترجمة شهادة زواج توثيقية في إسرائيل — السعر والعملية | BEITON & Co",
+        metaTitle: "ترجمة شهادة زواج توثيقية في إسرائيل — السعر والعملية | BEITON",
         metaDescription: "ترجمة توثيقية لشهادة الزواج في إسرائيل — التكلفة والعملية والمستندات المطلوبة. تعرفة ثابتة، خدمة رقمية سريعة.",
         intro: "الترجمة التوثيقية لشهادة الزواج خدمة مطلوبة في عشرات الحالات — من الهجرة والجنسية الأجنبية، إلى تسجيل الزواج في الخارج، وإجراءات بيروقراطية مثل تغيير اسم العائلة أو لمّ شمل الأسرة. السفارات وسلطات الهجرة والمحاكم والمؤسسات المالية في الخارج تشترط ترجمة شهادة الزواج وتصديقها من كاتب عدل مرخّص.",
         whatIsTitle: "ما هي الترجمة التوثيقية لشهادة الزواج؟",
@@ -1082,7 +1082,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "مندوب حتى الباب", desc: "المندوب يجمع الأصل (إن لزم) ويعيد المستند الموقّع. 100 ₪ + ض.ق.م لكل اتجاه." },
           { name: "استلام ذاتي من المكتب", desc: "استلام المستند من مكتبنا بموعد مسبق." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خدمة رقمية كاملة — أرسلوا مستند عبر واتساب واحصلوا على ترجمة موقّعة",
           "رد خلال دقائق — فريق متاح للأسئلة",
@@ -1114,7 +1114,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "תרגום נוטריוני של תעודת גירושין (גט)",
-        metaTitle: "תרגום נוטריוני תעודת גירושין — מחיר, תהליך וזמנים | BEITON & Co",
+        metaTitle: "תרגום נוטריוני תעודת גירושין — מחיר, תהליך וזמנים | BEITON",
         metaDescription: "תרגום נוטריוני של תעודת גירושין (גט) — כמה עולה, מה התהליך, מסמכים נדרשים ואיך מקבלים את השירות. תעריף קבוע בתקנות, שירות דיגיטלי מהיר.",
         intro: "תרגום נוטריוני של תעודת גירושין (גט) נדרש במגוון הליכים בינלאומיים — מהגשת בקשה לאזרחות או הגירה, דרך רישום נישואין מחדש בחו״ל, ועד הליכים משפטיים ופיננסיים הדורשים הוכחת מצב אישי. שגרירויות, רשויות הגירה, בתי משפט זרים ומוסדות בנקאיים דורשים שתעודת הגירושין תהיה מתורגמת ומאושרת על ידי נוטריון מוסמך. האישור הנוטריוני מעניק למסמך תוקף משפטי בינלאומי.",
         whatIsTitle: "מה זה תרגום נוטריוני של תעודת גירושין?",
@@ -1154,7 +1154,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "שליח עד הבית", desc: "שליח אוסף את המסמך המקורי (אם נדרש) ומחזיר את המסמך החתום. 100 ₪ + מע״מ לכיוון." },
           { name: "איסוף עצמי מהמשרד", desc: "ניתן לאסוף את המסמך החתום ממשרדנו בתיאום מראש." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "שירות דיגיטלי מלא — שלחו מסמך בוואטסאפ וקבלו תרגום חתום בחזרה, בלי להגיע למשרד",
           "דיסקרטיות מלאה — מסמכי גירושין מטופלים בסודיות מוחלטת",
@@ -1180,7 +1180,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Notarial Translation of a Divorce Certificate",
-        metaTitle: "Divorce Certificate Notarial Translation in Israel — Price & Process | BEITON & Co",
+        metaTitle: "Divorce Certificate Notarial Translation in Israel — Price & Process | BEITON",
         metaDescription: "Notarial translation of divorce certificate in Israel — cost, process, required documents and delivery. Fixed regulated tariff, fast digital service.",
         intro: "Notarial translation of a divorce certificate is required in a range of international proceedings — from citizenship or immigration applications, to remarriage registration abroad, to legal and financial proceedings requiring proof of personal status. Embassies, immigration authorities, foreign courts, and banking institutions require the divorce certificate to be translated and certified by a licensed notary. The notarial certification gives the document international legal validity.",
         whatIsTitle: "What is a notarial translation of a divorce certificate?",
@@ -1220,7 +1220,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Courier to your door", desc: "Courier picks up the original (if needed) and returns the signed document. 100 ₪ + VAT per direction." },
           { name: "Self pickup from office", desc: "Pick up the signed document from our office by appointment." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Fully digital service — send a document via WhatsApp and receive a signed translation back",
           "Complete discretion — divorce documents are handled with absolute confidentiality",
@@ -1246,7 +1246,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Нотариальный перевод свидетельства о разводе",
-        metaTitle: "Нотариальный перевод свидетельства о разводе в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Нотариальный перевод свидетельства о разводе в Израиле — цена и процесс | BEITON",
         metaDescription: "Нотариальный перевод свидетельства о разводе в Израиле — стоимость, процесс, документы и получение. Фиксированный тариф, быстрый цифровой сервис.",
         intro: "Нотариальный перевод свидетельства о разводе необходим в различных международных процедурах — от подачи на гражданство или иммиграцию до регистрации повторного брака за рубежом и юридических или финансовых процессов, требующих подтверждения семейного положения. Посольства, иммиграционные службы, суды и банки за рубежом требуют перевод, заверенный лицензированным нотариусом.",
         whatIsTitle: "Что такое нотариальный перевод свидетельства о разводе?",
@@ -1286,7 +1286,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Курьер к двери", desc: "Курьер заберёт оригинал (если нужно) и вернёт подписанный документ. 100 ₪ + НДС за направление." },
           { name: "Самовывоз из офиса", desc: "Забрать документ из офиса по предварительной записи." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Полностью цифровой сервис — отправьте документ в WhatsApp и получите перевод",
           "Полная конфиденциальность — документы о разводе обрабатываются с абсолютной дискретностью",
@@ -1312,7 +1312,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "ترجمة توثيقية لشهادة الطلاق",
-        metaTitle: "ترجمة شهادة طلاق توثيقية في إسرائيل — السعر والعملية | BEITON & Co",
+        metaTitle: "ترجمة شهادة طلاق توثيقية في إسرائيل — السعر والعملية | BEITON",
         metaDescription: "ترجمة توثيقية لشهادة الطلاق في إسرائيل — التكلفة والعملية والمستندات المطلوبة. تعرفة ثابتة، خدمة رقمية سريعة.",
         intro: "الترجمة التوثيقية لشهادة الطلاق مطلوبة في مجموعة متنوعة من الإجراءات الدولية — من طلبات الجنسية والهجرة، إلى تسجيل زواج جديد في الخارج، وإجراءات قانونية ومالية تتطلب إثبات الحالة الاجتماعية. السفارات وسلطات الهجرة والمحاكم الأجنبية والمؤسسات المصرفية تشترط ترجمة شهادة الطلاق وتصديقها من كاتب عدل مرخّص.",
         whatIsTitle: "ما هي الترجمة التوثيقية لشهادة الطلاق؟",
@@ -1352,7 +1352,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "مندوب حتى الباب", desc: "المندوب يجمع الأصل (إن لزم) ويعيد المستند الموقّع. 100 ₪ + ض.ق.م لكل اتجاه." },
           { name: "استلام ذاتي من المكتب", desc: "استلام المستند من مكتبنا بموعد مسبق." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خدمة رقمية كاملة — أرسلوا مستند عبر واتساب واحصلوا على ترجمة موقّعة",
           "سرية تامة — مستندات الطلاق تُعالج بسرية مطلقة",
@@ -1384,9 +1384,9 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "חבילת תרגום נוטריוני לאזרחות פורטוגלית",
-        metaTitle: "תרגום נוטריוני לאזרחות פורטוגלית — מחיר, מסמכים ותהליך | BEITON & Co",
+        metaTitle: "תרגום נוטריוני לאזרחות פורטוגלית — מחיר, מסמכים ותהליך | BEITON",
         metaDescription: "חבילת תרגום נוטריוני מלאה לאזרחות פורטוגלית — כל המסמכים הנדרשים, מחירים, תהליך ואפוסטיל. תעריף קבוע בתקנות, שירות דיגיטלי מהיר.",
-        intro: "חבילת תרגום נוטריוני לאזרחות פורטוגלית כוללת את תרגום כל המסמכים הנדרשים להגשת בקשה לאזרחות פורטוגלית מכוח חוק השבות הפורטוגלי (Lei da Nacionalidade). ישראלים רבים ממוצא ספרדי-יהודי (ספרדים) זכאים לאזרחות פורטוגלית, ותהליך ההגשה מחייב תרגום נוטריוני של מספר מסמכים מעברית לפורטוגזית או לאנגלית, בליווי אפוסטיל. ב-BEITON & Co אנחנו מציעים חבילה מלאה — תרגום, אישור נוטריוני ואפוסטיל של כל המסמכים — כדי שתוכלו להגיש בקשה מסודרת בלי לרוץ בין משרדים.",
+        intro: "חבילת תרגום נוטריוני לאזרחות פורטוגלית כוללת את תרגום כל המסמכים הנדרשים להגשת בקשה לאזרחות פורטוגלית מכוח חוק השבות הפורטוגלי (Lei da Nacionalidade). ישראלים רבים ממוצא ספרדי-יהודי (ספרדים) זכאים לאזרחות פורטוגלית, ותהליך ההגשה מחייב תרגום נוטריוני של מספר מסמכים מעברית לפורטוגזית או לאנגלית, בליווי אפוסטיל. ב-BEITON אנחנו מציעים חבילה מלאה — תרגום, אישור נוטריוני ואפוסטיל של כל המסמכים — כדי שתוכלו להגיש בקשה מסודרת בלי לרוץ בין משרדים.",
         whatIsTitle: "מה כוללת חבילת התרגום לאזרחות פורטוגלית?",
         whatIsBody: "החבילה כוללת תרגום נוטריוני של כל המסמכים הנדרשים לתהליך — תעודת לידה, תעודת נישואין (אם רלוונטי), תעודת זהות, תמצית רישום אוכלוסין, אישור יושר (תעודת יושר מהמשטרה), ובמידת הצורך מסמכים נוספים. כל מסמך מתורגם, נחתם ומאושר על ידי נוטריון מוסמך לפי חוק הנוטריונים, תשל״ו-1976, ולאחר מכן מקבל אפוסטיל בית משפט. האפוסטיל מבוסס על אמנת האג 1961 ומעניק למסמכים תוקף משפטי בפורטוגל.",
         whenNeededTitle: "מתי צריך את החבילה?",
@@ -1423,7 +1423,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "שליח עד הבית", desc: "שליח אוסף מסמכים מקוריים (אם נדרש) ומחזיר חבילה חתומה + אפוסטיל. 100 ₪ + מע״מ לכיוון." },
           { name: "איסוף עצמי מהמשרד", desc: "ניתן לאסוף את החבילה המלאה ממשרדנו בתיאום מראש." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "חבילה מלאה — תרגום + אישור נוטריוני + אפוסטיל, הכול במקום אחד",
           "ניסיון עם תהליכי אזרחות פורטוגלית — אנחנו יודעים בדיוק אילו מסמכים נדרשים",
@@ -1449,9 +1449,9 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Notarial Translation Package for Portuguese Citizenship",
-        metaTitle: "Notarial Translation for Portuguese Citizenship — Price, Documents & Process | BEITON & Co",
+        metaTitle: "Notarial Translation for Portuguese Citizenship — Price, Documents & Process | BEITON",
         metaDescription: "Complete notarial translation package for Portuguese citizenship — all required documents, pricing, process and apostille. Fixed regulated tariff, fast digital service.",
-        intro: "The notarial translation package for Portuguese citizenship includes translation of all documents required to apply for Portuguese nationality under the Portuguese Law of Return (Lei da Nacionalidade). Many Israelis of Sephardic Jewish descent are eligible for Portuguese citizenship, and the application process requires notarial translation of several documents from Hebrew to Portuguese or English, accompanied by apostille. At BEITON & Co we offer a complete package — translation, notarial certification, and apostille for all documents — so you can submit a complete application without running between offices.",
+        intro: "The notarial translation package for Portuguese citizenship includes translation of all documents required to apply for Portuguese nationality under the Portuguese Law of Return (Lei da Nacionalidade). Many Israelis of Sephardic Jewish descent are eligible for Portuguese citizenship, and the application process requires notarial translation of several documents from Hebrew to Portuguese or English, accompanied by apostille. At BEITON we offer a complete package — translation, notarial certification, and apostille for all documents — so you can submit a complete application without running between offices.",
         whatIsTitle: "What does the Portuguese citizenship translation package include?",
         whatIsBody: "The package includes notarial translation of all required documents — birth certificate, marriage certificate (if applicable), ID card, population registry extract, police clearance certificate, and additional documents as needed. Each document is translated, signed, and certified by a licensed notary under the Notaries Law, 1976 (חוק הנוטריונים, תשל״ו-1976), and then receives a court apostille. The apostille is based on the Hague Convention of 1961 and gives the documents legal validity in Portugal.",
         whenNeededTitle: "When do you need this package?",
@@ -1488,7 +1488,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Courier to your door", desc: "Courier picks up originals (if needed) and returns the signed package + apostille. 100 ₪ + VAT per direction." },
           { name: "Self pickup from office", desc: "Pick up the complete package from our office by appointment." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Complete package — translation + notarial certification + apostille, all in one place",
           "Experience with Portuguese citizenship processes — we know exactly which documents are required",
@@ -1514,9 +1514,9 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Пакет нотариального перевода для португальского гражданства",
-        metaTitle: "Нотариальный перевод для португальского гражданства — цена и процесс | BEITON & Co",
+        metaTitle: "Нотариальный перевод для португальского гражданства — цена и процесс | BEITON",
         metaDescription: "Полный пакет нотариального перевода для португальского гражданства — все документы, цены, процесс и апостиль. Фиксированный тариф, быстрый сервис.",
-        intro: "Пакет нотариального перевода для португальского гражданства включает перевод всех документов, необходимых для подачи заявки на португальское гражданство по Закону о возвращении (Lei da Nacionalidade). Многие израильтяне сефардского происхождения имеют право на португальское гражданство, а процесс подачи требует нотариального перевода нескольких документов с иврита на португальский или английский с апостилем. В BEITON & Co мы предлагаем полный пакет — перевод, нотариальное заверение и апостиль всех документов — чтобы вы могли подать аккуратное заявление без беготни между офисами.",
+        intro: "Пакет нотариального перевода для португальского гражданства включает перевод всех документов, необходимых для подачи заявки на португальское гражданство по Закону о возвращении (Lei da Nacionalidade). Многие израильтяне сефардского происхождения имеют право на португальское гражданство, а процесс подачи требует нотариального перевода нескольких документов с иврита на португальский или английский с апостилем. В BEITON мы предлагаем полный пакет — перевод, нотариальное заверение и апостиль всех документов — чтобы вы могли подать аккуратное заявление без беготни между офисами.",
         whatIsTitle: "Что включает пакет перевода для португальского гражданства?",
         whatIsBody: "Пакет включает нотариальный перевод всех необходимых документов — свидетельство о рождении, свидетельство о браке (при необходимости), удостоверение личности, выписку из реестра населения, справку о несудимости и дополнительные документы. Каждый документ переводится, подписывается и заверяется нотариусом согласно Закону о нотариусах 1976 года (חוק הנוטריונים, תשל״ו-1976), а затем получает апостиль суда на основании Гаагской конвенции 1961 года.",
         whenNeededTitle: "Когда нужен этот пакет?",
@@ -1553,7 +1553,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Курьер к двери", desc: "Курьер заберёт оригиналы (если нужно) и вернёт подписанный пакет + апостиль. 100 ₪ + НДС за направление." },
           { name: "Самовывоз из офиса", desc: "Забрать полный пакет из офиса по предварительной записи." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Полный пакет — перевод + нотариальное заверение + апостиль, всё в одном месте",
           "Опыт с процессами португальского гражданства — знаем, какие документы нужны",
@@ -1579,9 +1579,9 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "حزمة ترجمة توثيقية للجنسية البرتغالية",
-        metaTitle: "ترجمة توثيقية للجنسية البرتغالية — السعر والمستندات والعملية | BEITON & Co",
+        metaTitle: "ترجمة توثيقية للجنسية البرتغالية — السعر والمستندات والعملية | BEITON",
         metaDescription: "حزمة ترجمة توثيقية كاملة للجنسية البرتغالية — جميع المستندات المطلوبة والأسعار والعملية والأبوستيل. تعرفة ثابتة، خدمة رقمية سريعة.",
-        intro: "حزمة الترجمة التوثيقية للجنسية البرتغالية تشمل ترجمة جميع المستندات المطلوبة لتقديم طلب الجنسية البرتغالية بموجب قانون العودة البرتغالي (Lei da Nacionalidade). كثير من الإسرائيليين من أصل يهودي سفاردي مؤهلون للحصول على الجنسية البرتغالية، وعملية التقديم تتطلب ترجمة توثيقية لعدة مستندات من العبرية إلى البرتغالية أو الإنجليزية مع أبوستيل. في BEITON & Co نقدم حزمة كاملة — ترجمة وتصديق توثيقي وأبوستيل لجميع المستندات.",
+        intro: "حزمة الترجمة التوثيقية للجنسية البرتغالية تشمل ترجمة جميع المستندات المطلوبة لتقديم طلب الجنسية البرتغالية بموجب قانون العودة البرتغالي (Lei da Nacionalidade). كثير من الإسرائيليين من أصل يهودي سفاردي مؤهلون للحصول على الجنسية البرتغالية، وعملية التقديم تتطلب ترجمة توثيقية لعدة مستندات من العبرية إلى البرتغالية أو الإنجليزية مع أبوستيل. في BEITON نقدم حزمة كاملة — ترجمة وتصديق توثيقي وأبوستيل لجميع المستندات.",
         whatIsTitle: "ماذا تشمل حزمة الترجمة للجنسية البرتغالية؟",
         whatIsBody: "الحزمة تشمل ترجمة توثيقية لجميع المستندات المطلوبة — شهادة ميلاد، شهادة زواج (إن وُجدت)، بطاقة هوية، مستخرج سجل سكان، شهادة حسن سيرة وسلوك، ومستندات إضافية حسب الحاجة. كل مستند يُترجم ويُوقّع ويُصادق من كاتب عدل مرخّص وفقاً لقانون كتّاب العدل 1976 (חוק הנוטריונים, תשל״ו-1976)، ثم يحصل على أبوستيل محكمة بموجب اتفاقية لاهاي 1961.",
         whenNeededTitle: "متى تحتاجون هذه الحزمة؟",
@@ -1618,7 +1618,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "مندوب حتى الباب", desc: "المندوب يجمع الأصول (إن لزم) ويعيد الحزمة الموقّعة + أبوستيل. 100 ₪ + ض.ق.م لكل اتجاه." },
           { name: "استلام ذاتي من المكتب", desc: "استلام الحزمة الكاملة من مكتبنا بموعد مسبق." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "حزمة كاملة — ترجمة + تصديق توثيقي + أبوستيل، كل شيء في مكان واحد",
           "خبرة في عمليات الجنسية البرتغالية — نعرف بالضبط المستندات المطلوبة",
@@ -1650,7 +1650,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "אימות חתימה על חוזה",
-        metaTitle: "אימות חתימה נוטריוני על חוזה — מחיר, תהליך ומסמכים | BEITON & Co",
+        metaTitle: "אימות חתימה נוטריוני על חוזה — מחיר, תהליך ומסמכים | BEITON",
         metaDescription: "אימות חתימה נוטריוני על חוזה — 197 ₪ חותם ראשון, תהליך מהיר, נוכחות פיזית בלבד. כל מה שצריך לדעת על אימות חתימה על הסכם.",
         intro: "אימות חתימה נוטריוני על חוזה הוא הליך שבו נוטריון מוסמך מאשר שהחותם חתם על המסמך בפניו, מרצונו החופשי ולאחר שהזדהה בפניו. אימות חתימה נדרש במגוון עסקאות — מכירת נכס, הסכמי שותפות, חוזי השקעה ועוד. האימות הנוטריוני מעניק לחוזה משקל ראייתי מוגבר בבית המשפט.",
         whatIsTitle: "מה זה אימות חתימה נוטריוני על חוזה?",
@@ -1687,7 +1687,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "פגישה במשרד", desc: "קבעו תור והגיעו למשרדנו עם המסמכים ותעודת זהות. ללא עלות נוספת מעבר לאימות." },
           { name: "נוטריון עד הבית", desc: "הנוטריון מגיע אליכם לבית או למשרד. 645 ₪ לשעה + הוצאות נסיעה בהתאם לתקנה 9 לתקנות הנוטריונים." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "זמינות גבוהה — פגישות גם בערבים ובימי שישי בתיאום מראש",
           "נוטריון עד הבית — חוסכים לכם זמן ונסיעות",
@@ -1713,7 +1713,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Contract Signature Authentication",
-        metaTitle: "Notarial Signature Authentication on Contracts — Price & Process | BEITON & Co",
+        metaTitle: "Notarial Signature Authentication on Contracts — Price & Process | BEITON",
         metaDescription: "Notarial signature authentication on contracts in Israel — 197 ₪ first signer, fast process, in-person only. Everything you need to know about contract signing before a notary.",
         intro: "Notarial signature authentication on a contract is a procedure in which a licensed notary certifies that the signatory signed the document in their presence, of their own free will, and after proper identification. This authentication is required for various transactions — property sales, partnership agreements, investment contracts, and more. Notarial authentication gives the contract enhanced evidentiary weight in court.",
         whatIsTitle: "What is notarial signature authentication on a contract?",
@@ -1750,7 +1750,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Schedule an appointment and visit our office with the documents and ID. No additional cost beyond the authentication fee." },
           { name: "Notary home visit", desc: "The notary comes to your home or office. 645 ₪/hour + travel expenses per Notaries Regulations Item 9." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "High availability — appointments available evenings and Fridays by arrangement",
           "Notary home visits — we save you time and travel",
@@ -1776,7 +1776,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Нотариальное заверение подписи на договоре",
-        metaTitle: "Заверение подписи на договоре у нотариуса — цена и процесс | BEITON & Co",
+        metaTitle: "Заверение подписи на договоре у нотариуса — цена и процесс | BEITON",
         metaDescription: "Нотариальное заверение подписи на договоре в Израиле — 197 ₪ первый подписант, быстрый процесс, только личное присутствие. Всё о заверении подписи на контракте.",
         intro: "Нотариальное заверение подписи на договоре — процедура, при которой лицензированный нотариус подтверждает, что подписант подписал документ в его присутствии, по собственной воле и после надлежащей идентификации. Заверение требуется для различных сделок — продажи недвижимости, партнёрских соглашений, инвестиционных контрактов и других. Нотариальное заверение придаёт договору усиленную доказательную силу в суде.",
         whatIsTitle: "Что такое нотариальное заверение подписи на договоре?",
@@ -1813,7 +1813,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Запишитесь на приём и приходите с документами и удостоверением личности. Без дополнительной оплаты сверх заверения." },
           { name: "Выезд нотариуса", desc: "Нотариус приезжает к вам домой или в офис. 645 ₪/час + транспортные расходы согласно пункту 9 Правил о нотариусах." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Высокая доступность — приём по вечерам и в пятницу по договорённости",
           "Выезд нотариуса — экономим ваше время и поездки",
@@ -1839,7 +1839,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "توثيق توقيع على عقد",
-        metaTitle: "توثيق توقيع كاتب عدل على عقد — السعر والعملية | BEITON & Co",
+        metaTitle: "توثيق توقيع كاتب عدل على عقد — السعر والعملية | BEITON",
         metaDescription: "توثيق توقيع كاتب عدل على عقد في إسرائيل — 197 ₪ للموقّع الأول، عملية سريعة، حضور شخصي فقط. كل ما تحتاجون معرفته عن توثيق التوقيع.",
         intro: "توثيق التوقيع على عقد هو إجراء يقوم فيه كاتب عدل مرخّص بالتصديق على أن الموقّع وقّع على المستند بحضوره، بإرادته الحرة وبعد التعرّف على هويته. يُطلب هذا التوثيق في معاملات متنوعة — بيع عقارات، اتفاقيات شراكة، عقود استثمار والمزيد. التوثيق يمنح العقد قوة إثبات معززة أمام المحكمة.",
         whatIsTitle: "ما هو توثيق التوقيع على عقد؟",
@@ -1876,7 +1876,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "حدّدوا موعداً وأحضروا المستندات وبطاقة الهوية. بدون تكلفة إضافية فوق رسوم التوثيق." },
           { name: "زيارة كاتب عدل للمنزل", desc: "كاتب العدل يأتي إليكم. 645 ₪/ساعة + مصاريف سفر وفق البند 9 من أنظمة كتّاب العدل." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "توفّر عالي — مواعيد مسائية وأيام جمعة بتنسيق مسبق",
           "كاتب عدل حتى البيت — نوفّر عليكم الوقت والسفر",
@@ -1908,7 +1908,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "אימות חתימה על הסכם סודיות (NDA)",
-        metaTitle: "אימות חתימה נוטריוני על NDA — מחיר, תהליך ומסמכים | BEITON & Co",
+        metaTitle: "אימות חתימה נוטריוני על NDA — מחיר, תהליך ומסמכים | BEITON",
         metaDescription: "אימות חתימה נוטריוני על הסכם סודיות NDA — 197 ₪ חותם ראשון, נוכחות פיזית נדרשת. כל מה שצריך לדעת על אימות חתימה על הסכם אי-גילוי.",
         intro: "הסכם סודיות (Non-Disclosure Agreement – NDA) הוא חוזה שמטרתו להגן על מידע עסקי רגיש. כשהצדדים רוצים להעניק להסכם משקל משפטי מוגבר — הם מאמתים את חתימתם בפני נוטריון מוסמך. אימות חתימה נוטריוני על NDA נפוץ בעסקאות מיזוג ורכישה (M&A), שיתופי פעולה עסקיים, גיוסי הון ושיתוף קניין רוחני.",
         whatIsTitle: "מה זה אימות חתימה על הסכם סודיות?",
@@ -1943,7 +1943,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "פגישה במשרד", desc: "קבעו תור והגיעו עם המסמכים ותעודת זהות. ללא עלות נוספת מעבר לאימות." },
           { name: "נוטריון עד הבית", desc: "הנוטריון מגיע אליכם לבית או למשרד. 645 ₪ לשעה + הוצאות נסיעה בהתאם לתקנה 9 לתקנות הנוטריונים." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "דיסקרטיות מלאה — אנחנו מבינים את הרגישות של הסכמי סודיות",
           "זמינות גבוהה — פגישות גם בערבים ובימי שישי בתיאום מראש",
@@ -1968,7 +1968,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "NDA Signature Authentication",
-        metaTitle: "Notarial Signature Authentication on NDA — Price & Process | BEITON & Co",
+        metaTitle: "Notarial Signature Authentication on NDA — Price & Process | BEITON",
         metaDescription: "Notarial signature authentication on NDA (non-disclosure agreement) in Israel — 197 ₪ first signer, in-person only. Everything about authenticating signatures on confidentiality agreements.",
         intro: "A Non-Disclosure Agreement (NDA) is a contract designed to protect sensitive business information. When parties want to give the agreement enhanced legal weight, they authenticate their signatures before a licensed notary. Notarial signature authentication on NDAs is common in M&A transactions, business collaborations, fundraising rounds, and intellectual property sharing.",
         whatIsTitle: "What is signature authentication on an NDA?",
@@ -2003,7 +2003,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Schedule an appointment and bring the documents and ID. No additional cost beyond the authentication fee." },
           { name: "Notary home visit", desc: "The notary comes to your home or office. 645 ₪/hour + travel expenses per Notaries Regulations Item 9." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Complete discretion — we understand the sensitivity of confidentiality agreements",
           "High availability — appointments available evenings and Fridays by arrangement",
@@ -2028,7 +2028,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Заверение подписи на соглашении о конфиденциальности (NDA)",
-        metaTitle: "Заверение подписи на NDA у нотариуса — цена и процесс | BEITON & Co",
+        metaTitle: "Заверение подписи на NDA у нотариуса — цена и процесс | BEITON",
         metaDescription: "Нотариальное заверение подписи на NDA в Израиле — 197 ₪ первый подписант, только личное присутствие. Всё о заверении подписи на соглашении о неразглашении.",
         intro: "Соглашение о конфиденциальности (Non-Disclosure Agreement — NDA) — договор для защиты конфиденциальной деловой информации. Когда стороны хотят придать соглашению усиленную юридическую силу, они заверяют подписи у лицензированного нотариуса. Заверение подписи на NDA распространено при сделках M&A, деловых сотрудничествах, привлечении инвестиций и передаче интеллектуальной собственности.",
         whatIsTitle: "Что такое заверение подписи на NDA?",
@@ -2063,7 +2063,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Запишитесь и приходите с документами и удостоверением личности. Без дополнительной оплаты." },
           { name: "Выезд нотариуса", desc: "Нотариус приезжает к вам. 645 ₪/час + транспортные расходы согласно пункту 9 Правил." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Полная конфиденциальность — мы понимаем чувствительность соглашений о неразглашении",
           "Высокая доступность — приём по вечерам и в пятницу по договорённости",
@@ -2088,7 +2088,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "توثيق توقيع على اتفاقية سرية (NDA)",
-        metaTitle: "توثيق توقيع كاتب عدل على NDA — السعر والعملية | BEITON & Co",
+        metaTitle: "توثيق توقيع كاتب عدل على NDA — السعر والعملية | BEITON",
         metaDescription: "توثيق توقيع على اتفاقية عدم إفشاء NDA في إسرائيل — 197 ₪ للموقّع الأول، حضور شخصي فقط. كل ما تحتاجون معرفته عن توثيق التوقيع على اتفاقيات السرية.",
         intro: "اتفاقية السرية (Non-Disclosure Agreement – NDA) هي عقد يهدف لحماية المعلومات التجارية الحساسة. عندما يرغب الأطراف بمنح الاتفاقية ثقلاً قانونياً معززاً — يوثّقون توقيعاتهم أمام كاتب عدل مرخّص. توثيق التوقيع على NDA شائع في صفقات الدمج والاستحواذ، التعاون التجاري، جولات استثمار ومشاركة الملكية الفكرية.",
         whatIsTitle: "ما هو توثيق التوقيع على اتفاقية سرية؟",
@@ -2123,7 +2123,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "حدّدوا موعداً وأحضروا المستندات والهوية. بدون تكلفة إضافية." },
           { name: "زيارة كاتب عدل للمنزل", desc: "كاتب العدل يأتي إليكم. 645 ₪/ساعة + مصاريف سفر وفق البند 9." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "سرية تامة — نتفهم حساسية اتفاقيات عدم الإفشاء",
           "توفّر عالي — مواعيد مسائية وأيام جمعة بتنسيق مسبق",
@@ -2154,7 +2154,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "אימות חתימה על הסכמת הורה לנסיעת קטין לחו״ל",
-        metaTitle: "הסכמת הורה לנסיעת קטין — אימות נוטריוני, מחיר ותהליך | BEITON & Co",
+        metaTitle: "הסכמת הורה לנסיעת קטין — אימות נוטריוני, מחיר ותהליך | BEITON",
         metaDescription: "אימות חתימה נוטריוני על הסכמת הורה לנסיעת קטין לחו״ל — 197 ₪, נוכחות פיזית, מה צריך להביא ואיך מקבלים את האישור.",
         intro: "כשהורה אחד נוסע עם ילדו לחו״ל ללא ההורה השני — נדרשת הסכמה בכתב של ההורה הנשאר, מאומתת על ידי נוטריון. מדינות רבות דורשות מסמך זה בבידוק הגבולות כדי למנוע חטיפת ילדים בינלאומית. האימות הנוטריוני מעניק למסמך תוקף משפטי בינלאומי.",
         whatIsTitle: "מה זה אימות הסכמת הורה לנסיעת קטין?",
@@ -2192,7 +2192,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "פגישה במשרד", desc: "קבעו תור והגיעו עם המסמכים ותעודת זהות. ללא עלות נוספת מעבר לאימות." },
           { name: "נוטריון עד הבית", desc: "הנוטריון מגיע אליכם — נוח במיוחד עם ילדים קטנים. 645 ₪ לשעה + הוצאות נסיעה בהתאם לתקנה 9." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "מכינים את מסמך ההסכמה עבורכם — פשוט שלחו את הפרטים",
           "זמינות גבוהה — גם בערבים ובימי שישי, אידיאלי לפני טיסה דחופה",
@@ -2218,7 +2218,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Parental Consent for Minor Travel Abroad",
-        metaTitle: "Parental Consent for Minor Travel — Notarial Authentication, Price & Process | BEITON & Co",
+        metaTitle: "Parental Consent for Minor Travel — Notarial Authentication, Price & Process | BEITON",
         metaDescription: "Notarial authentication of parental consent for minor travel abroad — 197 ₪, in-person required. What to bring and how to get the consent letter certified.",
         intro: "When one parent travels abroad with their child without the other parent, a written consent from the staying parent is required, authenticated by a notary. Many countries require this document at border control to prevent international child abduction. The notarial authentication gives the document international legal validity.",
         whatIsTitle: "What is notarial parental consent for minor travel?",
@@ -2256,7 +2256,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Schedule an appointment and bring the documents and ID. No additional cost beyond the authentication fee." },
           { name: "Notary home visit", desc: "The notary comes to you — especially convenient with small children. 645 ₪/hour + travel expenses per Regulations Item 9." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "We prepare the consent document for you — just send us the details",
           "High availability — evenings and Fridays too, ideal before an urgent flight",
@@ -2282,7 +2282,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Согласие родителя на выезд ребёнка за границу",
-        metaTitle: "Согласие родителя на выезд ребёнка — нотариальное заверение, цена и процесс | BEITON & Co",
+        metaTitle: "Согласие родителя на выезд ребёнка — нотариальное заверение, цена и процесс | BEITON",
         metaDescription: "Нотариальное заверение согласия на выезд ребёнка за границу — 197 ₪, личное присутствие. Что нужно и как получить заверенное согласие.",
         intro: "Когда один родитель выезжает с ребёнком за границу без другого родителя — требуется письменное согласие остающегося родителя, заверенное нотариусом. Многие страны требуют этот документ на пограничном контроле для предотвращения международного похищения детей. Нотариальное заверение придаёт документу международную юридическую силу.",
         whatIsTitle: "Что такое нотариальное согласие на выезд ребёнка?",
@@ -2320,7 +2320,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Запишитесь и приходите с документами. Без дополнительной оплаты сверх заверения." },
           { name: "Выезд нотариуса", desc: "Нотариус приезжает к вам — особенно удобно с маленькими детьми. 645 ₪/час + транспортные расходы." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Мы готовим документ согласия за вас — просто пришлите данные",
           "Высокая доступность — вечером и в пятницу тоже, идеально перед срочным рейсом",
@@ -2346,7 +2346,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "موافقة والد على سفر قاصر للخارج",
-        metaTitle: "موافقة والد على سفر قاصر — توثيق كاتب عدل، السعر والعملية | BEITON & Co",
+        metaTitle: "موافقة والد على سفر قاصر — توثيق كاتب عدل، السعر والعملية | BEITON",
         metaDescription: "توثيق موافقة والد على سفر قاصر للخارج — 197 ₪، حضور شخصي مطلوب. ماذا تحتاجون وكيف تحصلون على الموافقة الموثّقة.",
         intro: "عندما يسافر أحد الوالدين مع طفله للخارج بدون الوالد الآخر — تُطلب موافقة خطية من الوالد المتبقي، موثّقة من كاتب عدل. دول كثيرة تطلب هذا المستند في مراقبة الحدود لمنع اختطاف الأطفال الدولي. التوثيق يمنح المستند صلاحية قانونية دولية.",
         whatIsTitle: "ما هو توثيق موافقة والد على سفر قاصر؟",
@@ -2384,7 +2384,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "حدّدوا موعداً وأحضروا المستندات والهوية. بدون تكلفة إضافية فوق رسوم التوثيق." },
           { name: "زيارة كاتب عدل للمنزل", desc: "كاتب العدل يأتي إليكم — مريح خاصة مع أطفال صغار. 645 ₪/ساعة + مصاريف سفر وفق البند 9." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "نحضّر مستند الموافقة لكم — فقط أرسلوا البيانات",
           "توفّر عالي — مساءً وأيام جمعة أيضاً، مثالي قبل رحلة عاجلة",
@@ -2416,7 +2416,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "ייפוי כוח נוטריוני כללי",
-        metaTitle: "ייפוי כוח נוטריוני כללי — מחיר, תהליך ומסמכים נדרשים | BEITON & Co",
+        metaTitle: "ייפוי כוח נוטריוני כללי — מחיר, תהליך ומסמכים נדרשים | BEITON",
         metaDescription: "ייפוי כוח נוטריוני כללי — 197 ₪ חותם ראשון, נוכחות פיזית בלבד. כל מה שצריך לדעת: מחיר, תהליך, מסמכים נדרשים ופרטי מיופה הכוח.",
         intro: "ייפוי כוח נוטריוני כללי מאפשר לאדם (מייפה הכוח) להסמיך אדם אחר (מיופה הכוח) לפעול בשמו במגוון עניינים משפטיים, כלכליים ואישיים. ייפוי הכוח מאומת על ידי נוטריון מוסמך ומהווה מסמך בעל תוקף משפטי מחייב. השימוש בו נפוץ כשאדם שוהה בחו״ל, חולה או מעוניין שמישהו אחר יטפל בענייניו.",
         whatIsTitle: "מה זה ייפוי כוח נוטריוני כללי?",
@@ -2453,7 +2453,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "פגישה במשרד", desc: "קבעו תור והגיעו עם המסמכים ותעודת זהות. ללא עלות נוספת מעבר לייפוי הכוח." },
           { name: "נוטריון עד הבית", desc: "הנוטריון מגיע אליכם — מתאים במיוחד לקשישים או לבעלי מוגבלות. 645 ₪ לשעה + הוצאות נסיעה בהתאם לתקנה 9." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "מכינים את ייפוי הכוח עבורכם — מותאם אישית לצרכים שלכם",
           "זמינות גבוהה — גם בערבים ובימי שישי בתיאום מראש",
@@ -2479,7 +2479,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "General Notarial Power of Attorney",
-        metaTitle: "General Notarial Power of Attorney — Price, Process & Documents | BEITON & Co",
+        metaTitle: "General Notarial Power of Attorney — Price, Process & Documents | BEITON",
         metaDescription: "General notarial power of attorney in Israel — 197 ₪ first signer, in-person only. Price, process, required documents and attorney details explained.",
         intro: "A general notarial power of attorney allows a person (the principal) to authorize another person (the attorney-in-fact) to act on their behalf in various legal, financial, and personal matters. The power of attorney is authenticated by a licensed notary and constitutes a legally binding document. It is commonly used when a person is abroad, ill, or wants someone else to handle their affairs.",
         whatIsTitle: "What is a general notarial power of attorney?",
@@ -2516,7 +2516,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Schedule an appointment with documents and ID. No additional cost beyond the POA fee." },
           { name: "Notary home visit", desc: "The notary comes to you — ideal for elderly or mobility-impaired. 645 ₪/hour + travel per Regulations Item 9." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "We prepare the POA for you — customized to your needs",
           "High availability — evenings and Fridays by arrangement",
@@ -2542,7 +2542,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Генеральная нотариальная доверенность",
-        metaTitle: "Генеральная нотариальная доверенность — цена, процесс и документы | BEITON & Co",
+        metaTitle: "Генеральная нотариальная доверенность — цена, процесс и документы | BEITON",
         metaDescription: "Генеральная нотариальная доверенность в Израиле — 197 ₪ первый подписант, только личное присутствие. Цена, процесс, необходимые документы.",
         intro: "Генеральная нотариальная доверенность позволяет лицу (доверителю) уполномочить другое лицо (поверенного) действовать от его имени в различных юридических, финансовых и личных вопросах. Доверенность заверяется нотариусом и имеет обязательную юридическую силу. Широко используется при длительном пребывании за границей, болезни или когда нужно, чтобы кто-то вёл ваши дела.",
         whatIsTitle: "Что такое генеральная нотариальная доверенность?",
@@ -2579,7 +2579,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Запишитесь с документами и удостоверением. Без дополнительной оплаты." },
           { name: "Выезд нотариуса", desc: "Нотариус приезжает к вам — удобно для пожилых и людей с ограниченной мобильностью. 645 ₪/час + транспорт." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Мы готовим доверенность за вас — по вашим потребностям",
           "Высокая доступность — вечером и в пятницу по договорённости",
@@ -2605,7 +2605,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "توكيل عام موثّق (كاتب عدل)",
-        metaTitle: "توكيل عام موثّق — السعر، العملية والمستندات | BEITON & Co",
+        metaTitle: "توكيل عام موثّق — السعر، العملية والمستندات | BEITON",
         metaDescription: "توكيل عام موثّق من كاتب عدل في إسرائيل — 197 ₪ للموقّع الأول، حضور شخصي فقط. السعر، العملية، المستندات المطلوبة وبيانات الوكيل.",
         intro: "التوكيل العام الموثّق يتيح لشخص (المُوكّل) تخويل شخص آخر (الوكيل) للتصرف نيابة عنه في شؤون قانونية، مالية وشخصية متنوعة. التوكيل يُوثّق من كاتب عدل مرخّص ويُشكّل مستنداً قانونياً ملزماً. يُستخدم عادة عند الإقامة في الخارج، المرض أو الرغبة بأن يتولى شخص آخر الشؤون.",
         whatIsTitle: "ما هو التوكيل العام الموثّق؟",
@@ -2642,7 +2642,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "حدّدوا موعداً وأحضروا المستندات. بدون تكلفة إضافية فوق رسوم التوكيل." },
           { name: "زيارة كاتب عدل للمنزل", desc: "كاتب العدل يأتي إليكم — مناسب خاصة لكبار السن. 645 ₪/ساعة + مصاريف سفر." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "نحضّر التوكيل لكم — مخصص حسب احتياجاتكم",
           "توفّر عالي — مساءً وأيام جمعة بتنسيق مسبق",
@@ -2674,7 +2674,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "ייפוי כוח נוטריוני למכירת נכס",
-        metaTitle: "ייפוי כוח נוטריוני למכירת דירה / נכס — מחיר ותהליך | BEITON & Co",
+        metaTitle: "ייפוי כוח נוטריוני למכירת דירה / נכס — מחיר ותהליך | BEITON",
         metaDescription: "ייפוי כוח נוטריוני למכירת נכס מקרקעין — 197 ₪ חותם ראשון, נוכחות פיזית. מה צריך להביא, פרטי מיופה הכוח והתהליך המלא.",
         intro: "ייפוי כוח נוטריוני למכירת נכס מקרקעין הוא מסמך חיוני כשבעל נכס רוצה שמישהו אחר ימכור את הדירה או הנכס בשמו. זהו ייפוי כוח בלתי חוזר, שנדרש על ידי רשות המקרקעין (טאבו) לצורך רישום העברת בעלות. האימות הנוטריוני מבטיח שהמסמך תקף ומחייב משפטית.",
         whatIsTitle: "מה זה ייפוי כוח למכירת נכס?",
@@ -2711,7 +2711,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "פגישה במשרד", desc: "קבעו תור והגיעו עם המסמכים ותעודת זהות. ללא עלות נוספת." },
           { name: "נוטריון עד הבית", desc: "הנוטריון מגיע אליכם. 645 ₪ לשעה + הוצאות נסיעה בהתאם לתקנה 9 לתקנות הנוטריונים." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "מכינים את ייפוי הכוח מותאם לעסקה שלכם",
           "ניסיון רב בעסקאות מקרקעין — אלפי ייפויי כוח לטאבו",
@@ -2737,7 +2737,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Notarial Power of Attorney for Property Sale",
-        metaTitle: "Notarial POA for Property Sale — Price & Process | BEITON & Co",
+        metaTitle: "Notarial POA for Property Sale — Price & Process | BEITON",
         metaDescription: "Notarial power of attorney for selling property in Israel — 197 ₪ first signer, in-person required. What to bring, attorney details, and full process.",
         intro: "A notarial power of attorney for property sale is an essential document when a property owner wants someone else to sell their apartment or property on their behalf. This is typically an irrevocable POA, required by the Land Registry (Tabu) for ownership transfer registration. The notarial authentication ensures the document is valid and legally binding.",
         whatIsTitle: "What is a POA for property sale?",
@@ -2774,7 +2774,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Schedule an appointment with documents and ID. No additional cost." },
           { name: "Notary home visit", desc: "The notary comes to you. 645 ₪/hour + travel per Regulations Item 9." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "POA tailored to your specific transaction",
           "Extensive real estate experience — thousands of Tabu powers of attorney",
@@ -2800,7 +2800,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Нотариальная доверенность на продажу недвижимости",
-        metaTitle: "Нотариальная доверенность на продажу недвижимости — цена и процесс | BEITON & Co",
+        metaTitle: "Нотариальная доверенность на продажу недвижимости — цена и процесс | BEITON",
         metaDescription: "Нотариальная доверенность на продажу квартиры/недвижимости в Израиле — 197 ₪, личное присутствие. Документы, данные поверенного и полный процесс.",
         intro: "Нотариальная доверенность на продажу недвижимости — ключевой документ, когда владелец хочет, чтобы другой человек продал квартиру или имущество от его имени. Обычно это безотзывная доверенность, требуемая Кадастром (Табу) для регистрации перехода права собственности. Нотариальное заверение гарантирует юридическую силу документа.",
         whatIsTitle: "Что такое доверенность на продажу недвижимости?",
@@ -2837,7 +2837,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Запишитесь с документами. Без дополнительной оплаты." },
           { name: "Выезд нотариуса", desc: "Нотариус приезжает к вам. 645 ₪/час + транспорт по пункту 9 Правил." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Доверенность под вашу конкретную сделку",
           "Большой опыт в недвижимости — тысячи доверенностей для Табу",
@@ -2863,7 +2863,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "توكيل موثّق لبيع عقار",
-        metaTitle: "توكيل موثّق لبيع عقار — السعر والعملية | BEITON & Co",
+        metaTitle: "توكيل موثّق لبيع عقار — السعر والعملية | BEITON",
         metaDescription: "توكيل موثّق من كاتب عدل لبيع عقار في إسرائيل — 197 ₪ للموقّع الأول، حضور شخصي. المستندات المطلوبة، بيانات الوكيل والعملية الكاملة.",
         intro: "التوكيل الموثّق لبيع عقار هو مستند أساسي عندما يريد صاحب عقار أن يبيع شخص آخر الشقة أو العقار نيابة عنه. عادة يكون توكيلاً غير قابل للإلغاء، تطلبه سلطة الأراضي (طابو) لتسجيل نقل الملكية. التوثيق يضمن صلاحية المستند وقوته القانونية.",
         whatIsTitle: "ما هو التوكيل لبيع عقار؟",
@@ -2900,7 +2900,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "حدّدوا موعداً وأحضروا المستندات. بدون تكلفة إضافية." },
           { name: "زيارة كاتب عدل للمنزل", desc: "كاتب العدل يأتي إليكم. 645 ₪/ساعة + مصاريف سفر وفق البند 9." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "توكيل مخصص لصفقتكم المحددة",
           "خبرة واسعة في العقارات — آلاف التوكيلات للطابو",
@@ -2932,7 +2932,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "ייפוי כוח מתמשך",
-        metaTitle: "ייפוי כוח מתמשך — מחיר, תהליך ומה חשוב לדעת | BEITON & Co",
+        metaTitle: "ייפוי כוח מתמשך — מחיר, תהליך ומה חשוב לדעת | BEITON",
         metaDescription: "ייפוי כוח מתמשך — 197 ₪ חותם ראשון, חובת נוכחות פיזית. מה זה, מתי צריך, המסמכים הנדרשים והתהליך המלא אצל נוטריון.",
         intro: "ייפוי כוח מתמשך הוא מסמך משפטי שמאפשר לאדם למנות מיופה כוח שיפעל בשמו בעתיד, אם ייקלע למצב שבו לא יוכל לקבל החלטות בעצמו — למשל עקב דמנציה, מחלה קשה או תאונה. זהו כלי משפטי חשוב שנכנס לתוקף רק כשממנה ייפוי הכוח מאבד את כשירותו, ומאומת בפני עורך דין שעבר הכשרה מיוחדת.",
         whatIsTitle: "מה זה ייפוי כוח מתמשך?",
@@ -2969,7 +2969,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "פגישה במשרד", desc: "קבעו פגישת ייעוץ ראשונית. הממנה חייב להגיע אישית לחתימה." },
           { name: "ביקור בית", desc: "עורך הדין מגיע אליכם — מתאים במיוחד לקשישים. 645 ₪ לשעה + הוצאות נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "עורכי דין מוסמכים לייפוי כוח מתמשך — הכשרת האפוטרופוס הכללי",
           "ליווי אישי מתחילה ועד סוף — ייעוץ, עריכה, חתימה והפקדה",
@@ -2995,7 +2995,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Continuing Power of Attorney",
-        metaTitle: "Continuing Power of Attorney in Israel — Price, Process & Guide | BEITON & Co",
+        metaTitle: "Continuing Power of Attorney in Israel — Price, Process & Guide | BEITON",
         metaDescription: "Continuing power of attorney in Israel — 197 ₪ authentication, in-person required. What it is, when you need it, documents, and the full process.",
         intro: "A continuing power of attorney is a legal document that allows a person to appoint an attorney-in-fact to act on their behalf in the future, if they become unable to make decisions — for example, due to dementia, serious illness, or accident. This important legal tool only takes effect when the principal loses capacity, and is authenticated before a specially trained lawyer.",
         whatIsTitle: "What is a continuing power of attorney?",
@@ -3032,7 +3032,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Schedule an initial consultation. The principal must appear in person for signing." },
           { name: "Home visit", desc: "The lawyer comes to you — ideal for elderly clients. 645 ₪/hour + travel expenses." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Lawyers certified for continuing POA — Administrator General training",
           "Personal guidance from start to finish — consultation, drafting, signing, and depositing",
@@ -3058,7 +3058,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Постоянная (длящаяся) доверенность",
-        metaTitle: "Постоянная доверенность в Израиле — цена, процесс и руководство | BEITON & Co",
+        metaTitle: "Постоянная доверенность в Израиле — цена, процесс и руководство | BEITON",
         metaDescription: "Постоянная доверенность в Израиле — 197 ₪ заверение, личное присутствие. Что это, когда нужна, документы и полный процесс.",
         intro: "Постоянная доверенность (ייפוי כוח מתמשך) — юридический документ, позволяющий человеку назначить доверенное лицо для действий от его имени в будущем, если он утратит способность принимать решения — например, из-за деменции, тяжёлой болезни или несчастного случая. Этот инструмент вступает в силу только при утрате дееспособности и заверяется специально обученным адвокатом.",
         whatIsTitle: "Что такое постоянная доверенность?",
@@ -3095,7 +3095,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Запишитесь на консультацию. Доверитель должен прийти лично для подписания." },
           { name: "Визит на дом", desc: "Адвокат приезжает к вам — идеально для пожилых. 645 ₪/час + транспорт." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Адвокаты, сертифицированные для постоянных доверенностей — обучение Генерального опекуна",
           "Личное сопровождение от начала до конца — консультация, составление, подписание, депонирование",
@@ -3121,7 +3121,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "توكيل مستمر (ייפוי כוח מתמשך)",
-        metaTitle: "توكيل مستمر في إسرائيل — السعر، العملية والدليل | BEITON & Co",
+        metaTitle: "توكيل مستمر في إسرائيل — السعر، العملية والدليل | BEITON",
         metaDescription: "توكيل مستمر في إسرائيل — 197 ₪ توثيق، حضور شخصي. ما هو، متى يُحتاج، المستندات والعملية الكاملة.",
         intro: "التوكيل المستمر هو مستند قانوني يتيح لشخص تعيين وكيل ليتصرف نيابة عنه في المستقبل، إذا فقد القدرة على اتخاذ القرارات — مثلاً بسبب الخرف، مرض خطير أو حادث. هذه الأداة القانونية تدخل حيز التنفيذ فقط عندما يفقد المُوكّل أهليته، ويُوثّق أمام محامٍ مؤهل خصيصاً.",
         whatIsTitle: "ما هو التوكيل المستمر؟",
@@ -3158,7 +3158,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "حدّدوا موعد استشارة. المُوكّل يجب أن يحضر شخصياً للتوقيع." },
           { name: "زيارة منزلية", desc: "المحامي يأتي إليكم — مناسب خاصة لكبار السن. 645 ₪/ساعة + مصاريف سفر." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "محامون مؤهلون للتوكيل المستمر — تأهيل الوصي العام",
           "مرافقة شخصية من البداية للنهاية — استشارة، إعداد، توقيع وإيداع",
@@ -3190,7 +3190,7 @@ const BASE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "ייפוי כוח נוטריוני למשכנתא",
-        metaTitle: "ייפוי כוח נוטריוני למשכנתא — מחיר ותהליך | BEITON & Co",
+        metaTitle: "ייפוי כוח נוטריוני למשכנתא — מחיר ותהליך | BEITON",
         metaDescription: "ייפוי כוח נוטריוני למשכנתא — 197 ₪ חותם ראשון, נדרשת נוכחות פיזית. מה הבנק דורש, מסמכים נדרשים והתהליך המלא.",
         intro: "ייפוי כוח נוטריוני למשכנתא הוא מסמך שהבנק דורש כחלק מהליך קבלת הלוואת משכנתא. ייפוי הכוח מסמיך את הבנק (או את עורך הדין של הבנק) לרשום שעבוד (משכנתא) על הנכס ברשות המקרקעין, ובמקרה של אי-פירעון — לפעול למימוש הנכס. המסמך חייב להיות מאומת על ידי נוטריון מוסמך.",
         whatIsTitle: "מה זה ייפוי כוח למשכנתא?",
@@ -3225,7 +3225,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "פגישה במשרד", desc: "קבעו תור והגיעו עם מסמכי הבנק ותעודת זהות. ללא עלות נוספת." },
           { name: "נוטריון עד הבית", desc: "הנוטריון מגיע אליכם. 645 ₪ לשעה + הוצאות נסיעה בהתאם לתקנה 9." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "ניסיון רב במסמכי משכנתא — עובדים עם כל הבנקים",
           "זמינות גבוהה — פגישות מהירות כדי לא לעכב את המשכנתא",
@@ -3251,7 +3251,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Notarial Power of Attorney for Mortgage",
-        metaTitle: "Notarial POA for Mortgage — Price & Process | BEITON & Co",
+        metaTitle: "Notarial POA for Mortgage — Price & Process | BEITON",
         metaDescription: "Notarial power of attorney for mortgage in Israel — 197 ₪ first signer, in-person required. What the bank requires, documents, and the full process.",
         intro: "A notarial power of attorney for mortgage is a document required by the bank as part of the mortgage application process. The POA authorizes the bank (or the bank's lawyer) to register a lien (mortgage) on the property at the Land Registry, and in case of default — to act to realize the property. The document must be authenticated by a licensed notary.",
         whatIsTitle: "What is a POA for mortgage?",
@@ -3286,7 +3286,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Schedule an appointment with bank documents and ID. No additional cost." },
           { name: "Notary home visit", desc: "The notary comes to you. 645 ₪/hour + travel per Regulations Item 9." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Extensive mortgage document experience — working with all banks",
           "High availability — quick appointments so your mortgage isn't delayed",
@@ -3312,7 +3312,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Нотариальная доверенность для ипотеки",
-        metaTitle: "Нотариальная доверенность для ипотеки — цена и процесс | BEITON & Co",
+        metaTitle: "Нотариальная доверенность для ипотеки — цена и процесс | BEITON",
         metaDescription: "Нотариальная доверенность для ипотеки в Израиле — 197 ₪ первый подписант, личное присутствие. Требования банка, документы и полный процесс.",
         intro: "Нотариальная доверенность для ипотеки — документ, требуемый банком при оформлении ипотечного кредита. Доверенность уполномочивает банк (или адвоката банка) зарегистрировать залог (ипотеку) на недвижимость в Кадастре, а при невыплате — реализовать объект. Документ должен быть заверен нотариусом.",
         whatIsTitle: "Что такое доверенность для ипотеки?",
@@ -3347,7 +3347,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Запишитесь с документами банка и удостоверением. Без дополнительной оплаты." },
           { name: "Выезд нотариуса", desc: "Нотариус приезжает к вам. 645 ₪/час + транспорт по пункту 9." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Большой опыт с ипотечными документами — работаем со всеми банками",
           "Высокая доступность — быстрые записи, чтобы не задерживать ипотеку",
@@ -3373,7 +3373,7 @@ const BASE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "توكيل موثّق للرهن العقاري (משכנתא)",
-        metaTitle: "توكيل موثّق للرهن العقاري — السعر والعملية | BEITON & Co",
+        metaTitle: "توكيل موثّق للرهن العقاري — السعر والعملية | BEITON",
         metaDescription: "توكيل موثّق للرهن العقاري في إسرائيل — 197 ₪ للموقّع الأول، حضور شخصي. متطلبات البنك، المستندات والعملية الكاملة.",
         intro: "التوكيل الموثّق للرهن العقاري هو مستند يطلبه البنك كجزء من إجراءات الحصول على قرض رهن عقاري. التوكيل يخوّل البنك (أو محامي البنك) بتسجيل رهن على العقار في سلطة الأراضي (طابو)، وفي حالة عدم السداد — التصرف لتحقيق العقار. المستند يجب أن يُوثّق من كاتب عدل مرخّص.",
         whatIsTitle: "ما هو التوكيل للرهن العقاري؟",
@@ -3408,7 +3408,7 @@ const BASE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "حدّدوا موعداً وأحضروا مستندات البنك والهوية. بدون تكلفة إضافية." },
           { name: "زيارة كاتب عدل للمنزل", desc: "كاتب العدل يأتي إليكم. 645 ₪/ساعة + مصاريف سفر وفق البند 9." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خبرة واسعة في مستندات الرهن — نعمل مع جميع البنوك",
           "توفّر عالي — مواعيد سريعة حتى لا تتأخر المشكنتا",

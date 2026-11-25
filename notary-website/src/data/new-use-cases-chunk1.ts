@@ -8,7 +8,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "תצהיר רווקות — אישור נוטריוני",
-        metaTitle: "תצהיר רווקות נוטריוני — מחיר, תהליך ומסמכים | BEITON & Co",
+        metaTitle: "תצהיר רווקות נוטריוני — מחיר, תהליך ומסמכים | BEITON",
         metaDescription: "תצהיר רווקות עם אישור נוטריוני — כמה עולה, מה התהליך, אילו מסמכים צריך להביא. תעריף קבוע בתקנות, שירות מקצועי ומהיר.",
         intro: "תצהיר רווקות הוא מסמך משפטי שבו אדם מצהיר בפני נוטריון כי הוא רווק ואינו נשוי. התצהיר נדרש לרוב כאשר רשויות בחו״ל דורשות הוכחה למצב האישי — לצורך נישואין, ויזה, הגירה או הליכים ביורוקרטיים אחרים. האישור הנוטריוני מעניק לתצהיר תוקף משפטי מלא.",
         whatIsTitle: "מה זה תצהיר רווקות?",
@@ -43,7 +43,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "תצהיר רווקות מחייב נוכחות פיזית. הגיעו למשרדנו בתיאום מראש — התהליך אורך כ-15 דקות." },
           { name: "שירות עד הבית", desc: "הנוטריון מגיע אליכם לבית או למשרד — בתיאום מראש ובתוספת דמי נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "נוטריון מוסמך עם ניסיון רב באישור תצהירים לחו״ל",
           "מענה מהיר — תיאום מועד תוך דקות בוואטסאפ",
@@ -68,7 +68,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Single Status Affidavit — Notarial Certification",
-        metaTitle: "Single Status Affidavit in Israel — Notarized | BEITON & Co",
+        metaTitle: "Single Status Affidavit in Israel — Notarized | BEITON",
         metaDescription: "Notarized single status affidavit in Israel — cost, process, required documents. Fixed regulated tariff. Professional and fast service.",
         intro: "A single status affidavit is a legal document in which a person declares before a notary that they are unmarried. This affidavit is commonly required when foreign authorities need proof of marital status — for marriage registration abroad, visa applications, immigration, or other bureaucratic procedures. The notarial certification gives the affidavit full legal validity.",
         whatIsTitle: "What is a single status affidavit?",
@@ -103,7 +103,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "A single status affidavit requires physical presence. Visit our office by appointment — the process takes about 15 minutes." },
           { name: "Home service", desc: "The notary comes to your home or office — by appointment, with travel fee." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Licensed notary experienced in certifying affidavits for international use",
           "Quick response — schedule an appointment within minutes via WhatsApp",
@@ -128,7 +128,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Аффидевит о семейном положении — нотариальное заверение",
-        metaTitle: "Аффидевит о семейном положении в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Аффидевит о семейном положении в Израиле — цена и процесс | BEITON",
         metaDescription: "Нотариальный аффидевит о семейном положении (холост/не замужем) в Израиле — стоимость, процесс, документы. Фиксированный тариф, профессиональный сервис.",
         intro: "Аффидевит о семейном положении — это юридический документ, в котором лицо заявляет перед нотариусом, что не состоит в браке. Этот аффидевит обычно требуется, когда иностранные органы запрашивают подтверждение семейного положения — для регистрации брака за рубежом, получения визы, иммиграции или других бюрократических процедур.",
         whatIsTitle: "Что такое аффидевит о семейном положении?",
@@ -163,7 +163,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Аффидевит требует личного присутствия. Запишитесь в наш офис — процесс занимает около 15 минут." },
           { name: "Выезд на дом", desc: "Нотариус приедет к вам домой или в офис — по записи, с оплатой выезда." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Лицензированный нотариус с большим опытом заверения аффидевитов для международного использования",
           "Быстрый ответ — запись через WhatsApp в течение минут",
@@ -188,7 +188,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "إفادة خطية بعدم الزواج — تصديق نوتاري",
-        metaTitle: "إفادة خطية بعدم الزواج في إسرائيل — السعر والإجراءات | BEITON & Co",
+        metaTitle: "إفادة خطية بعدم الزواج في إسرائيل — السعر والإجراءات | BEITON",
         metaDescription: "إفادة خطية موثقة بعدم الزواج (أعزب/عزباء) في إسرائيل — التكلفة، الإجراءات، المستندات المطلوبة. تعرفة ثابتة، خدمة مهنية وسريعة.",
         intro: "الإفادة الخطية بعدم الزواج هي وثيقة قانونية يُصرّح فيها الشخص أمام نوتاري (كاتب عدل) بأنه أعزب وغير متزوج. تُطلب هذه الإفادة عادةً عندما تشترط السلطات الأجنبية إثبات الحالة الاجتماعية — لتسجيل زواج في الخارج، طلب تأشيرة، هجرة أو إجراءات بيروقراطية أخرى.",
         whatIsTitle: "ما هي الإفادة الخطية بعدم الزواج؟",
@@ -223,7 +223,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "الإفادة الخطية تتطلب حضوراً شخصياً. احجزوا موعداً في مكتبنا — العملية تستغرق حوالي 15 دقيقة." },
           { name: "خدمة حتى البيت", desc: "النوتاري يأتي إليكم للبيت أو المكتب — بموعد مسبق مع رسوم تنقل إضافية." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "نوتاري مرخّص ذو خبرة واسعة في توثيق إفادات للاستخدام الدولي",
           "رد سريع — حجز موعد خلال دقائق عبر واتساب",
@@ -254,7 +254,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "תצהיר מגורים — אישור נוטריוני",
-        metaTitle: "תצהיר מגורים נוטריוני — מחיר, תהליך ומסמכים | BEITON & Co",
+        metaTitle: "תצהיר מגורים נוטריוני — מחיר, תהליך ומסמכים | BEITON",
         metaDescription: "תצהיר מגורים עם אישור נוטריוני — כמה עולה, מה התהליך, אילו מסמכים נדרשים. תעריף קבוע בתקנות, שירות מקצועי.",
         intro: "תצהיר מגורים הוא מסמך משפטי שבו אדם מצהיר בפני נוטריון על מקום מגוריו הקבוע. התצהיר נדרש כאשר רשויות, מוסדות או גורמים שונים דורשים הוכחה רשמית לכתובת מגורים — לצורך הליכים מול שגרירויות, רשויות מס בחו״ל, מוסדות אקדמיים או גופים ביורוקרטיים.",
         whatIsTitle: "מה זה תצהיר מגורים?",
@@ -290,7 +290,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "תצהיר מגורים מחייב נוכחות פיזית. הגיעו למשרדנו בתיאום מראש — התהליך אורך כ-15 דקות." },
           { name: "שירות עד הבית", desc: "הנוטריון מגיע אליכם — בתיאום מראש ובתוספת דמי נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "ניסיון רב בהכנת תצהירי מגורים לשגרירויות ורשויות מס בחו״ל",
           "הכנת התצהיר מראש — מגיעים, חותמים ויוצאים מהר",
@@ -314,7 +314,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Residency Affidavit — Notarial Certification",
-        metaTitle: "Residency Affidavit in Israel — Notarized | BEITON & Co",
+        metaTitle: "Residency Affidavit in Israel — Notarized | BEITON",
         metaDescription: "Notarized residency affidavit in Israel — cost, process, required documents. Fixed regulated tariff. Professional service.",
         intro: "A residency affidavit is a legal document in which a person declares before a notary their permanent place of residence. This affidavit is required when authorities, institutions, or various entities need official proof of a residential address — for embassy proceedings, foreign tax authorities, academic institutions, or bureaucratic agencies.",
         whatIsTitle: "What is a residency affidavit?",
@@ -350,7 +350,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "A residency affidavit requires physical presence. Visit our office by appointment — the process takes about 15 minutes." },
           { name: "Home service", desc: "The notary comes to you — by appointment, with travel fee." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Extensive experience preparing residency affidavits for embassies and foreign tax authorities",
           "Affidavit prepared in advance — arrive, sign, and leave quickly",
@@ -374,7 +374,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Аффидевит о месте проживания — нотариальное заверение",
-        metaTitle: "Аффидевит о месте проживания в Израиле — цена и процесс | BEITON & Co",
+        metaTitle: "Аффидевит о месте проживания в Израиле — цена и процесс | BEITON",
         metaDescription: "Нотариальный аффидевит о месте проживания в Израиле — стоимость, процесс, документы. Фиксированный тариф, профессиональный сервис.",
         intro: "Аффидевит о месте проживания — это юридический документ, в котором лицо заявляет перед нотариусом о своём постоянном месте жительства. Документ требуется, когда органы власти, учреждения или другие организации запрашивают официальное подтверждение адреса — для посольств, зарубежных налоговых органов, учебных заведений или бюрократических инстанций.",
         whatIsTitle: "Что такое аффидевит о месте проживания?",
@@ -410,7 +410,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Аффидевит требует личного присутствия. Запишитесь — процесс занимает около 15 минут." },
           { name: "Выезд на дом", desc: "Нотариус приедет к вам — по записи, с оплатой выезда." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Большой опыт подготовки аффидевитов о проживании для посольств и налоговых органов",
           "Документ подготовлен заранее — приходите, подписываете, уходите",
@@ -434,7 +434,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "إفادة خطية بمكان الإقامة — تصديق نوتاري",
-        metaTitle: "إفادة خطية بمكان الإقامة في إسرائيل — السعر والإجراءات | BEITON & Co",
+        metaTitle: "إفادة خطية بمكان الإقامة في إسرائيل — السعر والإجراءات | BEITON",
         metaDescription: "إفادة خطية موثقة بمكان الإقامة في إسرائيل — التكلفة، الإجراءات، المستندات المطلوبة. تعرفة ثابتة، خدمة مهنية.",
         intro: "الإفادة الخطية بمكان الإقامة هي وثيقة قانونية يُصرّح فيها الشخص أمام نوتاري عن مكان إقامته الدائم. تُطلب عندما تحتاج السلطات أو المؤسسات لإثبات رسمي للعنوان — لإجراءات السفارات، سلطات الضرائب الأجنبية، المؤسسات الأكاديمية أو الجهات البيروقراطية.",
         whatIsTitle: "ما هي الإفادة الخطية بمكان الإقامة؟",
@@ -470,7 +470,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "الإفادة تتطلب حضوراً شخصياً. احجزوا موعداً — العملية تستغرق حوالي 15 دقيقة." },
           { name: "خدمة حتى البيت", desc: "النوتاري يأتي إليكم — بموعد مسبق مع رسوم تنقل." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خبرة واسعة في إعداد إفادات إقامة للسفارات وسلطات الضرائب الأجنبية",
           "الإفادة تُحضَّر مسبقاً — تحضرون، توقّعون وتغادرون بسرعة",
@@ -500,7 +500,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "הצהרת מתרגם — אישור נוטריוני",
-        metaTitle: "הצהרת מתרגם נוטריונית — מחיר, תהליך ומסמכים | BEITON & Co",
+        metaTitle: "הצהרת מתרגם נוטריונית — מחיר, תהליך ומסמכים | BEITON",
         metaDescription: "הצהרת מתרגם עם אישור נוטריוני — כמה עולה, מה התהליך, מתי צריך. תעריף קבוע בתקנות, שירות מקצועי ומהיר.",
         intro: "הצהרת מתרגם היא מסמך שבו מתרגם חיצוני מצהיר בפני נוטריון כי התרגום שביצע נאמן ומדויק ביחס למסמך המקורי. הנוטריון אינו מתרגם בעצמו — הוא מאשר את הצהרת המתרגם. מסלול זה מתאים לכל שפה, גם כשהנוטריון אינו דובר את שפת היעד.",
         whatIsTitle: "מה זו הצהרת מתרגם?",
@@ -536,7 +536,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "המתרגם חייב להגיע פיזית לחתום על ההצהרה. מבקש השירות לא חייב להיות נוכח." },
           { name: "שירות עד הבית", desc: "הנוטריון יכול להגיע למתרגם — בתיאום מראש ובתוספת דמי נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "רשת מתרגמים מקצועיים בעשרות שפות",
           "תיאום מלא — אנחנו מתאמים בין המתרגם לנוטריון",
@@ -560,7 +560,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Translator Declaration — Notarial Certification",
-        metaTitle: "Translator Declaration — Notarized in Israel | BEITON & Co",
+        metaTitle: "Translator Declaration — Notarized in Israel | BEITON",
         metaDescription: "Notarized translator declaration in Israel — cost, process, when needed. An external translator declares accuracy, notary certifies. Fixed tariff.",
         intro: "A translator declaration is a document in which an external translator declares before a notary that their translation is faithful and accurate to the original document. The notary does not translate — they certify the translator's declaration. This path is suitable for any language, even when the notary does not speak the target language.",
         whatIsTitle: "What is a translator declaration?",
@@ -596,7 +596,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "The translator must physically attend to sign the declaration. The service requester does not need to be present." },
           { name: "Home service", desc: "The notary can come to the translator — by appointment, with travel fee." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Network of professional translators in dozens of languages",
           "Full coordination — we coordinate between translator and notary",
@@ -620,7 +620,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Декларация переводчика — нотариальное заверение",
-        metaTitle: "Декларация переводчика — нотариальное заверение в Израиле | BEITON & Co",
+        metaTitle: "Декларация переводчика — нотариальное заверение в Израиле | BEITON",
         metaDescription: "Нотариальная декларация переводчика в Израиле — стоимость, процесс, когда нужна. Внешний переводчик подтверждает точность, нотариус заверяет. Фиксированный тариф.",
         intro: "Декларация переводчика — это документ, в котором внешний переводчик заявляет перед нотариусом, что выполненный им перевод точен и верен оригиналу. Нотариус не переводит сам — он заверяет декларацию переводчика. Этот путь подходит для любого языка, даже если нотариус не владеет языком перевода.",
         whatIsTitle: "Что такое декларация переводчика?",
@@ -656,7 +656,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Переводчик должен лично явиться для подписания декларации. Заказчик может не присутствовать." },
           { name: "Выезд к переводчику", desc: "Нотариус может приехать к переводчику — по записи, с оплатой выезда." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Сеть профессиональных переводчиков на десятках языков",
           "Полная координация — мы согласуем переводчика и нотариуса",
@@ -680,7 +680,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "إقرار مترجم — تصديق نوتاري",
-        metaTitle: "إقرار مترجم موثق نوتارياً في إسرائيل — السعر والإجراءات | BEITON & Co",
+        metaTitle: "إقرار مترجم موثق نوتارياً في إسرائيل — السعر والإجراءات | BEITON",
         metaDescription: "إقرار مترجم موثق في إسرائيل — التكلفة، الإجراءات، متى يُطلب. المترجم يُقرّ بالدقة والنوتاري يصدّق. تعرفة ثابتة.",
         intro: "إقرار المترجم هو وثيقة يُصرّح فيها مترجم خارجي أمام نوتاري بأن الترجمة التي أجراها دقيقة وأمينة للأصل. النوتاري لا يترجم بنفسه — بل يصدّق على إقرار المترجم. هذا المسار مناسب لأي لغة، حتى لو لم يكن النوتاري يتحدث لغة الهدف.",
         whatIsTitle: "ما هو إقرار المترجم؟",
@@ -716,7 +716,7 @@ export const AFFIDAVIT_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "المترجم يجب أن يحضر شخصياً لتوقيع الإقرار. طالب الخدمة لا يحتاج للحضور." },
           { name: "خدمة خارجية", desc: "النوتاري يمكن أن يأتي للمترجم — بموعد مسبق مع رسوم تنقل." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "شبكة مترجمين محترفين بعشرات اللغات",
           "تنسيق كامل — ننسّق بين المترجم والنوتاري",

@@ -3,18 +3,18 @@ import LegalPage from "@/components/LegalPage";
 import type { Locale } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "הצהרת נגישות | Accessibility Statement — BEITON & Co",
+  title: "הצהרת נגישות | Accessibility Statement — BEITON",
   robots: "noindex, follow",
 };
 
 const he = {
   title: "הצהרת נגישות",
   subtitle: "אתר notary.beiton.co",
-  lastUpdated: "עדכון אחרון: מרץ 2026",
+  lastUpdated: "עדכון אחרון: נובמבר 2026",
   sections: [
     {
       heading: "1. מחויבות לנגישות",
-      body: 'משרד עורכי דין BEITON & Co מחויב להבטחת נגישות אתר האינטרנט שלו לאנשים עם מוגבלות, בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013.',
+      body: 'משרד עו״ד עומר בית און, BEITON, מחויב להבטחת נגישות אתר האינטרנט שלו לאנשים עם מוגבלות, בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013.',
     },
     {
       heading: "2. תקן נגישות",
@@ -34,7 +34,7 @@ const he = {
     },
     {
       heading: "6. נגישות פיזית",
-      body: "משרדי BEITON & Co נגישים לאנשים עם מוגבלות. המשרד מציע גם שירות נוטריון עד הבית ללקוחות שאינם יכולים להגיע פיזית למשרד.",
+      body: "משרדי BEITON נגישים לאנשים עם מוגבלות. המשרד מציע גם שירות נוטריון עד הבית ללקוחות שאינם יכולים להגיע פיזית למשרד.",
     },
     {
       heading: "7. רכז/ת נגישות ויצירת קשר",
@@ -50,11 +50,11 @@ const he = {
 const en = {
   title: "Accessibility Statement",
   subtitle: "notary.beiton.co",
-  lastUpdated: "Last updated: March 2026",
+  lastUpdated: "Last updated: November 2026",
   sections: [
     {
       heading: "1. Commitment to Accessibility",
-      body: "BEITON & Co, Law Firm is committed to ensuring the accessibility of its website to persons with disabilities, in accordance with the Equal Rights for Persons with Disabilities Law, 1998, and the Equal Rights for Persons with Disabilities Regulations (Accessibility Adjustments to Service), 2013.",
+      body: "The law office of Adv. Omer Beit-On, BEITON, is committed to ensuring the accessibility of its website to persons with disabilities, in accordance with the Equal Rights for Persons with Disabilities Law, 1998, and the Equal Rights for Persons with Disabilities Regulations (Accessibility Adjustments to Service), 2013.",
     },
     {
       heading: "2. Accessibility Standard",
@@ -74,7 +74,7 @@ const en = {
     },
     {
       heading: "6. Physical Accessibility",
-      body: "The offices of BEITON & Co are accessible to persons with disabilities. The Firm also offers notary home visit services for clients who are unable to visit the office in person.",
+      body: "The offices of BEITON are accessible to persons with disabilities. The Firm also offers notary home visit services for clients who are unable to visit the office in person.",
     },
     {
       heading: "7. Accessibility Coordinator and Contact",

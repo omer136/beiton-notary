@@ -8,7 +8,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "אישור חיים לפנסיה מחו״ל — אישור נוטריוני",
-        metaTitle: "אישור חיים נוטריוני לפנסיה מחו״ל — מחיר ותהליך | BEITON & Co",
+        metaTitle: "אישור חיים נוטריוני לפנסיה מחו״ל — מחיר ותהליך | BEITON",
         metaDescription: "אישור חיים נוטריוני לצורך קבלת פנסיה מחו״ל — כמה עולה, מה התהליך, נוכחות פיזית נדרשת. תעריף קבוע בתקנות.",
         intro: "אישור חיים (Life Certificate / Certificate of Existence) הוא מסמך נוטריוני שמאשר שאדם מסוים חי ונמצא בחיים. האישור נדרש בעיקר על ידי קרנות פנסיה, ביטוח לאומי או גופי ביטוח מחו״ל כתנאי להמשך תשלום פנסיה או גמלה. ללא אישור חיים תקף — התשלומים עלולים להיעצר.",
         whatIsTitle: "מה זה אישור חיים?",
@@ -43,7 +43,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "חובה להגיע פיזית — הנוטריון חייב לראות את האדם ולוודא שהוא בחיים. כ-10 דקות." },
           { name: "שירות עד הבית", desc: "הנוטריון מגיע אליכם — מתאים למבוגרים או מוגבלי ניידות. בתיאום מראש ובתוספת דמי נסיעה." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "ניסיון רב באישורי חיים לפנסיות מגרמניה, רומניה, פולין ועוד",
           "מכירים את הטפסים והדרישות של קרנות הפנסיה המרכזיות",
@@ -68,7 +68,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Life Certificate for Foreign Pension — Notarial Certification",
-        metaTitle: "Life Certificate for Foreign Pension — Notarized in Israel | BEITON & Co",
+        metaTitle: "Life Certificate for Foreign Pension — Notarized in Israel | BEITON",
         metaDescription: "Notarized life certificate for receiving pension from abroad — cost, process, physical presence required. Fixed regulated tariff.",
         intro: "A life certificate (Certificate of Existence) is a notarial document confirming that a specific person is alive. It is mainly required by foreign pension funds, social security agencies, or insurance companies as a condition for continued pension or benefit payments. Without a valid life certificate, payments may be suspended.",
         whatIsTitle: "What is a life certificate?",
@@ -103,7 +103,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "Physical presence is mandatory — the notary must see the person and confirm they are alive. About 10 minutes." },
           { name: "Home service", desc: "The notary comes to you — suitable for elderly or mobility-limited clients. By appointment with travel fee." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Extensive experience with life certificates for pensions from Germany, Romania, Poland, and more",
           "Familiar with forms and requirements of major pension funds",
@@ -128,7 +128,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Свидетельство о жизни для пенсии из-за рубежа — нотариальное заверение",
-        metaTitle: "Свидетельство о жизни для иностранной пенсии — Израиль | BEITON & Co",
+        metaTitle: "Свидетельство о жизни для иностранной пенсии — Израиль | BEITON",
         metaDescription: "Нотариальное свидетельство о жизни для получения пенсии из-за рубежа — стоимость, процесс, требуется личное присутствие. Фиксированный тариф.",
         intro: "Свидетельство о жизни (Life Certificate / Lebensbescheinigung) — нотариальный документ, подтверждающий, что человек жив. Требуется зарубежными пенсионными фондами, органами социального обеспечения или страховыми компаниями как условие продолжения выплат пенсии или пособия. Без действующего свидетельства выплаты могут быть приостановлены.",
         whatIsTitle: "Что такое свидетельство о жизни?",
@@ -163,7 +163,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Личное присутствие обязательно — нотариус должен лично убедиться, что человек жив. Около 10 минут." },
           { name: "Выезд на дом", desc: "Нотариус приедет к вам — для пожилых или маломобильных клиентов. По записи с оплатой выезда." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Большой опыт со свидетельствами для пенсий из Германии, Румынии, Польши и др.",
           "Знаем формы и требования основных пенсионных фондов",
@@ -188,7 +188,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "شهادة حياة لتقاعد من الخارج — تصديق نوتاري",
-        metaTitle: "شهادة حياة نوتارية لتقاعد أجنبي — إسرائيل | BEITON & Co",
+        metaTitle: "شهادة حياة نوتارية لتقاعد أجنبي — إسرائيل | BEITON",
         metaDescription: "شهادة حياة نوتارية لاستلام تقاعد من الخارج — التكلفة، الإجراءات، الحضور الشخصي مطلوب. تعرفة ثابتة.",
         intro: "شهادة الحياة (Life Certificate / Certificate of Existence) هي وثيقة نوتارية تؤكد أن شخصاً معيناً على قيد الحياة. تُطلب بشكل رئيسي من صناديق التقاعد أو التأمين الاجتماعي أو شركات التأمين الأجنبية كشرط لاستمرار دفع التقاعد أو المعاش. بدون شهادة حياة صالحة — قد تُوقف المدفوعات.",
         whatIsTitle: "ما هي شهادة الحياة؟",
@@ -223,7 +223,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "الحضور الشخصي إلزامي — النوتاري يجب أن يرى الشخص ويتأكد أنه حي. حوالي 10 دقائق." },
           { name: "خدمة حتى البيت", desc: "النوتاري يأتي إليكم — مناسب لكبار السن أو محدودي الحركة. بموعد مسبق مع رسوم تنقل." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "خبرة واسعة بشهادات الحياة لتقاعد من ألمانيا، رومانيا، بولندا وغيرها",
           "نعرف النماذج ومتطلبات صناديق التقاعد الرئيسية",
@@ -254,7 +254,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
     translations: {
       he: {
         h1: "אישור חיים לגמלאים — אישור נוטריוני",
-        metaTitle: "אישור חיים נוטריוני לגמלאים — מחיר ותהליך | BEITON & Co",
+        metaTitle: "אישור חיים נוטריוני לגמלאים — מחיר ותהליך | BEITON",
         metaDescription: "אישור חיים נוטריוני לגמלאים — לצורך המשך קבלת קצבה, גמלה או זכויות. נוכחות פיזית נדרשת. תעריף קבוע.",
         intro: "אישור חיים לגמלאים הוא מסמך נוטריוני שמאשר כי הגמלאי חי ובנמצא. האישור נדרש על ידי גופים שונים — קרנות פנסיה, חברות ביטוח, רשויות ממשלתיות בישראל ובחו״ל — כתנאי להמשך תשלום קצבה, גמלה או מימוש זכויות. ללא אישור עדכני — הזכויות עלולות להיות מוקפאות.",
         whatIsTitle: "מה זה אישור חיים לגמלאים?",
@@ -290,7 +290,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
           { name: "הגעה למשרד", desc: "הגמלאי מגיע למשרד. כ-10 דקות. מומלץ בליווי בן משפחה." },
           { name: "שירות עד הבית", desc: "הנוטריון מגיע לבית הגמלאי — במיוחד מתאים למבוגרים ומוגבלי ניידות. בתיאום מראש." },
         ],
-        whyUsTitle: "למה BEITON & Co?",
+        whyUsTitle: "למה BEITON?",
         whyUsPoints: [
           "מתמחים באישורי חיים לגמלאים — מכירים את כל הדרישות",
           "שירות עד הבית — הנוטריון מגיע אליכם",
@@ -316,7 +316,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
       },
       en: {
         h1: "Life Certificate for Retirees — Notarial Certification",
-        metaTitle: "Life Certificate for Retirees — Notarized in Israel | BEITON & Co",
+        metaTitle: "Life Certificate for Retirees — Notarized in Israel | BEITON",
         metaDescription: "Notarized life certificate for retirees — for continued pension, benefits, or rights. Physical presence required. Fixed tariff.",
         intro: "A life certificate for retirees is a notarial document confirming that the retiree is alive. It is required by various entities — pension funds, insurance companies, government authorities in Israel and abroad — as a condition for continued pension payments, benefits, or exercising rights. Without a current certificate, rights may be frozen.",
         whatIsTitle: "What is a life certificate for retirees?",
@@ -352,7 +352,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
           { name: "Office visit", desc: "The retiree comes to the office. About 10 minutes. Recommended with a family member." },
           { name: "Home service", desc: "The notary comes to the retiree's home — especially suitable for elderly or mobility-limited. By appointment." },
         ],
-        whyUsTitle: "Why BEITON & Co?",
+        whyUsTitle: "Why BEITON?",
         whyUsPoints: [
           "Specialize in life certificates for retirees — know all requirements",
           "Home service — the notary comes to you",
@@ -378,7 +378,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
       },
       ru: {
         h1: "Свидетельство о жизни для пенсионеров — нотариальное заверение",
-        metaTitle: "Свидетельство о жизни для пенсионеров — Израиль | BEITON & Co",
+        metaTitle: "Свидетельство о жизни для пенсионеров — Израиль | BEITON",
         metaDescription: "Нотариальное свидетельство о жизни для пенсионеров — для продолжения пенсии, пособий или прав. Личное присутствие. Фиксированный тариф.",
         intro: "Свидетельство о жизни для пенсионеров — нотариальный документ, подтверждающий, что пенсионер жив. Требуется различными организациями — пенсионными фондами, страховыми компаниями, госорганами в Израиле и за рубежом — для продолжения выплат пенсии, пособий или реализации прав. Без актуального свидетельства права могут быть заморожены.",
         whatIsTitle: "Что такое свидетельство о жизни для пенсионеров?",
@@ -414,7 +414,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
           { name: "Визит в офис", desc: "Пенсионер приходит в офис. Около 10 минут. Рекомендуем с родственником." },
           { name: "Выезд на дом", desc: "Нотариус приедет к пенсионеру — особенно подходит для пожилых. По записи." },
         ],
-        whyUsTitle: "Почему BEITON & Co?",
+        whyUsTitle: "Почему BEITON?",
         whyUsPoints: [
           "Специализируемся на свидетельствах для пенсионеров — знаем все требования",
           "Выезд на дом — нотариус приедет к вам",
@@ -440,7 +440,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
       },
       ar: {
         h1: "شهادة حياة للمتقاعدين — تصديق نوتاري",
-        metaTitle: "شهادة حياة نوتارية للمتقاعدين — إسرائيل | BEITON & Co",
+        metaTitle: "شهادة حياة نوتارية للمتقاعدين — إسرائيل | BEITON",
         metaDescription: "شهادة حياة نوتارية للمتقاعدين — لاستمرار التقاعد أو المعاش أو الحقوق. حضور شخصي مطلوب. تعرفة ثابتة.",
         intro: "شهادة الحياة للمتقاعدين هي وثيقة نوتارية تؤكد أن المتقاعد على قيد الحياة. تُطلب من جهات مختلفة — صناديق تقاعد، شركات تأمين، سلطات حكومية في إسرائيل والخارج — كشرط لاستمرار دفع المعاش أو تحقيق الحقوق. بدون شهادة محدّثة — قد تُجمّد الحقوق.",
         whatIsTitle: "ما هي شهادة الحياة للمتقاعدين؟",
@@ -476,7 +476,7 @@ export const LIFE_CERTIFICATE_USE_CASES: UseCase[] = [
           { name: "زيارة المكتب", desc: "المتقاعد يحضر للمكتب. حوالي 10 دقائق. يُنصح بمرافقة أحد أفراد العائلة." },
           { name: "خدمة حتى البيت", desc: "النوتاري يأتي لبيت المتقاعد — مناسب بشكل خاص لكبار السن ومحدودي الحركة. بموعد مسبق." },
         ],
-        whyUsTitle: "لماذا BEITON & Co؟",
+        whyUsTitle: "لماذا BEITON؟",
         whyUsPoints: [
           "متخصصون بشهادات الحياة للمتقاعدين — نعرف جميع المتطلبات",
           "خدمة منزلية — النوتاري يأتي إليكم",
