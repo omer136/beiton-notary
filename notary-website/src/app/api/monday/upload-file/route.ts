@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ORDER_FLOWS_ENABLED, inactiveResponse } from "@/lib/site-mode";
 import { SALES_COLS } from "@/lib/monday-boards";
 
 /**
@@ -12,6 +13,7 @@ import { SALES_COLS } from "@/lib/monday-boards";
  *   - itemId: Monday item ID (required)
  */
 export async function POST(req: NextRequest) {
+  if (!ORDER_FLOWS_ENABLED) return inactiveResponse(); // מצב מידע: אין קליטת פניות (src/lib/site-mode.ts)
   try {
     const token = process.env.MONDAY_API_TOKEN;
     if (!token) {

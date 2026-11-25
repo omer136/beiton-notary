@@ -91,9 +91,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const filePath = resolveFile(locale, slug);
   if (!filePath) return {};
   const { meta } = parseFrontmatter(fs.readFileSync(filePath, "utf8"));
+  const BASE = "https://notary.beiton.co";
   return {
     title: (meta.title || slug) + " | BEITON",
     description: meta.description || "",
+    // canonical ו-hreflang ב-HTML; כל המאמרים מתורגמים לשש השפות
+    alternates: {
+      canonical: `${BASE}/${locale}/blog/${slug}`,
+      languages: { ...Object.fromEntries(locales.map((l) => [l, `${BASE}/${l}/blog/${slug}`])), "x-default": `${BASE}/he/blog/${slug}` },
+    },
   };
 }
 

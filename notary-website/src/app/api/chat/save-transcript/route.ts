@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ORDER_FLOWS_ENABLED, inactiveResponse } from "@/lib/site-mode";
 import { SALES_COLS } from "@/lib/monday-boards";
 
 /**
@@ -161,6 +162,7 @@ async function uploadToGoogleDrive(
 }
 
 export async function POST(req: NextRequest) {
+  if (!ORDER_FLOWS_ENABLED) return inactiveResponse(); // מצב מידע: אין קליטת פניות (src/lib/site-mode.ts)
   try {
     const body = await req.json();
     const { messages, language, itemId, sessionId } = body as {

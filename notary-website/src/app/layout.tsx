@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 import LanguageTracker from "@/components/LanguageTracker";
 import RouteChangeTracker from "@/components/RouteChangeTracker";
@@ -9,13 +10,11 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export const metadata: Metadata = {
-  title: "BEITON — Notary Services",
-  description: "Professional digital notary services in 6 languages",
+  title: "BEITON | Notarial acts in Israel: information",
+  description: "Information from a law office about notarial acts in Israel, with the source in the law for each rule.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -25,11 +24,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+const RTL = ["he", "ar"];
+
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // השפה מהכתובת (/he, /en ...), לפי ה-middleware של next-intl. עד 25.11.2026 היה כאן lang="he" קבוע בכל השפות.
+  const locale = await getLocale();
   return (
-    <html lang="he">
+    <html lang={locale} dir={RTL.includes(locale) ? "rtl" : "ltr"}>
       <head>
         {/* Consent Mode V2 defaults — BEFORE GTM, checks localStorage first */}
         <Script id="consent-defaults" strategy="beforeInteractive">

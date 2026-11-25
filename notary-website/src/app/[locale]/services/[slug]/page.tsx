@@ -6,6 +6,15 @@ import { locales } from "@/lib/i18n";
 import PricingCalculator from "@/components/PricingCalculator";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { ORDER_FLOWS_ENABLED } from "@/lib/site-mode";
+import { quotesFor, NO_NOTARIAL_FEE, UI, GENERAL_CONTACT, READ_DATE, READ_DATE_ISO } from "@/data/legal-basis";
+
+/**
+ * השפות שיש להן תרגום של עמודי השירות. בצרפתית ובספרדית העמוד מציג את הטקסט האנגלי,
+ * ולכן עד שיתורגם: noindex, בלי hreflang אליו, ומחוץ ל-sitemap.
+ */
+const TRANSLATED = ["he", "en", "ru", "ar"] as const;
+const BASE = "https://notary.beiton.co";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -22,14 +31,19 @@ export async function generateMetadata({
   const uc = USE_CASE_MAP[slug];
   if (!uc) return {};
   const c = (uc.translations[locale] || uc.translations.en) as UseCaseContent;
+  const translated = (TRANSLATED as readonly string[]).includes(locale);
   return {
     title: c.metaTitle,
     description: c.metaDescription,
+    robots: translated ? undefined : { index: false, follow: true },
     alternates: {
-      canonical: `https://notary.beiton.co/${locale}/services/${slug}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `https://notary.beiton.co/${l}/services/${slug}`])
-      ),
+      canonical: `${BASE}/${locale}/services/${slug}`,
+      languages: translated
+        ? {
+            ...Object.fromEntries(TRANSLATED.map((l) => [l, `${BASE}/${l}/services/${slug}`])),
+            "x-default": `${BASE}/he/services/${slug}`,
+          }
+        : undefined,
     },
   };
 }
@@ -44,17 +58,28 @@ export default async function ServicePage({
   if (!uc) notFound();
 
   const c = (uc.translations[locale] || uc.translations.en) as UseCaseContent;
-  const isRtl = locale === "he" || locale === "ar";
+  // השפה של הטקסט שמוצג בפועל (בצרפתית ובספרדית: אנגלית)
+  const textLang = uc.translations[locale] ? locale : "en";
+  const isRtl = textLang === "he" || textLang === "ar";
   const font =
-    locale === "he"
+    textLang === "he"
       ? "'Noto Sans Hebrew', 'DM Sans', sans-serif"
-      : locale === "ar"
+      : textLang === "ar"
         ? "'Noto Sans Arabic', 'DM Sans', sans-serif"
         : "'DM Sans', sans-serif";
 
   const breadHome = locale === "he" ? "ראשי" : locale === "ar" ? "الرئيسية" : locale === "ru" ? "Главная" : "Home";
-  const breadServices = locale === "he" ? "שירותים" : locale === "ar" ? "الخدمات" : locale === "ru" ? "Услуги" : "Services";
+  const breadServices = locale === "he" ? "פעולות נוטריוניות" : locale === "ar" ? "الأعمال التوثيقية" : locale === "ru" ? "Нотариальные действия" : "Notarial acts";
   const textAlign = isRtl ? "right" as const : "left" as const;
+
+  const law = quotesFor(slug, uc.pricingKey);
+  const lawUi = UI[(textLang as keyof typeof UI)] || UI.en;
+  const qLang = textLang as "he" | "en" | "ru" | "ar";
+  const contact = GENERAL_CONTACT[locale] || GENERAL_CONTACT.en;
+  const showFee = !NO_NOTARIAL_FEE.has(slug);
+
+  const h2 = { fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 } as const;
+  const body = { fontSize: 15, fontWeight: 300, marginBottom: 40 } as const;
 
   return (
     <>
@@ -74,25 +99,27 @@ export default async function ServicePage({
         }}
       />
 
-      {/* Service Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: c.h1,
-            description: c.intro,
-            provider: {
-              "@type": "LegalService",
-              name: "BEITON",
-              url: "https://notary.beiton.co",
-            },
-            areaServed: { "@type": "Country", name: "Israel" },
-            url: `https://notary.beiton.co/${locale}/services/${slug}`,
-          }),
-        }}
-      />
+      {/* Service Schema: רק כשמסלולי ההזמנה פעילים (src/lib/site-mode.ts). במצב מידע האתר אינו מציע את השירות */}
+      {ORDER_FLOWS_ENABLED && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: c.h1,
+              description: c.intro,
+              provider: {
+                "@type": "LegalService",
+                name: "BEITON",
+                url: BASE,
+              },
+              areaServed: { "@type": "Country", name: "Israel" },
+              url: `${BASE}/${locale}/services/${slug}`,
+            }),
+          }}
+        />
+      )}
 
       {/* Breadcrumb Schema */}
       <script
@@ -102,8 +129,8 @@ export default async function ServicePage({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: breadHome, item: `https://notary.beiton.co/${locale}` },
-              { "@type": "ListItem", position: 2, name: breadServices, item: `https://notary.beiton.co/${locale}#services` },
+              { "@type": "ListItem", position: 1, name: breadHome, item: `${BASE}/${locale}` },
+              { "@type": "ListItem", position: 2, name: breadServices, item: `${BASE}/${locale}#services` },
               { "@type": "ListItem", position: 3, name: c.h1 },
             ],
           }),
@@ -112,6 +139,7 @@ export default async function ServicePage({
 
       <div
         dir={isRtl ? "rtl" : "ltr"}
+        lang={textLang}
         style={{
           fontFamily: font,
           color: "#1A1A1A",
@@ -141,80 +169,119 @@ export default async function ServicePage({
           <div style={{ width: 50, height: 1, background: "#1A1A1A", marginBottom: 32 }} />
 
           {/* Intro */}
-          <p style={{ fontSize: 15, fontWeight: 300, marginBottom: 40 }}>{c.intro}</p>
+          <p style={body}>{c.intro}</p>
 
           {/* What is */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.whatIsTitle}</h2>
-          <p style={{ fontSize: 15, fontWeight: 300, marginBottom: 40 }}>{c.whatIsBody}</p>
+          <h2 style={h2}>{c.whatIsTitle}</h2>
+          <p style={body}>{c.whatIsBody}</p>
 
           {/* When needed */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.whenNeededTitle}</h2>
-          <ul style={{ fontSize: 15, fontWeight: 300, marginBottom: 40, paddingInlineStart: 20 }}>
+          <h2 style={h2}>{c.whenNeededTitle}</h2>
+          <ul style={{ ...body, paddingInlineStart: 20 }}>
             {c.whenNeeded.map((item, i) => (
               <li key={i} style={{ marginBottom: 6 }}>{item}</li>
             ))}
           </ul>
 
-          {/* Process */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.processTitle}</h2>
-          <ol style={{ fontSize: 15, fontWeight: 300, marginBottom: 40, paddingInlineStart: 20 }}>
-            {c.processSteps.map((step, i) => (
-              <li key={i} style={{ marginBottom: 8 }}>{step}</li>
-            ))}
-          </ol>
+          {/* What the law says: ציטוט מילה במילה, קישור ותאריך קריאה */}
+          {law.length > 0 && (
+            <section aria-labelledby="law">
+              <h2 id="law" style={h2}>{lawUi.title}</h2>
+              <p style={{ fontSize: 13, fontWeight: 300, color: "#6B6B6B", marginBottom: 16 }}>{lawUi.intro}</p>
+              <div style={{ display: "grid", gap: 14, marginBottom: 40 }}>
+                {law.map((q, i) => (
+                  <div key={i} style={{ padding: "14px 18px", borderRadius: 10, border: "1px solid #E8E6E1", background: "#FAFAF8" }}>
+                    <p style={{ fontSize: 13, fontWeight: 500, marginBottom: 6 }}>{q.cite[qLang]}</p>
+                    <blockquote lang="he" dir="rtl" style={{ fontSize: 14, fontWeight: 300, margin: 0, textAlign: "right", fontFamily: "'Noto Sans Hebrew', 'DM Sans', sans-serif" }}>
+                      &ldquo;{q.text}&rdquo;
+                    </blockquote>
+                    {qLang !== "he" && (
+                      <p style={{ fontSize: 13, fontWeight: 300, color: "#4A4A4A", marginTop: 6 }}>
+                        {lawUi.unofficial}&ldquo;{q.tr[qLang]}&rdquo;
+                      </p>
+                    )}
+                    <p style={{ fontSize: 11, color: "#999", marginTop: 6 }}>
+                      <a href={q.url} target="_blank" rel="noopener noreferrer" style={{ color: "#999" }}>{lawUi.source}</a>
+                      {q.url2 && <>{" · "}<a href={q.url2.href} target="_blank" rel="noopener noreferrer" style={{ color: "#999" }}>{q.url2.label[qLang]}</a></>}
+                      {", "}{lawUi.read}<time dateTime={READ_DATE_ISO}>{READ_DATE}</time>
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Process: רק כשמסלולי ההזמנה פעילים. הנוסח הקיים מתאר הזמנה דרך המשרד */}
+          {ORDER_FLOWS_ENABLED && (
+            <>
+              <h2 style={h2}>{c.processTitle}</h2>
+              <ol style={{ ...body, paddingInlineStart: 20 }}>
+                {c.processSteps.map((step, i) => (
+                  <li key={i} style={{ marginBottom: 8 }}>{step}</li>
+                ))}
+              </ol>
+            </>
+          )}
 
           {/* Required documents */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.docsTitle}</h2>
-          <ul style={{ fontSize: 15, fontWeight: 300, marginBottom: 40, paddingInlineStart: 20 }}>
+          <h2 style={h2}>{c.docsTitle}</h2>
+          <ul style={{ ...body, paddingInlineStart: 20 }}>
             {c.docs.map((doc, i) => (
               <li key={i} style={{ marginBottom: 6 }}>{doc}</li>
             ))}
           </ul>
 
-          {/* Pricing */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 8, marginTop: 40 }}>{c.pricingTitle}</h2>
+          {/* Pricing: בעמודים שאין בהם פעולה נוטריונית אין מחשבון */}
+          <h2 style={{ ...h2, marginBottom: 8 }}>{c.pricingTitle}</h2>
           <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B", marginBottom: 16 }}>{c.pricingNote}</p>
-          <div style={{ marginBottom: 40 }}>
-            <PricingCalculator lang={locale} initialService={uc.pricingKey} />
-          </div>
+          {showFee && (
+            <div style={{ marginBottom: 40 }}>
+              <PricingCalculator lang={locale} initialService={uc.pricingKey} />
+            </div>
+          )}
 
-          {/* Delivery */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.deliveryTitle}</h2>
-          <div style={{ display: "grid", gap: 10, marginBottom: 40 }}>
-            {c.deliveryOptions.map((opt, i) => (
-              <div key={i} style={{ padding: "14px 18px", borderRadius: 10, border: "1px solid #E8E6E1", background: "#FAFAF8" }}>
-                <p style={{ fontSize: 14, fontWeight: 500, marginBottom: 4 }}>{opt.name}</p>
-                <p style={{ fontSize: 13, fontWeight: 300, color: "#6B6B6B" }}>{opt.desc}</p>
+          {/* Delivery + Why us: רק כשמסלולי ההזמנה פעילים (כולל טענות ניסיון וזמינות שלא נבדקו) */}
+          {ORDER_FLOWS_ENABLED && (
+            <>
+              <h2 style={h2}>{c.deliveryTitle}</h2>
+              <div style={{ display: "grid", gap: 10, marginBottom: 40 }}>
+                {c.deliveryOptions.map((opt, i) => (
+                  <div key={i} style={{ padding: "14px 18px", borderRadius: 10, border: "1px solid #E8E6E1", background: "#FAFAF8" }}>
+                    <p style={{ fontSize: 14, fontWeight: 500, marginBottom: 4 }}>{opt.name}</p>
+                    <p style={{ fontSize: 13, fontWeight: 300, color: "#6B6B6B" }}>{opt.desc}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+              <h2 style={h2}>{c.whyUsTitle}</h2>
+              <ul style={{ ...body, paddingInlineStart: 20 }}>
+                {c.whyUsPoints.map((point, i) => (
+                  <li key={i} style={{ marginBottom: 6 }}>{point}</li>
+                ))}
+              </ul>
+            </>
+          )}
 
-          {/* Why us (E-E-A-T) */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 12, marginTop: 40 }}>{c.whyUsTitle}</h2>
-          <ul style={{ fontSize: 15, fontWeight: 300, marginBottom: 40, paddingInlineStart: 20 }}>
-            {c.whyUsPoints.map((point, i) => (
-              <li key={i} style={{ marginBottom: 6 }}>{point}</li>
-            ))}
-          </ul>
-
-          {/* FAQ */}
-          <h2 style={{ fontSize: 22, fontWeight: 400, marginBottom: 16, marginTop: 40 }}>{c.faqTitle}</h2>
+          {/* FAQ: ב-HTML גלוי, details/summary (עוזרי AI לא מריצים JavaScript) */}
+          <h2 style={{ ...h2, marginBottom: 16 }}>{c.faqTitle}</h2>
           <div style={{ marginBottom: 40 }}>
             {c.faq.map((item, i) => (
-              <div key={i} style={{ borderBottom: "1px solid #E8E6E1", padding: "14px 0" }}>
-                <p style={{ fontSize: 14, fontWeight: 500, marginBottom: 6 }}>{item.q}</p>
+              <details key={i} open style={{ borderBottom: "1px solid #E8E6E1", padding: "14px 0" }}>
+                <summary style={{ fontSize: 14, fontWeight: 500, marginBottom: 6, cursor: "pointer" }}>{item.q}</summary>
                 <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B" }}>{item.a}</p>
-              </div>
+              </details>
             ))}
           </div>
 
-          {/* CTA */}
-          <div style={{ background: "#FAFAF8", borderRadius: 12, border: "1px solid #E8E6E1", padding: "28px 24px", textAlign: "center" }}>
-            <h2 style={{ fontSize: 20, fontWeight: 400, marginBottom: 8 }}>{c.ctaTitle}</h2>
-            <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B", marginBottom: 16 }}>{c.ctaText}</p>
+          {/* פנייה כללית למשרד. קריאת הוואטסאפ של העמוד רק כשמסלולי ההזמנה פעילים */}
+          <div lang={locale} dir={locale === "he" || locale === "ar" ? "rtl" : "ltr"} style={{ background: "#FAFAF8", borderRadius: 12, border: "1px solid #E8E6E1", padding: "28px 24px", textAlign: "center" }}>
+            <h2 style={{ fontSize: 20, fontWeight: 400, marginBottom: 8 }}>{ORDER_FLOWS_ENABLED ? c.ctaTitle : contact.title}</h2>
+            <p style={{ fontSize: 14, fontWeight: 300, color: "#6B6B6B", marginBottom: 16 }}>{ORDER_FLOWS_ENABLED ? c.ctaText : contact.text}</p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" style={{ background: "#1A1A1A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}>{c.ctaWhatsapp}</a>
-              <Link href={`/${locale}`} style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, textDecoration: "none" }}>{c.ctaBack}</Link>
+              <a href="https://wa.me/97233817776" target="_blank" rel="noopener noreferrer" style={{ background: "#1A1A1A", color: "#fff", border: "none", borderRadius: 8, padding: "10px 22px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}>{ORDER_FLOWS_ENABLED ? c.ctaWhatsapp : contact.whatsapp}</a>
+              {!ORDER_FLOWS_ENABLED && (
+                <a href="mailto:office@beiton.co" style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, textDecoration: "none" }}>{contact.email}</a>
+              )}
+              <Link href={`/${locale}`} style={{ background: "transparent", color: "#1A1A1A", border: "1px solid #E8E6E1", borderRadius: 8, padding: "10px 22px", fontSize: 13, textDecoration: "none" }}>{ORDER_FLOWS_ENABLED ? c.ctaBack : contact.back}</Link>
             </div>
           </div>
         </article>

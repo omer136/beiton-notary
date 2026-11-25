@@ -15,12 +15,12 @@ const LANGS: Record<string, { label: string; dir: string; font: string }> = {
 };
 
 const NAV: Record<string, Record<string, string>> = {
-  he: { home: "ראשי", services: "שירותים", usecases: "מקרי שימוש", pricing: "מחירון", track: "מעקב הזמנה", blog: "בלוג", about: "אודות", contact: "יצירת קשר" },
-  en: { home: "Home", services: "Services", usecases: "Use Cases", pricing: "Pricing", track: "Track Order", blog: "Blog", about: "About", contact: "Contact" },
-  ru: { home: "Главная", services: "Услуги", usecases: "Примеры", pricing: "Цены", track: "Отслеживание", blog: "Блог", about: "О нас", contact: "Контакты" },
-  ar: { home: "الرئيسية", services: "الخدمات", usecases: "حالات الاستخدام", pricing: "الأسعار", track: "تتبع الطلب", blog: "مدونة", about: "عن المكتب", contact: "تواصل معنا" },
-  fr: { home: "Accueil", services: "Services", usecases: "Cas d'usage", pricing: "Tarifs", track: "Suivi", blog: "Blog", about: "A propos", contact: "Contact" },
-  es: { home: "Inicio", services: "Servicios", usecases: "Casos de uso", pricing: "Precios", track: "Seguimiento", blog: "Blog", about: "Nosotros", contact: "Contacto" },
+  he: { home: "ראשי", services: "פעולות נוטריוניות", usecases: "לפי מסמך", pricing: "השכר בתקנות", blog: "מדריכים", about: "אודות", contact: "יצירת קשר" },
+  en: { home: "Home", services: "Notarial acts", usecases: "By document", pricing: "Fees", blog: "Guides", about: "About", contact: "Contact" },
+  ru: { home: "Главная", services: "Нотариальные действия", usecases: "По документу", pricing: "Тарифы", blog: "Статьи", about: "О нас", contact: "Контакты" },
+  ar: { home: "الرئيسية", services: "الأعمال التوثيقية", usecases: "حسب المستند", pricing: "الأجور", blog: "مقالات", about: "عن المكتب", contact: "تواصل معنا" },
+  fr: { home: "Accueil", services: "Actes notariés", usecases: "Par document", pricing: "Tarifs", blog: "Guides", about: "À propos", contact: "Contact" },
+  es: { home: "Inicio", services: "Actos notariales", usecases: "Por documento", pricing: "Aranceles", blog: "Guías", about: "Acerca de", contact: "Contacto" },
 };
 
 export default function SiteHeader({ lang }: { lang: string }) {

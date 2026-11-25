@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ORDER_FLOWS_ENABLED, inactiveResponse } from "@/lib/site-mode";
 import {
   AGENT1_SYSTEM_PROMPT,
   AGENT1_TOOLS,
@@ -650,6 +651,7 @@ async function callClaude(
 // ---------------------------------------------------------------------------
 
 export async function POST(req: NextRequest) {
+  if (!ORDER_FLOWS_ENABLED) return inactiveResponse(); // מצב מידע: אין קליטת פניות (src/lib/site-mode.ts)
   try {
     const body = await req.json();
     const { messages, language, utm, existingItemId, session_id } = body as {

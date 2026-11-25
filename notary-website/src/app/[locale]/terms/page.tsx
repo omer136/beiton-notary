@@ -10,27 +10,27 @@ export const metadata: Metadata = {
 const he = {
   title: "תנאי שימוש",
   subtitle: "אתר notary.beiton.co",
-  lastUpdated: "עדכון אחרון: נובמבר 2026",
+  lastUpdated: "עדכון אחרון: 25.11.2026",
   sections: [
     {
       heading: "1. כללי",
       body: 'ברוכים הבאים לאתר notary.beiton.co (להלן: "האתר"), המופעל על ידי משרד עו״ד עומר בית און, BEITON (להלן: "המשרד"). השימוש באתר מהווה הסכמה לתנאים המפורטים להלן. אם אינך מסכים/ה לתנאים אלה, נא להימנע משימוש באתר.\nתנאי שימוש אלה מנוסחים בלשון זכר לצורכי נוחות בלבד, אולם הם מיועדים לכל אדם ללא הבדלי מגדר.',
     },
     {
-      heading: "2. מהות האתר והשירותים",
-      body: 'האתר מספק מידע על שירותי נוטריון הניתנים על ידי המשרד, לרבות מחשבון תעריפים המבוסס על תקנות הנוטריונים (שכר שירותים), תשל"ט-1978, מידע על מקרי שימוש נפוצים, כלי צ\'אט לפניות ראשוניות ומעקב הזמנות.\nהמידע באתר הינו מידע כללי בלבד ואינו מהווה ייעוץ משפטי, חוות דעת או תחליף לייעוץ משפטי פרטני. יחסי עורך דין-לקוח נוצרים אך ורק לאחר חתימה על הסכם שכר טרחה.',
+      heading: "2. מהות האתר",
+      body: 'האתר הוא אתר מידע של המשרד על פעולות נוטריוניות בישראל: מה כל פעולה, מה הדין דורש בה ומה השכר שקבוע בתקנות הנוטריונים (שכר שירותים), תשל"ט-1978, לרבות מחשבון המבוסס על התקנות. האתר אינו מציע ביצוע של פעולה נוטריונית, ואין בו הזמנה של שירות.\nהמידע באתר הינו מידע כללי בלבד ואינו מהווה ייעוץ משפטי, חוות דעת או תחליף לייעוץ משפטי פרטני. יחסי עורך דין-לקוח נוצרים אך ורק לאחר חתימה על הסכם שכר טרחה.',
     },
     {
-      heading: "3. נותני שירות מטעם המשרד",
-      body: "שירותי הנוטריון המוצעים באמצעות האתר ניתנים על ידי המשרד ו/או על ידי נוטריונים מוסמכים הפועלים מטעמו, בהתאם לשפת המסמך ולאופי השירות הנדרש. בנוסף, שירותי שליחות ואיסוף מסמכים עשויים להתבצע באמצעות שליחים חיצוניים הפועלים מטעם המשרד. כל נותני השירות מחויבים לסודיות מקצועית.",
+      heading: "3. פנייה למשרד",
+      body: "פנייה למשרד מהאתר, בוואטסאפ, במייל או בטלפון, היא פנייה כללית למשרד עורכי הדין. היא אינה הזמנה של פעולה נוטריונית, ואינה יוצרת יחסי עורך דין ולקוח.",
     },
     {
       heading: "4. מחשבון מחירים",
-      body: 'המחשבון המוצג באתר מבוסס על תקנות הנוטריונים (שכר שירותים), תשל"ט-1978 כפי שעודכנו לשנת 2026. התעריפים קבועים בחוק ואחידים לכל הנוטריונים בישראל. המשרד אינו אחראי לשינויים בתעריפים שייכנסו לתוקף לאחר עדכון האתר. יש לוודא את התעריף העדכני מול המשרד.',
+      body: 'המחשבון המוצג באתר מבוסס על תקנות הנוטריונים (שכר שירותים), תשל"ט-1978 כפי שעודכנו לשנת 2026. התעריפים קבועים בחוק ואחידים לכל הנוטריונים בישראל. הסכומים משתנים ב-1 בינואר של כל שנה (תקנה 4), והמשרד אינו אחראי לשינוי שנכנס לתוקף לפני שהאתר עודכן. הנוסח המחייב הוא הנוסח שפורסם ברשומות.',
     },
     {
-      heading: "5. צ'אט ופניות",
-      body: "שירות הצ'אט באתר מופעל באמצעות בינה מלאכותית ונועד לסייע במתן מידע ראשוני בלבד. תשובות הצ'אט אינן מהוות ייעוץ משפטי ואינן יוצרות יחסי עורך דין-לקוח. פרטים שיימסרו בצ'אט ישמשו ליצירת קשר ולטיפול בפנייה בלבד.",
+      heading: "5. צ'אט",
+      body: "שירות הצ'אט באתר אינו פעיל.",
     },
     {
       heading: "6. קניין רוחני",
@@ -62,27 +62,27 @@ const he = {
 const en = {
   title: "Terms of Use",
   subtitle: "notary.beiton.co",
-  lastUpdated: "Last updated: November 2026",
+  lastUpdated: "Last updated: 25.11.2026",
   sections: [
     {
       heading: "1. General",
       body: 'Welcome to notary.beiton.co (the "Website"), operated by the law office of Adv. Omer Beit-On, BEITON (the "Firm"). Use of the Website constitutes acceptance of these terms. If you do not agree, please refrain from using the Website.',
     },
     {
-      heading: "2. Nature of the Website and Services",
-      body: "The Website provides information about notary services offered by the Firm, including a pricing calculator based on the Notaries Regulations (Service Fees), 1978, information on common use cases, a chat tool for initial inquiries, and order tracking.\nThe information on the Website is general only and does not constitute legal advice, an opinion, or a substitute for individual legal counsel. An attorney-client relationship is created only upon signing a fee agreement.",
+      heading: "2. Nature of the Website",
+      body: "The Website is the Firm's information site on notarial acts in Israel: what each act is, what the law requires and what fee is fixed by the Notaries (Service Fees) Regulations, 1978, including a calculator based on those regulations. The Website does not offer to perform a notarial act, and no service can be ordered through it.\nThe information on the Website is general only and does not constitute legal advice, an opinion, or a substitute for individual legal counsel. An attorney-client relationship is created only upon signing a fee agreement.",
     },
     {
-      heading: "3. Service Providers on Behalf of the Firm",
-      body: "Notary services offered through the Website are provided by the Firm and/or by licensed notaries acting on its behalf, according to document language and the nature of the service required. Courier and document collection services may be performed by external couriers acting on behalf of the Firm. All service providers are bound by professional confidentiality.",
+      heading: "3. Contacting the Firm",
+      body: "Contacting the Firm from the Website, by WhatsApp, email or phone, is a general inquiry to the law office. It is not an order of a notarial act and does not create an attorney-client relationship.",
     },
     {
       heading: "4. Pricing Calculator",
-      body: "The calculator displayed on the Website is based on the Notaries Regulations (Service Fees), 1978, as updated for 2026. Fees are fixed by law and uniform for all notaries in Israel. The Firm is not responsible for fee changes that take effect after the Website is updated. Please verify current fees with the Firm.",
+      body: "The calculator displayed on the Website is based on the Notaries Regulations (Service Fees), 1978, as updated for 2026. Fees are fixed by law and uniform for all notaries in Israel. The amounts change on 1 January each year (regulation 4), and the Firm is not responsible for a change that takes effect before the Website is updated. The binding text is the one published in the official gazette (Reshumot).",
     },
     {
-      heading: "5. Chat and Inquiries",
-      body: "The Website's chat service is powered by artificial intelligence and is intended to provide preliminary information only. Chat responses do not constitute legal advice and do not create an attorney-client relationship. Details provided in the chat will be used solely for contacting you and processing your inquiry.",
+      heading: "5. Chat",
+      body: "The Website's chat service is not active.",
     },
     {
       heading: "6. Intellectual Property",

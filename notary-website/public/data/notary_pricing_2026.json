@@ -9,7 +9,7 @@
     "next_update_date": "2027-01-01",
     "vat_rate": 0.18,
     "vat_note": "כל המחירים לפני מע״מ. יש להוסיף מע״מ כחוק.",
-    "pricing_rule": "נוטריון אינו רשאי לגבות פחות או יותר מהתעריף — ס׳ 42(3) לחוק"
+    "pricing_rule": "נוטריון אינו רשאי לגבות יותר מהשכר שבתקנות; פחות מותר רק במקרים שבתקנה 1א(א). עבירת משמעת: ס׳ 34(5) לחוק הנוטריונים (למעלה מן הקבוע, או למטה ממנו ללא טעם מספיק)"
   },
   "pricing": {
     "signature_authentication": {
@@ -41,7 +41,7 @@
       "translation_by_notary_surcharge": {
         "policy": "DO_NOT_OFFER",
         "description_he": "מדיניות המשרד: לא מציעים ללקוחות את חלופת ׳נוטריון מתרגם בעצמו׳ עם תוספת 50%. תמיד מציעים את החלופה הזולה — תרגום + אישור נוטריוני על נכונות התרגום.",
-        "regulation_note": "התקנות מאפשרות תוספת מחצית משכר האישור אם הנוטריון מתרגם בעצמו (פרט 3 לתקנות) — אבל זו אינה החלופה שאנחנו מציעים.",
+        "regulation_note": "בפרט 3 (אישור תרגום) אין תוספת על תרגום בידי הנוטריון. התוספת של מחצית מהשכר שבפרט 3(א), לפי מספר המילים, חלה על אימות חתימה, צוואה, תצהיר והסכם ממון כשהם כרוכים בתרגום בידי הנוטריון: פרטים 1(ה), 4(ד), 6(ד) ו-11(ג).",
         "surcharge_rate": 0,
         "_legal_max_rate": 0.5
       },
@@ -53,7 +53,7 @@
       }
     },
     "will_and_life_certificate": {
-      "regulation_ref": "פרט 4",
+      "regulation_ref": "פרט 4 (צוואה), פרט 5 (אישור חיים)",
       "will": [
         { "description_he": "צוואה — חותם ראשון", "amount": 293 },
         { "description_he": "צוואה — כל חותם נוסף", "amount": 147 },
@@ -68,7 +68,7 @@
       }
     },
     "affidavit": {
-      "regulation_ref": "פרט 5",
+      "regulation_ref": "פרט 6",
       "items": [
         { "description_he": "מצהיר ראשון", "amount": 200 },
         { "description_he": "כל מצהיר נוסף", "amount": 80 },
@@ -76,7 +76,7 @@
       ]
     },
     "prenuptial_agreement": {
-      "regulation_ref": "פרט 6",
+      "regulation_ref": "פרט 11",
       "items": [
         { "description_he": "אימות הסכם ממון", "amount": 446 },
         { "description_he": "עותק נוסף", "amount": 74 }
@@ -97,12 +97,12 @@
     "poa_cancellation": {
       "regulation_ref": "פרט 7א",
       "items": [
-        { "description_he": "קבלת הודעת ביטול ורישום הערה", "amount": 240 },
-        { "description_he": "העתק מאושר עם הערת ביטול", "amount": 85 }
+        { "description_he": "קבלת הודעת ביטול ורישום הערה (פרט 7א(א))", "amount": 209 },
+        { "description_he": "העתק מאושר עם הערת ביטול (פרט 7א(ב))", "amount": 74 }
       ]
     },
     "foreign_language_surcharge": {
-      "regulation_ref": "פרט 8",
+      "regulation_ref": "פרט 12",
       "items": [
         { "description_he": "אישור בשפה שאינה עברית, אנגלית או ערבית — תוספת", "amount": 104 }
       ]
@@ -121,7 +121,7 @@
       }
     },
     "other_actions": {
-      "regulation_ref": "פרט 10",
+      "regulation_ref": "פרט 8",
       "items": [
         { "description_he": "פעולה ללא תעריף ספציפי", "amount": 323 }
       ],

@@ -4,6 +4,8 @@ import { USE_CASE_SLUGS } from "@/data/use-cases";
 
 const BASE = "https://notary.beiton.co";
 const LOCALES = ["he", "en", "ru", "ar", "fr", "es"];
+// עמודי השירות ומאמר המחירון בצרפתית ובספרדית מציגים טקסט אנגלי: noindex ומחוץ ל-sitemap עד שיתורגמו
+const TRANSLATED = ["he", "en", "ru", "ar"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
@@ -19,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // Blog: notary-pricing-2026 (dedicated route)
-  for (const locale of LOCALES) {
+  for (const locale of TRANSLATED) {
     entries.push({
       url: `${BASE}/${locale}/blog/notary-pricing-2026`,
       lastModified: new Date(),
@@ -42,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Service use case pages
   for (const slug of USE_CASE_SLUGS) {
-    for (const locale of LOCALES) {
+    for (const locale of TRANSLATED) {
       entries.push({
         url: `${BASE}/${locale}/services/${slug}`,
         lastModified: new Date(),
@@ -52,17 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Legal pages
-  for (const page of ["terms", "privacy", "accessibility"]) {
-    for (const locale of LOCALES) {
-      entries.push({
-        url: `${BASE}/${locale}/${page}`,
-        lastModified: new Date(),
-        changeFrequency: "yearly",
-        priority: 0.3,
-      });
-    }
-  }
+  // העמודים המשפטיים (תנאי שימוש, פרטיות, נגישות) הם noindex, ולכן אינם ב-sitemap
 
   return entries;
 }
